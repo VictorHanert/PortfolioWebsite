@@ -35,6 +35,7 @@ export const About = () => {
   const [fade, setFade] = useState<boolean>(false);
   const educationRefs = useRef<HTMLParagraphElement[]>([]);
   const experienceRefs = useRef<HTMLParagraphElement[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const animateLines = (elements: HTMLParagraphElement[]) => {
@@ -62,8 +63,20 @@ export const About = () => {
       animate(0);
     };
 
-    const allRefs = [...educationRefs.current, ...experienceRefs.current];
-    animateLines(allRefs);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const allRefs = [...educationRefs.current, ...experienceRefs.current];
+          animateLines(allRefs);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+  
+    if (sectionRef.current) { observer.observe(sectionRef.current); }
+  
+    return () => { observer.disconnect(); };
   }, []);
 
   const handleSectionChange = (key: Section) => {
@@ -75,7 +88,7 @@ export const About = () => {
   };
 
   return (
-    <section id="about-section" className="py-20 px-4 max-w-4xl mx-auto animate-fade-in">
+    <section ref={sectionRef} id="about-section" className="py-20 px-4 max-w-4xl mx-auto animate-fade-in">
       <h2 className="text-3xl font-bold mb-8 text-center">About me</h2>
       <div className="glass-card p-8 rounded-lg">
         <div className="flex justify-center gap-2 sm:gap-5 md:gap-20 mb-8">
@@ -110,11 +123,11 @@ export const About = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <li>
-                  <p ref={(el) => educationRefs.current[0] = el} className="font-medium typing-container">Software Development</p>
-                  <p ref={(el) => educationRefs.current[1] = el} className="text-sm typing-container">Top-up Bachelor's Degree</p>
-                  <p ref={(el) => educationRefs.current[2] = el} className="text-sm text-muted-foreground typing-container">KEA • 2025-2026</p>
-                </li>
+                <p ref={(el) => educationRefs.current[0] = el} className="font-medium typing-container">Software Development</p>
+                <p ref={(el) => educationRefs.current[1] = el} className="text-sm typing-container">Top-up Bachelor's Degree</p>
+                <p ref={(el) => educationRefs.current[2] = el} className="text-sm text-muted-foreground typing-container">KEA • 2025-2026</p>
+              </li>
+              <li>
                 <p ref={(el) => educationRefs.current[3] = el} className="font-medium typing-container">AP Graduate in Computer Science</p>
                 <p ref={(el) => educationRefs.current[4] = el} className="text-sm text-muted-foreground typing-container">KEA • 2022-2025</p>
               </li>
