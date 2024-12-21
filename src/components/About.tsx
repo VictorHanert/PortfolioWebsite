@@ -110,13 +110,13 @@ export const About = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <p ref={(el) => educationRefs.current[0] = el} className="font-medium typing-container">AP Graduate in Computer Science</p>
-                <p ref={(el) => educationRefs.current[1] = el} className="text-sm text-muted-foreground typing-container">KEA • 2022-2025</p>
-              </li>
-              <li>
-                <p ref={(el) => educationRefs.current[2] = el} className="font-medium typing-container">Software Development</p>
-                <p ref={(el) => educationRefs.current[3] = el} className="text-sm typing-container">Top-up Bachelor's Degree</p>
-                <p ref={(el) => educationRefs.current[4] = el} className="text-sm text-muted-foreground typing-container">KEA • 2025-2026</p>
+                <li>
+                  <p ref={(el) => educationRefs.current[0] = el} className="font-medium typing-container">Software Development</p>
+                  <p ref={(el) => educationRefs.current[1] = el} className="text-sm typing-container">Top-up Bachelor's Degree</p>
+                  <p ref={(el) => educationRefs.current[2] = el} className="text-sm text-muted-foreground typing-container">KEA • 2025-2026</p>
+                </li>
+                <p ref={(el) => educationRefs.current[3] = el} className="font-medium typing-container">AP Graduate in Computer Science</p>
+                <p ref={(el) => educationRefs.current[4] = el} className="text-sm text-muted-foreground typing-container">KEA • 2022-2025</p>
               </li>
             </ul>
           </div>
