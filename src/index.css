@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+  }
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen font-['Poppins'];
+  }
+}
+
+.flip-container {
+  perspective: 1000px;
+  width: 12rem;
+  height: 12rem;
+  margin: 0 auto;
+}
+
+.hover\:flip:hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flipper {
+  transition: 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.glass-card {
+  @apply bg-gradient-to-br from-gray-100 bg-white backdrop-blur-sm border border-white/20 shadow-lg;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-small-lift {
+  @apply transition-transform duration-300 hover:-translate-y-0.5;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.typing-container {
+  opacity: 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.typing-text {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.15em solid orange;
+  animation: typing .75s steps(40, end) forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--text-width);
+  }
+}
+
+.typed {
+  width: 100%;
+  border-right: none;
+}
+
+.shiny-effect {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%; /* Match Avatar */
+}
+
+.shiny-effect::before {
+  content: '';
+  position: absolute;
+  top: -150%; /* Start off-screen */
+  left: -200%; /* Start further off-screen */
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 60%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  filter: blur(8px); /* Smooth gradient */
+  transform: skewX(-30deg); /* Create an angled shine */
+  animation: shiny-sweep 8s linear infinite; /* Long loop */
+  pointer-events: none; /* Prevent interactions */
+  z-index: 1;
+}
+
+@keyframes shiny-sweep {
+  0% {
+    left: -200%;
+    top: -150%;
+    opacity: 0.3;
+    transform: skewX(-30deg) scale(1);
+  }
+  20% {
+    left: 100%;
+    top: -100%;
+    opacity: 0.4;
+    transform: skewX(-20deg) scale(1.1);
+  }
+  40% {
+    left: -150%;
+    top: 100%;
+    opacity: 0.5;
+    transform: skewX(-10deg) scale(1.2);
+  }
+  60% {
+    left: 50%;
+    top: -50%;
+    opacity: 0.4;
+    transform: skewX(-15deg) scale(1.1);
+  }
+  80% {
+    left: -50%;
+    top: 150%;
+    opacity: 0.3;
+    transform: skewX(-25deg) scale(1.05);
+  }
+  100% {
+    left: -200%;
+    top: -150%;
+    opacity: 0.3;
+    transform: skewX(-30deg) scale(1);
+  }
+}
