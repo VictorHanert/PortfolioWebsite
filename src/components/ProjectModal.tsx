@@ -8,6 +8,7 @@ type ProjectModalProps = {
   project: {
     title: string;
     description: string;
+    clients?: string[];
     websiteUrl?: string;
     githubUrl?: string;
     technologies: string[];
@@ -70,7 +71,17 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
           )}
         </div>
 
-        <p className="text-lg text-gray-700 mb-4">{project.description}</p>
+        <p className="text-lg text-gray-700 mb-4">
+          {project.description}
+
+          {project.clients && (
+            <ul className="list-disc pl-6">
+              {project.clients.map((client) => (
+                <li key={client} className="text-gray-700 font-light text-base">{client}</li>
+              ))}
+            </ul>
+        )}
+        </p>
         
         <div className="flex flex-wrap gap-2 mb-6">
           {project.technologies.map((tech) => (

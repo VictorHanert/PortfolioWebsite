@@ -6,6 +6,7 @@ type Project = {
   id: number;
   title: string;
   description: string;
+  clients?: string[];
   tech: string[];
   category: string;
   websiteUrl?: string;
@@ -18,8 +19,9 @@ const projects: Project[] = [
   {
     id: 1,
     title: "Pandi Web Projects",
-    description: "Web development projects using Laravel and Vue.js. Working on various client projects, implementing modern web solutions and maintaining existing applications. Focus on creating responsive, user-friendly interfaces and robust backend systems.",
-    tech: ["Laravel", "Vue.js", "PHP", "Inertia.js", "MySQL", "Tailwind CSS"],
+    description: "Developed and maintained web applications using Laravel, PHP, and Vue.js. Worked on diverse client projects, delivering modern, scalable web solutions while ensuring seamless integration with existing systems. Focused on creating responsive, user-friendly interfaces and building robust, efficient backend architectures to meet client needs. I've currently worked on the following clients:",
+    clients: ["Global Fund Search", "Veltek", "The Planner Studio", "Pairy", "Ergoterapeutforeningen"],
+    tech: ["Laravel", "Vue.js", "PHP", "Inertia.js", "MySQL", "Tailwind CSS", "MySQL"],
     category: "Fullstack",
     websiteUrl: "https://pandiweb.dk",
     screenshots: [
