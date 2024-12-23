@@ -8,10 +8,10 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
             <div className="space-y-2">
-              <p className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                <div>Abel Cathrines Gade 7, <span className="block sm:inline">1654, København V</span></div>
-              </p>
+                <p>Abel Cathrines Gade 7, <span className="block sm:inline">1654, København V</span></p>
+              </div>
               <p className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 +45 60812114

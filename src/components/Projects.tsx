@@ -6,12 +6,11 @@ type Project = {
   id: number;
   title: string;
   description: string;
-  clients?: string[];
   tech: string[];
   category: string;
   websiteUrl?: string;
   githubUrl?: string;
-  screenshots: string[];
+  screenshots?: string[];
   previewImage: string;
 };
 
@@ -19,14 +18,10 @@ const projects: Project[] = [
   {
     id: 1,
     title: "Pandi Web Projects",
-    description: "Developed and maintained web applications using Laravel, PHP, and Vue.js. Worked on diverse client projects, delivering modern, scalable web solutions while ensuring seamless integration with existing systems. Focused on creating responsive, user-friendly interfaces and building robust, efficient backend architectures to meet client needs. I've currently worked on the following clients:",
-    clients: ["Global Fund Search", "Veltek", "The Planner Studio", "Pairy", "Ergoterapeutforeningen"],
-    tech: ["Laravel", "Vue.js", "PHP", "Inertia.js", "MySQL", "Tailwind CSS", "MySQL"],
+    description: "Developed and maintained web applications using Laravel, PHP, and Vue.js. Worked on diverse client projects, delivering modern, scalable web solutions while ensuring seamless integration with existing systems. Focused on creating responsive, user-friendly interfaces and building robust, efficient backend architectures to meet client needs.",
+    tech: ["Laravel", "Vue.js", "PHP", "Inertia.js", "MySQL", "Tailwind CSS"],
     category: "Fullstack",
     websiteUrl: "https://pandiweb.dk",
-    screenshots: [
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    ],
     previewImage: "pandiweb-logo.png",
   },
   {

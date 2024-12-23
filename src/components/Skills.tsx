@@ -40,7 +40,7 @@ export const Skills = () => {
                 .map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 bg-white/80 border border-gray-200 rounded-full text-sm hover-small-lift cursor-pointer shadow-sm"
+                    className="px-3 py-1 bg-white/80 border border-gray-200 rounded-full text-sm shadow-sm cursor-default hover:shadow-md transition-shadow"
                   >
                     {skill}
                   </span>
@@ -49,12 +49,12 @@ export const Skills = () => {
             {category.items.length > 5 && (
               <button
                 onClick={() => toggleSection(category.name)}
-                className="mt-4 flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mx-auto"
+                className="mt-4 flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mx-auto group"
               >
                 {expandedSections[category.name] ? (
-                  <>Show Less <ChevronUp className="w-4 h-4" /></>
+                  <>Show Less <ChevronUp className="w-4 h-4 group-hover:animate-bounce" /></>
                 ) : (
-                  <>More <ChevronDown className="w-4 h-4" /></>
+                  <>More <ChevronDown className="w-4 h-4 group-hover:animate-bounce" /></>
                 )}
               </button>
             )}
