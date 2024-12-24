@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Globe, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, Globe, Github, Maximize2 } from "lucide-react";
 
 type ProjectModalProps = {
   isOpen: boolean;
@@ -58,6 +58,12 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
                 alt={`Project screenshot ${currentImageIndex + 1}`}
                 className="h-full max-h-[56vh] rounded-lg shadow-sm border"
               />
+              <button
+                onClick={() => window.open(project.screenshots[currentImageIndex], '_blank')}
+                className="absolute top-2 right-2 p-1 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
+              >
+                <Maximize2 className="w-5 h-5" />
+              </button>
               {project.screenshots.length > 1 && (
                 <>
                   <button
