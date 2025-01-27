@@ -14,17 +14,17 @@ export const Contact = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/send", {
-        method: "POST",
+      const response = await fetch('/api/send', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name,
           email,
           message,
         }),
-      });
+      });      
 
       if (response.ok) {
         toast({
