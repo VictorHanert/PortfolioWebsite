@@ -16,8 +16,8 @@ export async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const emailResponse = await resend.emails.send({
-      from: 'your_email@domain.com', // Replace with your verified sender email
-      to: 'your_destination_email@domain.com', // Replace with the recipient's email
+      from: 'your_email@domain.com',
+      to: 'your_destination_email@domain.com',
       subject: `New Message from ${name}`,
       html: `<p><strong>Name:</strong> ${name}</p>
              <p><strong>Email:</strong> ${email}</p>
@@ -25,7 +25,10 @@ export async function handler(req: VercelRequest, res: VercelResponse) {
              <p>${message}</p>`,
     });
 
-    res.status(200).json({ success: true, messageId: emailResponse.id });
+    // Assert the type of the response if 'id' is expected
+    const messageId = (emailResponse as { id: string }).id;
+
+    res.status(200).json({ success: true, messageId });
   } catch (error: any) {
     console.error('Error sending email:', error);
     res.status(500).json({ error: 'Failed to send email' });
