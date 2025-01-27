@@ -10,20 +10,19 @@ export default async function handler(req, res) {
   const { name, email, message } = req.body;
 
   try {
-    await resend.emails.send({
+    const data = await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
-      to: 'v.hanert@gmail.com',
-      subject: `New Contact Form Message from ${name}`,
+      to: ['v.hanert@gmail.com'],
+      subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p><strong>Message:</strong> ${message}</p>
       `
     });
 
-    return res.status(200).json({ message: 'Email sent successfully' });
+    return res.status(200).json(data);
   } catch (error) {
     return res.status(500).json({ error: 'Error sending email' });
   }
