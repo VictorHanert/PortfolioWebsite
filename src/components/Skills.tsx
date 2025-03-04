@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 const skills = [
   { 
     name: "Frontend", 
-    items: ["Vue", "React", "Svelte", "JavaScript", "Figma", "Tailwind CSS", "TypeScript", "SvelteKit", "WordPress", "Bootstrap", "HTML", "CSS", "Responsive Design"]
+    items: ["Vue", "React", "Svelte", "JavaScript", "Figma", "Tailwind CSS", "TypeScript", "SvelteKit", "Bootstrap", "HTML", "CSS", "Responsive Design"]
   },
   { 
     name: "Backend", 
@@ -12,8 +12,12 @@ const skills = [
   },
   { 
     name: "Tools & Others", 
-    items: ["Git", "Shopify", "Docker", "Vite", "Azure", "npm", "phpMyAdmin", "Vercel", "Heroku", "AWS", "RESTful APIs", "CI/CD", "Scrum", "KanBan", "Postman", "Trello", "UML Modeling"]
+    items: ["Git", "Shopify", "Docker", "Vite", "Azure", "npm", "phpMyAdmin", "Vercel", "Heroku", "AWS", "RESTful APIs", "CI/CD", "WordPress", "Scrum", "KanBan", "Postman", "Trello", "UML Modeling"]
   },
+  // {
+  //   name: "Learning at the moment",
+  //   items: ["Shopify Education", "GrapQL", "RabbitMQ", "Microservices", "Integration"]
+  // }
 ];
 
 export const Skills = () => {

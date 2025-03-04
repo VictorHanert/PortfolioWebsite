@@ -87,6 +87,26 @@ const projects: Project[] = [
     ],
     previewImage: "cinematch-logo.png",
   },
+  {
+    id: 7,
+    title: "Portfolio",
+    description: "Personal portfolio website developed with React and Tailwind CSS. Focus on responsive design and modern web development practices. Implementation of animations and transitions.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "HTML", "CSS", "Vercel"],
+    category: "Frontend",
+    previewImage: "favicon.svg",
+  },
+  {
+    id: 8,
+    title: "PandiWeb Photo Memories",
+    description: "Developed a photo and video sharing platform for PandiWeb employees. Focused on frontend development with a fullstack approach using Laravel. Implemented a RESTful API, database integration, and full CRUD functionality, including an admin page for user management.",
+    tech: ["Laravel", "Vue.js", "PHP", "MySQL", "Tailwind CSS"],
+    category: "Fullstack",
+    githubUrl: "",
+    screenshots: [
+      "https://placehold.co/400x200",
+    ],
+    previewImage: "pandiweb-logo.png",
+  }
 ];
 
 const categories = ["All", "Frontend", "Backend", "Fullstack"];

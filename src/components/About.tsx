@@ -9,7 +9,7 @@ const sections = {
     title: "About Me",
     icon: FileJsonIcon,
     content: `I'm a ${age}-year-old software developer with a passion for software solutions.`
-    + " With high self-discipline and determination, I'm always ready to take on new challenges and responsibilities. I'm eager to learn new technologies and skills to further develop my career and contribute to the success of my team."
+    + " With high self-discipline and determination, I'm always ready to take on new challenges and responsibilities. I'm eager to learn new technologies and skills to further develop my career and to contribute to the success of the projects I'm involved in."
   },
   sports: {
     title: "Sports & Lifestyle",
