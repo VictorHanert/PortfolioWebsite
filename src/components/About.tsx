@@ -101,7 +101,7 @@ export const About = () => {
                   className={`p-3 rounded-full transition-colors ${
                     activeSection === key
                       ? "bg-gradient-to-br from-gray-300 bg-gray-600/80 hover:bg-gray-900/80"
-                      : "bg-gradient-to-br from-gray-50 bg-gray-300/80 hover:bg-gray-900/80 hover-small-lift"
+                      : "bg-gradient-to-br from-gray-50 bg-gray-300/80 hover:bg-gray-900/80 hover-lift"
                   }`}
                 >
                   <Icon className="w-6 h-6" />

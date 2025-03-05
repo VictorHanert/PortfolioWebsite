@@ -74,12 +74,15 @@
 }
 
 .hover-lift {
-  @apply transition-transform duration-300 hover:-translate-y-1;
+  @apply relative transition-transform ease-out duration-300;
 }
-
-.hover-small-lift {
-  @apply transition-transform duration-300 hover:-translate-y-0.5;
+/* Making space-buffer to avoid laggy-mouse in animation */
+.hover-lift::before {
+  @apply absolute left-0 top-full w-full h-0 transition-[height] duration-200 ease-out;
+  content: "";
 }
+.hover-lift:hover { @apply -translate-y-1; }
+.hover-lift:hover::before { @apply h-2; }
 
 .animate-fade-in {
   animation: fadeIn 1s ease-out forwards;
