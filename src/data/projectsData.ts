@@ -15,12 +15,12 @@ export const projects: Project[] = [
       id: 2,
       title: "Dream Delivery A/S",
       description: "Final exam project in collaboration with start-up company 'Dream Delivery A/S'. Development of a web application for managing orders and deliveries, including a customer portal and an admin dashboard.",
-      tech: ["SvelteKit", "TypeScrypt", "PocketBase", "Figma", "Tailwind CSS"],
+      tech: ["SvelteKit", "TypeScrypt", "PocketBase", "Figma", "Tailwind CSS", "SCRUM"],
       category: "Fullstack",
       websiteUrl: "https://dreamdelivery.dk/",
       screenshots: [
-        "https://placehold.co/400x200",
-        "https://placehold.co/400x200",
+        "dream-delivery.png",
+        "dream-delivery-2.png"
       ],
       previewImage: "dream-delivery-logo.png",
     },
@@ -56,9 +56,9 @@ export const projects: Project[] = [
       description: "Backend services developed with Java Spring Boot, focusing on creating scalable and maintainable applications. Implementation of RESTful APIs and database integration.",
       tech: ["Java", "Spring Boot", "MySQL", "REST APIs", "MVC-framework", "HTML", "CSS"],
       category: "Backend",
-      githubUrl: "https://github.com/VictorHanert",
+      githubUrl: "https://github.com/orgs/ONAV-KEA/repositories",
       screenshots: [
-        "https://placehold.co/400x200",
+        "spring-boot-logo.png",
       ],
       previewImage: "spring-boot-logo.png",
     },
@@ -68,9 +68,9 @@ export const projects: Project[] = [
       description: "Exam Project as Datamatiker. Development of a fullstack application with focus on the backend for finding movies and creating watchlists. Implementation of a RESTful API and database integration.",
       tech: ["Svelte", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "Redis", "Resend", "REST APIs", "Tailwind.css", "Vite", "npm", "WebSockets"],
       category: "Fullstack",
-      githubUrl: "https://github.com/VictorHanert",
+      githubUrl: "https://github.com/Teller501/Node_Eksamen",
       screenshots: [
-        "https://placehold.co/400x200",
+        "cinematch-website.png",
       ],
       previewImage: "cinematch-logo.png",
     },
@@ -80,19 +80,48 @@ export const projects: Project[] = [
       description: "Personal portfolio website developed with React and Tailwind CSS. Focus on responsive design and modern web development practices. Implementation of animations and transitions.",
       tech: ["React", "TypeScript", "Tailwind CSS", "HTML", "CSS", "Vercel"],
       category: "Frontend",
+      websiteUrl: "https://victorhanert.vercel.app/",
+      githubUrl: "https://github.com/VictorHanert/PortfolioWebsite",
+      screenshots: [
+        "portfolio-website.png"
+      ],
       previewImage: "favicon.svg",
     },
     {
       id: 8,
       title: "PandiWeb Photo Memories",
-      description: "Developed a photo and video sharing platform for PandiWeb employees. Focused on frontend development with a fullstack approach using Laravel. Implemented a RESTful API, database integration, and full CRUD functionality, including an admin page for user management.",
+      description: "Developed a photo and video sharing platform for PandiWeb employees. Focused on frontend development with a fullstack approach using Laravel. Implemented a RESTful API, database integration, and full CRUD functionality, including an admin page for user management. I cant show images from the project due to privacy reasons, but you can see the logo and a screenshot of the top of the website.",
       tech: ["Laravel", "Vue.js", "PHP", "MySQL", "Tailwind CSS"],
       category: "Fullstack",
-      githubUrl: "",
       screenshots: [
-        "https://placehold.co/400x200",
+        "internalmemories-website.png",
       ],
-      previewImage: "pandiweb-logo.png",
+      previewImage: "internalmemories-logo.png",
+    },
+    {
+      id: 9,
+      title: "AI - Self Driving Car Game",
+      description: "Developed a 2D racing game using Python and Pygame, where a car is controlled by a genetic algorithm (NEAT). The car navigates using sensors, and the model is trained over several generations to complete tracks quickly and without collisions. The goal is to investigate whether the model can learn general driving behavior that also works on new, unknown tracks.",
+      tech: ["Python", "AI", "Pygame", "NEAT Python", "Genetic Algorithms"],
+      category: "Backend",
+      githubUrl: "https://github.com/VictorHanert/genetic_race_track",
+      screenshots: [
+        "car-with-sensors.png",
+        "race-track.png",
+      ],
+      previewImage: "car.png",
+    },
+    {
+      id: 10,
+      title: "GeoGuessr-Style Platform",
+      description: "A GeoGuessr-style web platform built using a microservice architecture. Players are dropped at random global locations on a map and must guess where they are based on street view images. The system is composed of several microservices handling authentication, game sessions, map image processing, scoring, and leaderboards. It was designed with scalability, separation of concerns, and maintainability in mind, using technologies such as FastAPI for the backend, Svelte for the frontend, and Docker for containerization.",
+      tech: ["Python", "FastAPI", "Svelte", "RabbitMQ", "Docker", "Kubernetes", "MySQL", "MongoDB Atlas", "Google Maps API", "Tailwind CSS", "JWT", "Netlify"],
+      category: "Fullstack",
+      githubUrl: "https://github.com/GeoGuessrProject",
+      screenshots: [
+        "geoguessr-architecture.png"
+      ],
+      previewImage: "geoguessr-logo.png"
     }
   ];
 
