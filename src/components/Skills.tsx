@@ -14,17 +14,18 @@ const skills = [
   { 
     name: "Backend", 
     items: [
-      "Laravel", "Node.js", "Express.js", "PHP", "Java", "Spring Boot",
-      "Python", "FastAPI", "MySQL", "PostgreSQL", "MongoDB", "SQLite", 
-      "Redis", "CockroachDB", "Firebase", "GraphQL", "RESTful APIs",
-      "MVC Frameworks", "Microservices Architecture", "JWT Authentication", "WebSockets", "CORS"
+      "Laravel", "Node.js", "PHP",
+      "Java", "TypeScript", "Express.js", "Spring Boot", "Python", "FastAPI", "MySQL", 
+      "PostgreSQL", "MongoDB", "SQLite", "Redis", "CockroachDB", 
+      "Firebase", "GraphQL", "RESTful APIs", "MVC Frameworks", 
+      "Microservices Architecture", "JWT Authentication", "WebSockets", "CORS"
     ]
   },
   { 
     name: "Tools & DevOps",
     items: [
-      "Git", "Docker", "Kubernetes", 
-      "Vite", "npm", "Azure", "GitHub Actions (CI/CD)", "AWS", "Netlify", "Vercel", "Heroku",
+      "Docker",
+      "Vite", "Kubernetes", "npm", "Git", "Shell Scripting", "Azure", "GitHub Actions (CI/CD)", "AWS", "Netlify", "Vercel", "Heroku",
       "phpMyAdmin", "Trello", "Jira", "Notion", "Productive.io", "Slack", "Agile (Scrum, Kanban)",
       "Postman", "RabbitMQ", "Swagger/OpenAPI", "UML Modeling",
       "Testing (Vitest, Pytest)", "Sentry (Monitoring)"
@@ -33,10 +34,9 @@ const skills = [
   { 
     name: "AI & Data", 
     items: [
-      "TensorFlow", "PyTorch", "Keras", "Pandas", "NumPy", "Scikit-learn",
+      "Python", "TensorFlow", "NumPy", "Keras", "Pandas", "Scikit-learn", "PyTorch",
       "Data Science", "Neural Networks (DNN, CNN)", "Genetic Algorithms (NEAT)",
-      "Machine Learning (Classification, Regression)", "Data Visualization", "Matplotlib", "Seaborn",
-      "Natural Language Processing", "Reinforcement Learning"
+      "Machine Learning (Classification, Regression)", "Data Visualization", "Matplotlib", "Seaborn", "Reinforcement Learning"
     ]
   }
 ];
@@ -57,9 +57,9 @@ export const Skills = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {skills.map((category) => (
-          <div key={category.name} className="glass-card p-1 rounded-lg h-fit relative hover:bg-gray-100/80 transition-colors">
+          <div key={category.name} className="glass-card py-3 rounded-lg h-fit relative hover:bg-gray-100/80 transition-colors">
             <h3 className="text-xl font-semibold mb-4 text-center">{category.name}</h3>
-            <div className="flex flex-wrap gap-3 justify-center relative">
+            <div className="flex flex-wrap gap-2 justify-center relative">
               {category.items
                 .slice(0, expandedSections[category.name] ? undefined : 5)
                 .map((skill) => (
