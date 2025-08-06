@@ -128,7 +128,7 @@ export const About = () => {
                 <p ref={(el) => educationRefs.current[2] = el} className="text-sm text-muted-foreground typing-container">KEA • 2025-2026</p>
               </li>
               <li>
-                <p ref={(el) => educationRefs.current[3] = el} className="font-medium typing-container">AP Graduate in Computer Science</p>
+                <p ref={(el) => educationRefs.current[3] = el} className="font-medium typing-container">AP Graduate <span className="block lg:inline-block">in Computer Science</span></p>
                 <p ref={(el) => educationRefs.current[4] = el} className="text-sm text-muted-foreground typing-container">KEA • 2022-2025</p>
               </li>
             </ul>

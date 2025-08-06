@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, Globe, Github, Maximize2, Calendar, Code, ExternalLink, Building, Users } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Globe, Github, Maximize2, Calendar, Code, ExternalLink, Building, Users, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type ProjectModalProps = {
@@ -20,15 +20,18 @@ type ProjectModalProps = {
 
 export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageLoading, setImageLoading] = useState(true);
 
   const nextImage = () => {
     if (project.screenshots && project.screenshots.length > 0) {
+      setImageLoading(true);
       setCurrentImageIndex((prev) => (prev + 1) % project.screenshots.length);
     }
   };
 
   const previousImage = () => {
     if (project.screenshots && project.screenshots.length > 0) {
+      setImageLoading(true);
       setCurrentImageIndex((prev) => 
         prev === 0 ? project.screenshots.length - 1 : prev - 1
       );
@@ -40,15 +43,28 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
     window.open(project.screenshots[currentImageIndex], '_blank');
   };
 
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
+
+  // Reset loading state when modal opens or project changes
+  useEffect(() => {
+    if (isOpen) {
+      setImageLoading(true);
+      setCurrentImageIndex(0);
+    }
+  }, [isOpen, project.id]);
+
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
 
   // Define client list for the first project (Pandi Web)
   const clientsList = [
+    { name: "Pandi Web's intern website", url: "https://pandiweb.dk" },
     { name: "Ergoterapeutforeningen", url: "https://pandiweb.dk/cases/etf/" },
-    { name: "Global Fund Search", url: null },
-    { name: "Pairy", url: null },
-    { name: "The Planner Studio", url: null },
-    { name: "Veltek", url: null },
+    { name: "Global Fund Search", url: "https://globalfundsearch.com/" },
+    { name: "Pairy", url: "https://pairy.dk/" },
+    { name: "The Planner Studio", url: "https://theplanner.studio/" },
+    { name: "Veltek", url: "https://www.veltek.dk/" },
   ];
 
   return (
@@ -59,11 +75,20 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
           {hasScreenshots && (
             <div className="w-full md:w-1/2 h-[30vh] md:h-full relative bg-gray-100 dark:bg-gray-800">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-full h-full">
+                {/* Loading spinner */}
+                {imageLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 z-0">
+                    <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+                  </div>
+                )}
+                
+                <div className="relative w-full h-full z-10">
                   <img
                     src={project.screenshots[currentImageIndex]}
                     alt={`Project screenshot ${currentImageIndex + 1}`}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain transition-opacity duration-200"
+                    onLoad={handleImageLoad}
+                    style={{ opacity: imageLoading ? 0 : 1 }}
                   />
 
                   {/* Image gallery pagination dots */}
@@ -72,7 +97,10 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
                       {project.screenshots.map((_, index) => (
                         <button
                           key={index}
-                          onClick={() => setCurrentImageIndex(index)}
+                          onClick={() => {
+                            setImageLoading(true);
+                            setCurrentImageIndex(index);
+                          }}
                           className={cn(
                             "w-2 h-2 rounded-full",
                             index === currentImageIndex 
@@ -108,10 +136,10 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
                   {/* Full screen button */}
                   <button
                     onClick={openFullImage}
-                    className="absolute top-2 right-2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                    className="absolute top-2 left-2 md:left-auto md:right-2 p-1.5 md:p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors w-8 h-8 md:w-9 md:h-9 flex items-center justify-center"
                     aria-label="View full size"
                   >
-                    <Maximize2 className="w-4 h-4" />
+                    <Maximize2 className="w-3 h-3 md:w-4 md:h-4" />
                   </button>
                 </div>
               </div>
@@ -152,7 +180,7 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
                 <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center mb-3">
                   <Users className="w-4 h-4 mr-2" />
                   <Building className="w-4 h-4 mr-2" />
-                  Clients I've Worked With
+                  Companies I've Worked With
                 </h3>
                 <ul className="space-y-2">
                   {clientsList.map((client, index) => (
