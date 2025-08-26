@@ -122,6 +122,18 @@ export const projects: Project[] = [
         "geoguessr-architecture.png"
       ],
       previewImage: "geoguessr-logo.png"
+    },
+    {
+      id: 11,
+      title: "Footy Value Bets",
+      description: "A football betting analysis platform that uses machine learning to identify value bets by comparing AI-powered match predictions with bookmaker odds. The app analyzes upcoming fixtures, calculates expected value for different bet types (win/draw/loss, over/under goals, both teams to score), and tracks historical performance metrics including ROI and accuracy rates.",
+      tech: ["Typescript", "React", "Python", "Tailwind CSS"],
+      category: "Fullstack",
+      screenshots: [
+        "footy-screenshot-1.png",
+        "footy-screenshot-2.png"
+      ],
+      previewImage: "footy-logo.png"
     }
   ];
 

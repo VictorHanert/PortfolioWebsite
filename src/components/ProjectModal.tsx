@@ -163,7 +163,7 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
               </div>
             </DialogHeader>
             
-            {/* Description with better typography */}
+            {/* Description */}
             <div className="mb-6">
               <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center mb-2">
                 <Code className="w-4 h-4 mr-2" />
