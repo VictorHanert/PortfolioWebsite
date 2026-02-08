@@ -43,10 +43,10 @@ export const projects: Project[] = [
       tech: ["Three.js", "Vue.js", "Laravel", "Inertia.js"],
       category: "Fullstack",
       screenshots: [
-        "the-planner-screenshot-1.png",
-        "the-planner-screenshot-2.png"
+        "theplanner-screenshot-1.png",
+        "theplanner-screenshot-2.png"
       ],
-      previewImage: "the-planner-logo.png",
+      previewImage: "theplanner-logo.png",
     },
     {
       id: 5,
