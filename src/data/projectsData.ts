@@ -38,6 +38,18 @@ export const projects: Project[] = [
     },
     {
       id: 4,
+      title: "The Planner Studio",
+      description: "3D program built with Three.js and Vue.js for importing GLB files of sofas into a 3D canvas. Features controls for dragging, rotating, and manipulating each model/module around in the scene.",
+      tech: ["Three.js", "Vue.js", "Laravel", "Inertia.js"],
+      category: "Fullstack",
+      screenshots: [
+        "the-planner-screenshot-1.png",
+        "the-planner-screenshot-2.png"
+      ],
+      previewImage: "the-planner-logo.png",
+    },
+    {
+      id: 5,
       title: "Earnings Calculator",
       description: "Simple web application for calculating earnings based on hourly rate or monthly income and hours worked. See your salary before and after taxes. Developed primarily with React and TypeScript.",
       tech: ["React", "TypeScript", "HTML", "CSS", "Tailwind CSS", "Vercel"],
@@ -51,7 +63,7 @@ export const projects: Project[] = [
       previewImage: "earnings-calculator-logo.png",
     },
     {
-      id: 5,
+      id: 6,
       title: "Java Spring Boot",
       description: "Backend services developed with Java Spring Boot, focusing on creating scalable and maintainable applications. Implementation of RESTful APIs and database integration.",
       tech: ["Java", "Spring Boot", "MySQL", "REST APIs", "MVC-framework", "HTML", "CSS"],
@@ -63,7 +75,7 @@ export const projects: Project[] = [
       previewImage: "spring-boot-logo.png",
     },
     {
-      id: 6,
+      id: 7,
       title: "CineMatch",
       description: "Exam Project as Datamatiker. Development of a fullstack application with focus on the backend for finding movies and creating watchlists. Implementation of a RESTful API and database integration.",
       tech: ["Svelte", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "Redis", "Resend", "REST APIs", "Tailwind.css", "Vite", "npm", "WebSockets"],
@@ -75,7 +87,7 @@ export const projects: Project[] = [
       previewImage: "cinematch-logo.png",
     },
     {
-      id: 7,
+      id: 8,
       title: "Portfolio",
       description: "Personal portfolio website developed with React and Tailwind CSS. Focus on responsive design and modern web development practices. Implementation of animations and transitions.",
       tech: ["React", "TypeScript", "Tailwind CSS", "HTML", "CSS", "Vercel"],
@@ -88,7 +100,7 @@ export const projects: Project[] = [
       previewImage: "favicon.svg",
     },
     {
-      id: 8,
+      id: 9,
       title: "PandiWeb Photo Memories",
       description: "Developed a photo and video sharing platform for PandiWeb employees. Focused on frontend development with a fullstack approach using Laravel. Implemented a RESTful API, database integration, and full CRUD functionality, including an admin page for user management. I cant show images from the project due to privacy reasons, but you can see the logo and a screenshot of the top of the website.",
       tech: ["Laravel", "Vue.js", "PHP", "MySQL", "Tailwind CSS"],
@@ -99,7 +111,7 @@ export const projects: Project[] = [
       previewImage: "internalmemories-logo.png",
     },
     {
-      id: 9,
+      id: 10,
       title: "AI - Self Driving Car Game",
       description: "Developed a 2D racing game using Python and Pygame, where a car is controlled by a genetic algorithm (NEAT). The car navigates using sensors, and the model is trained over several generations to complete tracks quickly and without collisions. The goal is to investigate whether the model can learn general driving behavior that also works on new, unknown tracks.",
       tech: ["Python", "AI", "Pygame", "NEAT Python", "Genetic Algorithms"],
@@ -112,7 +124,7 @@ export const projects: Project[] = [
       previewImage: "car.png",
     },
     {
-      id: 10,
+      id: 11,
       title: "GeoGuessr-Style Platform",
       description: "A GeoGuessr-style web platform built using a microservice architecture. Players are dropped at random global locations on a map and must guess where they are based on street view images. The system is composed of several microservices handling authentication, game sessions, map image processing, scoring, and leaderboards. It was designed with scalability, separation of concerns, and maintainability in mind, using technologies such as FastAPI for the backend, Svelte for the frontend, and Docker for containerization.",
       tech: ["Python", "FastAPI", "Svelte", "RabbitMQ", "Docker", "Kubernetes", "MySQL", "MongoDB Atlas", "Google Maps API", "Tailwind CSS", "JWT", "Netlify"],
@@ -124,7 +136,7 @@ export const projects: Project[] = [
       previewImage: "geoguessr-logo.png"
     },
     {
-      id: 11,
+      id: 12,
       title: "Footy Value Bets",
       description: "A football betting analysis platform that uses machine learning to identify value bets by comparing AI-powered match predictions with bookmaker odds. The app analyzes upcoming fixtures, calculates expected value for different bet types (win/draw/loss, over/under goals, both teams to score), and tracks historical performance metrics including ROI and accuracy rates.",
       tech: ["Typescript", "React", "Python", "Tailwind CSS"],
