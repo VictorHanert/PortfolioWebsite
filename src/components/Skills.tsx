@@ -6,7 +6,7 @@ const skills = [
     name: "Frontend", 
     items: [
       "Vue", "React", "Svelte", "JavaScript", "Tailwind CSS", "SvelteKit", "Next.js",
-      "TypeScript", "Bootstrap", 
+      "TypeScript", "Three.js", "Bootstrap", 
       "HTML", "CSS", "Responsive Design", "Figma",
       "WordPress", "WooCommerce"
     ]

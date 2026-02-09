@@ -125,11 +125,11 @@ export const About = () => {
               <li>
                 <p ref={(el) => educationRefs.current[0] = el} className="font-medium typing-container">Software Development</p>
                 <p ref={(el) => educationRefs.current[1] = el} className="text-sm typing-container">Top-up Bachelor's Degree</p>
-                <p ref={(el) => educationRefs.current[2] = el} className="text-sm text-muted-foreground typing-container">KEA • 2025-2026</p>
+                <p ref={(el) => educationRefs.current[2] = el} className="text-sm text-muted-foreground typing-container">EK • 2025-2026</p>
               </li>
               <li>
                 <p ref={(el) => educationRefs.current[3] = el} className="font-medium typing-container">AP Graduate <span className="block lg:inline-block">in Computer Science</span></p>
-                <p ref={(el) => educationRefs.current[4] = el} className="text-sm text-muted-foreground typing-container">KEA • 2022-2025</p>
+                <p ref={(el) => educationRefs.current[4] = el} className="text-sm text-muted-foreground typing-container">EK • 2022-2025</p>
               </li>
             </ul>
           </div>
@@ -144,13 +144,17 @@ export const About = () => {
                 <p ref={(el) => experienceRefs.current[1] = el} className="text-sm text-muted-foreground typing-container">Oct 2024 - Present</p>
               </li>
               <li>
-                <p ref={(el) => experienceRefs.current[2] = el} className="font-medium typing-container">Internship • PandiWeb</p>
-                <p ref={(el) => experienceRefs.current[3] = el} className="text-sm text-muted-foreground typing-container">Jul 2024 - Oct 2024</p>
+                <p ref={(el) => experienceRefs.current[2] = el} className="font-medium typing-container">Internship • The Planner Studio</p>
+                <p ref={(el) => experienceRefs.current[3] = el} className="text-sm text-muted-foreground typing-container">Jan 2026 - Apr 2026</p>
               </li>
               <li>
-                <p ref={(el) => experienceRefs.current[4] = el} className="font-medium typing-container">
+                <p ref={(el) => experienceRefs.current[4] = el} className="font-medium typing-container">Internship • PandiWeb</p>
+                <p ref={(el) => experienceRefs.current[5] = el} className="text-sm text-muted-foreground typing-container">Jul 2024 - Oct 2024</p>
+              </li>
+              <li>
+                <p ref={(el) => experienceRefs.current[6] = el} className="font-medium typing-container">
                   Websiteadministrator • <span className="block lg:inline-block">Tirage Champagne Bar</span></p>
-                <p ref={(el) => experienceRefs.current[5] = el} className="text-sm text-muted-foreground typing-container">Nov 2022 - Jul 2024</p>
+                <p ref={(el) => experienceRefs.current[7] = el} className="text-sm text-muted-foreground typing-container">Nov 2022 - Jul 2024</p>
               </li>
             </ul>
           </div>
