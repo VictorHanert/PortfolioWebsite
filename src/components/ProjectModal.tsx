@@ -70,7 +70,7 @@ export const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) =>
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl w-11/12 p-0 overflow-hidden bg-white dark:bg-gray-900 rounded-lg">
-        <div className="flex flex-col md:flex-row h-[80vh] max-h-[800px]">
+        <div className="flex flex-col md:flex-row h-[90vh] max-h-[800px]">
           {/* Left side - Image gallery */}
           {hasScreenshots && (
             <div className="w-full md:w-1/2 h-[30vh] md:h-full relative bg-gray-100 dark:bg-gray-800">

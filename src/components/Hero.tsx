@@ -22,9 +22,13 @@ export const Hero = () => {
               </Avatar>
             </div>
             <div className="back">
-              <div className="w-48 h-48 rounded-full border-4 border-white/20 bg-gradient-to-br from-gray-500 bg-gray-800 flex items-center justify-center shiny-effect">
+              {/* <div className="w-48 h-48 rounded-full border-4 border-white/20 bg-gradient-to-br from-gray-500 bg-gray-800 flex items-center justify-center shiny-effect">
                   <span className="text-4xl font-bold text-white">VH</span>
-              </div>
+              </div> */}
+              <Avatar className="w-48 h-48 border-4 border-white/20 shiny-effect">
+                <AvatarImage src="pic-of-me-2.png" />
+                <AvatarFallback>VH</AvatarFallback>
+              </Avatar>
             </div>
           </div>
         </div>
@@ -35,7 +39,7 @@ export const Hero = () => {
               {age} years
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">Software Developer</p>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8">Full Stack Developer</p>
         </div>
       </div>
       

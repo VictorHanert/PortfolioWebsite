@@ -5,8 +5,8 @@ const skills = [
   { 
     name: "Frontend", 
     items: [
-      "Vue", "React", "Svelte", "JavaScript", "Tailwind CSS", "SvelteKit", "Next.js",
-      "TypeScript", "Three.js", "Bootstrap", 
+      "Vue", "React", "Three.js", "JavaScript", "Tailwind CSS", "SvelteKit", "Svelte", "Next.js",
+      "TypeScript", "Bootstrap", 
       "HTML", "CSS", "Responsive Design", "Figma",
       "WordPress", "WooCommerce"
     ]

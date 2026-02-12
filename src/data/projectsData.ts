@@ -112,6 +112,19 @@ export const projects: Project[] = [
     },
     {
       id: 10,
+      title: "ReCycle Marketplace",
+      description: "The marketplace for pre-owned bicycles. Find your perfect ride or give your bike a new life with our cycling community. Developed as an exam project at software development education. Backend built with Python, FastAPI and Uvicorn; runs via Docker Compose. Frontend built with React. Deployed to Azure and Vercel.",
+      tech: ["React", "TypeScript", "FastAPI", "Docker", "MySQL", "SQLAlchemy", "Alembic", "Pydantic", "JWT", "Tailwind CSS"],
+      category: "Fullstack",
+      websiteUrl: "https://recycle-marketplace.vercel.app",
+      githubUrl: "https://github.com/VictorHanert/Recycle-Fullstack-Project",
+      screenshots: [
+        "recycle-screenshot-1.png"
+      ],
+      previewImage: "recycle-logo.png",
+    },
+    {
+      id: 11,
       title: "AI - Self Driving Car Game",
       description: "Developed a 2D racing game using Python and Pygame, where a car is controlled by a genetic algorithm (NEAT). The car navigates using sensors, and the model is trained over several generations to complete tracks quickly and without collisions. The goal is to investigate whether the model can learn general driving behavior that also works on new, unknown tracks.",
       tech: ["Python", "AI", "Pygame", "NEAT Python", "Genetic Algorithms"],
@@ -124,7 +137,7 @@ export const projects: Project[] = [
       previewImage: "car.png",
     },
     {
-      id: 11,
+      id: 12,
       title: "GeoGuessr-Style Platform",
       description: "A GeoGuessr-style web platform built using a microservice architecture. Players are dropped at random global locations on a map and must guess where they are based on street view images. The system is composed of several microservices handling authentication, game sessions, map image processing, scoring, and leaderboards. It was designed with scalability, separation of concerns, and maintainability in mind, using technologies such as FastAPI for the backend, Svelte for the frontend, and Docker for containerization.",
       tech: ["Python", "FastAPI", "Svelte", "RabbitMQ", "Docker", "Kubernetes", "MySQL", "MongoDB Atlas", "Google Maps API", "Tailwind CSS", "JWT", "Netlify", "CI/CD"],
@@ -136,7 +149,7 @@ export const projects: Project[] = [
       previewImage: "geoguessr-logo.png"
     },
     {
-      id: 12,
+      id: 13,
       title: "Footy Value Bets",
       description: "A football betting analysis platform that uses machine learning to identify value bets by comparing AI-powered match predictions with bookmaker odds. The app analyzes upcoming fixtures, calculates expected value for different bet types (win/draw/loss, over/under goals, both teams to score), and tracks historical performance metrics including ROI and accuracy rates.",
       tech: ["Typescript", "React", "Python", "Tailwind CSS"],
@@ -146,7 +159,7 @@ export const projects: Project[] = [
         "footy-screenshot-2.png"
       ],
       previewImage: "footy-logo.png"
-    }
+    },
   ];
 
 export const categories = ["All", "Frontend", "Backend", "Fullstack"];
