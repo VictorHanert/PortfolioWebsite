@@ -1,5 +1,6 @@
 import { GithubIcon, LinkedinIcon, InstagramIcon, Mail, ChevronDown } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import StyledText from "@/components/StyledText";
 
 // birtday set to: 28-02-2001
 export const age = new Date().getFullYear() - 2001 - (new Date() < new Date(new Date().getFullYear(), 1, 28) ? 1 : 0);
@@ -39,7 +40,9 @@ export const Hero = () => {
               {age} years
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">Full Stack Developer</p>
+          <div className="relative text-center">
+            <StyledText />
+          </div>
         </div>
       </div>
       

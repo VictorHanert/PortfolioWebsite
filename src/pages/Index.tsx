@@ -5,7 +5,7 @@ import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Sidebar } from "@/components/Sidebar";
-import { BackToTop } from "@/components/BackToTop";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const Index = () => {
   return (
@@ -17,7 +17,7 @@ const Index = () => {
       <Projects />
       <Contact />
       <Footer />
-      <BackToTop />
+      <BackToTopButton />
     </div>
   );
 };
