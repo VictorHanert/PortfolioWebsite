@@ -1,5 +1,27 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import { loadEmittersPlugin } from "@tsparticles/plugin-emitters";
+import { loadCurvesPath } from "@tsparticles/path-curves";
+import { useEffect } from "react";
+import type { Engine } from "@tsparticles/engine";
+import Switch from "./Switch";
+import {
+  seaAnemonePreset,
+  linksPreset,
+  trianglesPreset,
+  customTwinklesPreset,
+} from "@/config/particles";
+
+let particlesInit = false;
+
+const particlePresets = {
+  Frontend: seaAnemonePreset,
+  Backend: linksPreset,
+  "Tools & DevOps": trianglesPreset,
+  "AI & Data": customTwinklesPreset,
+};
 
 const skills = [
   { 
@@ -43,6 +65,22 @@ const skills = [
 
 export const Skills = () => {
   const [expandedSections, setExpandedSections] = useState<{[key: string]: boolean}>({});
+  const [animationsEnabled, setAnimationsEnabled] = useState(true);
+
+  useEffect(() => {
+    const initializeParticles = async () => {
+      if (!particlesInit) {
+        await initParticlesEngine(async (engine: Engine) => {
+          await loadSlim(engine);
+          await loadEmittersPlugin(engine);
+          await loadCurvesPath(engine);
+        });
+        particlesInit = true;
+      }
+    };
+
+    initializeParticles();
+  }, []);
 
   const toggleSection = (name: string) => {
     setExpandedSections(prev => ({
@@ -53,36 +91,57 @@ export const Skills = () => {
 
   return (
     <section id="skills-section" className="py-20 px-1 max-w-5xl mx-auto animate-fade-in">
-      <h2 className="text-3xl font-bold mb-8 text-center">Skills</h2>
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="text-3xl font-bold text-center flex-1">Skills</h2>
+        <div className="flex justify-end">
+          <p className="flex items-center mr-4 text-sm text-gray-600">Animations</p>
+          <Switch checked={animationsEnabled} onChange={setAnimationsEnabled} />
+        </div>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {skills.map((category) => (
-          <div key={category.name} className="glass-card py-3 rounded-lg h-fit relative hover:bg-gray-100/80 transition-colors">
-            <h3 className="text-xl font-semibold mb-4 text-center">{category.name}</h3>
-            <div className="flex flex-wrap gap-2 justify-center relative">
-              {category.items
-                .slice(0, expandedSections[category.name] ? undefined : 5)
-                .map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-white/80 border border-gray-200 rounded-full text-sm shadow-sm cursor-default hover:shadow-md transition-shadow"
-                  >
-                    {skill}
-                  </span>
-              ))}
-            </div>
-            {category.items.length > 5 && (
-              <button
-                onClick={() => toggleSection(category.name)}
-                className="mt-4 flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mx-auto group"
-              >
-                {expandedSections[category.name] ? (
-                  <>Show Less <ChevronUp className="w-4 h-4 group-hover:animate-bounce" /></>
-                ) : (
-                  <>More <ChevronDown className="w-4 h-4 group-hover:animate-bounce" /></>
-                )}
-              </button>
+          <div key={category.name} className="glass-card py-3 rounded-lg h-fit relative hover:bg-gray-100/80 transition-colors overflow-hidden">
+            {animationsEnabled && (
+              <Particles
+                id={`particles-${category.name}`}
+                options={particlePresets[category.name as keyof typeof particlePresets]}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
             )}
+            <div className="relative z-10">
+              <h3 className="text-xl font-semibold mb-4 text-center">{category.name}</h3>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {category.items
+                  .slice(0, expandedSections[category.name] ? undefined : 5)
+                  .map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm shadow-sm cursor-default hover:shadow-md hover:font-medium transition-shadow"
+                    >
+                      {skill}
+                    </span>
+                ))}
+              </div>
+              {category.items.length > 5 && (
+                <button
+                  onClick={() => toggleSection(category.name)}
+                  className="mt-4 flex items-center gap-2 text-sm text-primary hover:font-medium transition-colors mx-auto group"
+                >
+                  {expandedSections[category.name] ? (
+                    <>Show Less <ChevronUp className="w-4 h-4 group-hover:animate-bounce" /></>
+                  ) : (
+                    <>More <ChevronDown className="w-4 h-4 group-hover:animate-bounce" /></>
+                  )}
+                </button>
+              )}
+            </div>
           </div>
         ))}
       </div>

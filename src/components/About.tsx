@@ -112,7 +112,7 @@ export const About = () => {
           })}
         </div>
         
-        <div className={`md:text-lg mb-6 min-h-[100px] transition-opacity duration-500 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'}`}>
+        <div className={`md:text-lg mb-6 min-h-[200px] transition-opacity duration-500 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'}`}>
           {sections[activeSection].content}
         </div>
 
