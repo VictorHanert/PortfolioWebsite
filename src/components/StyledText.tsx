@@ -21,7 +21,7 @@ const StyledWrapper = styled.div`
     background-size: 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shine 3s infinite linear;
+    animation: shine 4.5s infinite linear;
     -webkit-text-size-adjust: none;
     font-weight: 600;
     font-size: 16px;
@@ -39,34 +39,34 @@ const StyledWrapper = styled.div`
   }
   @-moz-keyframes shine {
     0% {
-      background-position: -280px;
+      background-position: -235px;
     }
     100% {
-      background-position: 280px;
+      background-position: 235px;
     }
   }
   @-webkit-keyframes shine {
     0% {
-      background-position: -280px;
+      background-position: -235px;
     }
     100% {
-      background-position: 280px;
+      background-position: 235px;
     }
   }
   @-o-keyframes shine {
     0% {
-      background-position: -280px;
+      background-position: -235px;
     }
     100% {
-      background-position: 280px;
+      background-position: 235px;
     }
   }
   @keyframes shine {
     0% {
-      background-position: -280px;
+      background-position: -235px;
     }
     100% {
-      background-position: 280px;
+      background-position: 235px;
     }
   }`;
 
