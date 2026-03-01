@@ -1,6 +1,14 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
+  },
+});
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
@@ -13,22 +21,26 @@ export default async function handler(req: any, res: any) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+    console.error('GMAIL credentials are not configured');
+    return res.status(500).json({ error: 'Email sender not configured' });
+  }
+
   try {
-    const emailResponse = await resend.emails.send({
-      from: 'your_email@domain.com',
-      to: 'your_destination_email@domain.com',
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER,
       subject: `New Message from ${name}`,
       html: `<p><strong>Name:</strong> ${name}</p>
              <p><strong>Email:</strong> ${email}</p>
              <p><strong>Message:</strong></p>
              <p>${message}</p>`,
-    });
+      replyTo: email,
+    };
 
-    if (emailResponse.error) {
-      throw new Error(emailResponse.error.message);
-    }
+    const info = await transporter.sendMail(mailOptions);
 
-    res.status(200).json({ success: true, messageId: emailResponse.data?.id });
+    res.status(200).json({ success: true, messageId: info.messageId ?? info.response });
   } catch (error: any) {
     console.error('Error sending email:', error);
     res.status(500).json({ error: 'Failed to send email' });
