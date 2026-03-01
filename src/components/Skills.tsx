@@ -28,7 +28,7 @@ const skills = [
     name: "Frontend", 
     items: [
       "Vue", "React", "Three.js", "JavaScript", "Tailwind CSS", "SvelteKit", "Svelte", "Next.js",
-      "TypeScript", "Bootstrap", 
+      "TypeScript", "Inertia.js", 
       "HTML", "CSS", "Responsive Design", "Figma",
       "WordPress", "WooCommerce"
     ]
@@ -37,9 +37,9 @@ const skills = [
     name: "Backend", 
     items: [
       "Laravel", "Node.js", "PHP",
-      "Java", "TypeScript", "Express.js", "Spring Boot", "Python", "FastAPI", "MySQL", 
+      "Java", "TypeScript", "Express.js", "Spring Boot", "Python", "FastAPI", "Poetry", "Database Migrations", "MySQL", 
       "PostgreSQL", "MongoDB", "SQLite", "Redis", "CockroachDB", 
-      "Firebase", "GraphQL", "RESTful APIs", "MVC Frameworks", 
+      "Firebase", "Neo4J", "GraphQL", "RESTful APIs", "MVC Frameworks", 
       "Microservices Architecture", "JWT Authentication", "WebSockets", "CORS"
     ]
   },
@@ -47,16 +47,16 @@ const skills = [
     name: "Tools & DevOps",
     items: [
       "Docker",
-      "Vite", "Kubernetes", "npm", "Git", "Shell Scripting", "Azure", "GitHub Actions (CI/CD)", "AWS", "Netlify", "Vercel", "Heroku",
+      "Vite", "Kubernetes", "npm", "Git", "Shell Scripting", "Azure", "DevOps", "GitHub Actions (CI/CD)", "AWS", "Netlify", "Vercel", "Heroku",
       "phpMyAdmin", "Trello", "Jira", "Notion", "Productive.io", "Slack", "Agile (Scrum, Kanban)",
-      "Postman", "RabbitMQ", "Swagger/OpenAPI", "UML Modeling",
+      "Postman", "RabbitMQ", "Swagger/OpenAPI", "UML Modeling", "TDD",
       "Testing (Vitest, Pytest)", "Sentry (Monitoring)"
     ]
   },
   { 
     name: "AI & Data", 
     items: [
-      "Python", "TensorFlow", "NumPy", "Keras", "Pandas", "Scikit-learn", "PyTorch",
+      "Python", "AI-driven Development", "AI-integrations", "TensorFlow", "NumPy", "Keras", "Pandas", "Scikit-learn", "PyTorch",
       "Data Science", "Neural Networks (DNN, CNN)", "Genetic Algorithms (NEAT)",
       "Machine Learning (Classification, Regression)", "Data Visualization", "Matplotlib", "Seaborn", "Reinforcement Learning"
     ]
@@ -117,10 +117,8 @@ export const Skills = () => {
             )}
             <div className="relative z-10">
               <h3 className="text-xl font-semibold mb-4 text-center">{category.name}</h3>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {category.items
-                  .slice(0, expandedSections[category.name] ? undefined : 5)
-                  .map((skill) => (
+              <div className={`flex flex-wrap gap-2 justify-center ${!expandedSections[category.name] ? 'overflow-hidden' : ''}`} style={!expandedSections[category.name] ? { maxHeight: 'calc(2.5 * 1.75rem)' } : undefined}>
+                {category.items.map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm shadow-sm cursor-default hover:shadow-md hover:font-medium transition-shadow"
