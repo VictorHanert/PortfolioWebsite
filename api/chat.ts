@@ -161,7 +161,7 @@ export default async function handler(req: any, res: any) {
     console.log("Calling Gemini API with", messages.length, "messages");
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite-preview" });
 
     // Convert messages to Gemini format with context in first user message
     const allMessages = messages.map((msg: any) => ({
