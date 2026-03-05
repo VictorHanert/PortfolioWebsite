@@ -229,19 +229,22 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
+    console.log("Chat API called");
     const { messages } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
+      console.error("No messages array provided");
       return res.status(400).json({ error: "Messages array is required" });
     }
 
     if (!process.env.ANTHROPIC_API_KEY) {
-      console.error("ANTHROPIC_API_KEY is not configured");
+      console.error("ANTHROPIC_API_KEY is not set in environment variables");
       return res.status(500).json({
-        error:
-          "AI service not configured. Please set ANTHROPIC_API_KEY in your environment variables.",
+        error: "AI service not configured. Please add ANTHROPIC_API_KEY to Vercel environment variables.",
       });
     }
+
+    console.log("Calling Claude API with", messages.length, "messages");
 
     const response = await client.messages.create({
       model: "claude-3-5-sonnet-20241022",
@@ -266,16 +269,23 @@ export default async function handler(req: any, res: any) {
       },
     });
   } catch (error: any) {
-    console.error("Error calling Claude API:", error);
+    console.error("Error in chat API:", error);
+    console.error("Error details:", {
+      name: error.name,
+      message: error.message,
+      status: error.status,
+      stack: error.stack,
+    });
 
-    if (
-      error.message &&
-      error.message.includes("401") &&
-      error.message.includes("authentication")
-    ) {
+    if (error.status === 401 || (error.message && error.message.includes("401"))) {
       return res.status(401).json({
-        error:
-          "Authentication failed. Please check your ANTHROPIC_API_KEY is valid.",
+        error: "Invalid API key. Please check ANTHROPIC_API_KEY in Vercel settings.",
+      });
+    }
+
+    if (error.status === 429) {
+      return res.status(429).json({
+        error: "Rate limit exceeded. Please try again in a moment.",
       });
     }
 
