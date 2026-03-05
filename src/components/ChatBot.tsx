@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Loader2, Send, MessageCircle } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
 
 interface Message {
@@ -117,7 +118,7 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="flex h-[600px] max-w-md flex-col rounded-lg border border-border bg-background p-0">
+      <DialogContent className="fixed left-0 top-0 flex h-screen max-h-full w-96 max-w-none flex-col rounded-none border-r border-border bg-background p-0 translate-x-0">
         <DialogHeader className="border-b border-border px-4 py-3">
           <DialogTitle className="flex items-center gap-2">
             <MessageCircle className="h-5 w-5" />
@@ -135,7 +136,7 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
                 key={message.id}
                 className={cn(
                   "flex w-full gap-3",
-                  message.role === "user" ? "justify-end" : "justify-start"
+                  message.role === "user" ? "justify-end" : "justify-start",
                 )}
               >
                 <div
@@ -143,10 +144,16 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
                     "max-w-xs rounded-lg px-4 py-2 text-sm leading-relaxed",
                     message.role === "user"
                       ? "border border-primary bg-primary text-primary-foreground"
-                      : "border border-secondary-foreground/20 bg-secondary text-secondary-foreground"
+                      : "border border-secondary-foreground/20 bg-secondary text-secondary-foreground",
                   )}
                 >
-                  {message.content}
+                  {message.role === "assistant" ? (
+                    <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed prose-pre:p-0 break-words">
+                      <ReactMarkdown>{message.content}</ReactMarkdown>
+                    </div>
+                  ) : (
+                    message.content
+                  )}
                 </div>
               </div>
             ))}
@@ -187,9 +194,7 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
 };
 
 // Chat Toggle Button - can be used anywhere to trigger the chatbot
-export const ChatBotButton = ({
-  onClick,
-}: { onClick?: () => void }) => {
+export const ChatBotButton = ({ onClick }: { onClick?: () => void }) => {
   return (
     <Button
       onClick={onClick}

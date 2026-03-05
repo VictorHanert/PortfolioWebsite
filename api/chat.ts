@@ -171,14 +171,19 @@ export default async function handler(req: any, res: any) {
 
     // Add system context to first user message
     if (allMessages.length > 0 && allMessages[0].role === "user") {
-      const contextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio. Answer questions based on this information:
+      const contextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio.
+Use the following information to answer:
+- Name: ${portfolioKnowledge.name}
+- Role: ${portfolioKnowledge.title}
+- Skills: ${portfolioKnowledge.skills.technical.join(", ")}
+- Projects: ${portfolioKnowledge.projects.map(p => p.name).join(", ")}
+- Contact: ${portfolioKnowledge.email} / ${portfolioKnowledge.phone}
 
-SKILLS: ${portfolioKnowledge.skills.technical.slice(0, 15).join(", ")}...
-PROJECTS: ${portfolioKnowledge.projects.map(p => p.name).join(", ")}
-EMAIL: ${portfolioKnowledge.email}
-PHONE: ${portfolioKnowledge.phone}
-
-Be friendly and professional. If unsure, suggest contacting directly.
+Guidelines:
+1. Use Markdown for formatting.
+2. Use **bold** for emphasis.
+3. Use bullet points for lists.
+4. Keep answers concise and professional.
 
 User question: `;
       
