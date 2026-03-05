@@ -128,88 +128,6 @@ const portfolioKnowledge = {
   additionalInfo: "I'm a Datamatiker graduate from KEA with hands-on experience in full stack development. I'm always eager to learn new technologies and take on challenging projects that push my skills further.",
 };
 
-const systemPrompt = `You are a helpful AI assistant representing ${portfolioKnowledge.name}'s portfolio website.
-Your role is to answer questions about ${portfolioKnowledge.name} based on the provided information.
-
-Here is the information about ${portfolioKnowledge.name}:
-
-**Personal Information:**
-- Name: ${portfolioKnowledge.name}
-- Title: ${portfolioKnowledge.title}
-- Location: ${portfolioKnowledge.location}
-- Email: ${portfolioKnowledge.email}
-- Phone: ${portfolioKnowledge.phone}
-- Age: ${portfolioKnowledge.age}
-
-**Bio:**
-${portfolioKnowledge.bio}
-
-**Work Experience:**
-${portfolioKnowledge.experience
-  .map(
-    (exp) =>
-      `- ${exp.position} at ${exp.company} (${exp.duration}): ${exp.description}`
-  )
-  .join("\n")}
-
-**Education:**
-${portfolioKnowledge.education
-  .map(
-    (edu) =>
-      `- ${edu.degree} in ${edu.field} from ${edu.institution} (${edu.year}): ${edu.description}`
-  )
-  .join("\n")}
-
-**Technical Skills:**
-${portfolioKnowledge.skills.technical.join(", ")}
-
-**Languages:**
-${portfolioKnowledge.skills.languages.join(", ")}
-
-**Soft Skills:**
-${portfolioKnowledge.skills.soft.join(", ")}
-
-**Projects:**
-${portfolioKnowledge.projects
-  .map(
-    (proj) =>
-      `- ${proj.name}: ${proj.description}
-     Technologies: ${proj.technologies.join(", ")}
-     Impact: ${proj.impact}
-     ${proj.link ? `Link: ${proj.link}` : ""}`
-  )
-  .join("\n")}
-
-**Services Offered:**
-${portfolioKnowledge.services.join(", ")}
-
-**Interests:**
-${portfolioKnowledge.interests.join(", ")}
-
-**Frequently Asked Questions:**
-${portfolioKnowledge.faq
-  .map((item) => `Q: ${item.question}\nA: ${item.answer}`)
-  .join("\n\n")}
-
-**Social Links:**
-${Object.entries(portfolioKnowledge.socialLinks)
-  .map(([key, value]) => `- ${key}: ${value}`)
-  .join("\n")}
-
-**Availability:**
-${portfolioKnowledge.availability}
-
-**Additional Info:**
-${portfolioKnowledge.additionalInfo}
-
-**Response Guidelines:**
-1. Be friendly, professional, and helpful
-2. If you don't have specific information about something asked, politely say: "I don't have detailed information about that. Feel free to contact ${portfolioKnowledge.name} directly at ${portfolioKnowledge.email} for more details."
-3. If a question is unrelated to ${portfolioKnowledge.name} or their work, gently redirect to their portfolio and services
-4. Keep responses clear and concise
-5. For inquiries, encourage contacting directly via email or phone
-6. Be enthusiastic about potential opportunities and collaborations`;
-
 export default async function handler(req: any, res: any) {
   // Enable CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -245,24 +163,36 @@ export default async function handler(req: any, res: any) {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Convert messages to Gemini format
-    const chatHistory = messages.slice(0, -1).map((msg: any) => ({
+    // Convert messages to Gemini format with context in first user message
+    const allMessages = messages.map((msg: any) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
 
-    const lastMessage = messages[messages.length - 1].content;
+    // Add system context to first user message
+    if (allMessages.length > 0 && allMessages[0].role === "user") {
+      const contextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio. Answer questions based on this information:
 
-    const chat = model.startChat({
-      history: chatHistory,
+SKILLS: ${portfolioKnowledge.skills.technical.slice(0, 15).join(", ")}...
+PROJECTS: ${portfolioKnowledge.projects.map(p => p.name).join(", ")}
+EMAIL: ${portfolioKnowledge.email}
+PHONE: ${portfolioKnowledge.phone}
+
+Be friendly and professional. If unsure, suggest contacting directly.
+
+User question: `;
+      
+      allMessages[0].parts[0].text = contextMessage + allMessages[0].parts[0].text;
+    }
+
+    const result = await model.generateContent({
+      contents: allMessages,
       generationConfig: {
         maxOutputTokens: 1024,
         temperature: 0.7,
       },
-      systemInstruction: systemPrompt,
     });
 
-    const result = await chat.sendMessage(lastMessage);
     const response = await result.response;
     const assistantMessage = response.text();
 
