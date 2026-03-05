@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { Menu, X, Home, User, Code, Briefcase, Mail } from "lucide-react";
+import { Menu, X, Home, User, Code, Briefcase, Mail, Globe } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToSection = (id: string) => {
     const element = document.querySelector(id);
     element?.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
+  const navigateTo = (path: string) => {
+    navigate(path);
     setIsOpen(false);
   };
 
@@ -47,6 +54,12 @@ export const Sidebar = () => {
               className="flex items-center gap-2 w-full p-2 hover:bg-gray-800 rounded-lg transition-colors"
             >
               <Briefcase className="w-5 h-5" /> Projects
+            </button>
+            <button
+              onClick={() => navigateTo('/globe')}
+              className="flex items-center gap-2 w-full p-2 hover:bg-gray-800 rounded-lg transition-colors"
+            >
+              <Globe className="w-5 h-5" /> Travel Map
             </button>
             <button
               onClick={() => scrollToSection('#contact-section')}
