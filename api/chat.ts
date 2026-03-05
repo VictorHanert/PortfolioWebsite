@@ -1,4 +1,4 @@
-import { Anthropic } from "@anthropic-ai/sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const portfolioKnowledge = {
   name: "Victor Hanert",
@@ -128,10 +128,6 @@ const portfolioKnowledge = {
   additionalInfo: "I'm a Datamatiker graduate from KEA with hands-on experience in full stack development. I'm always eager to learn new technologies and take on challenging projects that push my skills further.",
 };
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
-
 const systemPrompt = `You are a helpful AI assistant representing ${portfolioKnowledge.name}'s portfolio website.
 Your role is to answer questions about ${portfolioKnowledge.name} based on the provided information.
 
@@ -237,36 +233,43 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Messages array is required" });
     }
 
-    if (!process.env.ANTHROPIC_API_KEY) {
-      console.error("ANTHROPIC_API_KEY is not set in environment variables");
+    if (!process.env.GEMINI_API_KEY) {
+      console.error("GEMINI_API_KEY is not set in environment variables");
       return res.status(500).json({
-        error: "AI service not configured. Please add ANTHROPIC_API_KEY to Vercel environment variables.",
+        error: "AI service not configured. Please add GEMINI_API_KEY to Vercel environment variables.",
       });
     }
 
-    console.log("Calling Claude API with", messages.length, "messages");
+    console.log("Calling Gemini API with", messages.length, "messages");
 
-    const response = await client.messages.create({
-      model: "claude-3-5-sonnet-20241022",
-      max_tokens: 1024,
-      system: systemPrompt,
-      messages: messages.map((msg: any) => ({
-        role: msg.role,
-        content: msg.content,
-      })),
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    // Convert messages to Gemini format
+    const chatHistory = messages.slice(0, -1).map((msg: any) => ({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.content }],
+    }));
+
+    const lastMessage = messages[messages.length - 1].content;
+
+    const chat = model.startChat({
+      history: chatHistory,
+      generationConfig: {
+        maxOutputTokens: 1024,
+        temperature: 0.7,
+      },
+      systemInstruction: systemPrompt,
     });
 
-    const assistantMessage =
-      response.content[0].type === "text"
-        ? response.content[0].text
-        : "I apologize, but I encountered an error processing your request.";
+    const result = await chat.sendMessage(lastMessage);
+    const response = await result.response;
+    const assistantMessage = response.text();
+
+    console.log("Gemini API response received");
 
     return res.status(200).json({
       message: assistantMessage,
-      usage: {
-        input_tokens: response.usage.input_tokens,
-        output_tokens: response.usage.output_tokens,
-      },
     });
   } catch (error: any) {
     console.error("Error in chat API:", error);
@@ -277,9 +280,9 @@ export default async function handler(req: any, res: any) {
       stack: error.stack,
     });
 
-    if (error.status === 401 || (error.message && error.message.includes("401"))) {
+    if (error.status === 401 || (error.message && error.message.includes("API_KEY_INVALID"))) {
       return res.status(401).json({
-        error: "Invalid API key. Please check ANTHROPIC_API_KEY in Vercel settings.",
+        error: "Invalid API key. Please check GEMINI_API_KEY in Vercel settings.",
       });
     }
 
@@ -290,8 +293,7 @@ export default async function handler(req: any, res: any) {
     }
 
     return res.status(500).json({
-      error:
-        error.message || "Failed to get response from AI service. Try again.",
+      error: error.message || "Failed to get response from AI service. Check Vercel logs for details.",
     });
   }
 }
