@@ -1,3 +1,5 @@
+import { Ban } from "lucide-react";
+
 export interface VisitedCountry {
     id: string;
     name: string;
@@ -25,9 +27,34 @@ export const visitedCountries: VisitedCountry[] = [
         name: 'Sweden',
         visits: [
             {
+                date: '2024-03',
+                region: 'Helsingborg',
+                description: 'Day visit to see the city with my girlfriend'
+            },
+            {
                 date: '2022-08',
                 region: 'Malmø',
                 description: 'Amazing summer visit to the Venice of the North with my girlfriend'
+            },
+            {
+                date: '2025-02',
+                region: 'Ystad',
+                description: 'Relaxing spa getaway with my girlfriend'
+            },
+            {
+                date: '2014-11',
+                region: 'Båstad',
+                description: 'Family trip with spa hotel'
+            },
+            {
+                date: '2014-10',
+                region: 'Hjortsberga',
+                description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture'
+            },
+            {
+                date: '2014-06',
+                region: 'Helsingborg',
+                description: 'Laserdome with friends'
             }
         ]
     },
@@ -50,6 +77,16 @@ export const visitedCountries: VisitedCountry[] = [
                 date: '2016-06',
                 region: 'Paris',
                 description: 'The city of lights - perfect for inspiration'
+            },
+            {
+                date: '2017-07',
+                region: 'Vidauban',
+                description: 'Family house with pool, relax and fun'
+            },
+            {
+                date: '2015-10',
+                region: 'Nice',
+                description: 'Fall getaway - Beautiful Mediterranean coast with stunning architecture'
             }
         ]
     },
@@ -79,9 +116,19 @@ export const visitedCountries: VisitedCountry[] = [
                 description: 'History, food, and beautiful culture'
             },
             {
-                date: '2019-05',
+                date: '2024-05',
+                region: 'Rome and Santa Marinella',
+                description: 'See football in Rome with my dad and brother and sister, and relax at the beach in Santa Marinella'
+            },
+            {
+                date: '2025-10',
                 region: 'Venice',
                 description: 'The floating city with canals and romantic bridges'
+            },
+            {
+                date: '2014-07',
+                region: 'San Michele Al Tagliamento and Venice',
+                description: 'Relaxing beach vacation with family, and a day trip to Venice to see the canals and architecture'
             },
             {
                 date: '2018-09',
@@ -104,13 +151,13 @@ export const visitedCountries: VisitedCountry[] = [
                 description: 'Art renaissance epicenter with stunning museums'
             },
             {
-                date: '2018-07',
+                date: '2016-07',
                 region: 'Verona',
-                description: 'Romeo and Juliet\'s city with ancient architecture'
+                description: 'Football tournament with my team'
             },
             {
-                date: '2018-07',
-                region: 'Naples',
+                date: '2019-07',
+                region: 'Naples, Ischia, Tropea, Amalfi Coast',
                 description: 'Gateway to the Amalfi Coast and Pompeii'
             },
             {
@@ -127,7 +174,13 @@ export const visitedCountries: VisitedCountry[] = [
                 date: '2018-06',
                 region: 'Livigno',
                 description: 'Alpine resort town with stunning mountain views with father'
-            }
+            },
+            {
+                date: '2025-04',
+                region: 'Bologna',
+                description: 'Beautiful city with great food.'
+            },
+
         ]
     },
     {
@@ -218,6 +271,11 @@ export const visitedCountries: VisitedCountry[] = [
                 date: '2024-01',
                 region: 'Madeira',
                 description: 'Tropical island with mountain trekking and coastal views'
+            },
+            {
+                date: '2009-04',
+                region: 'Azores',
+                description: 'Remote archipelago with volcanic landscapes and whale watching'
             }
         ]
     },
@@ -242,8 +300,13 @@ export const visitedCountries: VisitedCountry[] = [
             },
             {
                 date: '2015-10',
-                region: 'Lanzarote',
+                region: 'Fuerteventura',
                 description: 'Playitas sports resort and volcanic island beauty'
+            },
+            {
+                date: '2016-07',
+                region: 'Tossa de Mar',
+                description: 'Vacation with family'
             },
             {
                 date: '2017-08',
@@ -251,19 +314,19 @@ export const visitedCountries: VisitedCountry[] = [
                 description: 'Flamenco culture and ornate architecture'
             },
             {
-                date: '2017-05',
+                date: '2025-12',
                 region: 'Villarreal',
-                description: 'La Liga football city with local charm'
+                description: 'La Liga football city with local charm. Saw them playing against FC Copenhagen in the Champions League with my dad and brother'
             },
             {
-                date: '2016-09',
+                date: '2019-11',
                 region: 'Malaga',
-                description: 'Costa del Sol beaches and historic old town'
+                description: 'Whole family trip to celebrate birthdays, living in a villa in the mountains with a pool and amazing views'
             },
             {
-                date: '2016-10',
+                date: '2022-07',
                 region: 'Marbella',
-                description: 'Luxury coastal resort and Mediterranean beaches'
+                description: 'Luxury mansion with my friends, enjoying the beach and nightlife'
             },
             {
                 date: '2016-11',
@@ -271,9 +334,14 @@ export const visitedCountries: VisitedCountry[] = [
                 description: 'Costa Blanca paradise with beautiful coastline'
             },
             {
-                date: '2015-08',
+                date: '2021-08',
                 region: 'Mallorca',
-                description: 'Balearic island with stunning coves and culture'
+                description: 'Trip to Magaluf with my friends, enjoying the beach and nightlife'
+            },
+            {
+                date: '2024-07',
+                region: 'Mallorca',
+                description: 'Staying in luxury resort at Cala d\'Or with my girlfriend and her family, enjoying the beach and food'
             }
         ]
     },
@@ -311,6 +379,17 @@ export const visitedCountries: VisitedCountry[] = [
         ]
     },
     {
+        id: 'MLT',
+        name: 'Malta',
+        visits: [
+            {
+                date: '2014-06',
+                region: 'Malta',
+                description: 'Mediterranean island with rich history and stunning coastline'
+            }
+        ]
+    },
+    {
         id: 'TUR',
         name: 'Turkey',
         visits: [
@@ -331,7 +410,7 @@ export const visitedCountries: VisitedCountry[] = [
                 description: 'Sun, beaches, and vibrant nightlife'
             },
             {
-                date: '2015-04',
+                date: '2016-01',
                 region: 'Puerto Rico',
                 description: 'Caribbean charm with rainforests and beaches'
             }
@@ -353,7 +432,7 @@ export const visitedCountries: VisitedCountry[] = [
         name: 'United Arab Emirates',
         visits: [
             {
-                date: '2019-12',
+                date: '2010-12',
                 region: 'Dubai',
                 description: 'Futuristic skyline and desert adventures'
             }
@@ -364,7 +443,7 @@ export const visitedCountries: VisitedCountry[] = [
         name: 'Singapore',
         visits: [
             {
-                date: '2015-11',
+                date: '2010-11',
                 region: 'Singapore',
                 description: 'Modern city-state with diverse cultures'
             }
@@ -375,7 +454,7 @@ export const visitedCountries: VisitedCountry[] = [
         name: 'Malaysia',
         visits: [
             {
-                date: '2018-04',
+                date: '2010-04',
                 region: 'Kuala Lumpur',
                 description: 'Vibrant capital with modern architecture and rich culture'
             }
@@ -389,6 +468,21 @@ export const visitedCountries: VisitedCountry[] = [
                 date: '2026-01',
                 region: 'Bangkok, Phuket, Khao Lak',
                 description: 'Amazing food, temples, and tropical islands'
+            },
+            {
+                date: '2014-01',
+                region: 'Bangkok, Koh Samui, Koh Phangan, Koh Tao',
+                description: 'Amazing food, temples, and tropical islands'
+            },
+            {
+                date: '2010-01',
+                region: 'Krabi, Langkawi',
+                description: 'Tropical beaches and lush landscapes'
+            },
+            {
+                date: '2007-01-01',
+                region: 'Bangkok and others',
+                description: 'First trip to Thailand, only 6 years old'
             }
         ]
     },
@@ -432,7 +526,7 @@ export const visitedCountries: VisitedCountry[] = [
             {
                 date: '2025-03',
                 region: 'Marrakech',
-                description: 'Exotic medinas, palaces, and Sahara gateway'
+                description: 'Exotic medinas, palaces, and Sahara gateway with my girlfriend'
             }
         ]
     },
@@ -443,7 +537,7 @@ export const visitedCountries: VisitedCountry[] = [
             {
                 date: '2016-09',
                 region: 'Reykjavik',
-                description: 'Northern lights, geysers, and volcanic landscapes'
+                description: 'Northern lights, geysers, and volcanic landscapes with my mother.'
             }
         ]
     }

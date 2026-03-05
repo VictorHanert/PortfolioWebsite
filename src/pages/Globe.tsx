@@ -41,7 +41,6 @@ const numericToAlpha3 = new Map<string, string>(
 const getAlpha3FromFeatureId = (featureId: string | number): string | undefined => {
   return numericToAlpha3.get(String(Number(featureId)));
 };
-
 const GlobePage = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maptilersdk.Map | null>(null);
@@ -88,6 +87,8 @@ const GlobePage = () => {
           paint: {
             'fill-color': [
               'case',
+              ['==', ['id'], 208], // Denmark (home country)
+              'rgba(156, 163, 175, 1)', // Gray-400 for home
               ['==', ['to-number', ['feature-state', 'visitCount']], 1],
               'rgba(219, 234, 254, 1)', // Slightly darker blue for 1 visit
               ['==', ['to-number', ['feature-state', 'visitCount']], 2],
@@ -204,7 +205,7 @@ const GlobePage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-200 px-6 py-4">
+      <div className="fixed top-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-200 p-2">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <button
             onClick={() => navigate('/')}
@@ -263,9 +264,11 @@ const GlobePage = () => {
             <DialogTitle className="text-2xl font-bold">
               {selectedCountry?.name}
             </DialogTitle>
-            <DialogDescription>
+            {selectedCountry?.name !== 'Denmark' && (
+              <DialogDescription>
               {selectedCountry?.visits.length} {selectedCountry?.visits.length === 1 ? 'visit' : 'visits'} to this country
-            </DialogDescription>
+              </DialogDescription>
+            )}
           </DialogHeader>
           <div className="mt-4 space-y-4">
             {selectedCountry?.visits.map((visit, index) => (
