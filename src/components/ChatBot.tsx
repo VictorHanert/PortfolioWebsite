@@ -1,15 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Loader2, Send, MessageCircle } from "lucide-react";
+import { Loader2, Send, MessageCircle, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
 
@@ -31,27 +24,22 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
       id: "welcome",
       role: "assistant",
       content:
-        "👋 Hi! I'm an AI assistant for this portfolio. Feel free to ask me anything about the portfolio owner (Victor), their skills, experience, or projects!",
+        "👋 Hi! I'm an AI assistant for this portfolio. Feel free to ask me anything about Victor, his skills, or his projects!",
       timestamp: new Date(),
     },
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollBottomRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
+    scrollBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isLoading]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!inputValue.trim() || isLoading) return;
 
-    if (!inputValue.trim()) return;
-
-    // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
@@ -66,142 +54,138 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: messages
-            .filter((m) => m.id !== "welcome") // Exclude welcome message from API
-            .map((m) => ({
-              role: m.role,
-              content: m.content,
-            }))
-            .concat([
-              {
-                role: "user",
-                content: inputValue,
-              },
-            ]),
+            .filter((m) => m.id !== "welcome")
+            .map((m) => ({ role: m.role, content: m.content }))
+            .concat([{ role: "user", content: inputValue }]),
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to get response");
-      }
-
+      if (!response.ok) throw new Error();
       const data = await response.json();
 
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: data.message,
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: data.message,
+          timestamp: new Date(),
+        },
+      ]);
     } catch (error) {
-      console.error("Error sending message:", error);
-
-      const errorMessage: Message = {
-        id: (Date.now() + 2).toString(),
-        role: "assistant",
-        content:
-          "Sorry, I encountered an error while processing your request. Please make sure the API is properly configured.",
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, errorMessage]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: "error",
+          role: "assistant",
+          content: "Sorry, I encountered an error. Please try again later.",
+          timestamp: new Date(),
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="fixed left-0 top-0 flex h-screen max-h-full w-96 max-w-none flex-col rounded-none border-r border-border bg-background p-0 translate-x-0">
-        <DialogHeader className="border-b border-border px-4 py-3">
-          <DialogTitle className="flex items-center gap-2">
-            <MessageCircle className="h-5 w-5" />
-            Portfolio Assistant
-          </DialogTitle>
-          <DialogDescription>
-            Ask me anything about Victor's skills and experience
-          </DialogDescription>
-        </DialogHeader>
+  if (!isOpen) return null;
 
-        <ScrollArea className="flex-1 px-4 py-4">
-          <div className="space-y-4">
-            {messages.map((message) => (
+  return (
+    <div className="fixed bottom-20 left-4 z-50 flex h-[500px] w-[calc(100%-2rem)] max-w-[380px] flex-col overflow-hidden rounded-xl border border-border bg-card shadow-2xl animate-in slide-in-from-bottom-2">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-border bg-muted/50 px-4 py-3">
+        <div className="flex items-center gap-2">
+          <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+          <h2 className="text-sm font-bold tracking-tight text-foreground">Portfolio Assistant</h2>
+        </div>
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="h-8 w-8 rounded-full" 
+          onClick={() => onOpenChange(false)}
+        >
+          <X className="h-4 w-4" />
+        </Button>
+      </div>
+
+      {/* Chat Area */}
+      <ScrollArea className="flex-1 p-4">
+        <div className="flex flex-col gap-4">
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className={cn(
+                "flex w-full",
+                message.role === "user" ? "justify-end" : "justify-start"
+              )}
+            >
               <div
-                key={message.id}
                 className={cn(
-                  "flex w-full gap-3",
-                  message.role === "user" ? "justify-end" : "justify-start",
+                  "max-w-[85%] rounded-2xl px-4 py-2 text-sm shadow-sm",
+                  message.role === "user"
+                    ? "bg-primary text-primary-foreground rounded-tr-none"
+                    : "bg-muted text-muted-foreground rounded-tl-none border border-border"
                 )}
               >
-                <div
-                  className={cn(
-                    "max-w-xs rounded-lg px-4 py-2 text-sm leading-relaxed",
-                    message.role === "user"
-                      ? "border border-primary bg-primary text-primary-foreground"
-                      : "border border-secondary-foreground/20 bg-secondary text-secondary-foreground",
-                  )}
-                >
-                  {message.role === "assistant" ? (
-                    <div className="prose prose-sm dark:prose-invert max-w-none prose-p:leading-relaxed prose-pre:p-0 break-words">
-                      <ReactMarkdown>{message.content}</ReactMarkdown>
-                    </div>
-                  ) : (
-                    message.content
-                  )}
+                {/* Wrapping ReactMarkdown in a div to avoid the className error */}
+                <div className={cn(
+                  "prose prose-sm max-w-none break-words leading-relaxed",
+                  "prose-p:m-0 prose-ul:my-2 prose-li:my-0.5",
+                  "prose-strong:font-bold prose-strong:text-inherit",
+                  message.role === "user" ? "prose-invert" : "dark:prose-invert"
+                )}>
+                  <ReactMarkdown>{message.content}</ReactMarkdown>
                 </div>
               </div>
-            ))}
-            {isLoading && (
-              <div className="flex justify-start gap-3">
-                <div className="flex items-center gap-2 rounded-lg border border-secondary-foreground/20 bg-secondary px-4 py-2 text-sm text-secondary-foreground">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Thinking...
-                </div>
+            </div>
+          ))}
+          {isLoading && (
+            <div className="flex justify-start">
+              <div className="flex items-center gap-2 rounded-2xl rounded-tl-none border border-border bg-muted px-4 py-2 text-sm text-muted-foreground shadow-sm">
+                <Loader2 className="h-3 w-3 animate-spin" />
+                Thinking...
               </div>
-            )}
-            <div ref={scrollRef} />
-          </div>
-        </ScrollArea>
-
-        <div className="border-t border-border px-4 py-3">
-          <form onSubmit={handleSendMessage} className="flex gap-2">
-            <Input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask me anything..."
-              disabled={isLoading}
-              className="flex-1"
-            />
-            <Button
-              type="submit"
-              disabled={isLoading || !inputValue.trim()}
-              size="sm"
-              className="px-3"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </form>
+            </div>
+          )}
+          <div ref={scrollBottomRef} />
         </div>
-      </DialogContent>
-    </Dialog>
+      </ScrollArea>
+
+      {/* Input Area */}
+      <form
+        onSubmit={handleSendMessage}
+        className="flex items-center gap-2 border-t border-border bg-background p-3"
+      >
+        <Input
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Type a message..."
+          disabled={isLoading}
+          className="h-9 flex-1 border-none bg-muted/50 focus-visible:ring-1 focus-visible:ring-primary"
+        />
+        <Button
+          type="submit"
+          size="icon"
+          disabled={isLoading || !inputValue.trim()}
+          className="h-9 w-9 shrink-0 rounded-full"
+        >
+          <Send className="h-4 w-4" />
+        </Button>
+      </form>
+    </div>
   );
 };
 
-// Chat Toggle Button - can be used anywhere to trigger the chatbot
 export const ChatBotButton = ({ onClick }: { onClick?: () => void }) => {
   return (
     <Button
       onClick={onClick}
-      className="fixed bottom-4 left-4 rounded-full shadow-lg hover:shadow-xl text-xs border-2 border-white"
+      className="fixed bottom-6 left-6 h-12 gap-2 rounded-full px-5 shadow-xl transition-all hover:scale-105 active:scale-95 z-40 border-2 border-white"
     >
-      <span className="hidden sm:inline">Ask AI about me</span>
-      <MessageCircle className="h-4 w-4" />
+        <span className="hidden sm:inline">Ask AI about me</span>
+        <MessageCircle className="h-4 w-4" />
     </Button>
   );
 };
