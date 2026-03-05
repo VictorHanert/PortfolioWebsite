@@ -84,7 +84,7 @@ export const Contact = () => {
               <div>
                 <p className="font-medium">Location</p>
                 <p className="text-sm text-muted-foreground">
-                  Abel Cathrines Gade 7, 1654, København V
+                  Valby Langgade 30, 2500 Valby, Denmark
                 </p>
               </div>
             </div>

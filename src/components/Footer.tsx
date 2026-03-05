@@ -10,7 +10,7 @@ export const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                <p>Abel Cathrines Gade 7, <span className="block sm:inline">1654, København V</span></p>
+                <p>Valby Langgade 30, <span className="block sm:inline">2500 Valby, Denmark</span></p>
               </div>
               <p className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />

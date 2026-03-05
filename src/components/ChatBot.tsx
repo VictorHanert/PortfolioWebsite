@@ -93,7 +93,7 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-20 left-4 z-50 flex h-[500px] w-[calc(100%-2rem)] max-w-[380px] flex-col overflow-hidden rounded-xl border border-border bg-card shadow-2xl animate-in slide-in-from-bottom-2">
+    <div className="fixed bottom-20 left-4 z-50 flex h-[600px] w-[calc(100%-2rem)] max-w-[380px] flex-col overflow-hidden rounded-xl border border-border bg-card shadow-2xl animate-in slide-in-from-bottom-2">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border bg-muted/50 px-4 py-3">
         <div className="flex items-center gap-2">

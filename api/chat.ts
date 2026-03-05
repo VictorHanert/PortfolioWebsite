@@ -2,8 +2,10 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const portfolioKnowledge = {
   name: "Victor Hanert",
-  title: "Full Stack Developer | Software Engineer",
+  title: "Full Stack Developer | Software Engineer | AI Enthusiast",
   location: "Valby, Denmark",
+  city: "Valby, Denmark",
+  adress: "Valby Langgade",
   email: "v.hanert@gmail.com",
   phone: "+45 60812114",
   age: 25,
@@ -114,8 +116,12 @@ const portfolioKnowledge = {
     { question: "What's your experience with Node.js and backend development?", answer: "I have solid backend experience with Node.js, Express.js, Laravel, PHP, and Java Spring Boot. I've built RESTful APIs, handled databases (PostgreSQL, MongoDB, MySQL), and implemented microservices. My CineMatch project showcases comprehensive backend work." },
     { question: "Can you work with databases?", answer: "Absolutely! I have experience with both SQL (MySQL, PostgreSQL) and NoSQL (MongoDB) databases. I can design schemas, optimize queries, implement migrations, and work with caching solutions like Redis." },
     { question: "What technologies do you prefer?", answer: "I'm adaptable to project needs, but I particularly enjoy working with TypeScript, React, Vue.js, Node.js, and Laravel. I value clean code, type safety, and modern development practices." },
-    { question: "Are you available for full-time positions?", answer: "I'm open to discussing various opportunities including full-time positions, contract work, and freelance projects. I'm based in København V and open to remote work as well." },
+    { question: "Are you available for full-time positions?", answer: "I'm open to discussing various opportunities including full-time positions, contract work, and freelance projects. I'm based in Valby, Copenhagen and open to remote work as well." },
     { question: "What languages do you speak?", answer: "I'm fluent in Danish (native) and English. I can work with international teams and clients." },
+    { question: "What is your experience with Scrum?", answer: "I have experience working in Scrum teams, participating in daily standups, sprint planning, and retrospectives. I understand the principles of agile development and can contribute effectively to iterative development processes." },
+    { question: "How do you approach agile development and sprints?", answer: "I approach agile development by actively participating in daily standups, sprint planning, and retrospectives. I focus on iterative development, continuous improvement, and effective collaboration with the team to deliver value in each sprint." },
+    { question: "How does AI impact your development approach?", answer: "AI significantly influences my development approach by enabling me to create more intelligent and responsive applications. I integrate AI solutions to enhance user experiences, automate routine tasks, and provide data-driven insights." },
+    { question: "What is your experience with CI/CD and DevOps?", answer: "I have experience with CI/CD pipelines and DevOps practices, including automated testing, deployment automation, and infrastructure as code. I'm excellent with tools such as GitHub Actions, Docker, and Kubernetes." },
     { question: "How can I contact you?", answer: "You can reach me via email at v.hanert@gmail.com, phone at +45 60812114, or connect with me on LinkedIn at linkedin.com/in/victor-hanert/ or GitHub at github.com/VictorHanert." },
   ],
   socialLinks: {
@@ -126,9 +132,26 @@ const portfolioKnowledge = {
   },
   availability: "Open to freelance projects, full-time positions, and collaboration opportunities. Based in Copenhagen, Denmark.",
   additionalInfo: "I'm a Datamatiker graduate from KEA with hands-on experience in full stack development. I'm always eager to learn new technologies and take on challenging projects that push my skills further.",
+  aiEnthusiast: {
+    description: "As an AI enthusiast, Victor is deeply passionate about exploring the potential of artificial intelligence to solve real-world problems. He actively follows advancements in machine learning, natural language processing, and generative AI technologies. Victor enjoys experimenting with AI tools and frameworks, integrating them into projects to enhance functionality and user experience. His portfolio reflects his commitment to leveraging AI for innovative solutions, such as chatbot development and intelligent automation.",
+    projects: [
+      {
+        name: "Portfolio Chatbot",
+        description: "An AI-powered chatbot integrated into Victor's portfolio website, designed to provide visitors with instant information about his skills, projects, and experience.",
+        technologies: ["React", "TypeScript", "Google Gemini API", "Tailwind CSS"],
+        impact: "Showcases Victor's ability to integrate AI into web applications for enhanced user interaction."
+      },
+      {
+        name: "Self-driving car simulation with NEAT",
+        description: "Developed a 2D racing game using Python and Pygame, where a car is controlled by a genetic algorithm (NEAT). The car navigates using sensors, and the model is trained over several generations to complete tracks quickly and without collisions. The goal is to investigate whether the model can learn general driving behavior that also works on new, unknown tracks.",
+        technologies: ["Python", "Pygame", "NEAT"],
+        impact: "Explores the application of genetic algorithms in training AI models for complex tasks like driving simulations."
+      }
+    ]
+  }
 };
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req, res) {
   // Enable CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -147,36 +170,32 @@ export default async function handler(req: any, res: any) {
     const { messages } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
-      console.error("No messages array provided");
+      console.error("Invalid messages array");
       return res.status(400).json({ error: "Messages array is required" });
     }
 
     if (!process.env.GEMINI_API_KEY) {
-      console.error("GEMINI_API_KEY is not set in environment variables");
+      console.error("Missing GEMINI_API_KEY");
       return res.status(500).json({
-        error: "AI service not configured. Please add GEMINI_API_KEY to Vercel environment variables.",
+        error: "AI service not configured. Please add GEMINI_API_KEY to environment variables.",
       });
     }
-
-    console.log("Calling Gemini API with", messages.length, "messages");
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite-preview" });
 
-    // Convert messages to Gemini format with context in first user message
-    const allMessages = messages.map((msg: any) => ({
+    const allMessages = messages.map((msg) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
 
-    // Add system context to first user message
     if (allMessages.length > 0 && allMessages[0].role === "user") {
       const contextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio.
 Use the following information to answer:
 - Name: ${portfolioKnowledge.name}
 - Role: ${portfolioKnowledge.title}
 - Skills: ${portfolioKnowledge.skills.technical.join(", ")}
-- Projects: ${portfolioKnowledge.projects.map(p => p.name).join(", ")}
+- Projects: ${portfolioKnowledge.projects.map((p) => p.name).join(", ")}
 - Contact: ${portfolioKnowledge.email} / ${portfolioKnowledge.phone}
 
 Guidelines:
@@ -184,9 +203,11 @@ Guidelines:
 2. Use **bold** for emphasis.
 3. Use bullet points for lists.
 4. Keep answers concise and professional.
+5. Use simple and clear language.
+6. Shorten answers to avoid excessive length.
 
 User question: `;
-      
+
       allMessages[0].parts[0].text = contextMessage + allMessages[0].parts[0].text;
     }
 
@@ -198,37 +219,24 @@ User question: `;
       },
     });
 
-    const response = await result.response;
-    const assistantMessage = response.text();
+    const assistantMessage = result.response.text();
 
     console.log("Gemini API response received");
 
-    return res.status(200).json({
-      message: assistantMessage,
-    });
-  } catch (error: any) {
+    return res.status(200).json({ message: assistantMessage });
+  } catch (error) {
     console.error("Error in chat API:", error);
-    console.error("Error details:", {
-      name: error.name,
-      message: error.message,
-      status: error.status,
-      stack: error.stack,
-    });
 
-    if (error.status === 401 || (error.message && error.message.includes("API_KEY_INVALID"))) {
-      return res.status(401).json({
-        error: "Invalid API key. Please check GEMINI_API_KEY in Vercel settings.",
-      });
+    const errorResponse = {
+      error: error.message || "Failed to get response from AI service. Check logs for details.",
+    };
+
+    if (error.status === 401 || error.message?.includes("API_KEY_INVALID")) {
+      errorResponse.error = "Invalid API key. Please check GEMINI_API_KEY in environment variables.";
+    } else if (error.status === 429) {
+      errorResponse.error = "Rate limit exceeded. Please try again later.";
     }
 
-    if (error.status === 429) {
-      return res.status(429).json({
-        error: "Rate limit exceeded. Please try again in a moment.",
-      });
-    }
-
-    return res.status(500).json({
-      error: error.message || "Failed to get response from AI service. Check Vercel logs for details.",
-    });
+    return res.status(error.status || 500).json(errorResponse);
   }
 }

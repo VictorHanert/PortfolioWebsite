@@ -3,8 +3,7 @@
 ## Contact
 - Email: v.hanert@gmail.com
 - Phone: +45 60812114
-- Location: Abel Cathrines Gade 7, 1654, København V
-
+- 
 ## Education
 - AP Graduate in Computer Science (2022-2025)
 - Software Development Bachelor's Degree (2025-2026)

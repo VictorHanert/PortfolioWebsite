@@ -63,7 +63,7 @@ export const Hero = () => {
       
       <div className="glass-card p-6 max-w-md rounded-lg mb-20">
         <p className="text-sm text-muted-foreground">
-          Based in <span className="font-semibold">København V</span> • Open to opportunities
+          Based in <span className="font-semibold">Valby</span> • Open to opportunities
         </p>
       </div>
 
