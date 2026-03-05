@@ -93,7 +93,7 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-20 left-4 z-50 flex h-[600px] w-[calc(100%-2rem)] max-w-[380px] flex-col overflow-hidden rounded-xl border border-border bg-card shadow-2xl animate-in slide-in-from-bottom-2">
+    <div className="fixed bottom-0 left-0 z-50 flex h-full w-full max-w-full flex-col overflow-hidden sm:rounded-xl border border-border bg-card shadow-2xl animate-in slide-in-from-bottom-2 sm:bottom-4 sm:left-4 sm:h-[600px] sm:max-w-[380px] sm:w-[calc(100%-2rem)]">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border bg-muted/50 px-4 py-3">
         <div className="flex items-center gap-2">
@@ -182,7 +182,7 @@ export const ChatBotButton = ({ onClick }: { onClick?: () => void }) => {
   return (
     <Button
       onClick={onClick}
-      className="fixed bottom-6 left-6 h-12 gap-2 rounded-full px-5 shadow-xl transition-all hover:scale-105 active:scale-95 z-40 border-2 border-white"
+      className="fixed bottom-6 left-6 gap-2 rounded-full shadow-xl transition-all hover:scale-105 active:scale-95 z-40 border-2 border-white"
     >
         <span className="hidden sm:inline">Ask AI about me</span>
         <MessageCircle className="h-4 w-4" />
