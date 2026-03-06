@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 // import { visitedCountries } from "./visitedCountries.js";
-import { visitedCountries } from "@/data/visitedCountries.js";
+import { visitedCountries } from "../src/data/visitedCountries.js";
 
 // Use Vercel Edge Runtime for faster cold starts
 export const config = {
