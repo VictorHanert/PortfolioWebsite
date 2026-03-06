@@ -255,13 +255,13 @@ export default async function handler(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const models = ["gemini-3.1-flash-lite-preview", "gemini-2.5-flash", "gemini-2.5-pro"];
+    const models = ["gemini-3.1-flash-lite-preview", "gemini-2.5-flash", "gemini-2-flash"];
     let result;
 
     for (const modelName of models) {
       try {
         const model = genAI.getGenerativeModel({ model: modelName });
-        
+
         result = await model.generateContent({
           contents: allMessages,
           generationConfig: {
@@ -271,11 +271,12 @@ export default async function handler(req: Request) {
             topK: 40,
           },
         });
-        
-        break; 
+
+        break;
       } catch (e: any) {
         if (e.status === 503 && modelName !== models[models.length - 1]) {
-          console.warn(`Model ${modelName} busy, trying next...`);
+          console.warn(`Model ${modelName} busy, retrying in 1s with next model...`);
+          await new Promise(resolve => setTimeout(resolve, 1000));
           continue;
         }
         throw e;
