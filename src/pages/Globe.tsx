@@ -223,7 +223,7 @@ const GlobePage = () => {
       <div ref={mapContainerRef} className="w-full h-screen pt-16" />
 
       {/* Legend */}
-      <div className="fixed bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-4 border border-gray-200">
+      <div className="fixed bottom-8 right-8 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-4 border border-gray-200">
         <h3 className="font-semibold text-gray-900 mb-3 text-sm">Visit Frequency</h3>
         <div className="space-y-2">
           <div className="flex items-center gap-2">

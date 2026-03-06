@@ -57,7 +57,7 @@ const skills = [
     name: "AI & Data", 
     items: [
       "Python", "AI-driven Development", "AI-integrations", "TensorFlow", "NumPy", "Keras", "Pandas", "Scikit-learn", "PyTorch",
-      "Data Science", "Neural Networks (DNN, CNN)", "Genetic Algorithms (NEAT)",
+      "Data Science", "Neural Networks (DNN, CNN)", "Genetic Algorithms (NEAT)", "Natural Language Processing", "MCP",
       "Machine Learning (Classification, Regression)", "Data Visualization", "Matplotlib", "Seaborn", "Reinforcement Learning"
     ]
   }

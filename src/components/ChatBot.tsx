@@ -16,15 +16,25 @@ interface Message {
 interface ChatBotProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
+  title?: string;
+  welcomeMessage?: string;
+  starterQuestions?: string[];
+  apiEndpoint?: string;
 }
 
-export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
+export const ChatBot = ({
+  isOpen,
+  onOpenChange,
+  title = "Portfolio Assistant",
+  welcomeMessage = "👋 Hi! I'm an AI assistant for this portfolio. Feel free to ask me anything about Victor, his skills, or his projects!",
+  starterQuestions = [],
+  apiEndpoint = "/api/chat",
+}: ChatBotProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       role: "assistant",
-      content:
-        "👋 Hi! I'm an AI assistant for this portfolio. Feel free to ask me anything about Victor, his skills, or his projects!",
+      content: welcomeMessage,
       timestamp: new Date(),
     },
   ]);
@@ -36,14 +46,25 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
     scrollBottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputValue.trim() || isLoading) return;
+  useEffect(() => {
+    setMessages([
+      {
+        id: "welcome",
+        role: "assistant",
+        content: welcomeMessage,
+        timestamp: new Date(),
+      },
+    ]);
+  }, [welcomeMessage, apiEndpoint]);
+
+  const sendMessage = async (rawInput: string) => {
+    const trimmedInput = rawInput.trim();
+    if (!trimmedInput || isLoading) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: inputValue,
+      content: trimmedInput,
       timestamp: new Date(),
     };
 
@@ -52,26 +73,28 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/chat", {
+      const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          query: trimmedInput,
           messages: messages
             .filter((m) => m.id !== "welcome")
             .map((m) => ({ role: m.role, content: m.content }))
-            .concat([{ role: "user", content: inputValue }]),
+            .concat([{ role: "user", content: trimmedInput }]),
         }),
       });
 
       if (!response.ok) throw new Error();
       const data = await response.json();
+      const assistantContent = data.message || data.answer || "I couldn't generate a response.";
 
       setMessages((prev) => [
         ...prev,
         {
           id: (Date.now() + 1).toString(),
           role: "assistant",
-          content: data.message,
+          content: assistantContent,
           timestamp: new Date(),
         },
       ]);
@@ -90,6 +113,15 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
     }
   };
 
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await sendMessage(inputValue);
+  };
+
+  const handleStarterQuestionClick = async (question: string) => {
+    await sendMessage(question);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -98,7 +130,7 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
       <div className="flex items-center justify-between border-b border-border bg-muted/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-          <h2 className="text-sm font-bold tracking-tight text-foreground">Portfolio Assistant</h2>
+          <h2 className="text-sm font-bold tracking-tight text-foreground">{title}</h2>
         </div>
         <Button 
           variant="ghost" 
@@ -113,6 +145,22 @@ export const ChatBot = ({ isOpen, onOpenChange }: ChatBotProps) => {
       {/* Chat Area */}
       <ScrollArea className="flex-1 p-4">
         <div className="flex flex-col gap-4">
+          {starterQuestions.length > 0 && messages.length === 1 && (
+            <div className="flex flex-wrap gap-2">
+              {starterQuestions.map((question) => (
+                <Button
+                  key={question}
+                  variant="outline"
+                  size="sm"
+                  className="h-auto whitespace-normal rounded-full px-3 py-1.5 text-xs"
+                  onClick={() => handleStarterQuestionClick(question)}
+                  disabled={isLoading}
+                >
+                  {question}
+                </Button>
+              ))}
+            </div>
+          )}
           {messages.map((message) => (
             <div
               key={message.id}

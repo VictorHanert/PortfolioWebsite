@@ -1,4 +1,42 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { visitedCountries } from "../src/data/visitedCountries";
+
+const travelKeywords = [
+  "travel",
+  "trip",
+  "visited",
+  "country",
+  "countries",
+  "region",
+  "destination",
+  "destinations",
+  "map",
+  "vibe",
+  "companions",
+  "season",
+  "seasonal",
+  "mediterranean",
+  "vacation",
+  "holiday",
+  "flight",
+  "where should",
+  "next destination",
+  "analyze travel",
+];
+
+function isTravelQuery(query: string): boolean {
+  const normalized = query.toLowerCase();
+  return travelKeywords.some((keyword) => normalized.includes(keyword));
+}
+
+function getLatestUserQuestion(messages: any[], query?: string): string {
+  if (typeof query === "string" && query.trim().length > 0) {
+    return query.trim();
+  }
+
+  const latest = [...messages].reverse().find((msg) => msg?.role === "user" && typeof msg?.content === "string");
+  return latest?.content?.trim() || "";
+}
 
 const portfolioKnowledge = {
   name: "Victor Hanert",
@@ -167,7 +205,7 @@ export default async function handler(req, res) {
 
   try {
     console.log("Chat API called");
-    const { messages } = req.body;
+    const { messages, query } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
       console.error("Invalid messages array");
@@ -189,8 +227,10 @@ export default async function handler(req, res) {
       parts: [{ text: msg.content }],
     }));
 
-    if (allMessages.length > 0 && allMessages[0].role === "user") {
-      const contextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio.
+    const latestUserQuestion = getLatestUserQuestion(messages, query);
+    const travelMode = isTravelQuery(latestUserQuestion);
+
+    const portfolioContextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio.
 Use the following information to answer:
 - Name: ${portfolioKnowledge.name}
 - Role: ${portfolioKnowledge.title}
@@ -205,10 +245,24 @@ Guidelines:
 4. Keep answers concise and professional.
 5. Use simple and clear language.
 6. Shorten answers to avoid excessive length.
+`;
 
-User question: `;
+    const travelContextMessage = `You are Victor's Travel Intelligence Agent.
+Use ONLY the following visited countries dataset for travel analysis:
+${JSON.stringify(visitedCountries)}
 
-      allMessages[0].parts[0].text = contextMessage + allMessages[0].parts[0].text;
+Travel guidelines:
+1. Answer only from the travel dataset.
+2. If asked about a country not listed, say Victor has not visited it yet.
+3. Analyze trends (companions, seasonality, destinations, vibe shifts over time) when relevant.
+4. If asked about future travel, suggest destinations fitting his Mediterranean/football/luxury trend that are not already in the dataset.
+5. Keep answers concise, analytical, and in Markdown with bullets when useful.
+`;
+
+    const selectedContext = travelMode ? travelContextMessage : portfolioContextMessage;
+
+    if (allMessages.length > 0 && allMessages[0].role === "user") {
+      allMessages[0].parts[0].text = `${selectedContext}\nUser question: ${allMessages[0].parts[0].text}`;
     }
 
     const result = await model.generateContent({
