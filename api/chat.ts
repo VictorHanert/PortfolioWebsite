@@ -1,6 +1,11 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { visitedCountries } from "./visitedCountries.js";
 
+// Use Vercel Edge Runtime for faster cold starts
+export const config = {
+  runtime: 'edge',
+};
+
 const travelKeywords = [
   "travel",
   "trip",
@@ -189,40 +194,41 @@ const portfolioKnowledge = {
   }
 };
 
-export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+export default async function handler(req: Request) {
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Content-Type": "application/json",
+  };
 
   if (req.method === "OPTIONS") {
-    return res.status(200).end();
+    return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405, headers: corsHeaders });
   }
 
   try {
-    console.log("Chat API called");
-    const { messages, query } = req.body;
+    console.log("Chat API (Edge) called");
+    const body = await req.json();
+    const { messages, query } = body;
 
     if (!messages || !Array.isArray(messages)) {
       console.error("Invalid messages array");
-      return res.status(400).json({ error: "Messages array is required" });
+      return new Response(JSON.stringify({ error: "Messages array is required" }), { status: 400, headers: corsHeaders });
     }
 
     if (!process.env.GEMINI_API_KEY) {
       console.error("Missing GEMINI_API_KEY");
-      return res.status(500).json({
-        error: "AI service not configured. Please add GEMINI_API_KEY to environment variables.",
-      });
+      return new Response(JSON.stringify({ error: "AI service not configured. Please add GEMINI_API_KEY to environment variables." }), { status: 500, headers: corsHeaders });
     }
 
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite-preview" });
+    // Limit conversation length to last N messages to reduce prompt size
+    const recentMessages = messages.slice(-8);
 
-    const allMessages = messages.map((msg) => ({
+    const allMessages = recentMessages.map((msg) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
     }));
@@ -230,34 +236,17 @@ export default async function handler(req, res) {
     const latestUserQuestion = getLatestUserQuestion(messages, query);
     const travelMode = isTravelQuery(latestUserQuestion);
 
-    const portfolioContextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio.
-Use the following information to answer:
-- Name: ${portfolioKnowledge.name}
-- Role: ${portfolioKnowledge.title}
-- Skills: ${portfolioKnowledge.skills.technical.join(", ")}
-- Projects: ${portfolioKnowledge.projects.map((p) => p.name).join(", ")}
-- Contact: ${portfolioKnowledge.email} / ${portfolioKnowledge.phone}
+    const portfolioContextMessage = `You are a helpful AI assistant for Victor Hanert's portfolio.\nUse the following information to answer:\n- Name: ${portfolioKnowledge.name}\n- Role: ${portfolioKnowledge.title}\n- Skills: ${portfolioKnowledge.skills.technical.join(", ")}\n- Projects: ${portfolioKnowledge.projects.map((p) => p.name).join(", ")}\n- Contact: ${portfolioKnowledge.email} / ${portfolioKnowledge.phone}\n\nGuidelines:\n1. Use Markdown for formatting.\n2. Use **bold** for emphasis.\n3. Use bullet points for lists.\n4. Keep answers concise and professional.\n5. Use simple and clear language.\n6. Shorten answers to avoid excessive length.\n`;
 
-Guidelines:
-1. Use Markdown for formatting.
-2. Use **bold** for emphasis.
-3. Use bullet points for lists.
-4. Keep answers concise and professional.
-5. Use simple and clear language.
-6. Shorten answers to avoid excessive length.
-`;
+    // Trim the travel dataset to at most 3 recent visits per country to reduce payload
+    const maxVisitsPerCountry = 3;
+    const trimmedVisitedCountries = visitedCountries.map((c) => ({
+      id: c.id,
+      name: c.name,
+      visits: Array.isArray(c.visits) ? c.visits.slice(-maxVisitsPerCountry) : c.visits,
+    }));
 
-    const travelContextMessage = `You are Victor's Travel Intelligence Agent.
-Use ONLY the following visited countries dataset for travel analysis:
-${JSON.stringify(visitedCountries)}
-
-Travel guidelines:
-1. Answer only from the travel dataset.
-2. If asked about a country not listed, say Victor has not visited it yet.
-3. Analyze trends (companions, seasonality, destinations, vibe shifts over time) when relevant.
-4. If asked about future travel, suggest destinations fitting his Mediterranean/football/luxury trend that are not already in the dataset.
-5. Keep answers concise, analytical, and in Markdown with bullets when useful.
-`;
+    const travelContextMessage = `You are Victor's Travel Intelligence Agent. Use ONLY the following visited countries dataset for travel analysis:\n${JSON.stringify(trimmedVisitedCountries)}\n\nTravel guidelines:\n1. Answer only from the travel dataset.\n2. If asked about a country not listed, say Victor has not visited it yet.\n3. Analyze trends (companions, seasonality, destinations, vibe shifts over time) when relevant.\n4. If asked about future travel, suggest destinations fitting his Mediterranean/football/luxury trend that are not already in the dataset.\n5. Keep answers concise, analytical, and in Markdown with bullets when useful.\n`;
 
     const selectedContext = travelMode ? travelContextMessage : portfolioContextMessage;
 
@@ -265,32 +254,35 @@ Travel guidelines:
       allMessages[0].parts[0].text = `${selectedContext}\nUser question: ${allMessages[0].parts[0].text}`;
     }
 
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite-preview" });
+
     const result = await model.generateContent({
       contents: allMessages,
       generationConfig: {
-        maxOutputTokens: 1024,
-        temperature: 0.7,
+        maxOutputTokens: 512,
+        temperature: 0.5,
+        topP: 0.8,
+        topK: 40,
       },
     });
 
-    const assistantMessage = result.response.text();
+    const assistantMessage = result.response?.text?.() || "";
 
     console.log("Gemini API response received");
 
-    return res.status(200).json({ message: assistantMessage });
-  } catch (error) {
-    console.error("Error in chat API:", error);
+    return new Response(JSON.stringify({ message: assistantMessage }), { status: 200, headers: corsHeaders });
+  } catch (error: any) {
+    console.error("Error in chat API (Edge):", error);
+    const errMsg = error?.message || "Failed to get response from AI service. Check logs for details.";
 
-    const errorResponse = {
-      error: error.message || "Failed to get response from AI service. Check logs for details.",
-    };
-
-    if (error.status === 401 || error.message?.includes("API_KEY_INVALID")) {
+    const errorResponse = { error: errMsg };
+    if (error?.status === 401 || errMsg?.includes("API_KEY_INVALID")) {
       errorResponse.error = "Invalid API key. Please check GEMINI_API_KEY in environment variables.";
-    } else if (error.status === 429) {
+    } else if (error?.status === 429) {
       errorResponse.error = "Rate limit exceeded. Please try again later.";
     }
 
-    return res.status(error.status || 500).json(errorResponse);
+    return new Response(JSON.stringify(errorResponse), { status: error?.status || 500, headers: { "Content-Type": "application/json" } });
   }
 }
