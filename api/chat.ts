@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { visitedCountries } from "@/data/visitedCountries";
+import { visitedCountries } from "./visitedCountries";
 
 const travelKeywords = [
   "travel",
