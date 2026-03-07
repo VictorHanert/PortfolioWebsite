@@ -85,7 +85,16 @@ export const ChatBot = ({
         }),
       });
 
-      if (!response.ok) throw new Error();
+      if (!response.ok) {
+        if (response.status === 503) {
+          throw new Error("ModelUnavailable");
+        } else if (response.status === 504) {
+          throw new Error("Timeout");
+        } else {
+          throw new Error("UnknownError");
+        }
+      }
+
       const data = await response.json();
       const assistantContent = data.message || data.answer || "I couldn't generate a response.";
 
@@ -99,12 +108,20 @@ export const ChatBot = ({
         },
       ]);
     } catch (error) {
+      let errorMessage = "Sorry, I encountered an error. Please try again later.";
+
+      if (error.message === "ModelUnavailable") {
+        errorMessage = "The AI model is currently unavailable due to high demand. Please try again in a few moments.";
+      } else if (error.message === "Timeout") {
+        errorMessage = "The request took too long to process, so it was cancelled. Please try to rephrase your question.";
+      }
+
       setMessages((prev) => [
         ...prev,
         {
           id: "error",
           role: "assistant",
-          content: "Sorry, I encountered an error. Please try again later.",
+          content: errorMessage,
           timestamp: new Date(),
         },
       ]);

@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '../components/ui/dialog';
+import { formatVisitDate } from "../lib/utils";
 
 // Aggregate visit counts per country
 const getCountryData = () => {
@@ -275,8 +276,9 @@ const GlobePage = () => {
               <div key={index} className="border-l-4 border-blue-500 pl-4 py-2">
                 <div className="flex items-center justify-between mb-1">
                   <h4 className="font-semibold text-gray-900">{visit.region}</h4>
-                  <span className="text-sm text-gray-500">{visit.date}</span>
+                  <span className="text-sm text-gray-500">{formatVisitDate(visit.date)}</span>
                 </div>
+                <hr className="border-t border-gray-200" />
                 <p className="text-gray-600 text-sm">{visit.description}</p>
               </div>
             ))}
