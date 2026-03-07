@@ -8,8 +8,7 @@ export interface VisitedCountry {
     }[];
 }
 
-// Raw source data (kept as-is so edits remain easy). We'll normalize,
-// dedupe and sort below automatically when exporting `visitedCountries`.
+// Normalize, dedupe and sort automatically when exporting visitedCountries
 export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     { id: 'AUT', name: 'Austria', visits: [ { date: '2018-02', region: 'Wagrain', description: 'Alpine skiing and winter sports paradise' } ] },
     { id: 'CYP', name: 'Cyprus', visits: [ { date: '2014-06', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
@@ -32,7 +31,7 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     { id: 'DEU', name: 'Germany', visits: [ { date: '2015-09', region: 'Berlin', description: 'Cultural and historical monuments with my grandparents' } ] },
     { id: 'GRC', name: 'Greece', 
         visits: [ 
-            { date: '2013-07', region: 'Serifos, Paros', description: 'Charming Greek island hopping with beautiful beaches and traditional villages' },
+            { date: '2013-07', region: 'Serifos, Naxos, Sifnos', description: 'Charming Greek island hopping with beautiful beaches and traditional villages' },
             { date: '2016-09', region: 'Crete', description: 'The largest Greek island with stunning beaches and ancient ruins' }, 
             { date: '2017-09', region: 'Thassos', description: 'Beautiful Greek island with crystal-clear waters and charming villages' }, 
             { date: '2023-02', region: 'Athens, Kos, Rhodes, Simi, Nisiros', description: 'Island hopping adventure with stunning landscapes and rich history' } 
@@ -50,13 +49,13 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
             { date: '2016-07', region: 'Verona', description: 'Youth football tournament with my team' },
             { date: '2018-06', region: 'Sicily', description: 'Island paradise with Greek temples and pristine beaches' },
             { date: '2018-06', region: 'Livigno', description: 'Alpine resort town with stunning mountain views with father' },
-            { date: '2018-08', region: 'Toscana', description: 'Rolling hills, vineyards, and Renaissance art' },
             { date: '2018-08', region: 'Pisa', description: 'Iconic leaning tower and beautiful piazza' },
             { date: '2018-08', region: 'Florence', description: 'Art renaissance epicenter with stunning museums' },
             { date: '2018-09', region: 'Milano', description: 'Fashion capital and historic cathedral' },
-            { date: '2019-07', region: 'Naples, Ischia, Tropea, Amalfi Coast', description: 'Gateway to the Amalfi Coast and Pompeii' },
+            { date: '2019-07', region: 'Naples, Ischia, Tropea, Amalfi Coast', description: 'Getaway to the Amalfi Coast and Pompeii' },
             { date: '2023-10', region: 'Rome', description: 'History, food, and beautiful culture' },
-            { date: '2024-05', region: 'Rome and Santa Marinella', description: 'See football in Rome with my dad and brother and sister, and relax at the beach in Santa Marinella' },
+            { date: '2024-05', region: 'Rome and Santa Marinella', description: 'See football in Rome with my dad, brother and sister, and relax at the beach in Santa Marinella' },
+            { date: '2018-07', region: 'Toscana', description: 'Wineyards, rolling hills and charming villages' },
             { date: '2025-04', region: 'Bologna', description: 'Beautiful city with great food.' },
             { date: '2025-10', region: 'Venice', description: 'The floating city with canals and romantic bridges' }
         ]
@@ -64,11 +63,11 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     { id: 'MDV', name: 'Maldives', visits: [ { date: '2020-01', region: 'Maldives', description: 'Tropical paradise with crystal waters and resorts' } ] },
     { id: 'MLT', name: 'Malta', visits: [ { date: '2014-06', region: 'Malta', description: 'Mediterranean island with rich history and stunning coastline' } ] },
     { id: 'MYS', name: 'Malaysia', visits: [ { date: '2010-04', region: 'Kuala Lumpur', description: 'Vibrant capital with modern architecture and rich culture' } ] },
-    { id: 'MAR', name: 'Morocco', visits: [ { date: '2025-03', region: 'Marrakech', description: 'Exotic medinas, palaces, and Sahara gateway with my girlfriend' } ] },
+    { id: 'MAR', name: 'Morocco', visits: [ { date: '2025-03', region: 'Marrakech', description: 'Exotic medinas, palaces, and Sahara getaway with my girlfriend' } ] },
     { id: 'NLD', name: 'Netherlands', 
         visits: [ 
-            { date: '2016-08', region: 'Amsterdam', description: 'Canals, culture, and vibrant city life' }, 
-            { date: '2017-10', region: 'Amsterdam', description: 'Canals, culture, and vibrant city life' } 
+            { date: '2016-08', region: 'Amsterdam', description: 'Canals, culture, and vibrant city life with my mother and brother' }, 
+            { date: '2017-10', region: 'Amsterdam', description: 'Canals, culture, and vibrant city life - school trip' } 
         ] 
     },
     { id: 'PRT', name: 'Portugal', 
