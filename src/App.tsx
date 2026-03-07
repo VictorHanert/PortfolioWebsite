@@ -34,7 +34,8 @@ const App = () => {
             welcomeMessage="Ask me about Victor's projects, skills, background, or travel history and patterns."
             starterQuestions={[
               "Who is Victor?",
-              "Analyze Victor's travel data",
+              "Victor's most visited countries?",
+              "Football teams he support?",
               "What is the top skills of Victor?",
             ]}
           />

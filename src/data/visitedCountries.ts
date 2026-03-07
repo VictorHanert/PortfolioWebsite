@@ -11,7 +11,7 @@ export interface VisitedCountry {
 // Normalize, dedupe and sort automatically when exporting visitedCountries
 export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     { id: 'AUT', name: 'Austria', visits: [ { date: '2018-02', region: 'Wagrain', description: 'Alpine skiing and winter sports paradise' } ] },
-    { id: 'CYP', name: 'Cyprus', visits: [ { date: '2014-06', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
+    { id: 'CYP', name: 'Cyprus', visits: [ { date: '?', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
     {
         id: 'DNK',
         name: 'Denmark',
@@ -21,8 +21,8 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     },
     { id: 'FRA', name: 'France', 
         visits: [ 
-            { date: '2010-07', region: 'Nice', description: 'Local city house' }, 
-            { date: '2012-07', region: 'Nice', description: 'Local city house back for second time' }, 
+            { date: '?', region: 'Nice', description: 'Local city house' }, 
+            { date: '?', region: 'Nice', description: 'Local city house back for second time' }, 
             { date: '2015-10', region: 'Nice', description: 'Fall getaway - Beautiful Mediterranean coast with stunning architecture' }, 
             { date: '2016-06', region: 'Paris', description: 'The city of lights - perfect for inspiration' }, 
             { date: '2017-07', region: 'Vidauban', description: 'Family house with pool, relax and fun' } 
@@ -31,9 +31,10 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     { id: 'DEU', name: 'Germany', visits: [ { date: '2015-09', region: 'Berlin', description: 'Cultural and historical monuments with my grandparents' } ] },
     { id: 'GRC', name: 'Greece', 
         visits: [ 
-            { date: '2013-07', region: 'Serifos, Naxos, Sifnos', description: 'Charming Greek island hopping with beautiful beaches and traditional villages' },
-            { date: '2016-09', region: 'Crete', description: 'The largest Greek island with stunning beaches and ancient ruins' }, 
-            { date: '2017-09', region: 'Thassos', description: 'Beautiful Greek island with crystal-clear waters and charming villages' }, 
+            { date: '?', region: 'Crete', description: 'The largest Greek island with stunning beaches and ancient ruins' }, 
+            { date: '?', region: 'Serifos, Naxos, Sifnos', description: 'Charming Greek island hopping with beautiful beaches and traditional villages' },
+            { date: '2015-07', region: 'Thassos', description: 'Beautiful Greek island with crystal-clear waters and charming villages' }, 
+            { date: '2022-07', region: 'Sarti', description: 'Relaxing beach vacation in Greek mainland, staying at luxury camping resort with father and brother' },
             { date: '2023-02', region: 'Athens, Kos, Rhodes, Simi, Nisiros', description: 'Island hopping adventure with stunning landscapes and rich history' } 
         ] 
     },
@@ -43,24 +44,29 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     {
         id: 'ITA', name: 'Italy',
         visits: [
-            { date: '2013-10', region: 'Rome', description: 'History, food, and beautiful culture' },
-            { date: '2013-10', region: 'Orsa', description: 'Old town with the family, birthday trip' },
-            { date: '2014-07', region: 'San Michele Al Tagliamento and Venice', description: 'Relaxing beach vacation with family, and a day trip to Venice to see the canals and architecture' },
-            { date: '2016-07', region: 'Verona', description: 'Youth football tournament with my team' },
-            { date: '2018-06', region: 'Sicily', description: 'Island paradise with Greek temples and pristine beaches' },
-            { date: '2018-06', region: 'Livigno', description: 'Alpine resort town with stunning mountain views with father' },
-            { date: '2018-08', region: 'Pisa', description: 'Iconic leaning tower and beautiful piazza' },
-            { date: '2018-08', region: 'Florence', description: 'Art renaissance epicenter with stunning museums' },
-            { date: '2018-09', region: 'Milano', description: 'Fashion capital and historic cathedral' },
+            { date: '?', region: 'Orsa?', description: 'Old town with the family, birthday trip' },
+            { date: '?', region: 'Sicily', description: 'Island paradise fall-vacation' },
+            { date: '?', region: 'Pisa', description: 'City with the Leaning Tower' },
+            { date: '?', region: 'Milano', description: '' },
+            { date: '?', region: 'Sicily', description: 'Island paradise fall-vacation' },
+            { date: '?', region: 'Bari, Alberobello, Lecce', description: 'Vactation' },
+            { date: '?', region: 'Livigno', description: 'Alpine resort town ski-trip, with stunning mountain views with father' },
+            { date: '2014-04', region: 'Rome', description: 'History, food, and beautiful culture' },
+            { date: '2014-07', region: 'Capalonga Camping and Venice', description: 'Relaxing beach vacationa at the camping with family, and a day trip to Venice to see the canals and architecture' },
+            { date: '2016-10', region: 'Verona', description: 'Youth football tournament "Verona Cup" with my team' },
             { date: '2019-07', region: 'Naples, Ischia, Tropea, Amalfi Coast', description: 'Getaway to the Amalfi Coast and Pompeii' },
-            { date: '2023-10', region: 'Rome', description: 'History, food, and beautiful culture' },
+            { date: '2021-08', region: 'Rivoltella del Garda', description: 'Summer vacation to see the area where we want to buy a house with father, brother and sister.' },
+            { date: '2021-12', region: 'Rivoltella del Garda', description: 'Winter trip to see "summer-houses" to buy with my father' },
+            { date: '2022-04', region: 'Verona, Desenzano del Garda', description: 'Spring trip to see Måneskin concert in Verona, and relaxing by the lake in Desenzano del Garda' },
+            { date: '2023-01', region: 'Rome', description: 'Shopping, sightseeing and food in the Italian capital with my girlfriend' },
             { date: '2024-05', region: 'Rome and Santa Marinella', description: 'See football in Rome with my dad, brother and sister, and relax at the beach in Santa Marinella' },
-            { date: '2018-07', region: 'Toscana', description: 'Wineyards, rolling hills and charming villages' },
+            { date: '2024-07', region: 'Toscana, Florence, Pisa', description: 'Wineyards, rolling hills and charming villages. And day trips to Florence and Pisa to see the tourism cities.' },
             { date: '2025-04', region: 'Bologna', description: 'Beautiful city with great food.' },
             { date: '2025-10', region: 'Venice', description: 'The floating city with canals and romantic bridges' }
         ]
     },
-    { id: 'MDV', name: 'Maldives', visits: [ { date: '2020-01', region: 'Maldives', description: 'Tropical paradise with crystal waters and resorts' } ] },
+    { id: 'JOR', name: 'Jordan', visits: [ { date: '2019-02', region: 'Amman, Petra, Wadi Rum', description: 'Ancient wonders and desert landscapes. Seeing Petra and staying by the beach.' } ] },
+    { id: 'MDV', name: 'Maldives', visits: [ { date: '2020-01', region: 'Maldives', description: 'Tropical paradise with crystal waters and resorts. Fulidhoo, Malé, Thinadoo' } ] },
     { id: 'MLT', name: 'Malta', visits: [ { date: '2014-06', region: 'Malta', description: 'Mediterranean island with rich history and stunning coastline' } ] },
     { id: 'MYS', name: 'Malaysia', visits: [ { date: '2010-04', region: 'Kuala Lumpur', description: 'Vibrant capital with modern architecture and rich culture' } ] },
     { id: 'MAR', name: 'Morocco', visits: [ { date: '2025-03', region: 'Marrakech', description: 'Exotic medinas, palaces, and Sahara getaway with my girlfriend' } ] },
@@ -72,8 +78,9 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     },
     { id: 'PRT', name: 'Portugal', 
         visits: [ 
-            { date: '2009-04', region: 'Azores', description: 'Remote archipelago with volcanic landscapes and whale watching' }, 
-            { date: '2019-09', region: 'Lisbon', description: 'Historic tiles and colorful hillside neighborhoods' }, 
+            { date: '?', region: 'Azores', description: 'Remote archipelago with volcanic landscapes and whale watching' }, 
+            { date: '2018-10', region: 'Lisbon', description: 'Historic tiles and colorful hillside neighborhoods with mother and brother' }, 
+            { date: '2022-10', region: 'Faro', description: 'Southern Portugal with beautiful coastline, visiting on the way to Sevilla' },
             { date: '2024-01', region: 'Madeira', description: 'Tropical island with mountain trekking and coastal views' } 
         ] 
     },
@@ -83,27 +90,29 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
         visits: [ 
             { date: '2014-07', region: 'Costa Brava and Barcelona', description: 'Youth football tournament with my team, and a day trip to Barcelona to see the football match at Camp Nou' },
             { date: '2014-07', region: 'Barcelona', description: 'Amazing architecture and Mediterranean vibes' }, 
+            { date: '2014-07', region: 'Mallorca, Port de Soller', description: 'Trip to Soller with my family, enjoying the beach and local culture' },
             { date: '2015-10', region: 'Fuerteventura', description: 'Playitas sports resort and volcanic island beauty' }, 
-            { date: '2016-07', region: 'Tossa de Mar', description: 'Vacation with family' }, 
+            { date: '2016-07', region: 'Tossa de Mar, El Port de Selva', description: 'Vacation with family' }, 
             { date: '2016-11', region: 'Alicante', description: 'Costa Blanca paradise with beautiful coastline' }, 
-            { date: '2021-08', region: 'Mallorca, Port de Soller', description: 'Trip to Soller with my family, enjoying the beach and local culture' },
             { date: '2017-07', region: 'Tenerife', description: 'Canary Islands volcano and beach paradise' }, 
-            { date: '2017-08', region: 'Seville', description: 'Flamenco culture and ornate architecture' }, 
-            { date: '2019-11', region: 'Malaga', description: 'Whole family trip to celebrate birthdays, living in a villa in the mountains with a pool and amazing views' }, 
+            { date: '2018-07', region: 'Mallorca, Alcudia', description: 'Summer vacation to Alcudia, Palma and Pollenca with my family, enjoying the beach and food' },
+            { date: '2019-11', region: 'Malaga', description: 'Whole family trip to celebrate birthdays, living in a villa in the mountains, Alora, with a pool and amazing views' }, 
             { date: '2021-08', region: 'Mallorca, Magaluf', description: 'Trip to Magaluf with my friends, enjoying the beach and nightlife' }, 
+            { date: '2022-01', region: 'Gran Canaria', description: 'Island paradise in winter with mother and brother' },
             { date: '2022-07', region: 'Marbella', description: 'Luxury mansion with my friends, enjoying the beach and nightlife' }, 
+            { date: '2022-10', region: 'Seville', description: 'Seeing Champions League football (Sevilla vs Copenhagen) with my father and brother, and enjoying the city' },
             { date: '2024-07', region: 'Mallorca, Cala\'dor', description: "Staying in luxury resort at Cala d'Or with my girlfriend and her family, enjoying the beach and food" }, 
             { date: '2025-12', region: 'Villarreal and Alicante', description: 'La Liga football city with local charm. Saw them playing against FC Copenhagen in the Champions League with my dad and brother' } 
         ] 
     },
-    { id: 'LKA', name: 'Sri Lanka', visits: [ { date: '2016-03', region: 'Sri Lanka', description: 'Mountains, tea plantations, and coastal beauty' } ] },
+    { id: 'LKA', name: 'Sri Lanka', visits: [ { date: '?', region: 'Sri Lanka', description: 'Mountains, tea plantations, and coastal beauty' } ] },
     { id: 'SWE', name: 'Sweden', 
         visits: [ 
+            { date: '2008-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' }, 
+            { date: '2009-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' }, 
+            { date: '2013-06', region: 'Helsingborg', description: 'Laserdome with friends' }, 
             { date: '2014-06', region: 'Helsingborg', description: 'Laserdome with friends' }, 
-            { date: '2014-06', region: 'Helsingborg', description: 'Laserdome with friends' }, 
-            { date: '2014-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' }, 
-            { date: '2014-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' }, 
-            { date: '2014-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' }, 
+            { date: '2012-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' }, 
             { date: '2014-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' }, 
             { date: '2014-11', region: 'Båstad', description: 'Family trip with spa hotel' }, 
             { date: '2022-08', region: 'Malmø', description: 'Amazing summer visit to the Venice of the North with my girlfriend' }, 
@@ -113,14 +122,15 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     },
     { id: 'THA', name: 'Thailand', 
         visits: [ 
-            { date: '2007-01-01', region: 'Bangkok and others', description: 'First trip to Thailand, only 6 years old' }, 
-            { date: '2010-01', region: 'Krabi, Langkawi', description: 'Tropical beaches and lush landscapes' }, 
-            { date: '2014-01', region: 'Bangkok, Koh Samui, Koh Phangan, Koh Tao', description: 'Amazing food, temples, and tropical islands' }, 
+            { date: '?', region: 'Bangkok and others', description: 'First trip to Thailand, only 6 years old' }, 
+            { date: '?', region: 'Krabi, Langkawi', description: 'Tropical beaches and lush landscapes' }, 
+            { date: '?', region: 'Bangkok, Koh Samui, Koh Phangan, Koh Tao', description: 'Amazing food, temples, and tropical islands' }, 
+            { date: '2016-02', region: 'Ko Ngai, Coco Island, Phuket, Bangkok', description: 'Tropical paradise with stunning beaches and vibrant culture with the family' },
             { date: '2026-01', region: 'Bangkok, Phuket, Khao Lak', description: 'Amazing food, temples, and tropical islands' } 
         ] 
     },
     { id: 'BHS', name: 'The Bahamas', visits: [ { date: '2015-03', region: 'Nassau', description: 'Stopping with the cruiseship. Tropical paradise with crystal-clear waters and pristine beaches' } ] },
-    { id: 'TUR', name: 'Turkey', visits: [ { date: '2016-07', region: 'Alanya', description: 'Turkish resort hotel. Didn\'t like because of food poisoning...' } ] },
+    { id: 'TUR', name: 'Turkey', visits: [ { date: '?', region: 'Antalya', description: 'Turkish resort hotel. Didn\'t like because of food poisoning...' } ] },
     { id: 'ARE', name: 'United Arab Emirates', visits: [ { date: '2010-12', region: 'Dubai', description: 'Futuristic skyline and desert adventures' } ] },
     { id: 'GBR', name: 'United Kingdom', 
         visits: [ 
@@ -130,8 +140,8 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     },
     { id: 'USA', name: 'United States', 
         visits: [ 
-            { date: '2015-03', region: 'Miami and Key West', description: 'Sun, beaches, and cruise ship adventures with the whole family' }, 
-            { date: '2016-01', region: 'Puerto Rico', description: 'Caribbean charm with rainforests and beaches' } 
+            { date: '2015-02', region: 'Miami Beach and Key West', description: 'Sun, beaches, and cruise ship adventures with the whole family' }, 
+            { date: '2017-02', region: 'Puerto Rico', description: 'Caribbean charm with rainforests and beaches' } 
         ] 
     }
 ];
