@@ -18,7 +18,7 @@ export const Hero = () => {
           <div className="flipper">
             <div className="front">
               <Avatar className="w-48 h-48 border-4 border-white/20 shiny-effect">
-                <AvatarImage src="pic-of-me.png" />
+                <AvatarImage src="pic-of-me.png" alt="Victor Hanert smiling portrait" />
                 <AvatarFallback>VH</AvatarFallback>
               </Avatar>
             </div>
@@ -27,7 +27,7 @@ export const Hero = () => {
                   <span className="text-4xl font-bold text-white">VH</span>
               </div> */}
               <Avatar className="w-48 h-48 border-4 border-white/20 shiny-effect">
-                <AvatarImage src="pic-of-me-2.png" />
+                <AvatarImage src="pic-of-me-2.png" alt="Victor Hanert alternate portrait" />
                 <AvatarFallback>VH</AvatarFallback>
               </Avatar>
             </div>

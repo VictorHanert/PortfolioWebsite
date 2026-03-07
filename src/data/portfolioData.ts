@@ -7,6 +7,8 @@ export const portfolioKnowledge = {
   phone: "+45 60812114",
   footballTeam: "FC Copenhagen and Manchester City",
   favoriteFood: "Lasagna & Sushi",
+  favoriteStack: "Laravel, Vue.js, Intertia.js, MySQL, and Laravel Cloud",
+  secondFavoriteStack: "Python+FastAPI, React+TypeScript, MongoDB, and Docker+Azure",
   hobbies: ["Football", "Traveling", "Cooking", "Running", "AI & Tech", "Wine & Champagne"],
   age: 25,
   bio: `I'm a 25-year-old software developer with a passion for creating innovative software solutions. With high self-discipline and determination, I'm always ready to take on new challenges and responsibilities. I'm energetic and positive, valuing good relationships and team collaboration. I place great importance on physical well-being and maintain an active lifestyle.`,
