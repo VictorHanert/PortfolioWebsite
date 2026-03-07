@@ -125,13 +125,13 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
             { date: '?', region: 'Bangkok and others', description: 'First trip to Thailand, only 6 years old' }, 
             { date: '?', region: 'Krabi, Langkawi', description: 'Tropical beaches and lush landscapes' }, 
             { date: '?', region: 'Bangkok, Koh Samui, Koh Phangan, Koh Tao', description: 'Amazing food, temples, and tropical islands' }, 
-            { date: '2016-02', region: 'Ko Ngai, Coco Island, Phuket, Bangkok', description: 'Tropical paradise with stunning beaches and vibrant culture with the family' },
+            { date: '2016-02', region: 'Ko Ngai, Coconut Island, Phuket, Bangkok', description: 'Tropical paradise with stunning beaches and vibrant culture with the family' },
             { date: '2026-01', region: 'Bangkok, Phuket, Khao Lak', description: 'Amazing food, temples, and tropical islands' } 
         ] 
     },
     { id: 'BHS', name: 'The Bahamas', visits: [ { date: '2015-03', region: 'Nassau', description: 'Stopping with the cruiseship. Tropical paradise with crystal-clear waters and pristine beaches' } ] },
     { id: 'TUR', name: 'Turkey', visits: [ { date: '?', region: 'Antalya', description: 'Turkish resort hotel. Didn\'t like because of food poisoning...' } ] },
-    { id: 'ARE', name: 'United Arab Emirates', visits: [ { date: '2010-12', region: 'Dubai', description: 'Futuristic skyline and desert adventures' } ] },
+    { id: 'ARE', name: 'United Arab Emirates', visits: [ { date: '?', region: 'Dubai', description: 'Futuristic skyline and desert adventures' } ] },
     { id: 'GBR', name: 'United Kingdom', 
         visits: [ 
             { date: '2017-01', region: 'London', description: 'Historic capital with iconic landmarks and museums' }, 
