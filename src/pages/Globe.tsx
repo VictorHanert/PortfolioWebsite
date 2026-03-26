@@ -274,13 +274,13 @@ const GlobePage = () => {
             Travel Stats
           </button>
         </DrawerTrigger>
-        <DrawerContent className="border-slate-200 bg-white/95 backdrop-blur">
+        <DrawerContent className="border-slate-200 bg-white/95 backdrop-blur after:content-none">
           <DrawerTrigger asChild>
             <button className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-white shadow cursor-pointer">
               <ChevronDown size={18} />
             </button>
           </DrawerTrigger>
-          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 pb-4">
+          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 pb-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-xl font-semibold text-slate-900">Quick Travel Stats</h2>
@@ -294,26 +294,26 @@ const GlobePage = () => {
               </Link>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="grid grid-cols-4 gap-2">
+              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-slate-500">Countries</p>
-                <p className="mt-2 text-2xl font-semibold text-slate-900">{stats.totalCountries}</p>
+                <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalCountries}</p>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                <p className="text-xs uppercase tracking-wide text-slate-500">Trips logged</p>
-                <p className="mt-2 text-2xl font-semibold text-slate-900">{stats.totalVisits}</p>
+              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
+                <p className="text-xs uppercase tracking-wide text-slate-500">Trips</p>
+                <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalVisits}</p>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-slate-500">Regions</p>
-                <p className="mt-2 text-2xl font-semibold text-slate-900">{stats.totalRegions}</p>
+                <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalRegions}</p>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-slate-500">Continents</p>
-                <p className="mt-2 text-2xl font-semibold text-slate-900">{stats.totalContinents}</p>
+                <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalContinents}</p>
               </div>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
+            <div className="grid gap-6">
               <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                 <div className="mb-3">
                   <h3 className="text-base font-semibold text-slate-900">Visits by Year</h3>
@@ -335,7 +335,7 @@ const GlobePage = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hidden sm:block">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h3 className="text-base font-semibold text-slate-900">Coverage</h3>
@@ -359,7 +359,7 @@ const GlobePage = () => {
                       />
                     </div>
                     <p className="mt-2 text-xs text-slate-500">
-                      {continent.visited}/{continent.total} countries
+                      {continent.visited}/{continent.total} {continent.visited === 1 ? 'country' : 'countries'} visited
                     </p>
                   </div>
                 ))}

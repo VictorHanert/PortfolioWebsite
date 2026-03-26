@@ -26,22 +26,22 @@ const StatsPage = () => {
       </div>
 
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10">
-        <section className="grid gap-4 md:grid-cols-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm text-slate-500">Countries visited</p>
-            <p className="mt-2 text-3xl font-semibold text-slate-900">{stats.totalCountries}</p>
+        <section className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4">
+          <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-5 shadow-sm">
+            <p className="text-xs sm:text-sm text-slate-500">Countries visited</p>
+            <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-semibold text-slate-900">{stats.totalCountries}</p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm text-slate-500">Total trips logged</p>
-            <p className="mt-2 text-3xl font-semibold text-slate-900">{stats.totalVisits}</p>
+          <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-5 shadow-sm">
+            <p className="text-xs sm:text-sm text-slate-500">Total trips logged</p>
+            <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-semibold text-slate-900">{stats.totalVisits}</p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm text-slate-500">Regions/Cities explored</p>
-            <p className="mt-2 text-3xl font-semibold text-slate-900">{stats.totalRegions}</p>
+          <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-5 shadow-sm">
+            <p className="text-xs sm:text-sm text-slate-500">Regions/Cities explored</p>
+            <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-semibold text-slate-900">{stats.totalRegions}</p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm text-slate-500">Continents covered</p>
-            <p className="mt-2 text-3xl font-semibold text-slate-900">{stats.totalContinents}</p>
+          <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-5 shadow-sm">
+            <p className="text-xs sm:text-sm text-slate-500">Continents covered</p>
+            <p className="mt-1 sm:mt-2 text-2xl sm:text-3xl font-semibold text-slate-900">{stats.totalContinents}</p>
           </div>
         </section>
 
