@@ -44,7 +44,7 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     {
         id: 'ITA', name: 'Italy',
         visits: [
-            { date: '?', region: 'Orsa?', description: 'Old town with the family, birthday trip' },
+            { date: '?', region: 'Orsa', description: 'Old town with the family, birthday trip' },
             { date: '?', region: 'Sicily', description: 'Island paradise fall-vacation' },
             { date: '?', region: 'Pisa', description: 'City with the Leaning Tower' },
             { date: '?', region: 'Milano', description: '' },
@@ -52,14 +52,14 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
             { date: '?', region: 'Bari, Alberobello, Lecce', description: 'Vactation' },
             { date: '?', region: 'Livigno', description: 'Alpine resort town ski-trip, with stunning mountain views with father' },
             { date: '2014-04', region: 'Rome', description: 'History, food, and beautiful culture' },
-            { date: '2014-07', region: 'Capalonga Camping and Venice', description: 'Relaxing beach vacationa at the camping with family, and a day trip to Venice to see the canals and architecture' },
+            { date: '2014-07', region: 'Capalonga Camping, Venice', description: 'Relaxing beach vacationa at the camping with family, and a day trip to Venice to see the canals and architecture' },
             { date: '2016-10', region: 'Verona', description: 'Youth football tournament "Verona Cup" with my team' },
             { date: '2019-07', region: 'Naples, Ischia, Tropea, Amalfi Coast', description: 'Getaway to the Amalfi Coast and Pompeii' },
             { date: '2021-08', region: 'Rivoltella del Garda', description: 'Summer vacation to see the area where we want to buy a house with father, brother and sister.' },
             { date: '2021-12', region: 'Rivoltella del Garda', description: 'Winter trip to see "summer-houses" to buy with my father' },
-            { date: '2022-04', region: 'Verona, Desenzano del Garda', description: 'Spring trip to see Måneskin concert in Verona, and relaxing by the lake in Desenzano del Garda' },
+            { date: '2022-04', region: 'Verona, Rivoltella del Garda', description: 'Spring trip to see Måneskin concert in Verona, and relaxing by the lake in Desenzano del Garda' },
             { date: '2023-01', region: 'Rome', description: 'Shopping, sightseeing and food in the Italian capital with my girlfriend' },
-            { date: '2024-05', region: 'Rome and Santa Marinella', description: 'See football in Rome with my dad, brother and sister, and relax at the beach in Santa Marinella' },
+            { date: '2024-05', region: 'Rome, Santa Marinella', description: 'See football in Rome with my dad, brother and sister, and relax at the beach in Santa Marinella' },
             { date: '2024-07', region: 'Toscana, Florence, Pisa', description: 'Wineyards, rolling hills and charming villages. And day trips to Florence and Pisa to see the tourism cities.' },
             { date: '2025-04', region: 'Bologna', description: 'Beautiful city with great food.' },
             { date: '2025-10', region: 'Venice', description: 'The floating city with canals and romantic bridges' }
@@ -88,7 +88,7 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     { id: 'SGP', name: 'Singapore', visits: [ { date: '2010-11', region: 'Singapore', description: 'Modern city-state with diverse cultures' } ] },
     { id: 'ESP', name: 'Spain', 
         visits: [ 
-            { date: '2014-07', region: 'Costa Brava and Barcelona', description: 'Youth football tournament with my team, and a day trip to Barcelona to see the football match at Camp Nou' },
+            { date: '2014-07', region: 'Costa Brava, Barcelona', description: 'Youth football tournament with my team, and a day trip to Barcelona to see the football match at Camp Nou' },
             { date: '2014-07', region: 'Barcelona', description: 'Amazing architecture and Mediterranean vibes' }, 
             { date: '2014-07', region: 'Mallorca, Port de Soller', description: 'Trip to Soller with my family, enjoying the beach and local culture' },
             { date: '2015-10', region: 'Fuerteventura', description: 'Playitas sports resort and volcanic island beauty' }, 
@@ -102,7 +102,7 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
             { date: '2022-07', region: 'Marbella', description: 'Luxury mansion with my friends, enjoying the beach and nightlife' }, 
             { date: '2022-10', region: 'Seville', description: 'Seeing Champions League football (Sevilla vs Copenhagen) with my father and brother, and enjoying the city' },
             { date: '2024-07', region: 'Mallorca, Cala\'dor', description: "Staying in luxury resort at Cala d'Or with my girlfriend and her family, enjoying the beach and food" }, 
-            { date: '2025-12', region: 'Villarreal and Alicante', description: 'La Liga football city with local charm. Saw them playing against FC Copenhagen in the Champions League with my dad and brother' } 
+            { date: '2025-12', region: 'Villarreal, Alicante', description: 'La Liga football city with local charm. Saw them playing against FC Copenhagen in the Champions League with my dad and brother' } 
         ] 
     },
     { id: 'LKA', name: 'Sri Lanka', visits: [ { date: '?', region: 'Sri Lanka', description: 'Mountains, tea plantations, and coastal beauty' } ] },
@@ -122,7 +122,7 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     },
     { id: 'THA', name: 'Thailand', 
         visits: [ 
-            { date: '?', region: 'Bangkok and others', description: 'First trip to Thailand, only 6 years old' }, 
+            { date: '?', region: 'Bangkok, others', description: 'First trip to Thailand, only 6 years old' }, 
             { date: '?', region: 'Krabi, Langkawi', description: 'Tropical beaches and lush landscapes' }, 
             { date: '?', region: 'Bangkok, Koh Samui, Koh Phangan, Koh Tao', description: 'Amazing food, temples, and tropical islands' }, 
             { date: '2016-02', region: 'Ko Ngai, Coconut Island, Phuket, Bangkok', description: 'Tropical paradise with stunning beaches and vibrant culture with the family' },
@@ -140,7 +140,7 @@ export const RAW_VISITED_COUNTRIES: VisitedCountry[] = [
     },
     { id: 'USA', name: 'United States', 
         visits: [ 
-            { date: '2015-02', region: 'Miami Beach and Key West', description: 'Sun, beaches, and cruise ship adventures with the whole family' }, 
+            { date: '2015-02', region: 'Miami Beach, Key West', description: 'Sun, beaches, and cruise ship adventures with the whole family' }, 
             { date: '2017-02', region: 'Puerto Rico', description: 'Caribbean charm with rainforests and beaches' } 
         ] 
     }

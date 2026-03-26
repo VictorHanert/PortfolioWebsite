@@ -1,0 +1,215 @@
+import { visitedCountries } from "./visitedCountries";
+
+export type VisitPoint = {
+  countryId: string;
+  country: string;
+  region: string;
+  date: string;
+};
+
+export type YearVisits = { year: string; visits: number };
+export type CountryVisits = { country: string; visits: number };
+export type ContinentVisits = { continent: string; visits: number; countries: number };
+export type RegionVisits = { region: string; visits: number };
+export type RecentVisit = { country: string; region: string; date: string };
+export type ContinentCoverage = { continent: string; visited: number; total: number; percent: number };
+export type WorldCoverage = { visited: number; total: number; percent: number };
+
+const countryToContinent: Record<string, string> = {
+  AUT: "Europe",
+  CYP: "Europe",
+  DNK: "Europe",
+  FRA: "Europe",
+  DEU: "Europe",
+  GRC: "Europe",
+  HUN: "Europe",
+  ISL: "Europe",
+  ITA: "Europe",
+  MLT: "Europe",
+  NLD: "Europe",
+  PRT: "Europe",
+  SRB: "Europe",
+  ESP: "Europe",
+  SWE: "Europe",
+  TUR: "Europe",
+  GBR: "Europe",
+  BHS: "North America",
+  USA: "North America",
+  MAR: "Africa",
+  ARE: "Asia",
+  IDN: "Asia",
+  JOR: "Asia",
+  LKA: "Asia",
+  MDV: "Asia",
+  MYS: "Asia",
+  SGP: "Asia",
+  THA: "Asia"
+};
+
+const continentTotals: Record<string, number> = {
+  "Africa": 54,
+  "Asia": 49,
+  "Europe": 44,
+  "North America": 23,
+  "South America": 12,
+  "Oceania": 14
+};
+
+const worldTotalCountries = 195;
+
+const allVisits: VisitPoint[] = visitedCountries.flatMap((country) =>
+  country.visits.map((visit) => ({
+    countryId: country.id,
+    country: country.name,
+    region: visit.region,
+    date: visit.date
+  }))
+);
+
+const splitRegions = (region: string): string[] => {
+  return region
+    .split(",")
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+};
+
+const getYearFromDate = (dateStr: string): number | null => {
+  const match = /^\d{4}/.exec(dateStr);
+  if (!match) return null;
+  return Number(match[0]);
+};
+
+const parseDateToNumber = (dateStr: string): number | null => {
+  const year = getYearFromDate(dateStr);
+  if (year === null) return null;
+  const parts = dateStr.split("-").map((p) => Number(p));
+  const month = parts[1] ? parts[1] - 1 : 0;
+  const day = parts[2] || 1;
+  return new Date(year, month, day).getTime();
+};
+
+const toSortedArray = <T>(map: Map<string, number>, key: "country" | "region" | "continent"): T[] => {
+  return Array.from(map.entries())
+    .map(([label, visits]) => ({ [key]: label, visits }) as T)
+    .sort((a: any, b: any) => b.visits - a.visits);
+};
+
+export const travelStats = (() => {
+  const totalCountries = visitedCountries.length;
+  const totalVisits = allVisits.length;
+
+  const regions = new Set(allVisits.flatMap((visit) => splitRegions(visit.region)));
+  const totalRegions = regions.size;
+
+  const continentCounts = new Map<string, number>();
+  const continentCountryCounts = new Map<string, number>();
+  const visitedCountriesByContinent = new Map<string, number>();
+
+  visitedCountries.forEach((country) => {
+    const continent = countryToContinent[country.id] ?? "Unknown";
+    continentCountryCounts.set(
+      continent,
+      (continentCountryCounts.get(continent) || 0) + 1
+    );
+
+    continentCounts.set(
+      continent,
+      (continentCounts.get(continent) || 0) + country.visits.length
+    );
+
+    visitedCountriesByContinent.set(
+      continent,
+      (visitedCountriesByContinent.get(continent) || 0) + 1
+    );
+  });
+
+  const totalContinents = continentCountryCounts.size;
+
+  const visitsByYear = new Map<string, number>();
+  allVisits.forEach((visit) => {
+    const year = getYearFromDate(visit.date);
+    if (!year) return;
+    const key = String(year);
+    visitsByYear.set(key, (visitsByYear.get(key) || 0) + 1);
+  });
+
+  const visitsByCountry = new Map<string, number>();
+  visitedCountries.forEach((country) => {
+    visitsByCountry.set(country.name, country.visits.length);
+  });
+
+  const visitsByRegion = new Map<string, number>();
+  allVisits.forEach((visit) => {
+    splitRegions(visit.region).forEach((region) => {
+      visitsByRegion.set(region, (visitsByRegion.get(region) || 0) + 1);
+    });
+  });
+
+  const sortedVisitsByYear: YearVisits[] = Array.from(visitsByYear.entries())
+    .map(([year, visits]) => ({ year, visits }))
+    .sort((a, b) => Number(a.year) - Number(b.year));
+
+  const sortedVisitsByCountry = toSortedArray<CountryVisits>(visitsByCountry, "country");
+  const sortedVisitsByRegion = toSortedArray<RegionVisits>(visitsByRegion, "region");
+
+  const visitsByContinent: ContinentVisits[] = Array.from(continentCounts.entries())
+    .map(([continent, visits]) => ({
+      continent,
+      visits,
+      countries: continentCountryCounts.get(continent) || 0
+    }))
+    .sort((a, b) => b.visits - a.visits);
+
+  const continentCoverage: ContinentCoverage[] = Object.entries(continentTotals)
+    .map(([continent, total]) => {
+      const visited = visitedCountriesByContinent.get(continent) || 0;
+      const percent = total > 0 ? Math.round((visited / total) * 100) : 0;
+      return {
+        continent,
+        visited,
+        total,
+        percent
+      };
+    })
+    .sort((a, b) => b.percent - a.percent);
+
+  const worldCoverage: WorldCoverage = {
+    visited: totalCountries,
+    total: worldTotalCountries,
+    percent: Math.round((totalCountries / worldTotalCountries) * 100)
+  };
+
+  const mostVisitedCountry = sortedVisitsByCountry[0];
+  const mostVisitedRegion = sortedVisitsByRegion[0];
+  const mostVisitedYear = sortedVisitsByYear.slice().sort((a, b) => b.visits - a.visits)[0];
+
+  const recentVisits: RecentVisit[] = allVisits
+    .map((visit) => ({
+      country: visit.country,
+      region: visit.region,
+      date: visit.date,
+      order: parseDateToNumber(visit.date)
+    }))
+    .filter((visit) => visit.order !== null)
+    .sort((a, b) => (b.order || 0) - (a.order || 0))
+    .slice(0, 10)
+    .map(({ country, region, date }) => ({ country, region, date }));
+
+  return {
+    totalCountries,
+    totalVisits,
+    totalRegions,
+    totalContinents,
+    visitsByYear: sortedVisitsByYear,
+    visitsByCountry: sortedVisitsByCountry,
+    visitsByContinent,
+    worldCoverage,
+    continentCoverage,
+    topRegions: sortedVisitsByRegion.slice(0, 12),
+    topCountries: sortedVisitsByCountry.slice(0, 10),
+    mostVisitedCountry,
+    mostVisitedRegion,
+    mostVisitedYear,
+    recentVisits
+  };
+})();

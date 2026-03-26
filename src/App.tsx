@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChatBot, ChatBotButton } from "@/components/ChatBot";
 import Index from "./pages/Index";
 import GlobePage from "./pages/Globe";
+import TravelStatsPage from "./pages/TravelStats";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -24,6 +25,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/globe" element={<GlobePage />} />
+            <Route path="/stats" element={<TravelStatsPage />} />
           </Routes>
 
           <ChatBotButton onClick={() => setIsChatOpen(true)} />
