@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maptilersdk from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 import { visitedCountries } from '../data/visitedCountries';
 import { alpha3ToNumeric } from '../data/countryCodeMapping';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../components/ui/dialog';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -62,8 +62,8 @@ const getAlpha3FromFeature = (feature: maptilersdk.GeoJSONFeature): string | und
 const GlobePage = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maptilersdk.Map | null>(null);
-  const navigate = useNavigate();
   const stats = travelStats;
+  const countryData = useMemo(() => getCountryData(), []);
   const [selectedCountry, setSelectedCountry] = useState<{
     name: string;
     flag: string;
@@ -137,8 +137,6 @@ const GlobePage = () => {
           filter: ['all', ['==', 'level', 0]],
         });
 
-        const countryData = getCountryData();
-
         countries.forEach(country => {
           if (country.id) {
             const alpha3Code = getAlpha3FromFeature(country);
@@ -175,7 +173,6 @@ const GlobePage = () => {
           const alpha3Code = getAlpha3FromFeature(feature);
 
           if (alpha3Code) {
-            const countryData = getCountryData();
             const data = countryData.get(alpha3Code);
 
             if (data) {

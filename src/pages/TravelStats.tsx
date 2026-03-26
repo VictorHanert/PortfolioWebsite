@@ -133,7 +133,7 @@ const StatsPage = () => {
               <div className="rounded-xl bg-slate-50 px-3 py-1">
                 <p className="text-slate-500">Slowest year</p>
                 <p className="mt-1 text-base font-semibold text-slate-900">
-                  {stats.visitsByYear[0]?.year} ({stats.visitsByYear[0]?.visits})
+                  {stats.leastVisitedYear?.year} ({stats.leastVisitedYear?.visits})
                 </p>
               </div>
             </div>

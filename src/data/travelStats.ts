@@ -150,6 +150,7 @@ export const travelStats = (() => {
   const mostVisitedCountry = sortedVisitsByCountry[0];
   const mostVisitedRegion = sortedVisitsByRegion[0];
   const mostVisitedYear = sortedVisitsByYear.slice().sort((a, b) => b.visits - a.visits)[0];
+  const leastVisitedYear = sortedVisitsByYear.slice().sort((a, b) => a.visits - b.visits)[0];
 
   const recentVisits: RecentVisit[] = allVisits
     .map((visit) => ({
@@ -179,6 +180,7 @@ export const travelStats = (() => {
     mostVisitedCountry,
     mostVisitedRegion,
     mostVisitedYear,
+    leastVisitedYear,
     recentVisits
   };
 })();
