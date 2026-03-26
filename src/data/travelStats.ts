@@ -1,4 +1,9 @@
-import { visitedCountries } from "./visitedCountries";
+import {
+  CONTINENT_TOTALS,
+  WORLD_TOTAL_COUNTRIES,
+  getContinentForCountryId,
+  visitedCountries
+} from "./visitedCountries";
 
 export type VisitPoint = {
   countryId: string;
@@ -14,48 +19,6 @@ export type RegionVisits = { region: string; visits: number };
 export type RecentVisit = { country: string; region: string; date: string };
 export type ContinentCoverage = { continent: string; visited: number; total: number; percent: number };
 export type WorldCoverage = { visited: number; total: number; percent: number };
-
-const countryToContinent: Record<string, string> = {
-  AUT: "Europe",
-  CYP: "Europe",
-  DNK: "Europe",
-  FRA: "Europe",
-  DEU: "Europe",
-  GRC: "Europe",
-  HUN: "Europe",
-  ISL: "Europe",
-  ITA: "Europe",
-  MLT: "Europe",
-  NLD: "Europe",
-  PRT: "Europe",
-  SRB: "Europe",
-  ESP: "Europe",
-  SWE: "Europe",
-  TUR: "Europe",
-  GBR: "Europe",
-  BHS: "North America",
-  USA: "North America",
-  MAR: "Africa",
-  ARE: "Asia",
-  IDN: "Asia",
-  JOR: "Asia",
-  LKA: "Asia",
-  MDV: "Asia",
-  MYS: "Asia",
-  SGP: "Asia",
-  THA: "Asia"
-};
-
-const continentTotals: Record<string, number> = {
-  "Africa": 54,
-  "Asia": 49,
-  "Europe": 44,
-  "North America": 23,
-  "South America": 12,
-  "Oceania": 14
-};
-
-const worldTotalCountries = 195;
 
 const allVisits: VisitPoint[] = visitedCountries.flatMap((country) =>
   country.visits.map((visit) => ({
@@ -106,7 +69,7 @@ export const travelStats = (() => {
   const visitedCountriesByContinent = new Map<string, number>();
 
   visitedCountries.forEach((country) => {
-    const continent = countryToContinent[country.id] ?? "Unknown";
+    const continent = getContinentForCountryId(country.id) ?? "Unknown";
     continentCountryCounts.set(
       continent,
       (continentCountryCounts.get(continent) || 0) + 1
@@ -160,7 +123,7 @@ export const travelStats = (() => {
     }))
     .sort((a, b) => b.visits - a.visits);
 
-  const continentCoverage: ContinentCoverage[] = Object.entries(continentTotals)
+  const continentCoverage: ContinentCoverage[] = Object.entries(CONTINENT_TOTALS)
     .map(([continent, total]) => {
       const visited = visitedCountriesByContinent.get(continent) || 0;
       const percent = total > 0 ? Math.round((visited / total) * 100) : 0;
@@ -175,8 +138,8 @@ export const travelStats = (() => {
 
   const worldCoverage: WorldCoverage = {
     visited: totalCountries,
-    total: worldTotalCountries,
-    percent: Math.round((totalCountries / worldTotalCountries) * 100)
+    total: WORLD_TOTAL_COUNTRIES,
+    percent: Math.round((totalCountries / WORLD_TOTAL_COUNTRIES) * 100)
   };
 
   const mostVisitedCountry = sortedVisitsByCountry[0];
