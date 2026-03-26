@@ -39,8 +39,27 @@ const numericToAlpha3 = new Map<string, string>(
   Object.entries(alpha3ToNumeric).map(([alpha3, numeric]) => [String(Number(numeric)), alpha3])
 );
 
-const getAlpha3FromFeatureId = (featureId: string | number): string | undefined => {
-  return numericToAlpha3.get(String(Number(featureId)));
+const getAlpha3FromFeature = (feature: maptilersdk.MapGeoJSONFeature): string | undefined => {
+  const props = (feature.properties ?? {}) as Record<string, unknown>;
+  const alpha3Candidates = [
+    props.iso_a3,
+    props.iso3,
+    props.adm0_a3,
+    props.iso_a3_eh
+  ];
+
+  for (const candidate of alpha3Candidates) {
+    if (typeof candidate === 'string' && candidate.length === 3) {
+      return candidate;
+    }
+  }
+
+  const numericCandidate = props.iso_n3 ?? feature.id;
+  if (numericCandidate !== undefined && numericCandidate !== null) {
+    return numericToAlpha3.get(String(Number(numericCandidate)));
+  }
+
+  return undefined;
 };
 const GlobePage = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -122,7 +141,7 @@ const GlobePage = () => {
 
         countries.forEach(country => {
           if (country.id) {
-            const alpha3Code = getAlpha3FromFeatureId(country.id);
+            const alpha3Code = getAlpha3FromFeature(country);
 
             if (alpha3Code && countryData.has(alpha3Code)) {
               const data = countryData.get(alpha3Code)!;
@@ -139,29 +158,21 @@ const GlobePage = () => {
             }
           }
         });
-
-        if (countries.length !== 0) {
-          map.off('data', afterLoad);
-        }
       }
 
-      // Function to validate that the countries dataset is loaded
+      // Keep states updated as new tiles load (important for small countries like Malta).
       function afterLoad() {
         if (map.getSource('countriesData') && map.isSourceLoaded('countriesData')) {
           setCountryStates();
         }
       }
 
-      // Listen for data events to set states once loaded
-      map.on('data', afterLoad);
+      map.on('sourcedata', afterLoad);
 
-      // Click handler to show country details
       map.on('click', 'countries', function (e) {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
-          const countryId = feature.id;
-
-          const alpha3Code = countryId ? getAlpha3FromFeatureId(countryId) : undefined;
+          const alpha3Code = getAlpha3FromFeature(feature);
 
           if (alpha3Code) {
             const countryData = getCountryData();
