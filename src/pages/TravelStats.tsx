@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, BarChart3, Compass, Crown, Globe2, History, MapPin, Sparkles, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { travelStats } from "../data/travelStats";
@@ -20,7 +20,10 @@ const StatsPage = () => {
             <ArrowLeft size={20} />
             <span className="font-medium">Back to Globe</span>
           </Link>
-          <h1 className="text-2xl font-bold text-slate-900">Travel Stats</h1>
+          <h1 className="flex items-center gap-2 text-2xl font-bold text-slate-900">
+            <MapPin size={22} className="text-slate-700" />
+            Travel Stats
+          </h1>
           <div className="w-24" />
         </div>
       </div>
@@ -48,7 +51,10 @@ const StatsPage = () => {
         <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h2 className="text-lg font-semibold text-slate-900">World Coverage</h2>
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+                <Globe2 size={18} className="text-slate-600" />
+                World Coverage
+              </h2>
               <p className="text-sm text-slate-500">Visited countries compared to global totals.</p>
             </div>
             <div className="text-sm font-medium text-slate-900">
@@ -81,7 +87,10 @@ const StatsPage = () => {
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-semibold text-slate-900">Visits by Year</h2>
+                <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+                  <BarChart3 size={18} className="text-slate-600" />
+                  Visits by Year
+                </h2>
                 <p className="text-sm text-slate-500">How travel frequency changed over time.</p>
               </div>
             </div>
@@ -98,24 +107,33 @@ const StatsPage = () => {
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-900">Highlights</h2>
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <Sparkles size={18} className="text-slate-600" />
+              Highlights
+            </h2>
             <div className="mt-4 space-y-3 text-sm text-slate-600">
-              <div className="rounded-xl bg-slate-50 p-3">
+              <div className="rounded-xl bg-slate-50 px-3 py-1">
                 <p className="text-slate-500">Most visited country</p>
                 <p className="mt-1 text-base font-semibold text-slate-900">
-                  {stats.mostVisitedCountry?.country} ({stats.mostVisitedCountry?.visits})
+                  {stats.mostVisitedCountry?.flag} {stats.mostVisitedCountry?.country} ({stats.mostVisitedCountry?.visits})
                 </p>
               </div>
-              <div className="rounded-xl bg-slate-50 p-3">
+              <div className="rounded-xl bg-slate-50 px-3 py-1">
                 <p className="text-slate-500">Most repeated region</p>
                 <p className="mt-1 text-base font-semibold text-slate-900">
                   {stats.mostVisitedRegion?.region} ({stats.mostVisitedRegion?.visits})
                 </p>
               </div>
-              <div className="rounded-xl bg-slate-50 p-3">
+              <div className="rounded-xl bg-slate-50 px-3 py-1">
                 <p className="text-slate-500">Busiest year</p>
                 <p className="mt-1 text-base font-semibold text-slate-900">
                   {stats.mostVisitedYear?.year} ({stats.mostVisitedYear?.visits})
+                </p>
+              </div>
+              <div className="rounded-xl bg-slate-50 px-3 py-1">
+                <p className="text-slate-500">Slowest year</p>
+                <p className="mt-1 text-base font-semibold text-slate-900">
+                  {stats.visitsByYear[0]?.year} ({stats.visitsByYear[0]?.visits})
                 </p>
               </div>
             </div>
@@ -124,7 +142,10 @@ const StatsPage = () => {
 
         <section className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-900">Visits by Continent</h2>
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <Compass size={18} className="text-slate-600" />
+              Visits by Continent
+            </h2>
             <p className="text-sm text-slate-500">Trips distributed across continents.</p>
             <div className="mt-4 h-64">
               <ResponsiveContainer width="100%" height="100%">
@@ -158,20 +179,24 @@ const StatsPage = () => {
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-900">Top Countries</h2>
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <Star size={18} className="text-slate-600" />
+              Top Countries
+            </h2>
             <p className="text-sm text-slate-500">Where you return most often.</p>
             <div className="mt-4 h-72">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={stats.topCountries} layout="vertical" margin={{ left: 10, right: 10, top: 2, bottom: 2 }}>
                   <XAxis type="number" allowDecimals={false} hide />
                   <YAxis
-                    dataKey="country"
+                    dataKey="label"
                     type="category"
                     width={140}
                     axisLine={false}
                     tickLine={false}
                     interval={0}
                     tick={{ fontSize: 12 }}
+                    tickFormatter={(value) => String(value).replace(/ /g, "\u00A0")}
                   />
                   <Tooltip cursor={{ fill: "rgba(15, 23, 42, 0.08)" }} contentStyle={{ borderRadius: 12, borderColor: "#e2e8f0" }} />
                   <Bar dataKey="visits" fill="#0f172a" radius={[0, 8, 8, 0]} barSize={24} />
@@ -183,7 +208,10 @@ const StatsPage = () => {
 
         <section className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-900">Top Regions/Cities</h2>
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <Crown size={18} className="text-slate-600" />
+              Top Regions/Cities
+            </h2>
             <p className="text-sm text-slate-500">Most repeated cities or areas.</p>
             <div className="mt-4 space-y-3">
               {stats.topRegions.map((region, index) => (
@@ -196,7 +224,10 @@ const StatsPage = () => {
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-900">Recent Trips</h2>
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+              <History size={18} className="text-slate-600" />
+              Recent Trips
+            </h2>
             <p className="text-sm text-slate-500">Latest logged visits.</p>
             <div className="mt-4 space-y-3">
               {stats.recentVisits.map((visit, index) => (
@@ -205,7 +236,9 @@ const StatsPage = () => {
                     <span className="text-sm font-semibold text-slate-900">{visit.region}</span>
                     <span className="text-xs text-slate-500">{formatVisitDate(visit.date)}</span>
                   </div>
-                  <p className="text-xs text-slate-500">{visit.country}</p>
+                  <p className="text-xs text-slate-500">
+                    {visit.flag} {visit.country}
+                  </p>
                 </div>
               ))}
             </div>

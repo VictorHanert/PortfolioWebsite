@@ -8,15 +8,16 @@ import {
 export type VisitPoint = {
   countryId: string;
   country: string;
+  flag: string;
   region: string;
   date: string;
 };
 
 export type YearVisits = { year: string; visits: number };
-export type CountryVisits = { country: string; visits: number };
+export type CountryVisits = { country: string; flag: string; label: string; visits: number };
 export type ContinentVisits = { continent: string; visits: number; countries: number };
 export type RegionVisits = { region: string; visits: number };
-export type RecentVisit = { country: string; region: string; date: string };
+export type RecentVisit = { country: string; flag: string; region: string; date: string };
 export type ContinentCoverage = { continent: string; visited: number; total: number; percent: number };
 export type WorldCoverage = { visited: number; total: number; percent: number };
 
@@ -24,6 +25,7 @@ const allVisits: VisitPoint[] = visitedCountries.flatMap((country) =>
   country.visits.map((visit) => ({
     countryId: country.id,
     country: country.name,
+    flag: country.flag,
     region: visit.region,
     date: visit.date
   }))
@@ -96,10 +98,14 @@ export const travelStats = (() => {
     visitsByYear.set(key, (visitsByYear.get(key) || 0) + 1);
   });
 
-  const visitsByCountry = new Map<string, number>();
-  visitedCountries.forEach((country) => {
-    visitsByCountry.set(country.name, country.visits.length);
-  });
+  const sortedVisitsByCountry: CountryVisits[] = visitedCountries
+    .map((country) => ({
+      country: country.name,
+      flag: country.flag,
+      label: `${country.flag} ${country.name}`,
+      visits: country.visits.length
+    }))
+    .sort((a, b) => b.visits - a.visits);
 
   const visitsByRegion = new Map<string, number>();
   allVisits.forEach((visit) => {
@@ -112,7 +118,6 @@ export const travelStats = (() => {
     .map(([year, visits]) => ({ year, visits }))
     .sort((a, b) => Number(a.year) - Number(b.year));
 
-  const sortedVisitsByCountry = toSortedArray<CountryVisits>(visitsByCountry, "country");
   const sortedVisitsByRegion = toSortedArray<RegionVisits>(visitsByRegion, "region");
 
   const visitsByContinent: ContinentVisits[] = Array.from(continentCounts.entries())
@@ -149,6 +154,7 @@ export const travelStats = (() => {
   const recentVisits: RecentVisit[] = allVisits
     .map((visit) => ({
       country: visit.country,
+      flag: visit.flag,
       region: visit.region,
       date: visit.date,
       order: parseDateToNumber(visit.date)
@@ -156,7 +162,7 @@ export const travelStats = (() => {
     .filter((visit) => visit.order !== null)
     .sort((a, b) => (b.order || 0) - (a.order || 0))
     .slice(0, 10)
-    .map(({ country, region, date }) => ({ country, region, date }));
+    .map(({ country, flag, region, date }) => ({ country, flag, region, date }));
 
   return {
     totalCountries,

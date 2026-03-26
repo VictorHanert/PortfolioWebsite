@@ -13,7 +13,7 @@ import { travelStats } from '../data/travelStats';
 
 // Aggregate visit counts per country
 const getCountryData = () => {
-  const countryMap = new Map<string, { name: string; visits: typeof visitedCountries[0]['visits']; count: number }>();
+  const countryMap = new Map<string, { name: string; flag: string; visits: typeof visitedCountries[0]['visits']; count: number }>();
 
   visitedCountries.forEach(country => {
     const existing = countryMap.get(country.id);
@@ -23,6 +23,7 @@ const getCountryData = () => {
     } else {
       countryMap.set(country.id, {
         name: country.name,
+        flag: country.flag,
         visits: [...country.visits],
         count: country.visits.length
       });
@@ -65,6 +66,7 @@ const GlobePage = () => {
   const stats = travelStats;
   const [selectedCountry, setSelectedCountry] = useState<{
     name: string;
+    flag: string;
     visits: typeof visitedCountries[0]['visits'];
   } | null>(null);
 
@@ -179,6 +181,7 @@ const GlobePage = () => {
             if (data) {
               setSelectedCountry({
                 name: data.name,
+                flag: data.flag,
                 visits: data.visits
               });
             }
@@ -374,7 +377,7 @@ const GlobePage = () => {
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
-              {selectedCountry?.name}
+              {selectedCountry?.flag} {selectedCountry?.name}
             </DialogTitle>
             {selectedCountry?.name !== 'Denmark' && (
               <DialogDescription>

@@ -1,6 +1,7 @@
 export interface VisitedCountry {
     id: string;
     name: string;
+    flag: string;
     visits: {
         date: string;
         region: string;
@@ -20,16 +21,17 @@ export const CONTINENT_DATA: ContinentData[] = [
         name: 'Europe',
         totalCountries: 44,
         countries: [
-            { id: 'AUT', name: 'Austria', visits: [ { date: '2018-02', region: 'Wagrain', description: 'Alpine skiing and winter sports paradise' } ] },
-            { id: 'CYP', name: 'Cyprus', visits: [ { date: '?', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
+            { id: 'AUT', name: 'Austria', flag: '🇦🇹', visits: [ { date: '2018-02', region: 'Wagrain', description: 'Alpine skiing and winter sports paradise' } ] },
+            { id: 'CYP', name: 'Cyprus', flag: '🇨🇾', visits: [ { date: '?', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
             {
                 id: 'DNK',
                 name: 'Denmark',
+                flag: '🇩🇰',
                 visits: [
                     { date: 'Home 🇩🇰', region: 'Denmark', description: 'Born and raised in Denmark. The home where it all started!' }
                 ]
             },
-            { id: 'FRA', name: 'France',
+            { id: 'FRA', name: 'France', flag: '🇫🇷',
                 visits: [
                     { date: '?', region: 'Nice', description: 'Local city house' },
                     { date: '?', region: 'Nice', description: 'Local city house back for second time' },
@@ -38,8 +40,8 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2017-07', region: 'Vidauban', description: 'Family house with pool, relax and fun' }
                 ]
             },
-            { id: 'DEU', name: 'Germany', visits: [ { date: '2015-09', region: 'Berlin', description: 'Cultural and historical monuments with my grandparents' } ] },
-            { id: 'GRC', name: 'Greece',
+            { id: 'DEU', name: 'Germany', flag: '🇩🇪', visits: [ { date: '2015-09', region: 'Berlin', description: 'Cultural and historical monuments with my grandparents' } ] },
+            { id: 'GRC', name: 'Greece', flag: '🇬🇷',
                 visits: [
                     { date: '?', region: 'Crete', description: 'The largest Greek island with stunning beaches and ancient ruins' },
                     { date: '?', region: 'Serifos, Naxos, Sifnos', description: 'Charming Greek island hopping with beautiful beaches and traditional villages' },
@@ -48,10 +50,11 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2023-02', region: 'Athens, Kos, Rhodes, Simi, Nisiros', description: 'Island hopping adventure with stunning landscapes and rich history' }
                 ]
             },
-            { id: 'HUN', name: 'Hungary', visits: [ { date: '2024-05', region: 'Budapest', description: 'Thermal baths and vibrant city culture and night life with the boys.' } ] },
-            { id: 'ISL', name: 'Iceland', visits: [ { date: '2016-09', region: 'Reykjavik', description: 'Northern lights, geysers, and volcanic landscapes with my mother.' } ] },
+            { id: 'HUN', name: 'Hungary', flag: '🇭🇺', visits: [ { date: '2024-05', region: 'Budapest', description: 'Thermal baths and vibrant city culture and night life with the boys.' } ] },
+            { id: 'ISL', name: 'Iceland', flag: '🇮🇸', visits: [ { date: '2016-09', region: 'Reykjavik', description: 'Northern lights, geysers, and volcanic landscapes with my mother.' } ] },
             {
                 id: 'ITA', name: 'Italy',
+                flag: '🇮🇹',
                 visits: [
                     { date: '?', region: 'Orsa', description: 'Old town with the family, birthday trip' },
                     { date: '?', region: 'Sicily', description: 'Island paradise fall-vacation' },
@@ -74,14 +77,14 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2025-10', region: 'Venice', description: 'The floating city with canals and romantic bridges' }
                 ]
             },
-            { id: 'MLT', name: 'Malta', visits: [ { date: '2014-06', region: 'Malta', description: 'Mediterranean island with rich history and stunning coastline' } ] },
-            { id: 'NLD', name: 'Netherlands',
+            { id: 'MLT', name: 'Malta', flag: '🇲🇹', visits: [ { date: '2014-06', region: 'Malta', description: 'Mediterranean island with rich history and stunning coastline' } ] },
+            { id: 'NLD', name: 'Netherlands', flag: '🇳🇱',
                 visits: [
                     { date: '2016-08', region: 'Amsterdam', description: 'Canals, culture, and vibrant city life with my mother and brother' },
                     { date: '2017-10', region: 'Amsterdam', description: 'Canals, culture, and vibrant city life - school trip' }
                 ]
             },
-            { id: 'PRT', name: 'Portugal',
+            { id: 'PRT', name: 'Portugal', flag: '🇵🇹',
                 visits: [
                     { date: '?', region: 'Azores', description: 'Remote archipelago with volcanic landscapes and whale watching' },
                     { date: '2018-10', region: 'Lisbon', description: 'Historic tiles and colorful hillside neighborhoods with mother and brother' },
@@ -89,8 +92,8 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2024-01', region: 'Madeira', description: 'Tropical island with mountain trekking and coastal views' }
                 ]
             },
-            { id: 'SRB', name: 'Serbia', visits: [ { date: '2025-04', region: 'Belgrade', description: 'Vibrant nightlife and historic landmarks with the boys' } ] },
-            { id: 'ESP', name: 'Spain',
+            { id: 'SRB', name: 'Serbia', flag: '🇷🇸', visits: [ { date: '2025-04', region: 'Belgrade', description: 'Vibrant nightlife and historic landmarks with the boys' } ] },
+            { id: 'ESP', name: 'Spain', flag: '🇪🇸',
                 visits: [
                     { date: '2014-07', region: 'Costa Brava, Barcelona', description: 'Youth football tournament with my team, and a day trip to Barcelona to see the football match at Camp Nou' },
                     { date: '2014-07', region: 'Barcelona', description: 'Amazing architecture and Mediterranean vibes' },
@@ -109,7 +112,7 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2025-12', region: 'Villarreal, Alicante', description: 'La Liga football city with local charm. Saw them playing against FC Copenhagen in the Champions League with my dad and brother' }
                 ]
             },
-            { id: 'SWE', name: 'Sweden',
+            { id: 'SWE', name: 'Sweden', flag: '🇸🇪',
                 visits: [
                     { date: '2008-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' },
                     { date: '2009-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' },
@@ -123,8 +126,8 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2025-02', region: 'Ystad', description: 'Relaxing spa getaway with my girlfriend' }
                 ]
             },
-            { id: 'TUR', name: 'Turkey', visits: [ { date: '?', region: 'Antalya', description: 'Turkish resort hotel. Didn\'t like because of food poisoning...' } ] },
-            { id: 'GBR', name: 'United Kingdom',
+            { id: 'TUR', name: 'Turkey', flag: '🇹🇷', visits: [ { date: '?', region: 'Antalya', description: 'Turkish resort hotel. Didn\'t like because of food poisoning...' } ] },
+            { id: 'GBR', name: 'United Kingdom', flag: '🇬🇧',
                 visits: [
                     { date: '2017-01', region: 'London', description: 'Historic capital with iconic landmarks and museums' },
                     { date: '2017-10', region: 'Manchester', description: 'Industrial heritage and vibrant music scene' }
@@ -136,21 +139,21 @@ export const CONTINENT_DATA: ContinentData[] = [
         name: 'Africa',
         totalCountries: 54,
         countries: [
-            { id: 'MAR', name: 'Morocco', visits: [ { date: '2025-03', region: 'Marrakech', description: 'Exotic medinas, palaces, and Sahara getaway with my girlfriend' } ] }
+            { id: 'MAR', name: 'Morocco', flag: '🇲🇦', visits: [ { date: '2025-03', region: 'Marrakech', description: 'Exotic medinas, palaces, and Sahara getaway with my girlfriend' } ] }
         ]
     },
     {
         name: 'Asia',
         totalCountries: 49,
         countries: [
-            { id: 'ARE', name: 'United Arab Emirates', visits: [ { date: '?', region: 'Dubai', description: 'Futuristic skyline and desert adventures' } ] },
-            { id: 'IDN', name: 'Indonesia', visits: [ { date: '2015-02', region: 'Bali, Lombok', description: 'Island paradise with rice terraces and beaches' } ] },
-            { id: 'JOR', name: 'Jordan', visits: [ { date: '2019-02', region: 'Amman, Petra, Wadi Rum', description: 'Ancient wonders and desert landscapes. Seeing Petra and staying by the beach.' } ] },
-            { id: 'LKA', name: 'Sri Lanka', visits: [ { date: '?', region: 'Sri Lanka', description: 'Mountains, tea plantations, and coastal beauty' } ] },
-            { id: 'MDV', name: 'Maldives', visits: [ { date: '2020-01', region: 'Maldives', description: 'Tropical paradise with crystal waters and resorts. Fulidhoo, Malé, Thinadoo' } ] },
-            { id: 'MYS', name: 'Malaysia', visits: [ { date: '2010-04', region: 'Kuala Lumpur', description: 'Vibrant capital with modern architecture and rich culture' } ] },
-            { id: 'SGP', name: 'Singapore', visits: [ { date: '2010-11', region: 'Singapore', description: 'Modern city-state with diverse cultures' } ] },
-            { id: 'THA', name: 'Thailand',
+            { id: 'ARE', name: 'United Arab Emirates', flag: '🇦🇪', visits: [ { date: '?', region: 'Dubai', description: 'Futuristic skyline and desert adventures' } ] },
+            { id: 'IDN', name: 'Indonesia', flag: '🇮🇩', visits: [ { date: '2015-02', region: 'Bali, Lombok', description: 'Island paradise with rice terraces and beaches' } ] },
+            { id: 'JOR', name: 'Jordan', flag: '🇯🇴', visits: [ { date: '2019-02', region: 'Amman, Petra, Wadi Rum', description: 'Ancient wonders and desert landscapes. Seeing Petra and staying by the beach.' } ] },
+            { id: 'LKA', name: 'Sri Lanka', flag: '🇱🇰', visits: [ { date: '?', region: 'Sri Lanka', description: 'Mountains, tea plantations, and coastal beauty' } ] },
+            { id: 'MDV', name: 'Maldives', flag: '🇲🇻', visits: [ { date: '2020-01', region: 'Maldives', description: 'Tropical paradise with crystal waters and resorts. Fulidhoo, Malé, Thinadoo' } ] },
+            { id: 'MYS', name: 'Malaysia', flag: '🇲🇾', visits: [ { date: '2010-04', region: 'Kuala Lumpur', description: 'Vibrant capital with modern architecture and rich culture' } ] },
+            { id: 'SGP', name: 'Singapore', flag: '🇸🇬', visits: [ { date: '2010-11', region: 'Singapore', description: 'Modern city-state with diverse cultures' } ] },
+            { id: 'THA', name: 'Thailand', flag: '🇹🇭',
                 visits: [
                     { date: '?', region: 'Bangkok, others', description: 'First trip to Thailand, only 6 years old' },
                     { date: '?', region: 'Krabi, Langkawi', description: 'Tropical beaches and lush landscapes' },
@@ -165,8 +168,8 @@ export const CONTINENT_DATA: ContinentData[] = [
         name: 'North America',
         totalCountries: 23,
         countries: [
-            { id: 'BHS', name: 'The Bahamas', visits: [ { date: '2015-03', region: 'Nassau', description: 'Stopping with the cruiseship. Tropical paradise with crystal-clear waters and pristine beaches' } ] },
-            { id: 'USA', name: 'United States',
+            { id: 'BHS', name: 'The Bahamas', flag: '🇧🇸', visits: [ { date: '2015-03', region: 'Nassau', description: 'Stopping with the cruiseship. Tropical paradise with crystal-clear waters and pristine beaches' } ] },
+            { id: 'USA', name: 'United States', flag: '🇺🇸',
                 visits: [
                     { date: '2015-02', region: 'Miami Beach, Key West', description: 'Sun, beaches, and cruise ship adventures with the whole family' },
                     { date: '2017-02', region: 'Puerto Rico', description: 'Caribbean charm with rainforests and beaches' }
@@ -250,6 +253,7 @@ function normalizeCountries(raw: VisitedCountry[]): VisitedCountry[] {
     const merged = Array.from(map.values()).map(c => ({
         id: c.id,
         name: c.name,
+        flag: c.flag,
         visits: sortVisitsByDateAsc(dedupeVisits(c.visits))
     }));
 
