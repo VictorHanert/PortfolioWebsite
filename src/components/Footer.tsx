@@ -1,4 +1,4 @@
-import { GithubIcon, InstagramIcon, LinkedinIcon, Mail, MapPin, Phone } from "lucide-react";
+import { BarChart3, GithubIcon, Globe, InstagramIcon, LinkedinIcon, Mail, MapPin, Phone } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -25,15 +25,21 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Links</h3>
             <div className="flex gap-3">
-            <a href="https://github.com/VictorHanert" target="_blank" rel="noopener noreferrer" className="hover-lift">
-              <GithubIcon className="w-6 h-6" />
-            </a>
-            <a href="https://linkedin.com/in/victor-hanert/" target="_blank" rel="noopener noreferrer" className="hover-lift">
-              <LinkedinIcon className="w-6 h-6" />
-            </a>
-            <a href="https://instagram.com/VictorHanert" target="_blank" rel="noopener noreferrer" className="hover-lift">
-              <InstagramIcon className="w-6 h-6" />
-            </a>
+              <a href="https://github.com/VictorHanert" target="_blank" rel="noopener noreferrer" className="hover-lift">
+                <GithubIcon className="w-6 h-6" />
+              </a>
+              <a href="https://linkedin.com/in/victor-hanert/" target="_blank" rel="noopener noreferrer" className="hover-lift">
+                <LinkedinIcon className="w-6 h-6" />
+              </a>
+              <a href="https://instagram.com/VictorHanert" target="_blank" rel="noopener noreferrer" className="hover-lift">
+                <InstagramIcon className="w-6 h-6" />
+              </a>
+              <a href="/globe" className="hover-lift">
+                <Globe className="w-6 h-6" />
+              </a>
+              <a href="/stats" className="hover-lift">
+                <BarChart3 className="w-6 h-6" />
+              </a>
             </div>
           </div>
         </div>

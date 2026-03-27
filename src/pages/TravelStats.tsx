@@ -6,7 +6,7 @@ import { formatVisitDate } from "../lib/utils";
 
 const continentColors = ["#3e92ed", "#16a34a", "#ea580c", "#9333ea", "#e11d48", "#d7e915"];
 
-const StatsPage = () => {
+const TravelStatsPage = () => {
   const stats = travelStats;
 
   return (
@@ -249,4 +249,4 @@ const StatsPage = () => {
   );
 };
 
-export default StatsPage;
+export default TravelStatsPage;

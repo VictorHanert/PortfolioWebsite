@@ -8,6 +8,8 @@ import { ChatBot, ChatBotButton } from "@/components/ChatBot";
 import Index from "./pages/Index";
 import GlobePage from "./pages/Globe";
 import TravelStatsPage from "./pages/TravelStats";
+import TravelAgentPage from "./pages/TravelAgent";
+import NotFound from "./pages/NotFound.tsx";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -26,6 +28,8 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/globe" element={<GlobePage />} />
             <Route path="/stats" element={<TravelStatsPage />} />
+            <Route path="/travel-agent" element={<TravelAgentPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           <ChatBotButton onClick={() => setIsChatOpen(true)} />

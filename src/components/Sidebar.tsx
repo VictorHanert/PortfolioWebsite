@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Home, User, Code, Briefcase, Mail, Globe } from "lucide-react";
+import { Menu, X, Home, User, Code, Briefcase, Mail, Globe, Plane } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -60,6 +60,12 @@ export const Sidebar = () => {
               className="flex items-center gap-2 w-full p-2 hover:bg-gray-800 rounded-lg transition-colors"
             >
               <Globe className="w-5 h-5" /> Travel Map
+            </button>
+            <button
+              onClick={() => navigateTo('/travel-agent')}
+              className="flex items-center gap-2 w-full p-2 hover:bg-gray-800 rounded-lg transition-colors"
+            >
+              <Plane className="w-5 h-5" /> Travel Agent
             </button>
             <button
               onClick={() => scrollToSection('#contact-section')}
