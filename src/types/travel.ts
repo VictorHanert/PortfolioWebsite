@@ -25,6 +25,8 @@ export interface SearchFilters {
   budgetRange: [number, number];
   distanceCategory: 'Short' | 'Mid' | 'Long' | null;
   tripDuration: TravelDuration | null;
+  useVisitedCountriesData: boolean;
+  includeVisitedCountries: boolean;
   categories: string[];
   season: string | null;
 }
@@ -85,6 +87,8 @@ export const DEFAULT_FILTERS: SearchFilters = {
   budgetRange: [0, 20000],
   distanceCategory: null,
   tripDuration: null,
+  useVisitedCountriesData: true,
+  includeVisitedCountries: false,
   categories: [],
   season: null,
 };

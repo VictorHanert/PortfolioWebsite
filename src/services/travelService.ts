@@ -1,5 +1,12 @@
 import type { SearchFilters, DestinationMatch, TravelDestination } from '@/types/travel';
 import { getSupabaseClient, isSupabaseConfigured } from './supabaseClient';
+import { visitedCountries } from '@/data/visitedCountries';
+
+const VISITED_COUNTRY_NAMES = new Set(visitedCountries.map((country) => country.name.trim().toLowerCase()));
+
+function isVisitedCountry(destination: Pick<TravelDestination, 'country'> | Pick<DestinationMatch, 'country'>) {
+  return VISITED_COUNTRY_NAMES.has(destination.country.trim().toLowerCase());
+}
 
 function durationAllowsDistance(filters: SearchFilters, distance: TravelDestination['distance_category']) {
   if (!filters.tripDuration) return true;
@@ -126,16 +133,29 @@ export async function findDestinations(
 ): Promise<DestinationMatch[]> {
   if (!isSupabaseConfigured) {
     const durationTag = filters.tripDuration ? ` Best for: ${filters.tripDuration}.` : '';
-    return DEMO_RESULTS.map((result) => ({
+    const filteredDemoResults = filters.includeVisitedCountries
+      ? DEMO_RESULTS
+      : DEMO_RESULTS.filter((result) => !isVisitedCountry(result));
+
+    // In demo mode we always return suggestions, even if strict filters remove all samples.
+    const baseDemoResults = filteredDemoResults.length > 0 ? filteredDemoResults : DEMO_RESULTS;
+    const fallbackTag = filteredDemoResults.length === 0
+      ? ' Demo fallback: showing sample destinations.'
+      : '';
+
+    return baseDemoResults.map((result) => ({
       ...result,
-      matchReason: `${result.matchReason}${durationTag}`,
+      matchReason: `${result.matchReason}${durationTag}${filters.useVisitedCountriesData ? ' Uses your travel history patterns.' : ''}${fallbackTag}`,
+      matchScore: filters.useVisitedCountriesData && isVisitedCountry(result)
+        ? Math.min(result.matchScore + 6, 100)
+        : result.matchScore,
     }));
   }
 
   // In production: generate embedding from _semanticText via an edge function, then call semanticSearch() + fetchByFilters() and merge/rank.
-  const structured = (await fetchByFilters(filters)).filter((destination) =>
-    durationAllowsDistance(filters, destination.distance_category)
-  );
+  const structured = (await fetchByFilters(filters))
+    .filter((destination) => durationAllowsDistance(filters, destination.distance_category))
+    .filter((destination) => filters.includeVisitedCountries || !isVisitedCountry(destination));
 
   // For now, map structured results into DestinationMatch shape
   return structured.map((d) => ({
@@ -144,11 +164,11 @@ export async function findDestinations(
     country: d.country,
     description: d.description ?? '',
     similarity: 0,
-    matchScore: 80,
+    matchScore: filters.useVisitedCountriesData && isVisitedCountry(d) ? 86 : 80,
     estimatedCostDKK: d.budget_level * 8000,
-    matchReason: filters.tripDuration
+    matchReason: `${filters.tripDuration
       ? `Matches your filters and preferred trip length: ${filters.tripDuration}.`
-      : 'Matches your filters.',
+      : 'Matches your filters.'}${filters.useVisitedCountriesData ? ' Uses your travel history patterns.' : ''}`,
     categories: d.category,
   }));
 }

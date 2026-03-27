@@ -1,9 +1,8 @@
 import { useState, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import FilterSidebar from '@/components/travel-agent/FilterSidebar';
-import ChatPanel from '@/components/travel-agent/ChatPanel';
+import PreferencePanel from '@/components/travel-agent/PreferencePanel';
+import ResultsWorkspace from '@/components/travel-agent/ResultsWorkspace';
 import AnalysisLoader from '@/components/travel-agent/AnalysisLoader';
-import DestinationCard from '@/components/travel-agent/DestinationCard';
 import { findDestinations } from '@/services/travelService';
 import { isSupabaseConfigured } from '@/services/supabaseClient';
 import type { SearchFilters, ChatMessage, AnalysisStep, DestinationMatch } from '@/types/travel';
@@ -78,10 +77,12 @@ export default function TravelAgent() {
     <div className="pt-16">
       <div className="flex min-h-[calc(100vh-4rem)] w-full flex-col bg-background lg:h-[calc(100vh-4rem)] lg:min-h-0 lg:flex-row lg:overflow-hidden">
       {/* Filters panel: stacked on mobile, sidebar on desktop */}
-      <div className="w-full lg:w-[420px] lg:min-w-[420px] xl:w-[460px] xl:min-w-[460px]">
-        <FilterSidebar
+      <div className="w-full lg:w-[420px] lg:min-w-[460px] xl:w-[560px] xl:min-w-[500px]">
+        <PreferencePanel
           filters={filters}
           onChange={setFilters}
+          semanticText={semanticText}
+          onSemanticTextChange={setSemanticText}
           onSearch={runSearch}
           isSearching={isSearching}
         />
@@ -89,31 +90,19 @@ export default function TravelAgent() {
 
       {/* Main area */}
       <div className="flex min-w-0 flex-1 flex-col lg:min-h-0">
-        {/* Chat + results area */}
+        {/* Results area */}
         <div className="flex flex-1 flex-col lg:min-h-0 lg:overflow-hidden">
-          {/* Chat */}
-          <div className="flex-1 min-h-0">
-            <ChatPanel messages={messages} semanticText={semanticText} onSemanticTextChange={setSemanticText} />
-          </div>
-
-          {/* Analysis loader or results */}
           <AnimatePresence>
             {analysisSteps.length > 0 && (
-              <div className="border-t border-border">
+              <div className="border-b border-border">
                 <AnalysisLoader steps={analysisSteps} />
               </div>
             )}
           </AnimatePresence>
 
-          {results.length > 0 && (
-            <div className="max-h-[45vh] overflow-y-auto border-t border-border px-4 py-4 sm:px-6 sm:py-6">
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {results.map((r, i) => (
-                  <DestinationCard key={r.id} match={r} index={i} />
-                ))}
-              </div>
-            </div>
-          )}
+          <div className="flex-1 min-h-0">
+            <ResultsWorkspace messages={messages} results={results} isSearching={isSearching} />
+          </div>
         </div>
       </div>
       </div>

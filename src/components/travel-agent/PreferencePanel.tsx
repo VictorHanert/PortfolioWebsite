@@ -1,4 +1,5 @@
 import { Slider } from '@/components/ui/slider';
+import { Textarea } from '@/components/ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Button } from '@/components/ui/button';
 import { Plane, MapPin, Palmtree, Landmark, Dribbble, Leaf, Sun, CloudRain, Snowflake, Flower2, Clock3 } from 'lucide-react';
@@ -10,9 +11,11 @@ import {
   TRAVEL_DURATION_OPTIONS,
 } from '@/types/travel';
 
-interface FilterSidebarProps {
+interface PreferencePanelProps {
   filters: SearchFilters;
   onChange: (filters: SearchFilters) => void;
+  semanticText: string;
+  onSemanticTextChange: (text: string) => void;
   onSearch: () => void;
   isSearching: boolean;
 }
@@ -45,8 +48,17 @@ function formatBudget(v: number) {
   return v.toLocaleString('da-DK') + ' kr.';
 }
 
-export default function FilterSidebar({ filters, onChange, onSearch, isSearching }: FilterSidebarProps) {
+export default function PreferencePanel({
+  filters,
+  onChange,
+  semanticText,
+  onSemanticTextChange,
+  onSearch,
+  isSearching,
+}: PreferencePanelProps) {
   const update = (patch: Partial<SearchFilters>) => onChange({ ...filters, ...patch });
+  const yesNoClassName =
+    'h-10 justify-center rounded-lg border border-border px-3 text-xs data-[state=on]:bg-primary data-[state=on]:text-primary-foreground';
 
   return (
     <aside className="flex h-auto flex-col border-b border-border bg-card lg:h-full lg:border-b-0 lg:border-r">
@@ -58,6 +70,7 @@ export default function FilterSidebar({ filters, onChange, onSearch, isSearching
 
       {/* Scrollable filters */}
       <div className="space-y-8 px-4 py-5 sm:px-6 lg:flex-1 lg:overflow-y-auto lg:py-6">
+
         {/* Budget */}
         <section>
           <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3 block">
@@ -168,6 +181,7 @@ export default function FilterSidebar({ filters, onChange, onSearch, isSearching
               const active = filters.season === s;
               return (
                 <button
+                  type="button"
                   key={s}
                   onClick={() => update({ season: active ? null : s })}
                   className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
@@ -182,6 +196,67 @@ export default function FilterSidebar({ filters, onChange, onSearch, isSearching
               );
             })}
           </div>
+        </section>
+
+        {/* Extra prompt */}
+        <section>
+          <label className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Extra Prompt (Optional)
+          </label>
+          <Textarea
+            value={semanticText}
+            onChange={(e) => onSemanticTextChange(e.target.value)}
+            placeholder="Add one extra instruction for this search..."
+            className="min-h-[88px] resize-none bg-muted/40 text-sm"
+          />
+        </section>
+
+        {/* Use visitedCountries data */}
+        <section>
+          <label className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Use visitedCountries data to recommend next travel?
+          </label>
+          <ToggleGroup
+            type="single"
+            value={filters.useVisitedCountriesData ? 'yes' : 'no'}
+            onValueChange={(v) => {
+              if (v === 'yes' || v === 'no') {
+                update({ useVisitedCountriesData: v === 'yes' });
+              }
+            }}
+            className="grid grid-cols-2 gap-2"
+          >
+            <ToggleGroupItem value="yes" className={yesNoClassName}>
+              Yes
+            </ToggleGroupItem>
+            <ToggleGroupItem value="no" className={yesNoClassName}>
+              No
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </section>
+
+        {/* Include already visited countries */}
+        <section>
+          <label className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Recommend travels to already visited countries?
+          </label>
+          <ToggleGroup
+            type="single"
+            value={filters.includeVisitedCountries ? 'yes' : 'no'}
+            onValueChange={(v) => {
+              if (v === 'yes' || v === 'no') {
+                update({ includeVisitedCountries: v === 'yes' });
+              }
+            }}
+            className="grid grid-cols-2 gap-2"
+          >
+            <ToggleGroupItem value="yes" className={yesNoClassName}>
+              Yes
+            </ToggleGroupItem>
+            <ToggleGroupItem value="no" className={yesNoClassName}>
+              No
+            </ToggleGroupItem>
+          </ToggleGroup>
         </section>
       </div>
 
