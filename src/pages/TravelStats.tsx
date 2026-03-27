@@ -1,5 +1,4 @@
-import { ArrowLeft, BarChart3, Compass, Crown, Globe2, History, MapPin, Sparkles, Star } from "lucide-react";
-import { Link } from "react-router-dom";
+import { BarChart3, Compass, Crown, Globe2, History, Sparkles, Star } from "lucide-react";
 import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { travelStats } from "../data/travelStats";
 import { formatVisitDate } from "../lib/utils";
@@ -11,24 +10,7 @@ const TravelStatsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <div className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between p-4">
-          <Link
-            to="/globe"
-            className="flex items-center gap-2 text-slate-700 transition-colors hover:text-slate-900"
-          >
-            <ArrowLeft size={20} />
-            <span className="font-medium">Back to Globe</span>
-          </Link>
-          <h1 className="flex items-center gap-2 text-2xl font-bold text-slate-900">
-            <MapPin size={22} className="text-slate-700" />
-            Travel Stats
-          </h1>
-          <div className="w-24" />
-        </div>
-      </div>
-
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-10 pt-24">
         <section className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4">
           <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-5 shadow-sm">
             <p className="text-xs sm:text-sm text-slate-500">Countries visited</p>

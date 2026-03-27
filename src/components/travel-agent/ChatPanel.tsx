@@ -12,6 +12,8 @@ interface ChatPanelProps {
 
 export default function ChatPanel({ messages, semanticText, onSemanticTextChange }: ChatPanelProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const welcomeMessage = messages.find((msg) => msg.id === 'welcome' && msg.role === 'agent');
+  const visibleMessages = messages.filter((msg) => msg.id !== 'welcome');
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
@@ -20,9 +22,9 @@ export default function ChatPanel({ messages, semanticText, onSemanticTextChange
   return (
     <div className="flex flex-col h-full">
       {/* Messages */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4 sm:px-6 sm:py-6">
         <AnimatePresence mode="popLayout">
-          {messages.map((msg) => (
+          {visibleMessages.map((msg) => (
             <motion.div
               key={msg.id}
               initial={{ opacity: 0, y: 12 }}
@@ -37,7 +39,7 @@ export default function ChatPanel({ messages, semanticText, onSemanticTextChange
                 </div>
               )}
               <div
-                className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[75%] ${
                   msg.role === 'user'
                     ? 'bg-primary text-primary-foreground rounded-br-md'
                     : 'bg-muted text-foreground rounded-bl-md'
@@ -56,11 +58,16 @@ export default function ChatPanel({ messages, semanticText, onSemanticTextChange
       </div>
 
       {/* Semantic input */}
-      <div className="border-t border-border px-6 py-4">
+      <div className="border-t border-border px-4 py-4 sm:px-6">
+        {welcomeMessage && (
+          <div className="mb-3 rounded-lg border border-border bg-muted/60 px-3 py-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+            {welcomeMessage.content}
+          </div>
+        )}
         <Textarea
           value={semanticText}
           onChange={(e) => onSemanticTextChange(e.target.value)}
-          placeholder="Beskriv din drømmerejse… f.eks. 'Jeg elsker byer med dyb historie, fantastisk mad og muligheden for at se en fodboldkamp'"
+          placeholder="Describe your preferences about preferred destinations, activities, climate, etc. The more details, the better!"
           className="resize-none min-h-[80px] bg-muted/50 border-border text-sm"
         />
       </div>

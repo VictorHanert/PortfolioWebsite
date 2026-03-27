@@ -1,12 +1,13 @@
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Button } from '@/components/ui/button';
-import { Plane, MapPin, Palmtree, Landmark, Dribbble, Leaf, Sun, CloudRain, Snowflake, Flower2 } from 'lucide-react';
+import { Plane, MapPin, Palmtree, Landmark, Dribbble, Leaf, Sun, CloudRain, Snowflake, Flower2, Clock3 } from 'lucide-react';
 import type { SearchFilters } from '@/types/travel';
 import {
   DISTANCE_OPTIONS,
   CATEGORY_OPTIONS,
   SEASON_OPTIONS,
+  TRAVEL_DURATION_OPTIONS,
 } from '@/types/travel';
 
 interface FilterSidebarProps {
@@ -48,20 +49,15 @@ export default function FilterSidebar({ filters, onChange, onSearch, isSearching
   const update = (patch: Partial<SearchFilters>) => onChange({ ...filters, ...patch });
 
   return (
-    <aside className="flex flex-col h-full bg-card border-r border-border">
+    <aside className="flex h-auto flex-col border-b border-border bg-card lg:h-full lg:border-b-0 lg:border-r">
       {/* Header */}
-      <div className="px-6 pt-8 pb-4 border-b border-border">
-        <div className="flex items-center gap-2 mb-1">
-          <Plane className="h-5 w-5 text-foreground" />
-          <h1 className="text-lg font-semibold tracking-tight text-foreground">
-            Next Destination
-          </h1>
-        </div>
+      <div className="border-b border-border px-4 pb-4 pt-6 sm:px-6 lg:pt-8">
+          <h1 className="text-lg font-semibold tracking-tight text-foreground">Next Destination</h1>
         <p className="text-xs text-muted-foreground">Find your next travel destination based on your preferences.</p>
       </div>
 
       {/* Scrollable filters */}
-      <div className="flex-1 overflow-y-auto px-6 py-6 space-y-8">
+      <div className="space-y-8 px-4 py-5 sm:px-6 lg:flex-1 lg:overflow-y-auto lg:py-6">
         {/* Budget */}
         <section>
           <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3 block">
@@ -80,6 +76,30 @@ export default function FilterSidebar({ filters, onChange, onSearch, isSearching
             <span>{formatBudget(filters.budgetRange[0])}</span>
             <span className="font-medium text-foreground">{formatBudget(filters.budgetRange[1])}</span>
           </div>
+        </section>
+
+        {/* Duration */}
+        <section>
+          <label className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Trip Length
+          </label>
+          <ToggleGroup
+            type="single"
+            value={filters.tripDuration ?? ''}
+            onValueChange={(v) => update({ tripDuration: (v || null) as any })}
+            className="grid grid-cols-2 gap-2"
+          >
+            {TRAVEL_DURATION_OPTIONS.map((duration) => (
+              <ToggleGroupItem
+                key={duration}
+                value={duration}
+                className="h-10 justify-start gap-2 rounded-lg border border-border px-3 text-xs data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+              >
+                <Clock3 className="h-3.5 w-3.5" />
+                {duration}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
         </section>
 
         {/* Distance */}
@@ -166,7 +186,7 @@ export default function FilterSidebar({ filters, onChange, onSearch, isSearching
       </div>
 
       {/* Action */}
-      <div className="p-6 border-t border-border">
+      <div className="border-t border-border p-4 sm:p-6">
         <Button
           onClick={onSearch}
           disabled={isSearching}

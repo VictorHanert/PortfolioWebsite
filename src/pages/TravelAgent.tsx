@@ -1,11 +1,9 @@
 import { useState, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { Menu } from 'lucide-react';
 import FilterSidebar from '@/components/travel-agent/FilterSidebar';
 import ChatPanel from '@/components/travel-agent/ChatPanel';
 import AnalysisLoader from '@/components/travel-agent/AnalysisLoader';
 import DestinationCard from '@/components/travel-agent/DestinationCard';
-import { Button } from '@/components/ui/button';
 import { findDestinations } from '@/services/travelService';
 import { isSupabaseConfigured } from '@/services/supabaseClient';
 import type { SearchFilters, ChatMessage, AnalysisStep, DestinationMatch } from '@/types/travel';
@@ -20,18 +18,10 @@ const INITIAL_STEPS: AnalysisStep[] = [
 export default function TravelAgent() {
   const [filters, setFilters] = useState<SearchFilters>(DEFAULT_FILTERS);
   const [semanticText, setSemanticText] = useState('');
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome',
-      role: 'agent',
-      content: 'Welcome! Use the filters on the left and describe your dream trip below. Click "Find my destination" when you are ready.',
-      timestamp: new Date(),
-    },
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [analysisSteps, setAnalysisSteps] = useState<AnalysisStep[]>([]);
   const [results, setResults] = useState<DestinationMatch[]>([]);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const runSearch = useCallback(async () => {
     if (isSearching) return;
@@ -85,23 +75,10 @@ export default function TravelAgent() {
   }, [filters, semanticText, isSearching]);
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-background">
-      {/* Mobile toggle */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="fixed top-3 left-3 z-50 lg:hidden"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-      >
-        <Menu className="h-5 w-5" />
-      </Button>
-
-      {/* Sidebar */}
-      <div
-        className={`${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } fixed inset-y-0 left-0 z-40 w-[300px] transition-transform duration-300 lg:relative lg:translate-x-0 lg:w-[320px] flex-shrink-0`}
-      >
+    <div className="pt-16">
+      <div className="flex min-h-[calc(100vh-4rem)] w-full flex-col bg-background lg:h-[calc(100vh-4rem)] lg:min-h-0 lg:flex-row lg:overflow-hidden">
+      {/* Filters panel: stacked on mobile, sidebar on desktop */}
+      <div className="w-full lg:w-[420px] lg:min-w-[420px] xl:w-[460px] xl:min-w-[460px]">
         <FilterSidebar
           filters={filters}
           onChange={setFilters}
@@ -110,25 +87,13 @@ export default function TravelAgent() {
         />
       </div>
 
-      {/* Overlay on mobile */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-foreground/20 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
       {/* Main area */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex min-w-0 flex-1 flex-col lg:min-h-0">
         {/* Chat + results area */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex flex-1 flex-col lg:min-h-0 lg:overflow-hidden">
           {/* Chat */}
           <div className="flex-1 min-h-0">
-            <ChatPanel
-              messages={messages}
-              semanticText={semanticText}
-              onSemanticTextChange={setSemanticText}
-            />
+            <ChatPanel messages={messages} semanticText={semanticText} onSemanticTextChange={setSemanticText} />
           </div>
 
           {/* Analysis loader or results */}
@@ -141,7 +106,7 @@ export default function TravelAgent() {
           </AnimatePresence>
 
           {results.length > 0 && (
-            <div className="border-t border-border overflow-y-auto max-h-[45vh] px-6 py-6">
+            <div className="max-h-[45vh] overflow-y-auto border-t border-border px-4 py-4 sm:px-6 sm:py-6">
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {results.map((r, i) => (
                   <DestinationCard key={r.id} match={r} index={i} />
@@ -150,6 +115,7 @@ export default function TravelAgent() {
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

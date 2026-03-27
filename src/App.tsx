@@ -1,23 +1,27 @@
-import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ChatBot, ChatBotButton } from "@/components/ChatBot";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Index from "./pages/Index";
 import GlobePage from "./pages/Globe";
 import TravelStatsPage from "./pages/TravelStats";
 import TravelAgentPage from "./pages/TravelAgent";
 import NotFound from "./pages/NotFound.tsx";
+import CommonNavbar from "./components/CommonNavbar";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const queryClient = new QueryClient();
 
-const App = () => {
-  const [isChatOpen, setIsChatOpen] = useState(false);
+const SharedPagesLayout = () => (
+  <>
+    <CommonNavbar />
+    <Outlet />
+  </>
+);
 
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -26,25 +30,13 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/globe" element={<GlobePage />} />
-            <Route path="/stats" element={<TravelStatsPage />} />
-            <Route path="/travel-agent" element={<TravelAgentPage />} />
-            <Route path="*" element={<NotFound />} />
+            <Route element={<SharedPagesLayout />}>
+              <Route path="/globe" element={<GlobePage />} />
+              <Route path="/stats" element={<TravelStatsPage />} />
+              <Route path="/travel-agent" element={<TravelAgentPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
           </Routes>
-
-          <ChatBotButton onClick={() => setIsChatOpen(true)} />
-          <ChatBot
-            isOpen={isChatOpen}
-            onOpenChange={setIsChatOpen}
-            title="Portfolio Assistant"
-            welcomeMessage="Ask me about Victor's projects, skills, background, or travel history and patterns."
-            starterQuestions={[
-              "Who is Victor?",
-              "Victor's most visited countries?",
-              "Football teams he support?",
-              "What is the top skills of Victor?",
-            ]}
-          />
         </BrowserRouter>
       </TooltipProvider>
       <Analytics />

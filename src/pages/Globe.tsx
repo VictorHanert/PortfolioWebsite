@@ -4,7 +4,7 @@ import '@maptiler/sdk/dist/maptiler-sdk.css';
 import { visitedCountries } from '../data/visitedCountries';
 import { alpha3ToNumeric } from '../data/countryCodeMapping';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Globe } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../components/ui/dialog';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { formatVisitDate } from "../lib/utils";
@@ -214,20 +214,6 @@ const GlobePage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-200 p-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link
-            to="/globe"
-            className="flex items-center gap-2 text-slate-700 transition-colors hover:text-slate-900"
-          >
-            <ArrowLeft size={20} />
-            <span className="font-medium">Back to Portfolio</span>
-          </Link>
-          <h1 className="text-2xl font-bold text-gray-900">My Travel Map</h1>
-          <div className="w-24" /> {/* Spacer for centering */}
-        </div>
-      </div>
 
       {/* Map Container */}
       <div ref={mapContainerRef} className="w-full h-screen pt-16" />

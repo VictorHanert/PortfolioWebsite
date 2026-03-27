@@ -1,6 +1,23 @@
 import type { SearchFilters, DestinationMatch, TravelDestination } from '@/types/travel';
 import { getSupabaseClient, isSupabaseConfigured } from './supabaseClient';
 
+function durationAllowsDistance(filters: SearchFilters, distance: TravelDestination['distance_category']) {
+  if (!filters.tripDuration) return true;
+
+  const durationDistanceMap: Record<NonNullable<SearchFilters['tripDuration']>, Array<TravelDestination['distance_category']>> = {
+    'Day Trip': ['Short'],
+    Weekend: ['Short', 'Mid'],
+    '1-3 Days': ['Short', 'Mid'],
+    '3-6 Days': ['Short', 'Mid'],
+    '1 Week': ['Short', 'Mid', 'Long'],
+    '2 Weeks': ['Mid', 'Long'],
+    '15+ Days': ['Long'],
+    'No Preference': ['Short', 'Mid', 'Long'],
+  };
+
+  return durationDistanceMap[filters.tripDuration].includes(distance);
+}
+
 // ── Demo data (shown only when Supabase is not connected) ──────────────
 const DEMO_RESULTS: DestinationMatch[] = [
   {
@@ -108,13 +125,17 @@ export async function findDestinations(
   _semanticText: string
 ): Promise<DestinationMatch[]> {
   if (!isSupabaseConfigured) {
-    // Return demo data when Supabase is not set up
-    return DEMO_RESULTS;
+    const durationTag = filters.tripDuration ? ` Best for: ${filters.tripDuration}.` : '';
+    return DEMO_RESULTS.map((result) => ({
+      ...result,
+      matchReason: `${result.matchReason}${durationTag}`,
+    }));
   }
 
-  // In production: generate embedding from _semanticText via an edge function,
-  // then call semanticSearch() + fetchByFilters() and merge/rank.
-  const structured = await fetchByFilters(filters);
+  // In production: generate embedding from _semanticText via an edge function, then call semanticSearch() + fetchByFilters() and merge/rank.
+  const structured = (await fetchByFilters(filters)).filter((destination) =>
+    durationAllowsDistance(filters, destination.distance_category)
+  );
 
   // For now, map structured results into DestinationMatch shape
   return structured.map((d) => ({
@@ -125,7 +146,9 @@ export async function findDestinations(
     similarity: 0,
     matchScore: 80,
     estimatedCostDKK: d.budget_level * 8000,
-    matchReason: 'Matches your filters.',
+    matchReason: filters.tripDuration
+      ? `Matches your filters and preferred trip length: ${filters.tripDuration}.`
+      : 'Matches your filters.',
     categories: d.category,
   }));
 }

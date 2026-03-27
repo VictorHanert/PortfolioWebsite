@@ -24,9 +24,20 @@ export interface DestinationMatch {
 export interface SearchFilters {
   budgetRange: [number, number];
   distanceCategory: 'Short' | 'Mid' | 'Long' | null;
+  tripDuration: TravelDuration | null;
   categories: string[];
   season: string | null;
 }
+
+export type TravelDuration =
+  | 'Day Trip'
+  | 'Weekend'
+  | '1-3 Days'
+  | '3-6 Days'
+  | '1 Week'
+  | '2 Weeks'
+  | '15+ Days'
+  | 'No Preference';
 
 export interface ChatMessage {
   id: string;
@@ -59,9 +70,21 @@ export const CATEGORY_OPTIONS = ['Trending', 'Football', 'New Destination', 'Rel
 
 export const SEASON_OPTIONS = ['January - March', 'March - April', 'May - June', 'June - August', 'September - November', 'December'] as const;
 
+export const TRAVEL_DURATION_OPTIONS: ReadonlyArray<TravelDuration> = [
+  'Day Trip',
+  'Weekend',
+  '1-3 Days',
+  '3-6 Days',
+  '1 Week',
+  '2 Weeks',
+  '15+ Days',
+  'No Preference',
+];
+
 export const DEFAULT_FILTERS: SearchFilters = {
   budgetRange: [0, 20000],
   distanceCategory: null,
+  tripDuration: null,
   categories: [],
   season: null,
 };
