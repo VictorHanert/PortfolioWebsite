@@ -280,7 +280,7 @@ const GlobePage = () => {
               <ChevronDown size={18} />
             </button>
           </DrawerTrigger>
-          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 pb-2">
+          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 pb-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h2 className="text-xl font-semibold text-slate-900">Quick Travel Stats</h2>
@@ -295,19 +295,19 @@ const GlobePage = () => {
             </div>
 
             <div className="grid grid-cols-4 gap-2">
-              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-1 sm:p-2 text-center shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-slate-500">Countries</p>
                 <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalCountries}</p>
               </div>
-              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-1 sm:p-2 text-center shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-slate-500">Trips</p>
                 <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalVisits}</p>
               </div>
-              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-1 sm:p-2 text-center shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-slate-500">Regions</p>
                 <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalRegions}</p>
               </div>
-              <div className="rounded-xl border border-slate-200 bg-white p-2 text-center shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-1 sm:p-2 text-center shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-slate-500">Continents</p>
                 <p className="mt-1 text-lg font-semibold text-slate-900">{stats.totalContinents}</p>
               </div>
