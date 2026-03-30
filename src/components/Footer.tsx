@@ -1,4 +1,5 @@
-import { BarChart3, GithubIcon, Globe, InstagramIcon, LinkedinIcon, Mail, MapPin, Phone } from "lucide-react";
+import { BarChart3, GithubIcon, Globe, InstagramIcon, LinkedinIcon, Mail, MapPin, Phone, Plane } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -34,12 +35,17 @@ export const Footer = () => {
               <a href="https://instagram.com/VictorHanert" target="_blank" rel="noopener noreferrer" className="hover-lift">
                 <InstagramIcon className="w-6 h-6" />
               </a>
-              <a href="/globe" className="hover-lift">
+            </div>
+            <div className="mt-8 flex gap-3">
+              <NavLink to="/globe" className="hover-lift">
                 <Globe className="w-6 h-6" />
-              </a>
-              <a href="/stats" className="hover-lift">
+              </NavLink>
+              <NavLink to="/stats" className="hover-lift">
                 <BarChart3 className="w-6 h-6" />
-              </a>
+              </NavLink>
+              <NavLink to="/travel-agent" className="hover-lift">
+                <Plane className="w-6 h-6" />
+              </NavLink>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@
 - **Stats Pipeline**: `travelStats` is derived data for charts (counts, yearly visits, top regions, top countries, coverage). Do not hardcode duplicated stats or mappings elsewhere.
 - **Flags**: Countries include a `flag` field used in Top Countries, Recent Trips, and Country Details. Keep flags updated alongside country entries.
 - **UI Expectations**: Globe drawer is compact on mobile and should avoid overflow/extra whitespace. Travel stats page uses Recharts for charts.
-- **Routing**: `react-router-dom` routes are defined in `App.tsx` for `/` (landing), `/globe`, and `/stats`.
+- **Routing**: `react-router-dom` routes are defined in `App.tsx` for `/` (landing), `/globe`, and `/stats` and `/travel-agent`.
 - **Global Providers**: App wraps UI with React Query (`QueryClientProvider`), Tooltip provider, and both toast systems (`Toaster` + `Sonner`).
 - **Chat Bot**: `ChatBotButton` + `ChatBot` are mounted in `App.tsx` with starter questions; keep the welcome messaging in that component.
 - **Analytics**: Vercel `Analytics` and `SpeedInsights` are enabled in `App.tsx`.
@@ -38,3 +38,6 @@
 - Use PascalCase for component files and camelCase for hooks.
 - Always include `use client` or `use server` directives where necessary.
 - Use `declare(strict_types=1)` logic in spirit (TypeScript strict mode).
+- Avoid unnecessary abstractions; keep components focused and straightforward.
+- Keep the codebase clean and organized, following the existing project structure and conventions.
+- Simple and readable code is preferred over clever or complex solutions.
