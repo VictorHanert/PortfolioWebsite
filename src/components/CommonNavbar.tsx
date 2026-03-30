@@ -1,11 +1,16 @@
-import { Globe, Plane, RouteOff, BarChart3 } from "lucide-react";
+import { Globe, Plane, RouteOff, BarChart3, House } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 
-const NAV_ITEMS: ReadonlyArray<{ to: string; label: string; end?: boolean }> = [
-  { to: "/", label: "Home", end: true },
-  { to: "/globe", label: "Globe" },
-  { to: "/stats", label: "Stats" },
-  { to: "/travel-agent", label: "Travel Agent" },
+const NAV_ITEMS: ReadonlyArray<{
+  to: string;
+  label: string;
+  Icon: typeof Globe;
+  end?: boolean;
+}> = [
+  { to: "/", label: "Home", Icon: House, end: true },
+  { to: "/globe", label: "Globe", Icon: Globe },
+  { to: "/stats", label: "Stats", Icon: BarChart3 },
+  { to: "/travel-agent", label: "Travel Agent", Icon: Plane },
 ];
 
 const PAGE_META = {
@@ -26,7 +31,7 @@ export default function CommonNavbar() {
       <div className="fixed left-0 right-0 top-0 z-[60] border-b border-gray-200 bg-white/95 p-4 backdrop-blur-sm">
         <div className="mx-auto flex items-center justify-start">
           <TitleIcon className="mr-2 h-5 w-5 text-gray-900" />
-          <h1 className="text-2xl font-bold text-gray-900">{page.title}</h1>
+          <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">{page.title}</h1>
         </div>
       </div>
 
@@ -37,6 +42,7 @@ export default function CommonNavbar() {
             key={item.to}
             to={item.to}
             end={item.end}
+            aria-label={item.label}
             className={({ isActive }) =>
               `rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
                 isActive
@@ -45,7 +51,8 @@ export default function CommonNavbar() {
               }`
             }
           >
-            {item.label}
+            <item.Icon className="h-4 w-4 sm:hidden" />
+            <span className="hidden sm:inline">{item.label}</span>
           </NavLink>
         ))}
         </div>

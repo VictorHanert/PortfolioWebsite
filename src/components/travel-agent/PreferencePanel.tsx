@@ -3,7 +3,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Button } from '@/components/ui/button';
 import { Plane, MapPin, Palmtree, Landmark, Dribbble, Leaf, Sun, CloudRain, Snowflake, Flower2, Clock3 } from 'lucide-react';
-import type { SearchFilters } from '@/types/travel';
+import type { SearchFilters, TravelDuration } from '@/types/travel';
 import {
   DISTANCE_OPTIONS,
   CATEGORY_OPTIONS,
@@ -99,7 +99,7 @@ export default function PreferencePanel({
           <ToggleGroup
             type="single"
             value={filters.tripDuration ?? ''}
-            onValueChange={(v) => update({ tripDuration: (v || null) as any })}
+            onValueChange={(v) => update({ tripDuration: (v || null) as TravelDuration | null })}
             className="grid grid-cols-2 gap-2"
           >
             {TRAVEL_DURATION_OPTIONS.map((duration) => (
@@ -123,7 +123,7 @@ export default function PreferencePanel({
           <ToggleGroup
             type="single"
             value={filters.distanceCategory ?? ''}
-            onValueChange={(v) => update({ distanceCategory: (v || null) as any })}
+            onValueChange={(v) => update({ distanceCategory: (v || null) as 'Short' | 'Mid' | 'Long' | null })}
             className="flex flex-col gap-1.5 w-full"
           >
             {DISTANCE_OPTIONS.map((opt) => (
@@ -268,6 +268,7 @@ export default function PreferencePanel({
           className="w-full h-11 text-sm font-semibold"
         >
           {isSearching ? 'Searching...' : 'Find my destination'}
+          <Plane className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </aside>
