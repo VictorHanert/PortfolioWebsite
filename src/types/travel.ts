@@ -68,7 +68,25 @@ export const DISTANCE_OPTIONS = [
   { value: 'Long', label: 'Long Flight' },
 ] as const;
 
-export const CATEGORY_OPTIONS = ['Trending', 'Football', 'New Destination', 'Relax', 'Culture', 'Beach', 'Shopping', 'Nature', 'Capital', 'Ski', 'Warm Weather'] as const;
+export const CATEGORY_OPTIONS = [
+  'Beach', 
+  'Warm Weather', 
+  'Relax', 
+  'Quiet',
+  'Nature', 
+  'Cultural',
+  'Historical', 
+  'Shopping', 
+  'Capital', 
+  'Football', 
+  'Nightlife', 
+  'Ski', 
+  'Cold Weather', 
+  'Romantic',
+  'New Destination', 
+  'Trending', 
+  'Hidden Gem',
+] as const;
 
 export const SEASON_OPTIONS = ['January - March', 'March - April', 'May - June', 'June - August', 'September - November', 'December'] as const;
 
