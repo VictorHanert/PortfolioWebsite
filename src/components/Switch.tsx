@@ -2,36 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Switch = ({ checked, onChange }: { checked: boolean; onChange: (value: boolean) => void }) => {
-  return (
-    <StyledWrapper>
-      <label className="cosmic-toggle">
-        <input 
-          className="toggle" 
-          type="checkbox" 
-          checked={checked}
-          onChange={(e) => onChange(e.target.checked)}
-        />
-        <div className="slider">
-          <div className="cosmos" />
-          <div className="energy-line" />
-          <div className="energy-line" />
-          <div className="energy-line" />
-          <div className="toggle-orb">
-            <div className="inner-orb" />
-            <div className="ring" />
-          </div>
-          <div className="particles">
-            <div style={{'--angle': '30deg'} as React.CSSProperties} className="particle" />
-            <div style={{'--angle': '60deg'} as React.CSSProperties} className="particle" />
-            <div style={{'--angle': '90deg'} as React.CSSProperties} className="particle" />
-            <div style={{'--angle': '120deg'} as React.CSSProperties} className="particle" />
-            <div style={{'--angle': '150deg'} as React.CSSProperties} className="particle" />
-            <div style={{'--angle': '180deg'} as React.CSSProperties} className="particle" />
-          </div>
-        </div>
-      </label>
-    </StyledWrapper>
-  );
+    return (
+        <StyledWrapper>
+            <label className="cosmic-toggle">
+                <input
+                    className="toggle"
+                    type="checkbox"
+                    checked={checked}
+                    onChange={(e) => onChange(e.target.checked)}
+                />
+                <div className="slider">
+                    <div className="cosmos" />
+                    <div className="energy-line" />
+                    <div className="energy-line" />
+                    <div className="energy-line" />
+                    <div className="toggle-orb">
+                        <div className="inner-orb" />
+                        <div className="ring" />
+                    </div>
+                    <div className="particles">
+                        <div style={{ '--angle': '30deg' } as React.CSSProperties} className="particle" />
+                        <div style={{ '--angle': '60deg' } as React.CSSProperties} className="particle" />
+                        <div style={{ '--angle': '90deg' } as React.CSSProperties} className="particle" />
+                        <div style={{ '--angle': '120deg' } as React.CSSProperties} className="particle" />
+                        <div style={{ '--angle': '150deg' } as React.CSSProperties} className="particle" />
+                        <div style={{ '--angle': '180deg' } as React.CSSProperties} className="particle" />
+                    </div>
+                </div>
+            </label>
+        </StyledWrapper>
+    );
 }
 
 const StyledWrapper = styled.div`

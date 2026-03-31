@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledText = () => {
-  return (
-    <StyledWrapper>
-      <p className="btn-shine">Fullstack Developer</p>
-    </StyledWrapper>
-  );
+    return (
+        <StyledWrapper>
+            <p className="btn-shine">Fullstack Developer</p>
+        </StyledWrapper>
+    );
 }
 
 const StyledWrapper = styled.div`
