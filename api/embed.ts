@@ -21,6 +21,12 @@ function generateMockEmbedding(text: string): number[] {
   return vector;
 }
 
+function to768Dimensions(values: number[]): number[] {
+  if (values.length === 768) return values;
+  if (values.length > 768) return values.slice(0, 768);
+  return [...values, ...new Array(768 - values.length).fill(0)];
+}
+
 function isLocalRequest(req: Request): boolean {
   const url = new URL(req.url);
   const host = url.hostname;
@@ -58,10 +64,28 @@ export default async function handler(req: Request) {
     }
     
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "embedding-001" });
-    const result = await model.embedContent(text);
-    const embedding = result.embedding.values;
-    console.log('Embedding length:', embedding.length);
+    const modelCandidates = ["gemini-embedding-001", "gemini-embedding-2-preview", "embedding-001"];
+
+    let embedding: number[] | null = null;
+    let lastError: unknown = null;
+
+    for (const modelName of modelCandidates) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.embedContent(text);
+        embedding = to768Dimensions(result.embedding.values);
+        console.log(`Embedding model used: ${modelName}, length: ${embedding.length}`);
+        break;
+      } catch (err) {
+        lastError = err;
+      }
+    }
+
+    if (!embedding) {
+      throw lastError instanceof Error
+        ? lastError
+        : new Error('No embedding model was available for this API key/project.');
+    }
     
     return new Response(JSON.stringify({ embedding }), {
       headers: { "Content-Type": "application/json" },
