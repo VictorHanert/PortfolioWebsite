@@ -35,6 +35,8 @@
 - **Inline Styles**: Avoid new inline styles; use them only when needed for dynamic values (e.g., progress widths or legend colors).
 
 ## 📝 Coding Standard
+- Always write text, comments and code in English.
+- Never use emojis anywhere in the codebase, including comments, variable names, or documentation. Unless i specifically ask you to use emojis, do not include them in any code or comments.
 - Use PascalCase for component files and camelCase for hooks.
 - Always include `use client` or `use server` directives where necessary.
 - Use `declare(strict_types=1)` logic in spirit (TypeScript strict mode).

@@ -7,12 +7,14 @@ import Index from "./pages/Index";
 import GlobePage from "./pages/Globe";
 import TravelStatsPage from "./pages/TravelStats";
 import TravelAgentPage from "./pages/TravelAgent";
+import AdminSeedPage from "./pages/AdminSeed";
 import NotFound from "./pages/NotFound.tsx";
 import CommonNavbar from "./components/CommonNavbar";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const queryClient = new QueryClient();
+const adminSeedEnabled = import.meta.env.DEV || import.meta.env.VITE_ENABLE_ADMIN_SEED === "true";
 
 const SharedPagesLayout = () => (
   <>
@@ -30,6 +32,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            {adminSeedEnabled && <Route path="/admin/seed" element={<AdminSeedPage />} />}
             <Route element={<SharedPagesLayout />}>
               <Route path="/globe" element={<GlobePage />} />
               <Route path="/stats" element={<TravelStatsPage />} />

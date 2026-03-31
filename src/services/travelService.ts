@@ -1,5 +1,6 @@
 import type { SearchFilters, DestinationMatch, TravelDestination } from '@/types/travel';
 import { getSupabaseClient, isSupabaseConfigured } from './supabaseClient';
+import { generateEmbedding } from './embedService';
 import { visitedCountries } from '@/data/visitedCountries';
 
 const VISITED_COUNTRY_NAMES = new Set(visitedCountries.map((country) => country.name.trim().toLowerCase()));
@@ -109,11 +110,17 @@ export async function semanticSearch(
     });
 
     if (error) {
+        if (error.code === 'PGRST202') {
+            console.warn(
+                'Semantic search RPC function missing. Create public.match_destinations in Supabase SQL editor to enable vector search.'
+            );
+            return [];
+        }
         console.error('Semantic search error:', error);
         return [];
     }
 
-    return (data ?? []).map((d: any) => ({
+    return (data ?? []).map((d: { id: string; name: string; country: string; description: string | null; similarity: number }) => ({
         id: d.id,
         name: d.name,
         country: d.country,
@@ -129,7 +136,7 @@ export async function semanticSearch(
 // ── Combined search (the main entry point) ─────────────────────────────
 export async function findDestinations(
     filters: SearchFilters,
-    _semanticText: string
+    semanticText: string
 ): Promise<DestinationMatch[]> {
     if (!isSupabaseConfigured) {
         const durationTag = filters.tripDuration ? ` Best for: ${filters.tripDuration}.` : '';
@@ -152,23 +159,50 @@ export async function findDestinations(
         }));
     }
 
-    // In production: generate embedding from _semanticText via an edge function, then call semanticSearch() + fetchByFilters() and merge/rank.
-    const structured = (await fetchByFilters(filters))
-        .filter((destination) => durationAllowsDistance(filters, destination.distance_category))
-        .filter((destination) => filters.includeVisitedCountries || !isVisitedCountry(destination));
+    try {
+        // 1. Få fat i strukturerede resultater baseret på filtre (Budget, Distance, Category)
+        const structuredResults = (await fetchByFilters(filters))
+            .filter((d) => durationAllowsDistance(filters, d.distance_category))
+            .filter((d) => filters.includeVisitedCountries || !isVisitedCountry(d));
 
-    // For now, map structured results into DestinationMatch shape
-    return structured.map((d) => ({
-        id: d.id,
-        name: d.name,
-        country: d.country,
-        description: d.description ?? '',
-        similarity: 0,
-        matchScore: filters.useVisitedCountriesData && isVisitedCountry(d) ? 86 : 80,
-        estimatedCostDKK: d.budget_level * 8000,
-        matchReason: `${filters.tripDuration
-            ? `Matches your filters and preferred trip length: ${filters.tripDuration}.`
-            : 'Matches your filters.'}${filters.useVisitedCountriesData ? ' Uses your travel history patterns.' : ''}`,
-        categories: d.category,
-    }));
+        // 2. Hvis der er indtastet tekst, så kør semantisk søgning (RAG)
+        let semanticMatches: DestinationMatch[] = [];
+        if (semanticText.trim().length > 3) {
+            // Generer embedding direkte via Gemini
+            const embedding = await generateEmbedding(semanticText);
+
+            // Søg i Supabase via din RPC funktion
+            semanticMatches = await semanticSearch(embedding, 0.4, 10);
+        }
+
+        // 3. Kombiner og berig resultaterne
+        // Vi tager de strukturerede resultater og tjekker om de også findes i de semantiske matches
+        const finalResults: DestinationMatch[] = structuredResults.map((d) => {
+            const semanticMatch = semanticMatches.find((sm) => sm.id === d.id);
+            
+            // Hvis det er et semantisk match, brug den faktiske score, ellers sæt en basis score
+            const matchScore = semanticMatch ? semanticMatch.matchScore : 80;
+            
+            return {
+                id: d.id,
+                name: d.name,
+                country: d.country,
+                description: d.description ?? '',
+                similarity: semanticMatch ? semanticMatch.similarity : 0,
+                matchScore: matchScore,
+                estimatedCostDKK: d.budget_level * 5000, // Simpelt estimat
+                matchReason: semanticMatch 
+                    ? `Dette match foreslås fordi det minder om din beskrivelse: "${semanticText}"`
+                    : `Matcher dine valgte filtre for ${d.category.join(', ')}.`,
+                categories: d.category,
+            };
+        });
+
+        // Sortér efter højeste match score
+        return finalResults.sort((a, b) => b.matchScore - a.matchScore);
+
+    } catch (error) {
+        console.error("Search failed:", error);
+        return [];
+    }
 }
