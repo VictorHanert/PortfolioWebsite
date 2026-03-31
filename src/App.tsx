@@ -32,7 +32,9 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            {adminSeedEnabled && <Route path="/admin/seed" element={<AdminSeedPage />} />}
+            {/* {adminSeedEnabled &&  */}
+            <Route path="/admin/seed" element={<AdminSeedPage />} />
+            {/* } */}
             <Route element={<SharedPagesLayout />}>
               <Route path="/globe" element={<GlobePage />} />
               <Route path="/stats" element={<TravelStatsPage />} />

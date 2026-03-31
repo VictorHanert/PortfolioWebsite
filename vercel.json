@@ -12,6 +12,7 @@
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/globe", "destination": "/index.html" },
     { "source": "/stats", "destination": "/index.html" },
-    { "source": "/travel-agent", "destination": "/index.html" }
+    { "source": "/travel-agent", "destination": "/index.html" },
+    { "source": "/admin/seed", "destination": "/index.html" }
   ]
 }
