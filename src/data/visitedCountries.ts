@@ -22,7 +22,8 @@ export const CONTINENT_DATA: ContinentData[] = [
         totalCountries: 44,
         countries: [
             { id: 'AUT', name: 'Austria', flag: '🇦🇹', visits: [ { date: '2018-02', region: 'Wagrain', description: 'Alpine skiing and winter sports paradise' } ] },
-            { id: 'CYP', name: 'Cyprus', flag: '🇨🇾', visits: [ { date: '?', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
+            { id: 'HRV', name: 'Cyprus', flag: '🇨🇾', visits: [ { date: '?', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
+            { id: 'CRO', name: 'Croatia', flag: '🇭🇷', visits: [ { date: '2026-07', region: 'Split', description: 'Boys-trip to private house with pool. Partying and relaxing in the beautiful area of Sibenik and Vodice.' } ] },
             {
                 id: 'DNK',
                 name: 'Denmark',
@@ -100,7 +101,6 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2014-07', region: 'Mallorca, Port de Soller', description: 'Trip to Soller with my family, enjoying the beach and local culture' },
                     { date: '2015-10', region: 'Fuerteventura', description: 'Playitas sports resort and volcanic island beauty' },
                     { date: '2016-07', region: 'Tossa de Mar, El Port de Selva', description: 'Vacation with family' },
-                    { date: '2016-11', region: 'Alicante', description: 'Costa Blanca paradise with beautiful coastline' },
                     { date: '2017-07', region: 'Tenerife', description: 'Canary Islands volcano and beach paradise' },
                     { date: '2018-07', region: 'Mallorca, Alcudia', description: 'Summer vacation to Alcudia, Palma and Pollenca with my family, enjoying the beach and food' },
                     { date: '2019-11', region: 'Malaga', description: 'Whole family trip to celebrate birthdays, living in a villa in the mountains, Alora, with a pool and amazing views' },
@@ -109,7 +109,9 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '2022-07', region: 'Marbella', description: 'Luxury mansion with my friends, enjoying the beach and nightlife' },
                     { date: '2022-10', region: 'Seville', description: 'Seeing Champions League football (Sevilla vs Copenhagen) with my father and brother, and enjoying the city' },
                     { date: '2024-07', region: 'Mallorca, Cala\'dor', description: "Staying in luxury resort at Cala d'Or with my girlfriend and her family, enjoying the beach and food" },
-                    { date: '2025-12', region: 'Villarreal, Alicante', description: 'La Liga football city with local charm. Saw them playing against FC Copenhagen in the Champions League with my dad and brother' }
+                    { date: '2025-08', region: 'Alicante', description: 'Costa Blanca paradise with beautiful coastline' },
+                    { date: '2025-12', region: 'Villarreal, Alicante', description: 'La Liga football city with local charm. Saw them playing against FC Copenhagen in the Champions League with my dad and brother' },
+                    { date: '2026-05', region: 'Alicante', description: 'Costa Blanca paradise with beautiful coastline' },
                 ]
             },
             { id: 'SWE', name: 'Sweden', flag: '🇸🇪',
