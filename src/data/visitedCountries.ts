@@ -22,8 +22,8 @@ export const CONTINENT_DATA: ContinentData[] = [
         totalCountries: 44,
         countries: [
             { id: 'AUT', name: 'Austria', flag: '🇦🇹', visits: [ { date: '2018-02', region: 'Wagrain', description: 'Alpine skiing and winter sports paradise' } ] },
-            { id: 'HRV', name: 'Cyprus', flag: '🇨🇾', visits: [ { date: '?', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
-            { id: 'CRO', name: 'Croatia', flag: '🇭🇷', visits: [ { date: '2026-07', region: 'Split', description: 'Boys-trip to private house with pool. Partying and relaxing in the beautiful area of Sibenik and Vodice.' } ] },
+            { id: 'CYP', name: 'Cyprus', flag: '🇨🇾', visits: [ { date: '?', region: 'Cyprus', description: 'Mediterranean island with beaches and mountains' } ] },
+            { id: 'HRV', name: 'Croatia', flag: '🇭🇷', visits: [ { date: '2026-07', region: 'Split', description: 'Boys-trip to private house with pool. Partying and relaxing in the beautiful area of Sibenik and Vodice.' } ] },
             {
                 id: 'DNK',
                 name: 'Denmark',
