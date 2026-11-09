@@ -3,12 +3,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { Plane, MapPin, Palmtree, Landmark, Dribbble, Leaf, Sun, CloudRain, Snowflake, Flower2, Clock3, ChartBarIncreasing, ShoppingBag, Waves, MapPinPlus, Heart, Beer, MountainSnow, FlameKindling, EarOff, Gem } from 'lucide-react';
+import { Plane, MapPin, Palmtree, Landmark, Dribbble, Leaf, Sun, Snowflake, Clock3, ChartBarIncreasing, ShoppingBag, Waves, MapPinPlus, Heart, Beer, MountainSnow, FlameKindling, EarOff, Gem } from 'lucide-react';
 import type { SearchFilters, TravelDuration } from '@/types/travel';
 import {
+    BUDGET_LEVELS,
     DISTANCE_OPTIONS,
     CATEGORY_OPTIONS,
-    SEASON_OPTIONS,
     TRAVEL_DURATION_OPTIONS,
 } from '@/types/travel';
 
@@ -36,24 +36,9 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
     Ski: <MountainSnow className="h-3.5 w-3.5" />,
     'Cold Weather': <Snowflake className="h-3.5 w-3.5" />,
     'Romantic': <Heart className="h-3.5 w-3.5" />,
-    'New Destination': <MapPinPlus className="h-3.5 w-3.5" />,
     Trending: <ChartBarIncreasing className="h-3.5 w-3.5" />,
     'Hidden Gem': <Gem className="h-3.5 w-3.5" />,
 };
-
-const SEASON_ICONS: Record<string, React.ReactNode> = {
-    'January - March': <Snowflake className="h-3.5 w-3.5" />,
-    'March - April': <Flower2 className="h-3.5 w-3.5" />,
-    'May - June': <Leaf className="h-3.5 w-3.5" />,
-    'June - August': <Sun className="h-3.5 w-3.5" />,
-    'September - November': <CloudRain className="h-3.5 w-3.5" />,
-    December: <Snowflake className="h-3.5 w-3.5" />,
-};
-
-function formatBudget(v: number) {
-    if (v >= 20000) return '20.000+ kr.';
-    return v.toLocaleString('da-DK') + ' kr.';
-}
 
 export default function PreferencePanel({
     filters,
@@ -85,16 +70,17 @@ export default function PreferencePanel({
                     </label>
                     <div className="px-1">
                         <Slider
-                            min={0}
-                            max={20000}
-                            step={500}
-                            value={filters.budgetRange}
-                            onValueChange={(value) => update({ budgetRange: [value[0], value[1]] })}
+                            min={1}
+                            max={4}
+                            step={1}
+                            minStepsBetweenThumbs={0}
+                            value={filters.budgetLevels}
+                            onValueChange={(value) => update({ budgetLevels: [value[0], value[1]] })}
                         />
                     </div>
                     <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                        <span>{formatBudget(filters.budgetRange[0])}</span>
-                        <span className="font-medium text-foreground">{formatBudget(filters.budgetRange[1])}</span>
+                        <span>{BUDGET_LEVELS[filters.budgetLevels[0]]}</span>
+                        <span className="font-medium text-foreground">{BUDGET_LEVELS[filters.budgetLevels[1]]}</span>
                     </div>
                 </section>
 
@@ -177,32 +163,6 @@ export default function PreferencePanel({
                     </div>
                 </section>
 
-                {/* Season */}
-                <section>
-                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3 block">
-                        Season
-                    </label>
-                    <div className="grid grid-cols-2 gap-1.5">
-                        {SEASON_OPTIONS.map((s) => {
-                            const active = filters.season === s;
-                            return (
-                                <button
-                                    type="button"
-                                    key={s}
-                                    onClick={() => update({ season: active ? null : s })}
-                                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${active
-                                            ? 'bg-primary text-primary-foreground border-primary'
-                                            : 'bg-card text-foreground border-border hover:bg-muted'
-                                        }`}
-                                >
-                                    {SEASON_ICONS[s]}
-                                    {s}
-                                </button>
-                            );
-                        })}
-                    </div>
-                </section>
-
                 {/* Extra prompt */}
                 <section>
                     <Textarea
@@ -219,14 +179,14 @@ export default function PreferencePanel({
                             <TooltipTrigger asChild>
                                 <div className="flex items-center gap-2 mb-3 cursor-help">
                                     <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                                        Use visitedCountries data to recommend next travel?
+                                        Use Victor's travel history?
                                     </label>
                                     <MapPinPlus className="h-3.5 w-3.5 cursor-help text-muted-foreground" />
                                 </div>
                             </TooltipTrigger>
                             <TooltipContent className="text-xs bg-gray-200">
-                                    If yes, the agent will try to recommend a destination based on what you like from the countries you've already visited. <br />
-                                    If no, the agent will recommend a destination solely based on your other preferences.
+                                    If yes, results are tuned to Victor's own travel taste, based on the trips on this site. <br />
+                                    If no, the agent recommends destinations solely based on your preferences.
                             </TooltipContent>
                         </Tooltip>
                     <ToggleGroup
@@ -251,7 +211,7 @@ export default function PreferencePanel({
                 {/* Include already visited destinations */}
                 <section>
                     <label className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                        Recommend travels to already visited destinations?
+                        Include countries Victor has already visited?
                     </label>
                     <ToggleGroup
                         type="single"

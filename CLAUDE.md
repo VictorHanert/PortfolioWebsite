@@ -22,7 +22,7 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 
 ## Layout
 
-- `src/App.tsx` - routes: `/`, `/globe`, `/stats`, `/travel-agent`, `/admin/seed`. Providers: React Query, Tooltip, both toasters, Vercel Analytics + SpeedInsights
+- `src/App.tsx` - routes: `/`, `/globe`, `/stats`, `/travel-agent`. Providers: React Query, Tooltip, both toasters, Vercel Analytics + SpeedInsights
 - `src/pages/Index.tsx` - landing page: Hero, About, Skills, Projects, Contact
 - `src/data/` - content source of truth:
   - `portfolioData.ts` - personal facts fed to the chatbot (`api/chat.ts` serializes the whole object into the system prompt)
@@ -33,8 +33,7 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - `api/` - Vercel edge functions:
   - `chat.ts` - portfolio chatbot (Gemini), rate limited
   - `send.ts` - contact form mail (nodemailer/Gmail), rate limited
-  - `embed.ts` - text to 768-dim embedding (Gemini, mock fallback for local requests)
-  - `seed.ts` - seeds Supabase `travel_destinations`, protected by `SEED_ADMIN_TOKEN`
+  - `embed.ts` - text to 768-dim query embedding (Gemini REST, `gemini-embedding-001`, `RETRIEVAL_QUERY`), rate limited. Mock vectors only with `EMBED_MOCK=true` outside production
 
 ## Globe (`/globe`)
 
@@ -47,16 +46,15 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 
 ## Travel agent (`/travel-agent`) - work in progress
 
-- UI: `src/pages/TravelAgent.tsx` + `src/components/travel-agent/*` (PreferencePanel, ResultsWorkspace, DestinationCard, AnalysisLoader). Analysis steps are fake 900 ms delays
-- Logic: `src/services/travelService.ts` (filters, trip duration to distance mapping, visited-country exclusion, demo results when Supabase is not configured)
-- `embedService.ts` calls `/api/embed`; `travelSeeder.ts` + `src/pages/AdminSeed.tsx` + `/api/seed` populate the DB
-- DB: `supabase/match_destinations.sql` defines the `match_destinations(query_embedding vector(768), match_threshold, match_count)` RPC. The script truncates `travel_destinations`, so never run it against data you want to keep
-- Embeddings are normalized to 768 dims (`to768Dimensions` in `api/embed.ts`)
-- `/admin/seed` is only routed when `adminSeedEnabled` is true (Vite dev mode, or `VITE_ENABLE_ADMIN_SEED=true`). Seed locally; keep `VITE_SEED_ADMIN_TOKEN` out of production env vars, since every `VITE_` value ends up in the browser bundle
+- UI: `src/pages/TravelAgent.tsx` + `src/components/travel-agent/*` (PreferencePanel, ResultsWorkspace, DestinationCard, AnalysisLoader). Analysis steps follow the real phases (embedding, searching)
+- Logic: `src/services/travelService.ts` builds one call to the `search_destinations` RPC: budget levels (1-4, `BUDGET_LEVELS`), trip duration merged with distance, visited countries excluded by ISO alpha-3 (`visitedCountries` ids), optional query embedding, optional taste profile. Throws on failure. Demo results when Supabase is not configured
+- DB (Supabase project `supabase-travel-agent`): schema lives in `supabase/migrations/`. `search_destinations` is `SECURITY INVOKER` with `search_path = ''`; hard filters, ranked by cosine similarity (blended 75/25 with the `travel_profiles` row `victor` when "Use Victor's travel history" is on), category overlap as tie-break. `pgvector` lives in the `extensions` schema, so use `extensions.vector` and `operator(extensions.<=>)`. anon/authenticated can only SELECT
+- Seed data: `supabase/seed/destinations.json` (source of truth, keyed on `name` + `country_code`) and `supabase/seed/taste-profile.txt`. Reseed with `node --env-file=.env scripts/seed-destinations.mjs` (needs `GEMINI_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Embedding model and dimensions must stay identical in the script and `api/embed.ts`
+- Season filter is hidden until destinations have month data (phase 3)
 
 ## Environment
 
-Keys are listed in `.env.example` (never read or print `.env`): `GMAIL_USER`, `GMAIL_PASS`, `VITE_MAPTILER_API_KEY`, `GEMINI_API_KEY`, `AI_GATEWAY_API`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SEED_ADMIN_TOKEN`, `VITE_SEED_ADMIN_TOKEN`, `VITE_ENABLE_ADMIN_SEED`. Anything prefixed `VITE_` is shipped to the browser.
+Keys are listed in `.env.example` (never read or print `.env`): `GMAIL_USER`, `GMAIL_PASS`, `VITE_MAPTILER_API_KEY`, `GEMINI_API_KEY`, `AI_GATEWAY_API`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `EMBED_MOCK`. Anything prefixed `VITE_` is shipped to the browser.
 
 ## Conventions
 

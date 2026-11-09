@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import type { DestinationMatch } from '@/types/travel';
+import { BUDGET_LEVELS } from '@/types/travel';
 
 interface DestinationCardProps {
 	match: DestinationMatch;
@@ -24,7 +25,8 @@ export default function DestinationCard({ match, index }: DestinationCardProps) 
 						{match.country}
 					</div>
 				</div>
-				{/* Match score */}
+				{/* Match score, hidden when there is nothing to score against */}
+				{match.matchScore > 0 && (
 				<div className="flex flex-col items-center">
 					<div className="relative h-11 w-11">
 						<svg viewBox="0 0 36 36" className="h-11 w-11 -rotate-90">
@@ -37,6 +39,7 @@ export default function DestinationCard({ match, index }: DestinationCardProps) 
 					</div>
 					<span className="text-[10px] text-muted-foreground mt-0.5">Match</span>
 				</div>
+				)}
 			</div>
 
 			{/* Description */}
@@ -44,10 +47,8 @@ export default function DestinationCard({ match, index }: DestinationCardProps) 
 
 			{/* Cost */}
 			<div className="flex items-center justify-between mb-3">
-				<span className="text-xs text-muted-foreground">Estimated cost</span>
-				<span className="text-sm font-semibold text-foreground">
-					{match.estimatedCostDKK.toLocaleString('da-DK')} kr.
-				</span>
+				<span className="text-xs text-muted-foreground">Budget level</span>
+				<span className="text-sm font-semibold text-foreground">{BUDGET_LEVELS[match.budgetLevel]}</span>
 			</div>
 
 			{/* Match reason */}

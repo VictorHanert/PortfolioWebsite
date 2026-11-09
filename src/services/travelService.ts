@@ -1,29 +1,30 @@
-import type { SearchFilters, DestinationMatch, TravelDestination } from '@/types/travel';
+import type { SearchFilters, DestinationMatch, DistanceCategory, SearchDestinationRow, TravelDuration } from '@/types/travel';
 import { getSupabaseClient, isSupabaseConfigured } from './supabaseClient';
 import { generateEmbedding } from './embedService';
 import { visitedCountries } from '@/data/visitedCountries';
 
-const VISITED_COUNTRY_NAMES = new Set(visitedCountries.map((country) => country.name.trim().toLowerCase()));
+const VISITED_COUNTRY_CODES = visitedCountries.map((country) => country.id);
+const MIN_SEMANTIC_TEXT_LENGTH = 4;
+const MATCH_COUNT = 9;
 
-function isVisitedCountry(destination: Pick<TravelDestination, 'country'> | Pick<DestinationMatch, 'country'>) {
-    return VISITED_COUNTRY_NAMES.has(destination.country.trim().toLowerCase());
-}
+const DURATION_DISTANCES: Record<TravelDuration, DistanceCategory[]> = {
+    'Day Trip': ['Short'],
+    'Weekend': ['Short', 'Mid'],
+    '1-3 Days': ['Short', 'Mid'],
+    '3-6 Days': ['Short', 'Mid'],
+    '1 Week': ['Short', 'Mid', 'Long'],
+    '2 Weeks': ['Mid', 'Long'],
+    '15+ Days': ['Long'],
+    'No Preference': ['Short', 'Mid', 'Long'],
+};
 
-function durationAllowsDistance(filters: SearchFilters, distance: TravelDestination['distance_category']) {
-    if (!filters.tripDuration) return true;
-
-    const durationDistanceMap: Record<NonNullable<SearchFilters['tripDuration']>, Array<TravelDestination['distance_category']>> = {
-        'Day Trip': ['Short'],
-        'Weekend': ['Short', 'Mid'],
-        '1-3 Days': ['Short', 'Mid'],
-        '3-6 Days': ['Short', 'Mid'],
-        '1 Week': ['Short', 'Mid', 'Long'],
-        '2 Weeks': ['Mid', 'Long'],
-        '15+ Days': ['Long'],
-        'No Preference': ['Short', 'Mid', 'Long'],
-    };
-
-    return durationDistanceMap[filters.tripDuration].includes(distance);
+// Combines trip duration and the explicit distance choice. null means no distance restriction.
+function allowedDistances(filters: SearchFilters): DistanceCategory[] | null {
+    const fromDuration = filters.tripDuration ? DURATION_DISTANCES[filters.tripDuration] : null;
+    if (filters.distanceCategory) {
+        return !fromDuration || fromDuration.includes(filters.distanceCategory) ? [filters.distanceCategory] : [];
+    }
+    return fromDuration;
 }
 
 // ── Demo data (shown only when Supabase is not connected) ──────────────
@@ -33,176 +34,105 @@ const DEMO_RESULTS: DestinationMatch[] = [
         name: 'Barcelona',
         country: 'Spain',
         description: 'Exciting city with world-class football, Gaudí architecture, and vibrant culture.',
-        similarity: 0.94,
+        similarity: null,
         matchScore: 96,
-        estimatedCostDKK: 8500,
-        matchReason: 'Perfect match for your interest in football and culture — Camp Nou and Gaudí’s masterpieces await.',
-        categories: ['Football', 'Culture'],
+        budgetLevel: 2,
+        matchReason: 'Demo result: football and culture, with Camp Nou and Gaudí close by.',
+        categories: ['Football', 'Cultural'],
     },
     {
         id: 'demo-2',
-        name: 'Lissabon',
+        name: 'Lisbon',
         country: 'Portugal',
         description: 'Historic city with beautiful coastal views, vibrant culture, and delicious cuisine.',
-        similarity: 0.89,
+        similarity: null,
         matchScore: 91,
-        estimatedCostDKK: 7200,
-        matchReason: 'Perfect match for your budget and passion for history and gastronomy.',
-        categories: ['Culture', 'Relax'],
+        budgetLevel: 2,
+        matchReason: 'Demo result: history and food on a moderate budget.',
+        categories: ['Cultural', 'Relax'],
     },
     {
         id: 'demo-3',
         name: 'Reykjavik',
         country: 'Iceland',
         description: 'Wild nature, warm springs, and the northern lights close to Denmark.',
-        similarity: 0.85,
+        similarity: null,
         matchScore: 87,
-        estimatedCostDKK: 12000,
-        matchReason: 'Short flight from Denmark with unique nature — perfect for a nature trip.',
+        budgetLevel: 3,
+        matchReason: 'Demo result: a short flight from Denmark with unique nature.',
         categories: ['Nature', 'Relax'],
     },
 ];
 
-// ── Structured filter query ────────────────────────────────────────────
-export async function fetchByFilters(
-    filters: SearchFilters
-): Promise<TravelDestination[]> {
-    const client = await getSupabaseClient();
-    if (!client) return [];
+function buildMatchReason(row: SearchDestinationRow, filters: SearchFilters, hasQuery: boolean): string {
+    if (hasQuery && filters.useVisitedCountriesData) return "Close match to your description and Victor's travel taste.";
+    if (hasQuery) return 'Close match to your description.';
+    if (filters.useVisitedCountriesData) return "Fits Victor's travel taste based on his travel history.";
 
-    let query = client.from('travel_destinations').select('*');
-
-    if (filters.distanceCategory) {
-        query = query.eq('distance_category', filters.distanceCategory);
-    }
-
-    if (filters.categories.length > 0) {
-        query = query.overlaps('category', filters.categories);
-    }
-
-    // Budget level mapping: [0-10k]=1, [10-20k]=2, [20-35k]=3, [35k+]=4
-    const maxBudget = filters.budgetRange[1];
-    const budgetLevel =
-        maxBudget <= 10000 ? 1 : maxBudget <= 20000 ? 2 : maxBudget <= 35000 ? 3 : 4;
-    query = query.lte('budget_level', budgetLevel);
-
-    const { data, error } = await query;
-    if (error) {
-        console.error('Filter query error:', error);
-        return [];
-    }
-    return data ?? [];
+    const matched = row.category.filter((c) => filters.categories.includes(c));
+    return matched.length > 0 ? `Matches your categories: ${matched.join(', ')}.` : 'Matches your filters.';
 }
 
-// ── Vector / semantic search via RPC ───────────────────────────────────
-export async function semanticSearch(
-    queryEmbedding: number[],
-    threshold = 0.7,
-    count = 5
-): Promise<DestinationMatch[]> {
-    const client = await getSupabaseClient();
-    if (!client) return [];
+function toMatch(row: SearchDestinationRow, filters: SearchFilters, hasQuery: boolean): DestinationMatch {
+    const matchScore = row.similarity !== null
+        ? Math.round(row.similarity * 100)
+        : filters.categories.length > 0
+            ? Math.round((row.category_overlap / filters.categories.length) * 100)
+            : 0;
 
-    const { data, error } = await client.rpc('match_destinations', {
-        query_embedding: queryEmbedding,
-        match_threshold: threshold,
-        match_count: count,
-    });
-
-    if (error) {
-        if (error.code === 'PGRST202') {
-            console.warn(
-                'Semantic search RPC function missing. Create public.match_destinations in Supabase SQL editor to enable vector search.'
-            );
-            return [];
-        }
-        console.error('Semantic search error:', error);
-        return [];
-    }
-
-    return (data ?? []).map((d: { id: string; name: string; country: string; description: string | null; similarity: number }) => ({
-        id: d.id,
-        name: d.name,
-        country: d.country,
-        description: d.description ?? '',
-        similarity: d.similarity,
-        matchScore: Math.round(d.similarity * 100),
-        estimatedCostDKK: 0, // enrich later
-        matchReason: '',
-        categories: [],
-    }));
+    return {
+        id: row.id,
+        name: row.name,
+        country: row.country,
+        description: row.description ?? '',
+        similarity: row.similarity,
+        matchScore,
+        budgetLevel: row.budget_level,
+        matchReason: buildMatchReason(row, filters, hasQuery),
+        categories: row.category,
+    };
 }
 
-// ── Combined search (the main entry point) ─────────────────────────────
+export type SearchProgress = 'embedding' | 'searching';
+
+// ── Main entry point. Throws on failure so the UI can show an error. ───
 export async function findDestinations(
     filters: SearchFilters,
-    semanticText: string
+    semanticText: string,
+    onProgress?: (step: SearchProgress) => void
 ): Promise<DestinationMatch[]> {
     if (!isSupabaseConfigured) {
-        const durationTag = filters.tripDuration ? ` Best for: ${filters.tripDuration}.` : '';
-        const filteredDemoResults = filters.includeVisitedCountries
-            ? DEMO_RESULTS
-            : DEMO_RESULTS.filter((result) => !isVisitedCountry(result));
-
-        // In demo mode we always return suggestions, even if strict filters remove all samples.
-        const baseDemoResults = filteredDemoResults.length > 0 ? filteredDemoResults : DEMO_RESULTS;
-        const fallbackTag = filteredDemoResults.length === 0
-            ? ' Demo fallback: showing sample destinations.'
-            : '';
-
-        return baseDemoResults.map((result) => ({
-            ...result,
-            matchReason: `${result.matchReason}${durationTag}${filters.useVisitedCountriesData ? ' Uses your travel history patterns.' : ''}${fallbackTag}`,
-            matchScore: filters.useVisitedCountriesData && isVisitedCountry(result)
-                ? Math.min(result.matchScore + 6, 100)
-                : result.matchScore,
-        }));
+        return DEMO_RESULTS;
     }
 
-    try {
-        // 1. Få fat i strukturerede resultater baseret på filtre (Budget, Distance, Category)
-        const structuredResults = (await fetchByFilters(filters))
-            .filter((d) => durationAllowsDistance(filters, d.distance_category))
-            .filter((d) => filters.includeVisitedCountries || !isVisitedCountry(d));
+    const distances = allowedDistances(filters);
+    if (distances && distances.length === 0) return [];
 
-        // 2. Hvis der er indtastet tekst, så kør semantisk søgning (RAG)
-        let semanticMatches: DestinationMatch[] = [];
-        if (semanticText.trim().length > 3) {
-            // Generer embedding direkte via Gemini
-            const embedding = await generateEmbedding(semanticText);
+    const text = semanticText.trim();
+    const hasQuery = text.length >= MIN_SEMANTIC_TEXT_LENGTH;
 
-            // Søg i Supabase via din RPC funktion
-            semanticMatches = await semanticSearch(embedding, 0.4, 10);
-        }
-
-        // 3. Kombiner og berig resultaterne
-        // Vi tager de strukturerede resultater og tjekker om de også findes i de semantiske matches
-        const finalResults: DestinationMatch[] = structuredResults.map((d) => {
-            const semanticMatch = semanticMatches.find((sm) => sm.id === d.id);
-            
-            // Hvis det er et semantisk match, brug den faktiske score, ellers sæt en basis score
-            const matchScore = semanticMatch ? semanticMatch.matchScore : 80;
-            
-            return {
-                id: d.id,
-                name: d.name,
-                country: d.country,
-                description: d.description ?? '',
-                similarity: semanticMatch ? semanticMatch.similarity : 0,
-                matchScore: matchScore,
-                estimatedCostDKK: d.budget_level * 5000, // Simpelt estimat
-                matchReason: semanticMatch 
-                    ? `Dette match foreslås fordi det minder om din beskrivelse: "${semanticText}"`
-                    : `Matcher dine valgte filtre for ${d.category.join(', ')}.`,
-                categories: d.category,
-            };
-        });
-
-        // Sortér efter højeste match score
-        return finalResults.sort((a, b) => b.matchScore - a.matchScore);
-
-    } catch (error) {
-        console.error("Search failed:", error);
-        return [];
+    let queryEmbedding: number[] | null = null;
+    if (hasQuery) {
+        onProgress?.('embedding');
+        queryEmbedding = await generateEmbedding(text);
     }
+
+    onProgress?.('searching');
+    const client = await getSupabaseClient();
+    if (!client) throw new Error('Supabase client is not available');
+
+    const { data, error } = await client.rpc('search_destinations', {
+        query_embedding: queryEmbedding ? JSON.stringify(queryEmbedding) : null,
+        use_profile: filters.useVisitedCountriesData,
+        min_budget_level: filters.budgetLevels[0],
+        max_budget_level: filters.budgetLevels[1],
+        distances,
+        categories: filters.categories.length > 0 ? filters.categories : null,
+        exclude_country_codes: filters.includeVisitedCountries ? null : VISITED_COUNTRY_CODES,
+        match_count: MATCH_COUNT,
+    });
+
+    if (error) throw new Error(`Search failed: ${error.message}`);
+
+    return ((data ?? []) as SearchDestinationRow[]).map((row) => toMatch(row, filters, hasQuery));
 }

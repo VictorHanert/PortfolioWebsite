@@ -1,5 +1,5 @@
 
-import { Project } from "@/components/ProjectCard";
+import type { Project } from "../types/project";
 
 export const projects: Project[] = [
     {

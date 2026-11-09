@@ -1,12 +1,17 @@
-export interface TravelDestination {
+export type DistanceCategory = 'Short' | 'Mid' | 'Long';
+
+// Row shape returned by the search_destinations RPC in Supabase
+export interface SearchDestinationRow {
     id: string;
     name: string;
     country: string;
+    country_code: string | null;
     description: string | null;
     category: string[];
     budget_level: number; // 1-4
-    distance_category: 'Short' | 'Mid' | 'Long';
-    embedding?: number[];
+    distance_category: DistanceCategory;
+    similarity: number | null;
+    category_overlap: number;
 }
 
 export interface DestinationMatch {
@@ -14,21 +19,20 @@ export interface DestinationMatch {
     name: string;
     country: string;
     description: string;
-    similarity: number;
+    similarity: number | null;
     matchScore: number;
-    estimatedCostDKK: number;
+    budgetLevel: number;
     matchReason: string;
     categories: string[];
 }
 
 export interface SearchFilters {
-    budgetRange: [number, number];
-    distanceCategory: 'Short' | 'Mid' | 'Long' | null;
+    budgetLevels: [number, number]; // 1-4, see BUDGET_LEVELS
+    distanceCategory: DistanceCategory | null;
     tripDuration: TravelDuration | null;
     useVisitedCountriesData: boolean;
     includeVisitedCountries: boolean;
     categories: string[];
-    season: string | null;
 }
 
 export type TravelDuration =
@@ -54,12 +58,12 @@ export interface AnalysisStep {
     status: 'pending' | 'active' | 'done';
 }
 
-export const BUDGET_LABELS: Record<number, string> = {
-    0: '0 kr.',
-    5000: '5.000 kr.',
-    10000: '10.000 kr.',
-    15000: '15.000 kr.',
-    20000: '20.000+ kr.',
+// Matches budget_level in Supabase
+export const BUDGET_LEVELS: Record<number, string> = {
+    1: 'Under 5.000 kr.',
+    2: '5.000 - 10.000 kr.',
+    3: '10.000 - 20.000 kr.',
+    4: '20.000+ kr.',
 };
 
 export const DISTANCE_OPTIONS = [
@@ -83,12 +87,9 @@ export const CATEGORY_OPTIONS = [
     'Ski',
     'Cold Weather',
     'Romantic',
-    'New Destination',
     'Trending',
     'Hidden Gem',
 ] as const;
-
-export const SEASON_OPTIONS = ['January - March', 'March - April', 'May - June', 'June - August', 'September - November', 'December'] as const;
 
 export const TRAVEL_DURATION_OPTIONS: ReadonlyArray<TravelDuration> = [
     'Day Trip',
@@ -102,11 +103,10 @@ export const TRAVEL_DURATION_OPTIONS: ReadonlyArray<TravelDuration> = [
 ];
 
 export const DEFAULT_FILTERS: SearchFilters = {
-    budgetRange: [0, 20000],
+    budgetLevels: [1, 4],
     distanceCategory: null,
     tripDuration: null,
     useVisitedCountriesData: true,
     includeVisitedCountries: false,
     categories: [],
-    season: null,
 };

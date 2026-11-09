@@ -1,17 +1,8 @@
 
 import { Button } from "@/components/ui/button";
+import type { Project } from "@/types/project";
 
-export type Project = {
-    id: number;
-    title: string;
-    description: string;
-    tech: string[];
-    category: string;
-    websiteUrl?: string;
-    githubUrl?: string;
-    screenshots?: string[];
-    previewImage: string;
-};
+export type { Project };
 
 type ProjectCardProps = {
     project: Project;

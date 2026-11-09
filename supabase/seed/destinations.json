@@ -1,0 +1,394 @@
+[
+  {
+    "name": "Barcelona",
+    "country": "Spain",
+    "country_code": "ESP",
+    "description": "A vibrant Mediterranean city with top football, architecture, and beach life.",
+    "category": [
+      "Football",
+      "Cultural",
+      "Beach"
+    ],
+    "budget_level": 2,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "country_code": "JPN",
+    "description": "A dynamic capital blending neon districts, temples, and exceptional food.",
+    "category": [
+      "Cultural",
+      "Shopping",
+      "Capital"
+    ],
+    "budget_level": 4,
+    "distance_category": "Long"
+  },
+  {
+    "name": "Chamonix",
+    "country": "France",
+    "country_code": "FRA",
+    "description": "A mountain destination for winter sports and summer alpine trails.",
+    "category": [
+      "Ski",
+      "Nature",
+      "Cold Weather"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Amalfi Coast",
+    "country": "Italy",
+    "country_code": "ITA",
+    "description": "Cliffside villages, sea views, and slow luxury along the Italian coast.",
+    "category": [
+      "Romantic",
+      "Warm Weather",
+      "Relax"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "country_code": "ITA",
+    "description": "Ancient wonders, Renaissance art, and vibrant culture in Italy’s historic capital.",
+    "category": [
+      "Romantic",
+      "Capital",
+      "Shopping",
+      "Cultural",
+      "Historical"
+    ],
+    "budget_level": 2,
+    "distance_category": "Short"
+  },
+  {
+    "name": "New York City",
+    "country": "USA",
+    "country_code": "USA",
+    "description": "Iconic skyline, endless neighborhoods, and world-class entertainment.",
+    "category": [
+      "Shopping",
+      "Capital",
+      "Nightlife"
+    ],
+    "budget_level": 4,
+    "distance_category": "Long"
+  },
+  {
+    "name": "Albanian Riviera",
+    "country": "Albania",
+    "country_code": "ALB",
+    "description": "A value-for-money coastline with crystal water and dramatic mountain backdrops.",
+    "category": [
+      "Hidden Gem",
+      "Nature",
+      "Beach"
+    ],
+    "budget_level": 1,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Maldives Atolls",
+    "country": "Maldives",
+    "country_code": "MDV",
+    "description": "Overwater villas, coral lagoons, and complete tropical downtime.",
+    "category": [
+      "Beach",
+      "Relax",
+      "Romantic"
+    ],
+    "budget_level": 4,
+    "distance_category": "Long"
+  },
+  {
+    "name": "London",
+    "country": "United Kingdom",
+    "country_code": "GBR",
+    "description": "A historic city with museums, football culture, and diverse neighborhoods.",
+    "category": [
+      "Football",
+      "Shopping",
+      "Historical"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Lisbon",
+    "country": "Portugal",
+    "country_code": "PRT",
+    "description": "Hillside streets, ocean light, and a growing food and design scene.",
+    "category": [
+      "Cultural",
+      "Warm Weather",
+      "Trending"
+    ],
+    "budget_level": 2,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Reykjavik",
+    "country": "Iceland",
+    "country_code": "ISL",
+    "description": "Northern landscapes, geothermal spas, and a compact creative capital.",
+    "category": [
+      "Nature",
+      "Cold Weather",
+      "Trending"
+    ],
+    "budget_level": 4,
+    "distance_category": "Mid"
+  },
+  {
+    "name": "Prague",
+    "country": "Czech Republic",
+    "country_code": "CZE",
+    "description": "Fairytale architecture, riverside walks, and rich Central European history.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Capital"
+    ],
+    "budget_level": 2,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Vienna",
+    "country": "Austria",
+    "country_code": "AUT",
+    "description": "Elegant boulevards, classical music heritage, and grand imperial landmarks.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Capital"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Bali",
+    "country": "Indonesia",
+    "country_code": "IDN",
+    "description": "Rice terraces, surf beaches, and wellness retreats in tropical weather.",
+    "category": [
+      "Nature",
+      "Relax",
+      "Warm Weather"
+    ],
+    "budget_level": 2,
+    "distance_category": "Long"
+  },
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "country_code": "ZAF",
+    "description": "Coastal drives, mountain hikes, and a diverse urban food culture.",
+    "category": [
+      "Nature",
+      "Beach",
+      "Trending"
+    ],
+    "budget_level": 3,
+    "distance_category": "Long"
+  },
+  {
+    "name": "Dubrovnik",
+    "country": "Croatia",
+    "country_code": "HRV",
+    "description": "Stone walls, Adriatic views, and romantic old-town evenings.",
+    "category": [
+      "Historical",
+      "Beach",
+      "Romantic"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Marrakesh",
+    "country": "Morocco",
+    "country_code": "MAR",
+    "description": "Colorful souks, riads, and rich North African design and cuisine.",
+    "category": [
+      "Cultural",
+      "Shopping",
+      "Warm Weather"
+    ],
+    "budget_level": 2,
+    "distance_category": "Mid"
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "country_code": "SWE",
+    "description": "Island city life with clean design, waterfront views, and calm neighborhoods.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Quiet"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Oslo",
+    "country": "Norway",
+    "country_code": "NOR",
+    "description": "A compact capital with fjord access, forests, and modern architecture.",
+    "category": [
+      "Nature",
+      "Capital",
+      "Quiet"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Whistler",
+    "country": "Canada",
+    "country_code": "CAN",
+    "description": "Top-tier ski terrain, alpine village atmosphere, and year-round mountain activities.",
+    "category": [
+      "Ski",
+      "Nature",
+      "Cold Weather"
+    ],
+    "budget_level": 4,
+    "distance_category": "Long"
+  },
+  {
+    "name": "Istanbul",
+    "country": "Turkey",
+    "country_code": "TUR",
+    "description": "A transcontinental city with bazaars, mosques, and rich layered history.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Shopping"
+    ],
+    "budget_level": 2,
+    "distance_category": "Mid"
+  },
+  {
+    "name": "Santorini",
+    "country": "Greece",
+    "country_code": "GRC",
+    "description": "Cliffside sunsets, white villages, and iconic Aegean island scenery.",
+    "category": [
+      "Romantic",
+      "Beach",
+      "Warm Weather"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Edinburgh",
+    "country": "United Kingdom",
+    "country_code": "GBR",
+    "description": "Castle skyline, literary heritage, and dramatic landscapes nearby.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Quiet"
+    ],
+    "budget_level": 2,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "country_code": "KOR",
+    "description": "Fast-paced districts, excellent transit, and a strong food and fashion culture.",
+    "category": [
+      "Shopping",
+      "Capital",
+      "Nightlife"
+    ],
+    "budget_level": 3,
+    "distance_category": "Long"
+  },
+  {
+    "name": "Tbilisi",
+    "country": "Georgia",
+    "country_code": "GEO",
+    "description": "Old-town charm, wine traditions, and strong value for budget-conscious trips.",
+    "category": [
+      "Hidden Gem",
+      "Cultural",
+      "Trending"
+    ],
+    "budget_level": 1,
+    "distance_category": "Mid"
+  },
+  {
+    "name": "Madeira",
+    "country": "Portugal",
+    "country_code": "PRT",
+    "description": "Volcanic island trails, ocean cliffs, and mild weather all year.",
+    "category": [
+      "Nature",
+      "Relax",
+      "Warm Weather"
+    ],
+    "budget_level": 2,
+    "distance_category": "Mid"
+  },
+  {
+    "name": "Munich",
+    "country": "Germany",
+    "country_code": "DEU",
+    "description": "Classic Bavarian culture, museums, and major football atmosphere.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Football"
+    ],
+    "budget_level": 3,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Budapest",
+    "country": "Hungary",
+    "country_code": "HUN",
+    "description": "Thermal baths, riverside architecture, and a lively evening scene.",
+    "category": [
+      "Historical",
+      "Nightlife",
+      "Cultural"
+    ],
+    "budget_level": 2,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Valencia",
+    "country": "Spain",
+    "country_code": "ESP",
+    "description": "A sunny coastal city balancing modern design, old quarters, and beaches.",
+    "category": [
+      "Beach",
+      "Cultural",
+      "Warm Weather"
+    ],
+    "budget_level": 2,
+    "distance_category": "Short"
+  },
+  {
+    "name": "Kyoto",
+    "country": "Japan",
+    "country_code": "JPN",
+    "description": "Temple gardens, traditional neighborhoods, and a slower Japanese rhythm.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Quiet"
+    ],
+    "budget_level": 4,
+    "distance_category": "Long"
+  }
+]

@@ -3,16 +3,15 @@ import { AnimatePresence } from 'framer-motion';
 import PreferencePanel from '@/components/travel-agent/PreferencePanel';
 import ResultsWorkspace from '@/components/travel-agent/ResultsWorkspace';
 import AnalysisLoader from '@/components/travel-agent/AnalysisLoader';
-import { findDestinations } from '@/services/travelService';
+import { findDestinations, type SearchProgress } from '@/services/travelService';
 import { isSupabaseConfigured } from '@/services/supabaseClient';
 import type { SearchFilters, ChatMessage, AnalysisStep, DestinationMatch } from '@/types/travel';
 import { DEFAULT_FILTERS } from '@/types/travel';
 
-const INITIAL_STEPS: AnalysisStep[] = [
-    { label: 'Analyzing your preferences...', status: 'pending' },
-    { label: 'Matching against travel database...', status: 'pending' },
-    { label: 'Searching semantically in the database...', status: 'pending' },
-];
+const STEP_LABELS = {
+    embedding: 'Understanding your description...',
+    searching: 'Searching the destination database...',
+} as const;
 
 export default function TravelAgent() {
     const [filters, setFilters] = useState<SearchFilters>(DEFAULT_FILTERS);
@@ -27,7 +26,6 @@ export default function TravelAgent() {
         setIsSearching(true);
         setResults([]);
 
-        // Add user message
         if (semanticText.trim()) {
             setMessages((prev) => [
                 ...prev,
@@ -40,30 +38,34 @@ export default function TravelAgent() {
             ]);
         }
 
-        // Run analysis steps
-        const steps = INITIAL_STEPS.map((s) => ({ ...s }));
-        for (let i = 0; i < steps.length; i++) {
-            steps[i].status = 'active';
-            setAnalysisSteps([...steps]);
-            await new Promise((r) => setTimeout(r, 900));
-            steps[i].status = 'done';
-            setAnalysisSteps([...steps]);
+        // Show each real search phase as it starts, marking earlier phases as done
+        const onProgress = (step: SearchProgress) => {
+            setAnalysisSteps((prev) => [
+                ...prev.map((s) => ({ ...s, status: 'done' as const })),
+                { label: STEP_LABELS[step], status: 'active' },
+            ]);
+        };
+
+        let content: string;
+        let matches: DestinationMatch[] = [];
+        try {
+            matches = await findDestinations(filters, semanticText, onProgress);
+            const demoNote = !isSupabaseConfigured ? ' (Demo results)' : '';
+            content = matches.length
+                ? `I found ${matches.length} destinations that match your preferences.${demoNote}`
+                : 'No destinations matched your filters. Try adjusting your criteria.';
+        } catch (error) {
+            console.error('Travel search failed:', error);
+            content = 'Something went wrong while searching. Please try again in a moment.';
         }
 
-        // Fetch results
-        const matches = await findDestinations(filters, semanticText);
         setResults(matches);
-
-        // Agent reply
-        const demoNote = !isSupabaseConfigured ? ' (Demo-results)' : '';
         setMessages((prev) => [
             ...prev,
             {
                 id: `agent-${Date.now()}`,
                 role: 'agent',
-                content: matches.length
-                    ? `I found ${matches.length} destinations that match your preferences.${demoNote}`
-                    : 'No destinations matched your filters. Try adjusting your criteria.',
+                content,
                 timestamp: new Date(),
                 results: matches,
             },

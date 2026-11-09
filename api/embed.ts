@@ -1,100 +1,107 @@
-// Edge Function to call Gemini and get embedding for semantic search
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
+// Edge Function to call Gemini and get a query embedding for semantic search
 export const config = { runtime: 'edge' };
 
-// Mock embedding for development (returns consistent hash-based vectors)
+// Must match scripts/seed-destinations.mjs and the vector(768) column in Supabase
+const EMBEDDING_MODEL = 'gemini-embedding-001';
+const EMBEDDING_DIMENSIONS = 768;
+const MAX_TEXT_LENGTH = 2000;
+
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_REQUESTS = 20;
+const rateLimitBuckets = new Map<string, { count: number; resetAt: number }>();
+
+const checkRateLimit = (key: string): boolean => {
+  const now = Date.now();
+  const entry = rateLimitBuckets.get(key);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitBuckets.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return false;
+  }
+
+  entry.count += 1;
+  return true;
+};
+
+const normalize = (values: number[]): number[] => {
+  const norm = Math.sqrt(values.reduce((sum, v) => sum + v * v, 0));
+  return norm === 0 ? values : values.map((v) => v / norm);
+};
+
+// Mock embedding for offline development, only used when EMBED_MOCK=true
 function generateMockEmbedding(text: string): number[] {
   let hash = 0;
   for (let i = 0; i < text.length; i++) {
-    const char = text.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
+    hash = ((hash << 5) - hash) + text.charCodeAt(i);
     hash = hash & hash; // Convert to 32bit integer
   }
-  
-  // Generate 768-dimensional vector
+
   const seed = Math.abs(hash) % 10000;
   const vector: number[] = [];
-  for (let i = 0; i < 768; i++) {
-    vector.push(Math.sin(seed + i) * 0.5 + 0.5);
+  for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+    vector.push(Math.sin(seed + i));
   }
-  return vector;
+  return normalize(vector);
 }
 
-function to768Dimensions(values: number[]): number[] {
-  if (values.length === 768) return values;
-  if (values.length > 768) return values.slice(0, 768);
-  return [...values, ...new Array(768 - values.length).fill(0)];
-}
-
-function isLocalRequest(req: Request): boolean {
-  const url = new URL(req.url);
-  const host = url.hostname;
-
-  if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return true;
-  if (host.startsWith('192.168.')) return true;
-  if (host.startsWith('10.')) return true;
-
-  // 172.16.0.0 - 172.31.255.255
-  if (host.startsWith('172.')) {
-    const parts = host.split('.');
-    const second = Number(parts[1]);
-    if (!Number.isNaN(second) && second >= 16 && second <= 31) return true;
-  }
-
-  return false;
-}
+const json = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 
 export default async function handler(req: Request) {
+  if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+
+  const ip = req.headers.get("x-real-ip") || req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!checkRateLimit(ip)) return json({ error: "Rate limit exceeded" }, 429);
+
+  let text: unknown;
   try {
-    const { text } = await req.json();
+    ({ text } = await req.json());
+  } catch {
+    return json({ error: "Invalid JSON body" }, 400);
+  }
 
-    if (isLocalRequest(req)) {
-      // Development: return mock embedding
-      const embedding = generateMockEmbedding(text);
-      console.log('Using mock embedding for local development. Embedding length:', embedding.length);
-      return new Response(JSON.stringify({ embedding }), {
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-    
-    // Production: use real Gemini API
-    if (!process.env.GEMINI_API_KEY) {
-      throw new Error('GEMINI_API_KEY not configured in production');
-    }
-    
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const modelCandidates = ["gemini-embedding-001", "gemini-embedding-2-preview", "embedding-001"];
+  if (typeof text !== "string" || text.trim().length === 0) {
+    return json({ error: "text is required" }, 400);
+  }
+  if (text.length > MAX_TEXT_LENGTH) {
+    return json({ error: "Text too long" }, 400);
+  }
 
-    let embedding: number[] | null = null;
-    let lastError: unknown = null;
+  if (process.env.EMBED_MOCK === "true" && process.env.VERCEL_ENV !== "production") {
+    return json({ embedding: generateMockEmbedding(text) });
+  }
 
-    for (const modelName of modelCandidates) {
-      try {
-        const model = genAI.getGenerativeModel({ model: modelName });
-        const result = await model.embedContent(text);
-        embedding = to768Dimensions(result.embedding.values);
-        console.log(`Embedding model used: ${modelName}, length: ${embedding.length}`);
-        break;
-      } catch (err) {
-        lastError = err;
+  if (!process.env.GEMINI_API_KEY) {
+    return json({ error: "GEMINI_API_KEY is not configured" }, 500);
+  }
+
+  try {
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:embedContent`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-goog-api-key": process.env.GEMINI_API_KEY },
+        body: JSON.stringify({
+          content: { parts: [{ text }] },
+          taskType: "RETRIEVAL_QUERY",
+          outputDimensionality: EMBEDDING_DIMENSIONS,
+        }),
       }
+    );
+
+    if (!res.ok) {
+      console.error("Gemini embed error:", res.status, await res.text());
+      return json({ error: "Embedding request failed" }, 502);
     }
 
-    if (!embedding) {
-      throw lastError instanceof Error
-        ? lastError
-        : new Error('No embedding model was available for this API key/project.');
-    }
-    
-    return new Response(JSON.stringify({ embedding }), {
-      headers: { "Content-Type": "application/json" },
-    });
+    const data = await res.json();
+    return json({ embedding: normalize(data.embedding.values) });
   } catch (error) {
-    console.error('Embed error:', error);
-    return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    console.error("Embed error:", error);
+    return json({ error: "Embedding request failed" }, 500);
   }
 }
