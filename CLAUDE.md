@@ -52,7 +52,7 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - `embedService.ts` calls `/api/embed`; `travelSeeder.ts` + `src/pages/AdminSeed.tsx` + `/api/seed` populate the DB
 - DB: `supabase/match_destinations.sql` defines the `match_destinations(query_embedding vector(768), match_threshold, match_count)` RPC. The script truncates `travel_destinations`, so never run it against data you want to keep
 - Embeddings are normalized to 768 dims (`to768Dimensions` in `api/embed.ts`)
-- Known open issue: the `adminSeedEnabled` guard in `App.tsx` is commented out, so `/admin/seed` is routed in production
+- `/admin/seed` is only routed when `adminSeedEnabled` is true (Vite dev mode, or `VITE_ENABLE_ADMIN_SEED=true`). Seed locally; keep `VITE_SEED_ADMIN_TOKEN` out of production env vars, since every `VITE_` value ends up in the browser bundle
 
 ## Environment
 
