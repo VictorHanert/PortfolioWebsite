@@ -33,7 +33,7 @@ export const CONTINENT_DATA: ContinentData[] = [
             },
             { id: 'FRA', name: 'France', flag: '🇫🇷',
                 visits: [
-                    { date: '?', region: 'Nice', description: 'Local city house' },
+                    { date: '2007', region: 'Nice, Grasse', description: 'Local city house' },
                     { date: '?', region: 'Nice', description: 'Local city house back for second time' },
                     { date: '2015-10', region: 'Nice', description: 'Fall getaway - Beautiful Mediterranean coast with stunning architecture' },
                     { date: '2016-06', region: 'Paris', description: 'The city of lights - perfect for inspiration' },
@@ -45,6 +45,7 @@ export const CONTINENT_DATA: ContinentData[] = [
                 visits: [
                     { date: '?', region: 'Crete', description: 'The largest Greek island with stunning beaches and ancient ruins' },
                     { date: '?', region: 'Serifos, Naxos, Sifnos', description: 'Charming Greek island hopping with beautiful beaches and traditional villages' },
+                    { date: '2006-10', region: 'Samos, Patmos (Skala), Symi, Rhodes', description: 'Autumn holiday island hopping with the family' },
                     { date: '2015-07', region: 'Thassos', description: 'Beautiful Greek island with crystal-clear waters and charming villages' },
                     { date: '2022-07', region: 'Sarti', description: 'Relaxing beach vacation in Greek mainland, staying at luxury camping resort with father and brother' },
                     { date: '2023-02', region: 'Athens, Kos, Rhodes, Simi, Nisiros', description: 'Island hopping adventure with stunning landscapes and rich history' }
@@ -59,7 +60,8 @@ export const CONTINENT_DATA: ContinentData[] = [
                     { date: '?', region: 'Orsa', description: 'Old town with the family, birthday trip' },
                     { date: '?', region: 'Sicily', description: 'Island paradise fall-vacation' },
                     { date: '?', region: 'Pisa', description: 'City with the Leaning Tower' },
-                    { date: '?', region: 'Milano', description: '' },
+                    { date: '2006-06', region: 'Milano, Barolo, Finale Ligure, Il Borgo, Genova, Noli, Cinque Terre, La Spezia', description: 'Long summer holiday of several weeks with the family and family friends' },
+                    { date: '2007', region: 'Ventimiglia, Bordighera, Balestrino', description: 'Family trip along the Italian Riviera' },
                     { date: '?', region: 'Sicily', description: 'Island paradise fall-vacation' },
                     { date: '?', region: 'Bari, Alberobello, Lecce', description: 'Vactation' },
                     { date: '?', region: 'Livigno', description: 'Alpine resort town ski-trip, with stunning mountain views with father' },
@@ -95,6 +97,7 @@ export const CONTINENT_DATA: ContinentData[] = [
             { id: 'SRB', name: 'Serbia', flag: '🇷🇸', visits: [ { date: '2025-04', region: 'Belgrade', description: 'Vibrant nightlife and historic landmarks with the boys' } ] },
             { id: 'ESP', name: 'Spain', flag: '🇪🇸',
                 visits: [
+                    { date: '2007-04', region: 'Mallorca, Sineu', description: 'Spring trip with the whole family and my grandparents' },
                     { date: '2014-07', region: 'Costa Brava, Barcelona', description: 'Youth football tournament with my team, and a day trip to Barcelona to see the football match at Camp Nou' },
                     { date: '2014-07', region: 'Barcelona', description: 'Amazing architecture and Mediterranean vibes' },
                     { date: '2014-07', region: 'Mallorca, Port de Soller', description: 'Trip to Soller with my family, enjoying the beach and local culture' },
@@ -114,6 +117,8 @@ export const CONTINENT_DATA: ContinentData[] = [
             },
             { id: 'SWE', name: 'Sweden', flag: '🇸🇪',
                 visits: [
+                    { date: '2006-06', region: 'Ängelholm, Klitterhus', description: 'Short summer trip with the family' },
+                    { date: '2007-06', region: 'Pilsbo', description: 'Midsummer (Sankt Hans) celebration' },
                     { date: '2008-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' },
                     { date: '2009-10', region: 'Hjortsberga', description: 'Swedish countryside with my family in classic red cottage, enjoying the peaceful nature and local culture' },
                     { date: '2013-06', region: 'Helsingborg', description: 'Laserdome with friends' },
@@ -155,7 +160,8 @@ export const CONTINENT_DATA: ContinentData[] = [
             { id: 'SGP', name: 'Singapore', flag: '🇸🇬', visits: [ { date: '2010-11', region: 'Singapore', description: 'Modern city-state with diverse cultures' } ] },
             { id: 'THA', name: 'Thailand', flag: '🇹🇭',
                 visits: [
-                    { date: '?', region: 'Bangkok, others', description: 'First trip to Thailand, only 6 years old' },
+                    { date: '2006', region: 'Bangkok, Hua Hin, Koh Phangan, Koh Samui', description: 'First trip to Thailand with the family. I was very young and only remember it vaguely' },
+                    { date: '2008', region: 'Bangkok, Krabi (Ao Nang), Koh Phi Phi', description: 'Family trip, meeting up with family friends along the way' },
                     { date: '?', region: 'Krabi, Langkawi', description: 'Tropical beaches and lush landscapes' },
                     { date: '?', region: 'Bangkok, Koh Samui, Koh Phangan, Koh Tao', description: 'Amazing food, temples, and tropical islands' },
                     { date: '2016-02', region: 'Ko Ngai, Coconut Island, Phuket, Bangkok', description: 'Tropical paradise with stunning beaches and vibrant culture with the family' },
