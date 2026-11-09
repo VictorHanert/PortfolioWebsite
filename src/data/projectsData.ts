@@ -3,6 +3,15 @@ import { Project } from "@/components/ProjectCard";
 
 export const projects: Project[] = [
     {
+        id: 14,
+        title: "ZRM",
+        description: "Software developer and consultant at ZRM, a Danish consultancy building CRM systems, primarily in the Zoho ecosystem, with a strong focus on AI development. ZRM is the first Claude certified partner in Denmark and also an OpenAI partner. I work across many different clients, joining weekly meetings, understanding their business, and translating it into custom CRM solutions, integrations and AI-powered workflows.",
+        tech: ["Zoho CRM", "AI Development", "Claude", "OpenAI", "Consulting"],
+        category: "Fullstack",
+        websiteUrl: "https://zrm.dk",
+        previewImage: "zrm-logo.png",
+    },
+    {
         id: 1,
         title: "Pandi Web Projects",
         description: "Developed and maintained web applications using Laravel, PHP, and Vue.js. Worked on diverse client projects, delivering modern, scalable web solutions while ensuring seamless integration with existing systems. Focused on creating responsive, user-friendly interfaces and building robust, efficient backend architectures to meet client needs.",

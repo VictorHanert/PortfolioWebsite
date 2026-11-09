@@ -8,7 +8,8 @@ const sections = {
     default: {
         title: "About Me",
         icon: FileJsonIcon,
-        content: `I'm a ${age}-year-old software developer with a passion for software solutions.`
+        content: `I'm a ${age}-year-old software developer with a Bachelor's degree in Software Development.`
+            + " I work as a consultant and developer at ZRM, where I build CRM and AI solutions for a wide range of clients, primarily in the Zoho ecosystem. I join weekly client meetings, learn how each business works, and translate their needs into software that is actually useful."
             + " With high self-discipline and determination, I'm always ready to take on new challenges and responsibilities. I'm eager to learn new technologies and skills to further develop my career and to contribute to the success of the projects I'm involved in."
     },
     sports: {
@@ -139,21 +140,25 @@ export const About = () => {
                         </h3>
                         <ul className="space-y-4">
                             <li>
-                                <p ref={(el) => experienceRefs.current[0] = el} className="font-medium typing-container">Web developer • PandiWeb</p>
-                                <p ref={(el) => experienceRefs.current[1] = el} className="text-sm text-muted-foreground typing-container">Oct 2024 - Present</p>
+                                <p ref={(el) => experienceRefs.current[0] = el} className="font-medium typing-container">Software Developer • ZRM</p>
+                                <p ref={(el) => experienceRefs.current[1] = el} className="text-sm text-muted-foreground typing-container">Aug 2026 - Present</p>
                             </li>
                             <li>
-                                <p ref={(el) => experienceRefs.current[2] = el} className="font-medium typing-container">Internship • The Planner Studio</p>
-                                <p ref={(el) => experienceRefs.current[3] = el} className="text-sm text-muted-foreground typing-container">Jan 2026 - Apr 2026</p>
+                                <p ref={(el) => experienceRefs.current[2] = el} className="font-medium typing-container">Web developer • PandiWeb</p>
+                                <p ref={(el) => experienceRefs.current[3] = el} className="text-sm text-muted-foreground typing-container">Oct 2024 - Jul 2026</p>
                             </li>
                             <li>
-                                <p ref={(el) => experienceRefs.current[4] = el} className="font-medium typing-container">Internship • PandiWeb</p>
-                                <p ref={(el) => experienceRefs.current[5] = el} className="text-sm text-muted-foreground typing-container">Jul 2024 - Oct 2024</p>
+                                <p ref={(el) => experienceRefs.current[4] = el} className="font-medium typing-container">Internship • The Planner Studio</p>
+                                <p ref={(el) => experienceRefs.current[5] = el} className="text-sm text-muted-foreground typing-container">Jan 2026 - Apr 2026</p>
                             </li>
                             <li>
-                                <p ref={(el) => experienceRefs.current[6] = el} className="font-medium typing-container">
+                                <p ref={(el) => experienceRefs.current[6] = el} className="font-medium typing-container">Internship • PandiWeb</p>
+                                <p ref={(el) => experienceRefs.current[7] = el} className="text-sm text-muted-foreground typing-container">Jul 2024 - Oct 2024</p>
+                            </li>
+                            <li>
+                                <p ref={(el) => experienceRefs.current[8] = el} className="font-medium typing-container">
                                     Websiteadministrator • <span className="block lg:inline-block">Tirage Champagne Bar</span></p>
-                                <p ref={(el) => experienceRefs.current[7] = el} className="text-sm text-muted-foreground typing-container">Nov 2022 - Jul 2024</p>
+                                <p ref={(el) => experienceRefs.current[9] = el} className="text-sm text-muted-foreground typing-container">Nov 2022 - Jul 2024</p>
                             </li>
                         </ul>
                     </div>
