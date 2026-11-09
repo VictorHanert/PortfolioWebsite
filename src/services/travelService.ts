@@ -19,7 +19,7 @@ const DURATION_DISTANCES: Record<TravelDuration, DistanceCategory[]> = {
 };
 
 // Combines trip duration and the explicit distance choice. null means no distance restriction.
-function allowedDistances(filters: SearchFilters): DistanceCategory[] | null {
+export function allowedDistances(filters: SearchFilters): DistanceCategory[] | null {
     const fromDuration = filters.tripDuration ? DURATION_DISTANCES[filters.tripDuration] : null;
     if (filters.distanceCategory) {
         return !fromDuration || fromDuration.includes(filters.distanceCategory) ? [filters.distanceCategory] : [];
@@ -73,7 +73,7 @@ function buildMatchReason(row: SearchDestinationRow, filters: SearchFilters, has
     return matched.length > 0 ? `Matches your categories: ${matched.join(', ')}.` : 'Matches your filters.';
 }
 
-function toMatch(row: SearchDestinationRow, filters: SearchFilters, hasQuery: boolean): DestinationMatch {
+export function toMatch(row: SearchDestinationRow, filters: SearchFilters, hasQuery: boolean): DestinationMatch {
     const matchScore = row.similarity !== null
         ? Math.round(row.similarity * 100)
         : filters.categories.length > 0

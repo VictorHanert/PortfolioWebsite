@@ -9,7 +9,7 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - `npm run build` - production build to `dist/`
 - `npm run lint` - ESLint
 - `npx tsc -p tsconfig.app.json --noEmit` - typecheck (no `typecheck` script exists)
-- No test runner is configured yet.
+- `npm test` - Vitest (`vitest run`). Kept minimal: pure logic in `src/services/travelService.test.ts`
 
 ## Stack
 
