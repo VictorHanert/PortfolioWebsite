@@ -18,6 +18,7 @@ export const alpha3ToNumeric: Record<string, string> = {
     'AUT': '040', // Austria
     'JOR': '400', // Jordan
     'CYP': '196', // Cyprus
+    'HRV': '191', // Croatia
     'MLT': '470', // Malta
     'TUR': '792', // Turkey
     'USA': '840', // United States
