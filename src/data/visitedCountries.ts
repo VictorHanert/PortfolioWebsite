@@ -45,7 +45,7 @@ export const CONTINENT_DATA: ContinentData[] = [
                 visits: [
                     { date: '?', region: 'Crete', description: 'The largest Greek island with stunning beaches and ancient ruins' },
                     { date: '?', region: 'Serifos, Naxos, Sifnos', description: 'Charming Greek island hopping with beautiful beaches and traditional villages' },
-                    { date: '2006-10', region: 'Samos, Patmos (Skala), Symi, Rhodes', description: 'Autumn holiday island hopping with the family' },
+                    { date: '2006-10', region: 'Samos, Patmos, Symi, Rhodes', description: 'Autumn holiday island hopping with the family' },
                     { date: '2015-07', region: 'Thassos', description: 'Beautiful Greek island with crystal-clear waters and charming villages' },
                     { date: '2022-07', region: 'Sarti', description: 'Relaxing beach vacation in Greek mainland, staying at luxury camping resort with father and brother' },
                     { date: '2023-02', region: 'Athens, Kos, Rhodes, Simi, Nisiros', description: 'Island hopping adventure with stunning landscapes and rich history' }
