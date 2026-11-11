@@ -3,13 +3,17 @@ import type { Project } from "../types/project";
 
 export const projects: Project[] = [
     {
-        id: 14,
-        title: "ZRM",
-        description: "Software developer and consultant at ZRM, a Danish consultancy building CRM systems, primarily in the Zoho ecosystem, with a strong focus on AI development. ZRM is the first Claude certified partner in Denmark and also an OpenAI partner. I work across many different clients, joining weekly meetings, understanding their business, and translating it into custom CRM solutions, integrations and AI-powered workflows.",
-        tech: ["Zoho CRM", "AI Development", "Claude", "OpenAI", "Consulting"],
+        id: 15,
+        title: "Travel Agent",
+        description: "An AI travel planner built into this site as its own small product. Set a brief with filters or talk it through with an agent, and get destinations ranked by hybrid search: hard filters in Postgres combined with semantic similarity from vector embeddings, optionally tuned to my own travel history. Open a destination to get a streamed day-by-day plan, similar places and flight links. Built with a Supabase database using pgvector, Gemini through the Vercel AI SDK with tool calling, and 150 curated destinations.",
+        tech: ["React", "TypeScript", "Supabase", "pgvector", "Gemini", "Vercel AI SDK", "Tailwind CSS"],
         category: "Fullstack",
-        websiteUrl: "https://zrm.dk",
-        previewImage: "zrm-logo.png",
+        websiteUrl: "https://victorhanert.com/travel-agent",
+        screenshots: [
+            "travel-agent-screenshot-1.jpg",
+            "travel-agent-screenshot-2.jpg"
+        ],
+        previewImage: "travel-agent-logo.svg",
     },
     {
         id: 1,
@@ -32,6 +36,15 @@ export const projects: Project[] = [
             "dream-delivery-2.png"
         ],
         previewImage: "dream-delivery-logo.png",
+    },
+    {
+        id: 14,
+        title: "ZRM",
+        description: "Software developer and consultant at ZRM, a Danish consultancy building CRM systems, primarily in the Zoho ecosystem, with a strong focus on AI development. ZRM is the first Claude certified partner in Denmark and also an OpenAI partner. I work across many different clients, joining weekly meetings, understanding their business, and translating it into custom CRM solutions, integrations and AI-powered workflows.",
+        tech: ["Zoho CRM", "AI Development", "Claude", "OpenAI", "Consulting"],
+        category: "Fullstack",
+        websiteUrl: "https://zrm.dk",
+        previewImage: "zrm-logo.png",
     },
     {
         id: 3,
