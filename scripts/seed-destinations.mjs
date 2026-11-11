@@ -2,6 +2,7 @@
 // Run locally: node --env-file=.env scripts/seed-destinations.mjs
 // Requires GEMINI_API_KEY, SUPABASE_URL (or VITE_SUPABASE_URL) and SUPABASE_SERVICE_ROLE_KEY.
 import { readFile } from 'node:fs/promises';
+import { setTimeout as sleep } from 'node:timers/promises';
 import { createClient } from '@supabase/supabase-js';
 
 // Must match api/embed.ts and the vector(768) column in Supabase
@@ -44,24 +45,36 @@ const requests = [
     },
 ];
 
-// batchEmbedContents accepts at most 100 requests per call
+// The free Gemini tier allows 100 embeddings per minute, so send them in batches with a pause
+const BATCH_SIZE = 90;
 const embeddings = [];
-for (let i = 0; i < requests.length; i += 100) {
-    const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:batchEmbedContents`,
-        {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-goog-api-key': geminiKey },
-            body: JSON.stringify({ requests: requests.slice(i, i + 100) }),
-        }
-    );
-
-    if (!res.ok) {
-        console.error('Gemini batch embed failed:', res.status, await res.text());
-        process.exit(1);
+for (let i = 0; i < requests.length; i += BATCH_SIZE) {
+    if (i > 0) {
+        console.log('Waiting 65 seconds for the embedding quota...');
+        await sleep(65_000);
     }
 
-    embeddings.push(...(await res.json()).embeddings);
+    for (let attempt = 0; ; attempt++) {
+        const res = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:batchEmbedContents`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'x-goog-api-key': geminiKey },
+                body: JSON.stringify({ requests: requests.slice(i, i + BATCH_SIZE) }),
+            }
+        );
+
+        if (res.ok) {
+            embeddings.push(...(await res.json()).embeddings);
+            break;
+        }
+        if (res.status !== 429 || attempt >= 2) {
+            console.error('Gemini batch embed failed:', res.status, (await res.text()).slice(0, 300));
+            process.exit(1);
+        }
+        console.log('Embedding quota reached, waiting 65 seconds...');
+        await sleep(65_000);
+    }
 }
 
 // budget_level and distance_category are legacy columns, derived here until they are dropped
