@@ -84,6 +84,7 @@ export default function PreferencePanel({
                                     type="button"
                                     key={duration}
                                     onClick={() => update({ tripDuration: active ? null : duration })}
+                                    aria-pressed={active}
                                     className={chipClass(active)}
                                 >
                                     {DURATION_LABELS[duration] ?? duration}
@@ -108,6 +109,7 @@ export default function PreferencePanel({
                                     key={opt.value}
                                     title={opt.hint}
                                     onClick={() => update({ distanceCategory: active ? null : opt.value })}
+                                    aria-pressed={active}
                                     className={chipClass(active)}
                                 >
                                     {opt.label}
@@ -134,6 +136,7 @@ export default function PreferencePanel({
                                                 : [...filters.categories, cat],
                                         })
                                     }
+                                    aria-pressed={active}
                                     className={chipClass(active)}
                                 >
                                     {cat}
@@ -155,6 +158,7 @@ export default function PreferencePanel({
                                     key={s}
                                     onClick={() => update({ season: active ? null : s })}
                                     title={s}
+                                    aria-pressed={active}
                                     className={chipClass(active)}
                                 >
                                     {SEASON_LABELS[s] ?? s}

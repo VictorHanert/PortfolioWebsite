@@ -1,6 +1,7 @@
 // Edge Function: streams a day-by-day plan for one destination from the database.
 import { streamText } from "ai";
 import { agentModel } from "./_lib/models.js";
+import { isSameOriginRequest } from "./_lib/origin.js";
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
 import { isUuid, parsePreferences, supabaseConfig } from "./_lib/search.js";
 import { findOrigin } from "../src/features/travel-agent/lib/travelSearch.js";
@@ -35,6 +36,7 @@ async function loadDestination(id: string): Promise<PlanDestination | null> {
 
 export default async function handler(req: Request) {
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+  if (!isSameOriginRequest(req)) return json({ error: "Forbidden" }, 403);
   if (!checkRateLimit(clientIp(req), RATE_LIMIT_MAX_REQUESTS)) return json({ error: "Rate limit exceeded" }, 429);
 
   const apiKey = process.env.GEMINI_API_KEY;

@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import DestinationCard from '@/features/travel-agent/components/DestinationCard';
 import DestinationSheet from '@/features/travel-agent/components/DestinationSheet';
 import { useFavorites } from '@/features/travel-agent/lib/favorites';
+import { usePageTitle } from '@/features/travel-agent/lib/usePageTitle';
 import { askAgentPrompt, preferencesFromFilters } from '@/features/travel-agent/lib/travelSearch';
 import type { DestinationCardData } from '@/features/travel-agent/types';
 import { DEFAULT_FILTERS } from '@/features/travel-agent/types';
 
 export default function FavoritesPage() {
+    usePageTitle('My favorites - Travel Agent');
     const navigate = useNavigate();
     const { favorites } = useFavorites();
     const [selected, setSelected] = useState<DestinationCardData | null>(null);

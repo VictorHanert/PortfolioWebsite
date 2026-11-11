@@ -8,6 +8,7 @@ import DestinationCard from '@/features/travel-agent/components/DestinationCard'
 import DestinationSheet from '@/features/travel-agent/components/DestinationSheet';
 import PreferencePanel from '@/features/travel-agent/components/PreferencePanel';
 import { searchByFilters } from '@/features/travel-agent/lib/api';
+import { usePageTitle } from '@/features/travel-agent/lib/usePageTitle';
 import {
     askAgentPrompt,
     cardsFromMessages,
@@ -54,6 +55,7 @@ function historyLabel(entry: HistoryEntry): string {
 }
 
 export default function SearchPage() {
+    usePageTitle('Travel Agent - Find your next destination');
     const location = useLocation();
     const navigate = useNavigate();
     const [mode, setMode] = useState<Mode>('filters');
@@ -127,6 +129,7 @@ export default function SearchPage() {
                                 key={value}
                                 type="button"
                                 onClick={() => setMode(value)}
+                                aria-pressed={mode === value}
                                 className={`ta-mono -mb-px mr-6 border-b-2 py-3 text-[11px] uppercase tracking-[0.14em] transition-colors ${mode === value
                                         ? 'border-[hsl(var(--ta-accent))] text-foreground'
                                         : 'border-transparent text-muted-foreground hover:text-foreground'

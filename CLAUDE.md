@@ -4,12 +4,12 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 
 ## Commands
 
-- `npm install` - install deps (npm is the source of truth: `package-lock.json`. `bun.lockb` is stale)
+- `npm install` - install deps (npm is the only package manager here)
 - `npm run dev` - Vite dev server. Note: `api/*` functions do not run under plain Vite; use `vercel dev` to exercise them locally
 - `npm run build` - production build to `dist/`
 - `npm run lint` - ESLint
 - `npx tsc -p tsconfig.app.json --noEmit` - typecheck (no `typecheck` script exists)
-- `npm test` - Vitest (`vitest run`). Kept minimal: pure logic in `src/features/travel-agent/lib/travelSearch.test.ts`
+- `npm test` - Vitest (`vitest run`). Kept minimal: pure logic in `src/features/travel-agent/lib/travelSearch.test.ts` and `api/_lib/origin.test.ts`
 
 ## Stack
 
@@ -30,14 +30,14 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
   - `visitedCountries.ts` - all travel data (continent-nested). `travelStats.ts` derives everything from it. Never hardcode duplicated stats
   - `countryCodeMapping.ts` - numeric to alpha-3 fallback for globe features
 - Work history and education are hardcoded in `src/components/About.tsx` (typing animation uses sequential `experienceRefs` indexes; keep them contiguous when adding rows). Also mirrored in `README.md` and `portfolioData.ts`
-- `api/` - Vercel edge functions:
+- `api/` - Vercel functions (edge, except `send.ts`). Every POST route rejects requests whose `Origin` is another site (`_lib/origin.ts`); none of them send CORS headers:
   - `chat.ts` - portfolio chatbot (Gemini), rate limited
   - `send.ts` - contact form mail (nodemailer/Gmail), rate limited
   - `travel-search.ts` - destination search for the filter panel (no language model), rate limited
   - `travel-agent.ts` - the conversational travel agent (see below), rate limited
   - `travel-plan.ts` - streams a day-by-day plan for one destination, rate limited
   - `travel-top.ts`, `travel-event.ts` - read and count for the Top destinations page
-  - `_lib/` - shared helpers (`rateLimit.ts`, `embedding.ts`, `search.ts`, `models.ts`, `stats.ts`). Underscore folders are not routes. Import with `.js` extensions and relative paths: the API bundle has no `@` alias
+  - `_lib/` - shared helpers (`rateLimit.ts`, `origin.ts`, `embedding.ts`, `search.ts`, `models.ts`, `stats.ts`). Underscore folders are not routes. Import with `.js` extensions and relative paths: the API bundle has no `@` alias
 
 ## Globe (`/globe`)
 
@@ -59,10 +59,11 @@ The travel agent is its own small site inside the portfolio. Everything for it l
   - **Ask the agent (alternative)**: `components/ChatPanel.tsx` with `useChat`, posting to `api/travel-agent.ts`. Gemini calls the `searchDestinations` tool, then `showDestinations` with 3-6 picks and a reason each, then streams a short reply. Follow-ups re-run the search. Cards and the "filters applied" chips are derived from the tool parts by `cardsFromMessages` and `latestSearchInput`
 - Clicking a card opens `components/DestinationSheet.tsx`: facts, a streamed trip plan (`useCompletion` to `api/travel-plan.ts`, which loads the destination from the database by id so the prompt never contains client text), similar places (`/api/travel-search` with `excludeId`), "ask the agent about this place" (from other pages it navigates to the search page with the question in the router state), flight and map links
 - Favorites: `lib/favorites.ts` keeps saved destinations in `localStorage` (`travel-agent-favorites`) behind `useSyncExternalStore`. No account
-- Top destinations: `travel_destination_stats` holds two counters per destination and nothing about visitors. `api/_lib/stats.ts` writes them with the service role through the `record_destination_events` RPC (the browser cannot write): a panel search counts every destination it returns as suggested, the agent counts its picks, and opening a destination posts to `api/travel-event.ts`. `api/travel-top.ts` reads the list with the anon key
+- Top destinations: `travel_destination_stats` holds two counters per destination and nothing about visitors. `api/_lib/stats.ts` writes them with the service role through the `record_destination_events` RPC (the browser cannot write): a panel search counts its six best matches as suggested, the agent counts its picks, and opening a destination posts to `api/travel-event.ts`. `api/travel-top.ts` reads the list with the anon key
 - Origin country: `components/OriginPicker.tsx` changes "Distance from Denmark". From Denmark the curated `flight_hours` are used; for any other country the RPC estimates travel time from coordinates (great-circle distance at 800 km/h plus 1.5 h). Cost estimates always assume flights from Copenhagen. The list is `data/originCountries.ts` (generated)
 - Recent panel searches are kept in `localStorage` (`travel-agent-history`) and shown above the results
 - Styling: `theme.css` is scoped to the `.ta` class (paper background, ink text, deep blue accent `--ta-accent`, Fraunces display type, IBM Plex Mono labels, 4px radius, faint map grid). Portalled content (popover, sheet) needs `.ta` on its own root. Do not let this theme leak into other pages, and do not use it for a terracotta or orange accent: the owner rejected that as too close to Claude's colours
+- Each page sets its own tab title with `lib/usePageTitle.ts`
 - `lib/api.ts` holds the fetch calls to the API routes. `lib/travelSearch.ts` is pure logic shared by the API and the UI, so it only uses relative imports. `types.ts` holds the shared types and option lists
 - All search endpoints go through `runSearch` in `api/_lib/search.ts` (zod schema `searchInputSchema`, query embedding, `search_destinations` RPC with the anon key)
 - The Victor toggles ("travel history", "include visited countries") live in the panel state and are applied by the server in `buildSearchArgs`; the model cannot change them

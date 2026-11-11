@@ -2,6 +2,7 @@
 import { convertToModelMessages, stepCountIs, streamText, tool, type UIMessage } from "ai";
 import { z } from "zod";
 import { agentModel } from "./_lib/models.js";
+import { isSameOriginRequest } from "./_lib/origin.js";
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
 import { parsePreferences, runSearch, searchInputSchema } from "./_lib/search.js";
 import { recordDestinationEvents } from "./_lib/stats.js";
@@ -51,6 +52,7 @@ ${preferences.includeVisited
 
 export default async function handler(req: Request) {
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+  if (!isSameOriginRequest(req)) return json({ error: "Forbidden" }, 403);
   if (!checkRateLimit(clientIp(req), RATE_LIMIT_MAX_REQUESTS)) return json({ error: "Rate limit exceeded" }, 429);
 
   const apiKey = process.env.GEMINI_API_KEY;

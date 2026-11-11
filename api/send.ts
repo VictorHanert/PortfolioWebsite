@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { isSameOrigin } from './_lib/origin.js';
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
@@ -47,6 +48,9 @@ const transporter = nodemailer.createTransport({
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+  if (!isSameOrigin(req.headers?.origin, req.headers?.['x-forwarded-host'] ?? req.headers?.host)) {
+    return res.status(403).json({ error: 'Forbidden' });
   }
 
   const ip = (req.headers?.['x-forwarded-for'] as string | undefined)?.split(',')[0]?.trim() || 'unknown';

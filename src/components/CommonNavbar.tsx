@@ -16,7 +16,6 @@ const NAV_ITEMS: ReadonlyArray<{
 const PAGE_META = {
     "/globe": { title: "My Travel Map", Icon: Globe },
     "/stats": { title: "Travel Stats", Icon: BarChart3 },
-    "/travel-agent": { title: "Travel Agent", Icon: Plane },
     default: { title: "Page Not Found", Icon: RouteOff },
 } as const;
 

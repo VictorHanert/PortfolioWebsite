@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import DestinationCard from '@/features/travel-agent/components/DestinationCard';
 import DestinationSheet from '@/features/travel-agent/components/DestinationSheet';
 import { fetchTopDestinations } from '@/features/travel-agent/lib/api';
+import { usePageTitle } from '@/features/travel-agent/lib/usePageTitle';
 import { askAgentPrompt, preferencesFromFilters } from '@/features/travel-agent/lib/travelSearch';
 import type { DestinationCardData } from '@/features/travel-agent/types';
 import { DEFAULT_FILTERS } from '@/features/travel-agent/types';
@@ -18,6 +19,7 @@ const SORTS: { value: Sort; label: string }[] = [
 const times = (count: number) => `${count.toLocaleString('da-DK')} ${count === 1 ? 'time' : 'times'}`;
 
 export default function TopDestinationsPage() {
+    usePageTitle('Top destinations - Travel Agent');
     const navigate = useNavigate();
     const [sort, setSort] = useState<Sort>('suggested');
     const [selected, setSelected] = useState<DestinationCardData | null>(null);
@@ -41,6 +43,7 @@ export default function TopDestinationsPage() {
                         key={value}
                         type="button"
                         onClick={() => setSort(value)}
+                        aria-pressed={sort === value}
                         className={`ta-mono -mb-px mr-6 border-b-2 py-2.5 text-[11px] uppercase tracking-[0.14em] transition-colors ${sort === value
                                 ? 'border-[hsl(var(--ta-accent))] text-foreground'
                                 : 'border-transparent text-muted-foreground hover:text-foreground'

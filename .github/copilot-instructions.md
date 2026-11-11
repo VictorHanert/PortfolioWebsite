@@ -1,19 +1,18 @@
-# Project Rules: React 19.2 Frontend
+# Project Rules: React 18.3 Frontend
 
-## Strictly NO Tests
-- NEVER suggest creating test files (Vitest, Jest, Cypress, etc.).
-- If asked to create a component, focus ONLY on the implementation and styling.
-- Ignore any "Best Practices" related to Test-Driven Development (TDD).
+`CLAUDE.md` in the repo root is the up-to-date project guide. Where this file and `CLAUDE.md` differ, `CLAUDE.md` wins.
 
-## ⚡ React 19.2 Architecture
-- **Ref Handling**: Pass `ref` directly as a prop. Do NOT use `forwardRef`.
-- **Context**: Use `<MyContext>` directly instead of `<MyContext.Provider>`.
-- **New Hooks**: Use `use()` for promises and `useActionState` for forms.
-- **Visibility**: Use the `<Activity>` component to manage UI state preservation.
-- **Events**: Use `useEffectEvent()` for non-reactive logic inside effects.
+## Tests
+- Vitest is set up (`npm test`) and kept minimal: pure logic only.
+- Do not add component or end-to-end tests unless asked.
+
+## ⚡ React 18.3 Architecture
+- The project runs React 18.3, not 19.
+- Do not use React 19 APIs: `use()`, `useActionState`, `<Activity>`, `useEffectEvent()`, `ref` as a plain prop, or `<MyContext>` as a provider.
+- Use `forwardRef` and `<MyContext.Provider>`.
 
 ## 🛠 Tech Stack Details
-- **Framework**: React 19.2 (Vite-based).
+- **Framework**: React 18.3 (Vite-based).
 - **Styling**: Tailwind CSS only. No CSS modules or inline styles.
 - **Build**: Manual build management. Do not suggest running dev/build commands.
 

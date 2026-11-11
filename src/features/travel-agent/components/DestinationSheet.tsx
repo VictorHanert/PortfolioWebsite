@@ -117,7 +117,7 @@ function SheetBody({ card, preferences, onSelect, onAskAgent }: Omit<Destination
                     <h3 className="ta-label mb-2">Plan this trip</h3>
                     <div className="flex flex-wrap items-center gap-1.5">
                         {DAY_OPTIONS.map((option) => (
-                            <button type="button" key={option} onClick={() => setDays(option)} className={chipClass(days === option)}>
+                            <button type="button" key={option} onClick={() => setDays(option)} aria-pressed={days === option} className={chipClass(days === option)}>
                                 {option} days
                             </button>
                         ))}
@@ -125,7 +125,7 @@ function SheetBody({ card, preferences, onSelect, onAskAgent }: Omit<Destination
                     {months.length > 0 && (
                         <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                             {months.map((option) => (
-                                <button type="button" key={option} onClick={() => setMonth(option)} className={chipClass(month === option)}>
+                                <button type="button" key={option} onClick={() => setMonth(option)} aria-pressed={month === option} className={chipClass(month === option)}>
                                     {MONTH_NAMES[option - 1]}
                                 </button>
                             ))}

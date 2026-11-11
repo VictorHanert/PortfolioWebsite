@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { visitedCountries } from "../src/data/visitedCountries.js";
 import { portfolioKnowledge } from "../src/data/portfolioData.js";
 import { projects } from "../src/data/projectsData.js";
+import { isSameOriginRequest } from "./_lib/origin.js";
 
 export const config = {
   runtime: 'edge',
@@ -33,15 +34,11 @@ const isValidMessage = (message: any): message is { role: string; content: strin
 };
 
 export default async function handler(req: Request) {
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Content-Type": "application/json",
-  };
+  // Only this site calls the chatbot, so no cross-origin headers are sent
+  const corsHeaders = { "Content-Type": "application/json" };
 
-  if (req.method === "OPTIONS") return new Response(null, { status: 200, headers: corsHeaders });
   if (req.method !== "POST") return new Response(null, { status: 405, headers: corsHeaders });
+  if (!isSameOriginRequest(req)) return new Response(null, { status: 403, headers: corsHeaders });
 
   try {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";

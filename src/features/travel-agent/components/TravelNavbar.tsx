@@ -13,7 +13,7 @@ export default function TravelNavbar() {
     return (
         <header className="fixed inset-x-0 top-0 z-40 border-b border-foreground/80 bg-card">
             <div className="flex h-14 items-center justify-between gap-4 px-4 sm:px-6">
-                <NavLink to="/travel-agent" end className="flex items-center gap-2.5 text-foreground">
+                <NavLink to="/travel-agent" end className="flex shrink-0 items-center gap-2 text-foreground sm:gap-2.5">
                     {/* Survey mark: a meridian and a parallel inside a circle */}
                     <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
                         <circle cx="12" cy="12" r="9.25" />
@@ -21,10 +21,10 @@ export default function TravelNavbar() {
                         <path d="M2.75 12h18.5" />
                         <circle cx="12" cy="12" r="1.6" fill="hsl(var(--ta-accent))" stroke="none" />
                     </svg>
-                    <span className="ta-display text-xl font-medium leading-none">Travel Agent</span>
+                    <span className="ta-display whitespace-nowrap text-lg font-medium leading-none sm:text-xl">Travel Agent</span>
                 </NavLink>
 
-                <nav className="flex items-center gap-4 sm:gap-7">
+                <nav className="flex items-center gap-3 sm:gap-7">
                     <NavLink to="/travel-agent" end className={linkClass}>
                         Search
                     </NavLink>
