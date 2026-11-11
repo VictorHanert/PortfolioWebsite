@@ -27,39 +27,57 @@ const tasteProfile = (await readFile(new URL('../supabase/seed/taste-profile.txt
 
 console.log(`Embedding ${destinations.length} destinations and the taste profile with ${EMBEDDING_MODEL}...`);
 
-const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:batchEmbedContents`,
+// The taste profile acts as a second query, so it uses the query task type
+const requests = [
+    ...destinations.map((d) => ({
+        model: `models/${EMBEDDING_MODEL}`,
+        content: { parts: [{ text: `${d.name}, ${d.country}. ${d.description} Categories: ${d.category.join(', ')}.` }] },
+        taskType: 'RETRIEVAL_DOCUMENT',
+        title: d.name,
+        outputDimensionality: EMBEDDING_DIMENSIONS,
+    })),
     {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': geminiKey },
-        body: JSON.stringify({
-            requests: [
-                ...destinations.map((d) => ({
-                    model: `models/${EMBEDDING_MODEL}`,
-                    content: { parts: [{ text: `${d.name}, ${d.country}. ${d.description} Categories: ${d.category.join(', ')}.` }] },
-                    taskType: 'RETRIEVAL_DOCUMENT',
-                    title: d.name,
-                    outputDimensionality: EMBEDDING_DIMENSIONS,
-                })),
-                // The taste profile acts as a second query, so it uses the query task type
-                {
-                    model: `models/${EMBEDDING_MODEL}`,
-                    content: { parts: [{ text: tasteProfile }] },
-                    taskType: 'RETRIEVAL_QUERY',
-                    outputDimensionality: EMBEDDING_DIMENSIONS,
-                },
-            ],
-        }),
-    }
-);
+        model: `models/${EMBEDDING_MODEL}`,
+        content: { parts: [{ text: tasteProfile }] },
+        taskType: 'RETRIEVAL_QUERY',
+        outputDimensionality: EMBEDDING_DIMENSIONS,
+    },
+];
 
-if (!res.ok) {
-    console.error('Gemini batch embed failed:', res.status, await res.text());
-    process.exit(1);
+// batchEmbedContents accepts at most 100 requests per call
+const embeddings = [];
+for (let i = 0; i < requests.length; i += 100) {
+    const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:batchEmbedContents`,
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-goog-api-key': geminiKey },
+            body: JSON.stringify({ requests: requests.slice(i, i + 100) }),
+        }
+    );
+
+    if (!res.ok) {
+        console.error('Gemini batch embed failed:', res.status, await res.text());
+        process.exit(1);
+    }
+
+    embeddings.push(...(await res.json()).embeddings);
 }
 
-const { embeddings } = await res.json();
-const rows = destinations.map((d, i) => ({ ...d, embedding: normalize(embeddings[i].values) }));
+// budget_level and distance_category are legacy columns, derived here until they are dropped
+const budgetLevel = (cost) => (cost <= 5000 ? 1 : cost <= 10000 ? 2 : cost <= 20000 ? 3 : 4);
+const distanceCategory = (hours) => (hours <= 3.5 ? 'Short' : hours <= 7 ? 'Mid' : 'Long');
+
+const rows = destinations.map((d, i) => ({
+    image_url: null,
+    image_credit: null,
+    image_credit_url: null,
+    image_page_url: null,
+    ...d,
+    budget_level: budgetLevel(d.avg_cost_dkk),
+    distance_category: distanceCategory(d.flight_hours),
+    embedding: normalize(embeddings[i].values),
+}));
 const profileEmbedding = normalize(embeddings[destinations.length].values);
 
 const supabase = createClient(supabaseUrl, serviceRoleKey, {

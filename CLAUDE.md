@@ -9,7 +9,7 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - `npm run build` - production build to `dist/`
 - `npm run lint` - ESLint
 - `npx tsc -p tsconfig.app.json --noEmit` - typecheck (no `typecheck` script exists)
-- `npm test` - Vitest (`vitest run`). Kept minimal: pure logic in `src/services/travelService.test.ts`
+- `npm test` - Vitest (`vitest run`). Kept minimal: pure logic in `src/services/travelSearch.test.ts`
 
 ## Stack
 
@@ -17,12 +17,12 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - Tailwind CSS + shadcn/ui (`src/components/ui/*`, generated, avoid hand-editing)
 - `styled-components` only in `StyledText.tsx` and `Switch.tsx` (legacy, do not spread it)
 - framer-motion, Recharts, tsparticles, MapTiler SDK
-- AI: Gemini via `@google/generative-ai` (chatbot + embeddings)
+- AI: Gemini. Chatbot via `@google/generative-ai`; travel agent via the AI SDK (`ai` v6, `@ai-sdk/google`, `@ai-sdk/react`); embeddings via REST
 - Supabase (pgvector) for the travel agent
 
 ## Layout
 
-- `src/App.tsx` - routes: `/`, `/globe`, `/stats`, `/travel-agent`. Providers: React Query, Tooltip, both toasters, Vercel Analytics + SpeedInsights
+- `src/App.tsx` - routes: `/`, `/globe`, `/stats`, `/travel-agent` (the three travel pages are `React.lazy` chunks). Providers: React Query, Tooltip, both toasters, Vercel Analytics + SpeedInsights
 - `src/pages/Index.tsx` - landing page: Hero, About, Skills, Projects, Contact
 - `src/data/` - content source of truth:
   - `portfolioData.ts` - personal facts fed to the chatbot (`api/chat.ts` serializes the whole object into the system prompt)
@@ -33,7 +33,8 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - `api/` - Vercel edge functions:
   - `chat.ts` - portfolio chatbot (Gemini), rate limited
   - `send.ts` - contact form mail (nodemailer/Gmail), rate limited
-  - `embed.ts` - text to 768-dim query embedding (Gemini REST, `gemini-embedding-001`, `RETRIEVAL_QUERY`), rate limited. Mock vectors only with `EMBED_MOCK=true` outside production
+  - `travel-agent.ts` - the travel agent (see below), rate limited
+  - `_lib/` - shared helpers (`rateLimit.ts`, `embedding.ts`). Underscore folders are not routes. Import with `.js` extensions and relative paths: the API bundle has no `@` alias
 
 ## Globe (`/globe`)
 
@@ -44,17 +45,25 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - Legend swatches share the visit-count bins with the map fill; keep them in sync
 - Drawer must stay compact on mobile (no overflow / extra whitespace)
 
-## Travel agent (`/travel-agent`) - work in progress
+## Travel agent (`/travel-agent`)
 
-- UI: `src/pages/TravelAgent.tsx` + `src/components/travel-agent/*` (PreferencePanel, ResultsWorkspace, DestinationCard, AnalysisLoader). Analysis steps follow the real phases (embedding, searching)
-- Logic: `src/services/travelService.ts` builds one call to the `search_destinations` RPC: budget levels (1-4, `BUDGET_LEVELS`), trip duration merged with distance, visited countries excluded by ISO alpha-3 (`visitedCountries` ids), optional query embedding, optional taste profile. Throws on failure. Demo results when Supabase is not configured
-- DB (Supabase project `supabase-travel-agent`): schema lives in `supabase/migrations/`. `search_destinations` is `SECURITY INVOKER` with `search_path = ''`; hard filters, ranked by cosine similarity (blended 75/25 with the `travel_profiles` row `victor` when "Use Victor's travel history" is on), category overlap as tie-break. `pgvector` lives in the `extensions` schema, so use `extensions.vector` and `operator(extensions.<=>)`. anon/authenticated can only SELECT
-- Seed data: `supabase/seed/destinations.json` (source of truth, keyed on `name` + `country_code`) and `supabase/seed/taste-profile.txt`. Reseed with `node --env-file=.env scripts/seed-destinations.mjs` (needs `GEMINI_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Embedding model and dimensions must stay identical in the script and `api/embed.ts`
-- Season filter is hidden until destinations have month data (phase 3)
+- Flow: `useChat` (`src/pages/TravelAgent.tsx`) posts the conversation and the two visitor toggles to `api/travel-agent.ts`. Gemini calls the `searchDestinations` tool (embeds the query, calls the `search_destinations` RPC with the anon key), then `showDestinations` with 3-6 picks and a reason each, then streams a short text reply. Follow-ups re-run the search with adjusted filters
+- The toggles ("Victor's travel taste", "include visited countries") are applied by the server in `buildSearchArgs`; the model cannot change them
+- Models: `AGENT_MODELS` in `api/travel-agent.ts` is a fallback chain, because newer Gemini models often return 503/429 or hang. Check availability before changing it
+- UI: `src/components/travel-agent/ChatPanel.tsx` (conversation, toggles, input) and `DestinationCard.tsx`. Cards and the "filters applied" chips are derived from the tool parts of the messages by `cardsFromMessages` and `latestSearchInput`
+- Shared pure logic: `src/services/travelSearch.ts` (used by both the API and the UI, so it only uses relative imports)
+- DB (Supabase project `supabase-travel-agent`): schema lives in `supabase/migrations/`. `search_destinations` is `SECURITY INVOKER` with `search_path = ''`; hard filters (max cost, max flight hours, months, categories, excluded countries), ranked by cosine similarity (blended 75/25 with the `travel_profiles` row `victor` when the taste toggle is on), category overlap as tie-break. `pgvector` lives in the `extensions` schema, so use `extensions.vector` and `operator(extensions.<=>)`. anon/authenticated can only SELECT
+- Data: `supabase/seed/destinations.json` is the source of truth (keyed on `name` + `country_code`). `avg_cost_dkk` is an estimate per person for one week including flights from Copenhagen; `flight_hours` is one-way travel time. `supabase/seed/taste-profile.txt` is embedded as Victor's profile
+- Scripts (local, `node --env-file=.env scripts/<name>.mjs`):
+  - `generate-destinations.mjs` - regenerates the JSON with Gemini, region by region (AI-written estimates: review the diff)
+  - `fetch-destination-images.mjs` - adds one Unsplash photo per destination (`UNSPLASH_ACCESS_KEY`). Images are hotlinked and credited on the card, as the Unsplash API guidelines require
+  - `seed-destinations.mjs` - embeds and upserts the JSON and the taste profile (`GEMINI_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Removes rows that are no longer in the JSON
+- Embedding model and dimensions must stay identical in `seed-destinations.mjs` and `api/_lib/embedding.ts`
+- `budget_level` and `distance_category` are legacy columns, still filled by the seed script
 
 ## Environment
 
-Keys are listed in `.env.example` (never read or print `.env`): `GMAIL_USER`, `GMAIL_PASS`, `VITE_MAPTILER_API_KEY`, `GEMINI_API_KEY`, `AI_GATEWAY_API`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `EMBED_MOCK`. Anything prefixed `VITE_` is shipped to the browser.
+Keys are listed in `.env.example` (never read or print `.env`): `GMAIL_USER`, `GMAIL_PASS`, `VITE_MAPTILER_API_KEY`, `GEMINI_API_KEY`, `AI_GATEWAY_API`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `UNSPLASH_ACCESS_KEY`. Anything prefixed `VITE_` is shipped to the browser.
 
 ## Conventions
 

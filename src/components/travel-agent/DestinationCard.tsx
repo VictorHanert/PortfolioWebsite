@@ -1,72 +1,95 @@
 import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
-import type { DestinationMatch } from '@/types/travel';
-import { BUDGET_LEVELS } from '@/types/travel';
+import { CalendarDays, MapPin, Plane, Wallet } from 'lucide-react';
+import type { DestinationCardData } from '@/types/travel';
+import { formatMonths } from '@/services/travelSearch';
 
 interface DestinationCardProps {
-	match: DestinationMatch;
+	card: DestinationCardData;
 	index: number;
 }
 
-export default function DestinationCard({ match, index }: DestinationCardProps) {
+export default function DestinationCard({ card, index }: DestinationCardProps) {
+	const { destination, reason } = card;
+
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: index * 0.12, duration: 0.4, ease: 'easeOut' }}
-			className="bg-card border border-border rounded-xl p-5 hover:shadow-md transition-shadow"
+			className="flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-shadow hover:shadow-md"
 		>
-			{/* Header */}
-			<div className="flex items-start justify-between mb-3">
-				<div>
-					<h3 className="text-base font-semibold text-foreground">{match.name}</h3>
-					<div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
-						<MapPin className="h-3 w-3" />
-						{match.country}
-					</div>
-				</div>
-				{/* Match score, hidden when there is nothing to score against */}
-				{match.matchScore > 0 && (
-				<div className="flex flex-col items-center">
-					<div className="relative h-11 w-11">
-						<svg viewBox="0 0 36 36" className="h-11 w-11 -rotate-90">
-							<circle cx="18" cy="18" r="15.5" fill="none" stroke="hsl(var(--border))" strokeWidth="3" />
-							<circle cx="18" cy="18" r="15.5" fill="none" stroke="hsl(var(--primary))" strokeWidth="3" strokeDasharray={`${match.matchScore} ${100 - match.matchScore}`} strokeLinecap="round" />
-						</svg>
-						<span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-foreground">
-							{match.matchScore}
-						</span>
-					</div>
-					<span className="text-[10px] text-muted-foreground mt-0.5">Match</span>
-				</div>
-				)}
-			</div>
-
-			{/* Description */}
-			<p className="text-xs text-muted-foreground leading-relaxed mb-3">{match.description}</p>
-
-			{/* Cost */}
-			<div className="flex items-center justify-between mb-3">
-				<span className="text-xs text-muted-foreground">Budget level</span>
-				<span className="text-sm font-semibold text-foreground">{BUDGET_LEVELS[match.budgetLevel]}</span>
-			</div>
-
-			{/* Match reason */}
-			<div className="bg-muted/60 rounded-lg px-3 py-2.5">
-				<p className="text-xs font-medium text-muted-foreground mb-0.5">Why this match</p>
-				<p className="text-xs text-foreground leading-relaxed">{match.matchReason}</p>
-			</div>
-
-			{/* Category chips */}
-			{match.categories.length > 0 && (
-				<div className="flex gap-1.5 mt-3">
-					{match.categories.map((c) => (
-						<span key={c} className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-[10px] font-medium">
-							{c}
-						</span>
-					))}
+			{destination.image_url && (
+				<div className="relative aspect-video bg-muted">
+					<img
+						src={destination.image_url}
+						alt={`${destination.name}, ${destination.country}`}
+						loading="lazy"
+						className="h-full w-full object-cover"
+					/>
+					{/* Attribution required by the Unsplash API guidelines */}
+					{destination.image_credit && (
+						<p className="absolute bottom-0 right-0 rounded-tl-md bg-black/55 px-2 py-0.5 text-[10px] text-white">
+							Photo by{' '}
+							<a href={destination.image_credit_url ?? undefined} target="_blank" rel="noopener noreferrer" className="underline">
+								{destination.image_credit}
+							</a>{' '}
+							on{' '}
+							<a href={destination.image_page_url ?? undefined} target="_blank" rel="noopener noreferrer" className="underline">
+								Unsplash
+							</a>
+						</p>
+					)}
 				</div>
 			)}
+
+			<div className="flex flex-1 flex-col p-5">
+				<h3 className="text-base font-semibold text-foreground">{destination.name}</h3>
+				<div className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
+					<MapPin className="h-3 w-3" />
+					{destination.country}
+				</div>
+
+				<p className="mt-3 text-xs leading-relaxed text-muted-foreground">{destination.description}</p>
+
+				{/* Facts */}
+				<div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-foreground">
+					{destination.avg_cost_dkk !== null && (
+						<span className="inline-flex items-center gap-1" title="Estimate per person for one week, including flights from Copenhagen">
+							<Wallet className="h-3.5 w-3.5 text-muted-foreground" />
+							ca. {destination.avg_cost_dkk.toLocaleString('da-DK')} kr.
+						</span>
+					)}
+					{destination.flight_hours !== null && (
+						<span className="inline-flex items-center gap-1" title="Typical travel time from Copenhagen">
+							<Plane className="h-3.5 w-3.5 text-muted-foreground" />
+							{destination.flight_hours.toLocaleString('da-DK')} h
+						</span>
+					)}
+					{destination.best_months && destination.best_months.length > 0 && (
+						<span className="inline-flex items-center gap-1" title="Best months to go">
+							<CalendarDays className="h-3.5 w-3.5 text-muted-foreground" />
+							{formatMonths(destination.best_months)}
+						</span>
+					)}
+				</div>
+
+				{reason && (
+					<div className="mt-3 rounded-lg bg-muted/60 px-3 py-2.5">
+						<p className="mb-0.5 text-xs font-medium text-muted-foreground">Why this match</p>
+						<p className="text-xs leading-relaxed text-foreground">{reason}</p>
+					</div>
+				)}
+
+				{destination.category.length > 0 && (
+					<div className="mt-auto flex flex-wrap gap-1.5 pt-3">
+						{destination.category.map((c) => (
+							<span key={c} className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+								{c}
+							</span>
+						))}
+					</div>
+				)}
+			</div>
 		</motion.div>
 	);
 }

@@ -1,394 +1,3078 @@
 [
   {
-    "name": "Barcelona",
-    "country": "Spain",
-    "country_code": "ESP",
-    "description": "A vibrant Mediterranean city with top football, architecture, and beach life.",
-    "category": [
-      "Football",
-      "Cultural",
-      "Beach"
-    ],
-    "budget_level": 2,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Tokyo",
-    "country": "Japan",
-    "country_code": "JPN",
-    "description": "A dynamic capital blending neon districts, temples, and exceptional food.",
-    "category": [
-      "Cultural",
-      "Shopping",
-      "Capital"
-    ],
-    "budget_level": 4,
-    "distance_category": "Long"
-  },
-  {
-    "name": "Chamonix",
-    "country": "France",
-    "country_code": "FRA",
-    "description": "A mountain destination for winter sports and summer alpine trails.",
-    "category": [
-      "Ski",
-      "Nature",
-      "Cold Weather"
-    ],
-    "budget_level": 3,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Amalfi Coast",
-    "country": "Italy",
-    "country_code": "ITA",
-    "description": "Cliffside villages, sea views, and slow luxury along the Italian coast.",
-    "category": [
-      "Romantic",
-      "Warm Weather",
-      "Relax"
-    ],
-    "budget_level": 3,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Rome",
-    "country": "Italy",
-    "country_code": "ITA",
-    "description": "Ancient wonders, Renaissance art, and vibrant culture in Italy’s historic capital.",
-    "category": [
-      "Romantic",
-      "Capital",
-      "Shopping",
-      "Cultural",
-      "Historical"
-    ],
-    "budget_level": 2,
-    "distance_category": "Short"
-  },
-  {
-    "name": "New York City",
-    "country": "USA",
-    "country_code": "USA",
-    "description": "Iconic skyline, endless neighborhoods, and world-class entertainment.",
-    "category": [
-      "Shopping",
-      "Capital",
-      "Nightlife"
-    ],
-    "budget_level": 4,
-    "distance_category": "Long"
-  },
-  {
     "name": "Albanian Riviera",
     "country": "Albania",
     "country_code": "ALB",
-    "description": "A value-for-money coastline with crystal water and dramatic mountain backdrops.",
-    "category": [
-      "Hidden Gem",
-      "Nature",
-      "Beach"
-    ],
-    "budget_level": 1,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Maldives Atolls",
-    "country": "Maldives",
-    "country_code": "MDV",
-    "description": "Overwater villas, coral lagoons, and complete tropical downtime.",
+    "description": "Untouched beaches, charming villages, and rugged mountains offer an authentic and affordable Mediterranean escape.",
     "category": [
       "Beach",
-      "Relax",
+      "Warm Weather",
+      "Nature",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Buenos Aires",
+    "country": "Argentina",
+    "country_code": "ARG",
+    "description": "The",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Nightlife",
       "Romantic"
     ],
-    "budget_level": 4,
-    "distance_category": "Long"
-  },
-  {
-    "name": "London",
-    "country": "United Kingdom",
-    "country_code": "GBR",
-    "description": "A historic city with museums, football culture, and diverse neighborhoods.",
-    "category": [
-      "Football",
-      "Shopping",
-      "Historical"
+    "best_months": [
+      3,
+      4,
+      9,
+      10,
+      11
     ],
-    "budget_level": 3,
-    "distance_category": "Short"
+    "avg_cost_dkk": 30000,
+    "flight_hours": 17.5
   },
   {
-    "name": "Lisbon",
-    "country": "Portugal",
-    "country_code": "PRT",
-    "description": "Hillside streets, ocean light, and a growing food and design scene.",
+    "name": "Yerevan",
+    "country": "Armenia",
+    "country_code": "ARM",
+    "description": "Visit one of the world's oldest continuously inhabited cities with pink tufa architecture and views of Mount Ararat.",
     "category": [
       "Cultural",
-      "Warm Weather",
-      "Trending"
-    ],
-    "budget_level": 2,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Reykjavik",
-    "country": "Iceland",
-    "country_code": "ISL",
-    "description": "Northern landscapes, geothermal spas, and a compact creative capital.",
-    "category": [
-      "Nature",
-      "Cold Weather",
-      "Trending"
-    ],
-    "budget_level": 4,
-    "distance_category": "Mid"
-  },
-  {
-    "name": "Prague",
-    "country": "Czech Republic",
-    "country_code": "CZE",
-    "description": "Fairytale architecture, riverside walks, and rich Central European history.",
-    "category": [
       "Historical",
-      "Cultural",
       "Capital"
     ],
-    "budget_level": 2,
-    "distance_category": "Short"
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 6
+  },
+  {
+    "name": "Aruba",
+    "country": "Aruba",
+    "country_code": "ABW",
+    "description": "Enjoy consistent sunshine, white-sand beaches, calm turquoise waters, and a relaxed, welcoming island atmosphere.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax",
+      "Quiet"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 19500,
+    "flight_hours": 17
+  },
+  {
+    "name": "Sydney",
+    "country": "Australia",
+    "country_code": "AUS",
+    "description": "Explore iconic landmarks like the Opera House and Harbour Bridge, relax on Bondi Beach, and enjoy a vibrant city atmosphere.",
+    "category": [
+      "Capital",
+      "Beach",
+      "Cultural",
+      "Shopping"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 25000,
+    "flight_hours": 24
+  },
+  {
+    "name": "Innsbruck",
+    "country": "Austria",
+    "country_code": "AUT",
+    "description": "Capital of the Alps combining imperial Habsburg architecture with immediate access to winter sports.",
+    "category": [
+      "Ski",
+      "Historical",
+      "Nature",
+      "Cold Weather"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      7,
+      8,
+      12
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Salzburg",
+    "country": "Austria",
+    "country_code": "AUT",
+    "description": "Mozart's birthplace features baroque architecture, a hilltop fortress, and stunning alpine surroundings.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Romantic"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      12
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 3.5
   },
   {
     "name": "Vienna",
     "country": "Austria",
     "country_code": "AUT",
-    "description": "Elegant boulevards, classical music heritage, and grand imperial landmarks.",
+    "description": "Grand imperial palaces, classical music heritage, and traditional coffeehouses define Austria's elegant capital.",
     "category": [
+      "Capital",
       "Historical",
       "Cultural",
-      "Capital"
-    ],
-    "budget_level": 3,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Bali",
-    "country": "Indonesia",
-    "country_code": "IDN",
-    "description": "Rice terraces, surf beaches, and wellness retreats in tropical weather.",
-    "category": [
-      "Nature",
-      "Relax",
-      "Warm Weather"
-    ],
-    "budget_level": 2,
-    "distance_category": "Long"
-  },
-  {
-    "name": "Cape Town",
-    "country": "South Africa",
-    "country_code": "ZAF",
-    "description": "Coastal drives, mountain hikes, and a diverse urban food culture.",
-    "category": [
-      "Nature",
-      "Beach",
-      "Trending"
-    ],
-    "budget_level": 3,
-    "distance_category": "Long"
-  },
-  {
-    "name": "Dubrovnik",
-    "country": "Croatia",
-    "country_code": "HRV",
-    "description": "Stone walls, Adriatic views, and romantic old-town evenings.",
-    "category": [
-      "Historical",
-      "Beach",
       "Romantic"
     ],
-    "budget_level": 3,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Marrakesh",
-    "country": "Morocco",
-    "country_code": "MAR",
-    "description": "Colorful souks, riads, and rich North African design and cuisine.",
-    "category": [
-      "Cultural",
-      "Shopping",
-      "Warm Weather"
+    "best_months": [
+      4,
+      5,
+      6,
+      9,
+      10,
+      12
     ],
-    "budget_level": 2,
-    "distance_category": "Mid"
+    "avg_cost_dkk": 9000,
+    "flight_hours": 1.8
   },
   {
-    "name": "Stockholm",
-    "country": "Sweden",
-    "country_code": "SWE",
-    "description": "Island city life with clean design, waterfront views, and calm neighborhoods.",
+    "name": "Baku",
+    "country": "Azerbaijan",
+    "country_code": "AZE",
+    "description": "See futuristic skyscrapers contrast against an ancient UNESCO-listed fortress along the Caspian Sea.",
     "category": [
-      "Capital",
       "Cultural",
+      "Historical",
+      "Capital"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 6.5
+  },
+  {
+    "name": "Bruges",
+    "country": "Belgium",
+    "country_code": "BEL",
+    "description": "Fairytale medieval center with romantic canals, cobbled streets, and famous Belgian chocolate craft.",
+    "category": [
+      "Historical",
+      "Romantic",
+      "Quiet",
+      "Cultural"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 3
+  },
+  {
+    "name": "Mostar",
+    "country": "Bosnia and Herzegovina",
+    "country_code": "BIH",
+    "description": "Famous for its iconic Stari Most bridge, Mostar offers a rich Ottoman history and stunning river views.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Nature",
       "Quiet"
     ],
-    "budget_level": 3,
-    "distance_category": "Short"
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6300,
+    "flight_hours": 3.8
   },
   {
-    "name": "Oslo",
-    "country": "Norway",
-    "country_code": "NOR",
-    "description": "A compact capital with fjord access, forests, and modern architecture.",
+    "name": "Sarajevo",
+    "country": "Bosnia and Herzegovina",
+    "country_code": "BIH",
+    "description": "A city where East meets West, known for its rich history, diverse culture, and resilient spirit.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Capital",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 6000,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Okavango Delta",
+    "country": "Botswana",
+    "country_code": "BWA",
+    "description": "Glide through tranquil reed channels in a mokoro canoe while spotting elephants and rare birds.",
     "category": [
       "Nature",
-      "Capital",
+      "Quiet",
+      "Relax",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 24000,
+    "flight_hours": 15
+  },
+  {
+    "name": "Rio de Janeiro",
+    "country": "Brazil",
+    "country_code": "BRA",
+    "description": "Experience vibrant culture, iconic beaches like Copacabana, and stunning natural landscapes including Sugarloaf Mountain.",
+    "category": [
+      "Beach",
+      "Cultural",
+      "Nightlife",
+      "Trending"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 28000,
+    "flight_hours": 15.5
+  },
+  {
+    "name": "Bansko",
+    "country": "Bulgaria",
+    "country_code": "BGR",
+    "description": "Ski scenic slopes in the Pirin Mountains and unwind in affordable traditional mountain taverns.",
+    "category": [
+      "Ski",
+      "Cold Weather",
+      "Nature"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      12
+    ],
+    "avg_cost_dkk": 5000,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Siem Reap",
+    "country": "Cambodia",
+    "country_code": "KHM",
+    "description": "Explore the vast medieval stone temples and intricate carvings of the ancient Khmer Empire at Angkor Wat.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 14.5
+  },
+  {
+    "name": "Banff National Park",
+    "country": "Canada",
+    "country_code": "CAN",
+    "description": "Discover majestic mountains, turquoise lakes, and abundant wildlife in Canada's oldest and most iconic national park.",
+    "category": [
+      "Nature",
+      "Ski",
+      "Cold Weather",
       "Quiet"
     ],
-    "budget_level": 3,
-    "distance_category": "Short"
+    "best_months": [
+      1,
+      2,
+      3,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 21000,
+    "flight_hours": 15
+  },
+  {
+    "name": "Vancouver",
+    "country": "Canada",
+    "country_code": "CAN",
+    "description": "A stunning city where urban sophistication meets breathtaking natural beauty, offering outdoor adventures and a diverse food scene.",
+    "category": [
+      "Cultural",
+      "Nature",
+      "Shopping",
+      "Trending"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 18500,
+    "flight_hours": 13
   },
   {
     "name": "Whistler",
     "country": "Canada",
     "country_code": "CAN",
-    "description": "Top-tier ski terrain, alpine village atmosphere, and year-round mountain activities.",
+    "description": "Experience premier skiing and snowboarding in winter, or mountain biking and hiking in summer, surrounded by stunning alpine scenery.",
+    "category": [
+      "Ski",
+      "Nature",
+      "Cold Weather",
+      "Trending"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 22000,
+    "flight_hours": 15
+  },
+  {
+    "name": "San Pedro de Atacama",
+    "country": "Chile",
+    "country_code": "CHL",
+    "description": "Explore surreal desert landscapes, geysers, salt flats, and enjoy some of the world's clearest stargazing.",
+    "category": [
+      "Nature",
+      "Quiet",
+      "Hidden Gem",
+      "Cultural"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      9,
+      10,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 35000,
+    "flight_hours": 20.5
+  },
+  {
+    "name": "Zhangjiajie",
+    "country": "China",
+    "country_code": "CHN",
+    "description": "Famous for towering quartz-sandstone pillars, deep ravines, glass skywalks, and lush subtropical mountain scenery.",
+    "category": [
+      "Nature",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 13000,
+    "flight_hours": 15.5
+  },
+  {
+    "name": "Cartagena",
+    "country": "Colombia",
+    "country_code": "COL",
+    "description": "A colonial jewel on the Caribbean coast, famed for its colorful architecture, historic walled city, and warm beaches.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Beach",
+      "Warm Weather"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      12
+    ],
+    "avg_cost_dkk": 25000,
+    "flight_hours": 16
+  },
+  {
+    "name": "Rarotonga",
+    "country": "Cook Islands",
+    "country_code": "COK",
+    "description": "A stunning volcanic island offering pristine beaches, lush interior jungles, and a relaxed Polynesian atmosphere.",
+    "category": [
+      "Beach",
+      "Nature",
+      "Quiet",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 28000,
+    "flight_hours": 29
+  },
+  {
+    "name": "Manuel Antonio",
+    "country": "Costa Rica",
+    "country_code": "CRI",
+    "description": "Discover lush rainforests, pristine beaches, and abundant wildlife within its renowned national park.",
+    "category": [
+      "Nature",
+      "Beach",
+      "Warm Weather",
+      "Relax"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "avg_cost_dkk": 26000,
+    "flight_hours": 17
+  },
+  {
+    "name": "Dubrovnik",
+    "country": "Croatia",
+    "country_code": "HRV",
+    "description": "Walk the ancient city walls, explore Game of Thrones filming locations, and swim in the Adriatic Sea.",
+    "category": [
+      "Historical",
+      "Beach",
+      "Cultural",
+      "Trending"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 4
+  },
+  {
+    "name": "Hvar",
+    "country": "Croatia",
+    "country_code": "HRV",
+    "description": "A glamorous Croatian island known for its lavender fields, vibrant nightlife, and stunning clear waters.",
+    "category": [
+      "Beach",
+      "Nightlife",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 4
+  },
+  {
+    "name": "Split",
+    "country": "Croatia",
+    "country_code": "HRV",
+    "description": "A vibrant city built around Diocletian's Palace, offering ancient history and a gateway to the Dalmatian islands.",
+    "category": [
+      "Historical",
+      "Beach",
+      "Cultural",
+      "Nightlife"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 7800,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Havana",
+    "country": "Cuba",
+    "country_code": "CUB",
+    "description": "Step back in time with colorful colonial architecture, classic cars, live music, and a unique, captivating cultural atmosphere.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Nightlife",
+      "Warm Weather"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 15000,
+    "flight_hours": 16
+  },
+  {
+    "name": "Paphos",
+    "country": "Cyprus",
+    "country_code": "CYP",
+    "description": "A coastal city on Cyprus's southwest, known for its ancient ruins, archaeological sites, and beautiful beaches.",
+    "category": [
+      "Historical",
+      "Beach",
+      "Relax",
+      "Warm Weather"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Prague",
+    "country": "Czech Republic",
+    "country_code": "CZE",
+    "description": "Explore iconic Gothic architecture, historic castles, and vibrant beer halls along the Vltava River.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Romantic"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Galapagos Islands",
+    "country": "Ecuador",
+    "country_code": "ECU",
+    "description": "A unique archipelago renowned for its fearless wildlife, pristine volcanic landscapes, and evolutionary significance.",
+    "category": [
+      "Nature",
+      "Quiet",
+      "Trending",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 45000,
+    "flight_hours": 20
+  },
+  {
+    "name": "Cairo",
+    "country": "Egypt",
+    "country_code": "EGY",
+    "description": "Visit the monumental Pyramids of Giza, the Grand Egyptian Museum, and medieval Islamic architecture along the Nile.",
+    "category": [
+      "Capital",
+      "Historical",
+      "Cultural"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 6000,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Dahab",
+    "country": "Egypt",
+    "country_code": "EGY",
+    "description": "Relax in a bohemian Sinai coastal town famous for world-class Red Sea scuba diving and windsurfing.",
+    "category": [
+      "Beach",
+      "Relax",
+      "Quiet",
+      "Warm Weather"
+    ],
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 5500,
+    "flight_hours": 6
+  },
+  {
+    "name": "Saaremaa",
+    "country": "Estonia",
+    "country_code": "EST",
+    "description": "Estonia's largest island, known for its pristine nature, unique meteor crater, windmills, and relaxing spas.",
+    "category": [
+      "Nature",
+      "Relax",
+      "Quiet",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 6000,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Tallinn",
+    "country": "Estonia",
+    "country_code": "EST",
+    "description": "Wander through a remarkably preserved medieval Old Town, a UNESCO World Heritage site, offering historical charm and modern flair.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Capital",
+      "Shopping"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 5500,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Faroe Islands",
+    "country": "Faroe Islands",
+    "country_code": "FRO",
+    "description": "Discover dramatic landscapes of towering cliffs, green valleys, and charming villages, perfect for nature lovers and hikers.",
+    "category": [
+      "Nature",
+      "Quiet",
+      "Hidden Gem",
+      "Cold Weather"
+    ],
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 2.5
+  },
+  {
+    "name": "Helsinki",
+    "country": "Finland",
+    "country_code": "FIN",
+    "description": "Enjoy unique Nordic design, diverse culinary experiences, and the peaceful archipelago just a short ferry ride away.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Shopping",
+      "Nature"
+    ],
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 7000,
+    "flight_hours": 2
+  },
+  {
+    "name": "Rovaniemi",
+    "country": "Finland",
+    "country_code": "FIN",
+    "description": "Official home of Santa Claus, offering magical winter experiences, reindeer safaris, and Arctic nature adventures.",
+    "category": [
+      "Cold Weather",
+      "Nature",
+      "Ski",
+      "Romantic"
+    ],
+    "best_months": [
+      1,
+      2,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 4
+  },
+  {
+    "name": "Bordeaux",
+    "country": "France",
+    "country_code": "FRA",
+    "description": "Renowned wine capital with grand 18th-century architecture and easy access to prestigious vineyards.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Relax"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Chamonix",
+    "country": "France",
+    "country_code": "FRA",
+    "description": "Nestled at the foot of Mont Blanc, this alpine mecca offers world-renowned skiing and summer mountain sports.",
     "category": [
       "Ski",
       "Nature",
       "Cold Weather"
     ],
-    "budget_level": 4,
-    "distance_category": "Long"
+    "best_months": [
+      1,
+      2,
+      3,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 12000,
+    "flight_hours": 3.5
   },
   {
-    "name": "Istanbul",
-    "country": "Turkey",
-    "country_code": "TUR",
-    "description": "A transcontinental city with bazaars, mosques, and rich layered history.",
+    "name": "Nice",
+    "country": "France",
+    "country_code": "FRA",
+    "description": "Promenade des Anglais, Mediterranean beaches, and vibrant Old Town market charm on the French Riviera.",
     "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax",
+      "Cultural"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 10500,
+    "flight_hours": 2.5
+  },
+  {
+    "name": "Paris",
+    "country": "France",
+    "country_code": "FRA",
+    "description": "Icon of art, romance, and gastronomy with world-famous museums and grand boulevards.",
+    "category": [
+      "Capital",
       "Cultural",
-      "Historical",
+      "Romantic",
       "Shopping"
     ],
-    "budget_level": 2,
-    "distance_category": "Mid"
+    "best_months": [
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 11500,
+    "flight_hours": 2
   },
   {
-    "name": "Santorini",
-    "country": "Greece",
-    "country_code": "GRC",
-    "description": "Cliffside sunsets, white villages, and iconic Aegean island scenery.",
+    "name": "Bora Bora",
+    "country": "French Polynesia",
+    "country_code": "PYF",
+    "description": "An idyllic South Pacific island renowned for its luxurious overwater bungalows, turquoise lagoons, and vibrant marine life.",
     "category": [
-      "Romantic",
       "Beach",
-      "Warm Weather"
+      "Warm Weather",
+      "Relax",
+      "Romantic"
     ],
-    "budget_level": 3,
-    "distance_category": "Short"
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 35000,
+    "flight_hours": 30
   },
   {
-    "name": "Edinburgh",
-    "country": "United Kingdom",
-    "country_code": "GBR",
-    "description": "Castle skyline, literary heritage, and dramatic landscapes nearby.",
+    "name": "Kazbegi",
+    "country": "Georgia",
+    "country_code": "GEO",
+    "description": "Hike through dramatic Caucasus valleys up to the iconic hilltop Gergeti Trinity Church.",
     "category": [
-      "Historical",
-      "Cultural",
-      "Quiet"
+      "Nature",
+      "Quiet",
+      "Hidden Gem"
     ],
-    "budget_level": 2,
-    "distance_category": "Short"
-  },
-  {
-    "name": "Seoul",
-    "country": "South Korea",
-    "country_code": "KOR",
-    "description": "Fast-paced districts, excellent transit, and a strong food and fashion culture.",
-    "category": [
-      "Shopping",
-      "Capital",
-      "Nightlife"
+    "best_months": [
+      6,
+      7,
+      8,
+      9
     ],
-    "budget_level": 3,
-    "distance_category": "Long"
+    "avg_cost_dkk": 6000,
+    "flight_hours": 6.5
   },
   {
     "name": "Tbilisi",
     "country": "Georgia",
     "country_code": "GEO",
-    "description": "Old-town charm, wine traditions, and strong value for budget-conscious trips.",
+    "description": "Wander cobblestone streets beneath an ancient fortress, known for sulfur baths and world-class wine.",
     "category": [
-      "Hidden Gem",
       "Cultural",
-      "Trending"
+      "Historical",
+      "Capital"
     ],
-    "budget_level": 1,
-    "distance_category": "Mid"
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 5.5
   },
   {
-    "name": "Madeira",
-    "country": "Portugal",
-    "country_code": "PRT",
-    "description": "Volcanic island trails, ocean cliffs, and mild weather all year.",
+    "name": "Berlin",
+    "country": "Germany",
+    "country_code": "DEU",
+    "description": "A city shaped by modern history, famous for cutting-edge art, nightlife, and historic monuments.",
+    "category": [
+      "Capital",
+      "Historical",
+      "Nightlife",
+      "Cultural"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 1
+  },
+  {
+    "name": "Black Forest",
+    "country": "Germany",
+    "country_code": "DEU",
+    "description": "Dense evergreen woodlands, picturesque valleys, cuckoo clocks, and historic spa towns in southwest Germany.",
     "category": [
       "Nature",
       "Relax",
-      "Warm Weather"
+      "Quiet"
     ],
-    "budget_level": 2,
-    "distance_category": "Mid"
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 8000,
+    "flight_hours": 3
   },
   {
     "name": "Munich",
     "country": "Germany",
     "country_code": "DEU",
-    "description": "Classic Bavarian culture, museums, and major football atmosphere.",
+    "description": "Famous for traditional beer halls, Bavarian culture, proximity to the Alps, and rich history.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Football",
+      "Nightlife"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Corfu",
+    "country": "Greece",
+    "country_code": "GRC",
+    "description": "A lush Ionian island with Venetian architecture, stunning beaches, and emerald waters.",
+    "category": [
+      "Beach",
+      "Nature",
+      "Historical",
+      "Relax"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 7800,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Crete",
+    "country": "Greece",
+    "country_code": "GRC",
+    "description": "Greece's largest island, offering ancient ruins, diverse landscapes, and beautiful beaches for every taste.",
+    "category": [
+      "Beach",
+      "Historical",
+      "Nature",
+      "Warm Weather"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8000,
+    "flight_hours": 5
+  },
+  {
+    "name": "Mykonos",
+    "country": "Greece",
+    "country_code": "GRC",
+    "description": "Famous for its vibrant nightlife, stunning beaches, and iconic windmills, a true Cycladic gem.",
+    "category": [
+      "Beach",
+      "Nightlife",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      6,
+      7,
+      9
+    ],
+    "avg_cost_dkk": 10500,
+    "flight_hours": 5.5
+  },
+  {
+    "name": "Santorini",
+    "country": "Greece",
+    "country_code": "GRC",
+    "description": "Iconic white-washed villages, breathtaking sunsets over the caldera, and volcanic beaches make this island unforgettable.",
+    "category": [
+      "Romantic",
+      "Beach",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 11000,
+    "flight_hours": 5.5
+  },
+  {
+    "name": "Antigua",
+    "country": "Guatemala",
+    "country_code": "GTM",
+    "description": "A UNESCO World Heritage site, this charming colonial city is surrounded by volcanoes and rich in Mayan heritage.",
     "category": [
       "Historical",
       "Cultural",
-      "Football"
+      "Nature",
+      "Quiet"
     ],
-    "budget_level": 3,
-    "distance_category": "Short"
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 24000,
+    "flight_hours": 16.5
   },
   {
     "name": "Budapest",
     "country": "Hungary",
     "country_code": "HUN",
-    "description": "Thermal baths, riverside architecture, and a lively evening scene.",
+    "description": "Soak in historic thermal baths and explore grand architecture along the Danube River.",
     "category": [
+      "Cultural",
       "Historical",
-      "Nightlife",
-      "Cultural"
+      "Relax"
     ],
-    "budget_level": 2,
-    "distance_category": "Short"
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6000,
+    "flight_hours": 2
   },
   {
-    "name": "Valencia",
-    "country": "Spain",
-    "country_code": "ESP",
-    "description": "A sunny coastal city balancing modern design, old quarters, and beaches.",
+    "name": "Reykjavik",
+    "country": "Iceland",
+    "country_code": "ISL",
+    "description": "Experience a unique blend of vibrant city life and easy access to stunning natural wonders like geysers and hot springs.",
+    "category": [
+      "Capital",
+      "Nature",
+      "Trending",
+      "Cultural"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Kerala",
+    "country": "India",
+    "country_code": "IND",
+    "description": "Cruise quiet palm-fringed backwaters on traditional houseboats and explore tea plantations in the Western Ghats.",
+    "category": [
+      "Nature",
+      "Relax",
+      "Warm Weather",
+      "Cultural"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      9,
+      10,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 13
+  },
+  {
+    "name": "Varanasi",
+    "country": "India",
+    "country_code": "IND",
+    "description": "Witness ancient Hindu funeral pyres and spiritual evening prayer ceremonies along the holy Ganges river.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Quiet"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 13
+  },
+  {
+    "name": "Bali",
+    "country": "Indonesia",
+    "country_code": "IDN",
+    "description": "Explore lush rice terraces, sacred Hindu temples, and tropical beaches across Indonesia's volcanic island.",
     "category": [
       "Beach",
+      "Warm Weather",
+      "Relax",
+      "Cultural"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 11500,
+    "flight_hours": 15.5
+  },
+  {
+    "name": "Komodo National Park",
+    "country": "Indonesia",
+    "country_code": "IDN",
+    "description": "See wild Komodo dragons on arid islands and snorkel over pristine coral reefs and pink sand beaches.",
+    "category": [
+      "Nature",
+      "Beach",
+      "Warm Weather",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 13000,
+    "flight_hours": 17.5
+  },
+  {
+    "name": "Dublin",
+    "country": "Ireland",
+    "country_code": "IRL",
+    "description": "Historic pubs with live traditional music, rich literary history, and welcoming locals mark Ireland's capital.",
+    "category": [
+      "Capital",
       "Cultural",
+      "Nightlife",
+      "Historical"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 2.2
+  },
+  {
+    "name": "Galway",
+    "country": "Ireland",
+    "country_code": "IRL",
+    "description": "Vibrant coastal city known for traditional Irish music, lively street performers, and nearby dramatic coastlines.",
+    "category": [
+      "Cultural",
+      "Nightlife",
+      "Nature"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 4
+  },
+  {
+    "name": "Amalfi Coast",
+    "country": "Italy",
+    "country_code": "ITA",
+    "description": "Dramatic cliffs, picturesque villages, and stunning sea views define this iconic stretch of Italian coastline.",
+    "category": [
+      "Nature",
+      "Romantic",
+      "Warm Weather",
+      "Relax"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 10000,
+    "flight_hours": 5
+  },
+  {
+    "name": "Florence",
+    "country": "Italy",
+    "country_code": "ITA",
+    "description": "Cradle of the Renaissance, Florence offers unparalleled art, architecture, and delicious Tuscan cuisine.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Shopping",
+      "Romantic"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "country_code": "ITA",
+    "description": "Discover ancient ruins, magnificent art, and delicious food in the Eternal City, a treasure trove of history.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Capital",
+      "Shopping"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8000,
+    "flight_hours": 4
+  },
+  {
+    "name": "Sicily",
+    "country": "Italy",
+    "country_code": "ITA",
+    "description": "The largest Mediterranean island, rich in ancient ruins, volcanic landscapes, and beautiful coastlines.",
+    "category": [
+      "Historical",
+      "Nature",
+      "Beach",
       "Warm Weather"
     ],
-    "budget_level": 2,
-    "distance_category": "Short"
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 5
+  },
+  {
+    "name": "Venice",
+    "country": "Italy",
+    "country_code": "ITA",
+    "description": "A unique city built on water, famous for its canals, gondolas, and stunning architecture.",
+    "category": [
+      "Romantic",
+      "Historical",
+      "Cultural",
+      "Trending"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 4
   },
   {
     "name": "Kyoto",
     "country": "Japan",
     "country_code": "JPN",
-    "description": "Temple gardens, traditional neighborhoods, and a slower Japanese rhythm.",
+    "description": "The cultural heart of Japan offers thousands of classical Buddhist temples, gardens, shinto shrines, and traditional geisha districts.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Romantic"
+    ],
+    "best_months": [
+      3,
+      4,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 14000,
+    "flight_hours": 14.5
+  },
+  {
+    "name": "Niseko",
+    "country": "Japan",
+    "country_code": "JPN",
+    "description": "Located on Hokkaido island, Niseko is world-renowned for its legendary deep powder snow and relaxing natural hot spring baths.",
+    "category": [
+      "Ski",
+      "Cold Weather",
+      "Nature"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      12
+    ],
+    "avg_cost_dkk": 17000,
+    "flight_hours": 16
+  },
+  {
+    "name": "Okinawa",
+    "country": "Japan",
+    "country_code": "JPN",
+    "description": "Japan's tropical island chain features turquoise waters, coral reefs, unique Ryukyuan culture, and a relaxed coastal atmosphere.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax",
+      "Cultural"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 15000,
+    "flight_hours": 16
+  },
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "country_code": "JPN",
+    "description": "Japan's bustling capital blends futuristic skyscrapers, historic temples, vibrant pop culture, and world-class dining.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Shopping",
+      "Trending"
+    ],
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 14500,
+    "flight_hours": 13.5
+  },
+  {
+    "name": "Wadi Rum",
+    "country": "Jordan",
+    "country_code": "JOR",
+    "description": "Sleep under desert stars amidst dramatic sandstone mountains and red sand valleys carved by wind and rain.",
+    "category": [
+      "Nature",
+      "Quiet",
+      "Warm Weather"
+    ],
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 6
+  },
+  {
+    "name": "Pristina",
+    "country": "Kosovo",
+    "country_code": "KOS",
+    "description": "Kosovo's dynamic capital, offering a blend of Ottoman, Yugoslav, and modern influences, with a youthful energy.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Hidden Gem",
+      "Shopping"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 6200,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Luang Prabang",
+    "country": "Laos",
+    "country_code": "LAO",
+    "description": "Observe daily almsgiving rituals amidst French colonial buildings and gilded Buddhist temples along the Mekong.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Quiet",
+      "Nature"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 15
+  },
+  {
+    "name": "Riga",
+    "country": "Latvia",
+    "country_code": "LVA",
+    "description": "Admire stunning Art Nouveau architecture, explore a vibrant culinary scene, and delve into rich Baltic history.",
     "category": [
       "Historical",
       "Cultural",
+      "Capital",
+      "Nightlife"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 5000,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Vilnius",
+    "country": "Lithuania",
+    "country_code": "LTU",
+    "description": "Discover one of Europe's largest baroque Old Towns, enjoy a thriving arts scene, and explore bohemian Uzupis.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Capital",
       "Quiet"
     ],
-    "budget_level": 4,
-    "distance_category": "Long"
+    "best_months": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 5000,
+    "flight_hours": 2
+  },
+  {
+    "name": "Luxembourg City",
+    "country": "Luxembourg",
+    "country_code": "LUX",
+    "description": "Dramatic medieval fortifications and deep river gorges meet a modern financial and European center.",
+    "category": [
+      "Capital",
+      "Historical",
+      "Quiet"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Nosy Be",
+    "country": "Madagascar",
+    "country_code": "MDG",
+    "description": "Snorkel with sea turtles off volcanic island beaches and visit ylang-ylang plantations in calm tropical seas.",
+    "category": [
+      "Beach",
+      "Nature",
+      "Relax",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 13500,
+    "flight_hours": 14
+  },
+  {
+    "name": "Kuala Lumpur",
+    "country": "Malaysia",
+    "country_code": "MYS",
+    "description": "Marvel at iconic twin skyscrapers set against street food quarters and rainforest parks in Malaysia's capital.",
+    "category": [
+      "Capital",
+      "Shopping",
+      "Cultural",
+      "Warm Weather"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      12
+    ],
+    "avg_cost_dkk": 10000,
+    "flight_hours": 13.5
+  },
+  {
+    "name": "Penang",
+    "country": "Malaysia",
+    "country_code": "MYS",
+    "description": "Taste world-famous street food while exploring heritage shophouses and murals in historic George Town.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Warm Weather",
+      "Shopping"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      12
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 14
+  },
+  {
+    "name": "Maldives Atolls",
+    "country": "Maldives",
+    "country_code": "MDV",
+    "description": "Stay in overwater bungalows surrounded by turquoise lagoons and vibrant coral reefs ideal for diving.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax",
+      "Romantic"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 16500,
+    "flight_hours": 12.5
+  },
+  {
+    "name": "Valletta",
+    "country": "Malta",
+    "country_code": "MLT",
+    "description": "A fortified capital city rich in history, Baroque architecture, and stunning harbor views.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Capital",
+      "Warm Weather"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7000,
+    "flight_hours": 4
+  },
+  {
+    "name": "Le Morne",
+    "country": "Mauritius",
+    "country_code": "MUS",
+    "description": "Hike the dramatic UNESCO-listed basalt mountain and enjoy world-class kitesurfing on turquoise lagoons.",
+    "category": [
+      "Beach",
+      "Nature",
+      "Warm Weather",
+      "Relax"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 14000,
+    "flight_hours": 13
+  },
+  {
+    "name": "Cancun",
+    "country": "Mexico",
+    "country_code": "MEX",
+    "description": "Relax on stunning white-sand beaches, explore ancient Mayan ruins, and enjoy vibrant resorts and clear Caribbean waters.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax",
+      "Nightlife"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 16000,
+    "flight_hours": 15
+  },
+  {
+    "name": "Mexico City",
+    "country": "Mexico",
+    "country_code": "MEX",
+    "description": "Discover ancient Aztec history, world-class museums, vibrant markets, and a dynamic culinary scene in this sprawling capital.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Historical",
+      "Shopping"
+    ],
+    "best_months": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 14500,
+    "flight_hours": 16
+  },
+  {
+    "name": "Kotor",
+    "country": "Montenegro",
+    "country_code": "MNE",
+    "description": "A medieval walled city nestled in a stunning fjord-like bay, offering dramatic mountain and sea views.",
+    "category": [
+      "Historical",
+      "Nature",
+      "Quiet",
+      "Romantic"
+    ],
+    "best_months": [
+      5,
+      6,
+      9
+    ],
+    "avg_cost_dkk": 7000,
+    "flight_hours": 4
+  },
+  {
+    "name": "Chefchaouen",
+    "country": "Morocco",
+    "country_code": "MAR",
+    "description": "Wander through steep, winding blue-painted alleyways nestled in the scenic Rif Mountains of northern Morocco.",
+    "category": [
+      "Cultural",
+      "Hidden Gem",
+      "Relax",
+      "Warm Weather"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6000,
+    "flight_hours": 5.5
+  },
+  {
+    "name": "Marrakesh",
+    "country": "Morocco",
+    "country_code": "MAR",
+    "description": "Explore centuries-old souks, vibrant palaces, and traditional riads tucked inside the historic red-walled medina.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Shopping",
+      "Warm Weather"
+    ],
+    "best_months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Kathmandu",
+    "country": "Nepal",
+    "country_code": "NPL",
+    "description": "Traverse historic UNESCO-listed Durbar squares and medieval alleys framed by the snow-capped Himalayas.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Historical",
+      "Nature"
+    ],
+    "best_months": [
+      3,
+      4,
+      9,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 13.5
+  },
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "country_code": "NLD",
+    "description": "Picturesque canals, world-class art museums, and a vibrant cycling culture highlight the Dutch capital.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Nightlife",
+      "Romantic"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 10000,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Rotterdam",
+    "country": "Netherlands",
+    "country_code": "NLD",
+    "description": "Dynamic port city celebrated for groundbreaking modern architecture, maritime history, and innovative design.",
+    "category": [
+      "Cultural",
+      "Trending",
+      "Shopping"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Queenstown",
+    "country": "New Zealand",
+    "country_code": "NZL",
+    "description": "The adventure capital of New Zealand, offering stunning mountain scenery, outdoor activities, and world-class skiing.",
+    "category": [
+      "Nature",
+      "Ski",
+      "Cold Weather",
+      "Trending"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      12
+    ],
+    "avg_cost_dkk": 28000,
+    "flight_hours": 28
+  },
+  {
+    "name": "Ohrid",
+    "country": "North Macedonia",
+    "country_code": "MKD",
+    "description": "A UNESCO World Heritage site with a stunning lake, ancient churches, and a peaceful atmosphere.",
+    "category": [
+      "Nature",
+      "Historical",
+      "Quiet",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 6800,
+    "flight_hours": 4
+  },
+  {
+    "name": "Bergen",
+    "country": "Norway",
+    "country_code": "NOR",
+    "description": "Gateway to the majestic Norwegian fjords, this picturesque city boasts colorful wooden houses and a lively fish market.",
+    "category": [
+      "Nature",
+      "Cultural",
+      "Quiet",
+      "Historical"
+    ],
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 3
+  },
+  {
+    "name": "Oslo",
+    "country": "Norway",
+    "country_code": "NOR",
+    "description": "Discover modern architecture, world-class museums, and beautiful fjords right at the city's doorstep.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Nature",
+      "Shopping"
+    ],
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 8000,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Tromsø",
+    "country": "Norway",
+    "country_code": "NOR",
+    "description": "Experience the Arctic capital, perfect for Northern Lights in winter and midnight sun in summer, surrounded by dramatic landscapes.",
+    "category": [
+      "Nature",
+      "Cold Weather",
+      "Ski",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 10000,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Muscat",
+    "country": "Oman",
+    "country_code": "OMN",
+    "description": "Discover dramatic coastal mountains, serene grand mosques, traditional frankincense bazaars, and quiet Gulf beaches.",
+    "category": [
+      "Cultural",
+      "Quiet",
+      "Warm Weather",
+      "Nature"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 8500,
+    "flight_hours": 7.5
+  },
+  {
+    "name": "Salalah",
+    "country": "Oman",
+    "country_code": "OMN",
+    "description": "Witness lush green waterfalls and mist during the summer monsoon in a tropical southern Arabian oasis.",
+    "category": [
+      "Nature",
+      "Hidden Gem",
+      "Relax",
+      "Warm Weather"
+    ],
+    "best_months": [
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 8.5
+  },
+  {
+    "name": "Cusco",
+    "country": "Peru",
+    "country_code": "PER",
+    "description": "Gateway to the ancient Inca citadel of Machu Picchu, offering rich historical sites, vibrant markets, and Andean culture.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Nature",
+      "Trending"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 32000,
+    "flight_hours": 18
+  },
+  {
+    "name": "Boracay",
+    "country": "Philippines",
+    "country_code": "PHL",
+    "description": "Lounge on soft white sand beaches and sample vibrant water sports along the famous White Beach strip.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Nightlife",
+      "Relax"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 11500,
+    "flight_hours": 16
+  },
+  {
+    "name": "El Nido",
+    "country": "Philippines",
+    "country_code": "PHL",
+    "description": "Kayak through hidden lagoons framed by dramatic limestone karst cliffs and crystal-clear waters in Palawan.",
+    "category": [
+      "Beach",
+      "Nature",
+      "Warm Weather",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      12
+    ],
+    "avg_cost_dkk": 11000,
+    "flight_hours": 16.5
+  },
+  {
+    "name": "Gdansk",
+    "country": "Poland",
+    "country_code": "POL",
+    "description": "Stroll colorful Baltic waterfront streets rich in maritime history and amber craftsmanship.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Quiet"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 5000,
+    "flight_hours": 1
+  },
+  {
+    "name": "Krakow",
+    "country": "Poland",
+    "country_code": "POL",
+    "description": "Discover a well-preserved medieval old town, a historic royal castle, and rich Jewish heritage.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Quiet"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 5500,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Algarve",
+    "country": "Portugal",
+    "country_code": "PRT",
+    "description": "Southern Portugal's coastline, known for its golden beaches, dramatic cliffs, and picturesque fishing villages.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax",
+      "Nature"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Lisbon",
+    "country": "Portugal",
+    "country_code": "PRT",
+    "description": "Explore historic neighborhoods, enjoy Fado music, and ride iconic yellow trams in Portugal's hilly, coastal capital.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Nightlife",
+      "Shopping"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7000,
+    "flight_hours": 5
+  },
+  {
+    "name": "Madeira",
+    "country": "Portugal",
+    "country_code": "PRT",
+    "description": "A Portuguese island renowned for its lush landscapes, levada walks, and year-round mild, warm climate.",
+    "category": [
+      "Nature",
+      "Warm Weather",
+      "Relax",
+      "Quiet"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8000,
+    "flight_hours": 5.5
+  },
+  {
+    "name": "Porto",
+    "country": "Portugal",
+    "country_code": "PRT",
+    "description": "Famous for its Port wine, historic Ribeira district, and charming riverside setting along the Douro.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Shopping",
+      "Romantic"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7200,
+    "flight_hours": 4
+  },
+  {
+    "name": "San Juan",
+    "country": "Puerto Rico",
+    "country_code": "PRI",
+    "description": "Explore the charming cobblestone streets of Old San Juan, historic forts, and beautiful Caribbean beaches with a vibrant local culture.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Beach",
+      "Warm Weather"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 17500,
+    "flight_hours": 16
+  },
+  {
+    "name": "Saint-Gilles",
+    "country": "Réunion",
+    "country_code": "REU",
+    "description": "Hike active volcanic peaks and lush cirques before unwinding on French island lagoon beaches.",
+    "category": [
+      "Nature",
+      "Beach",
+      "Warm Weather",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 14500,
+    "flight_hours": 13.5
+  },
+  {
+    "name": "Transylvania",
+    "country": "Romania",
+    "country_code": "ROU",
+    "description": "Explore dramatic Carpathian landscapes, fortified medieval towns, and legendary gothic castles.",
+    "category": [
+      "Historical",
+      "Nature",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 5500,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Kigali",
+    "country": "Rwanda",
+    "country_code": "RWA",
+    "description": "Experience a clean, progressive East African capital with powerful memorial museums and vibrant art centers.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Historical"
+    ],
+    "best_months": [
+      1,
+      6,
+      7,
+      8,
+      9,
+      12
+    ],
+    "avg_cost_dkk": 11000,
+    "flight_hours": 10.5
+  },
+  {
+    "name": "AlUla",
+    "country": "Saudi Arabia",
+    "country_code": "SAU",
+    "description": "Marvel at ancient Nabataean tombs carved into sandstone monoliths surrounded by vast desert landscapes.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Hidden Gem",
+      "Warm Weather"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 11000,
+    "flight_hours": 7
+  },
+  {
+    "name": "Belgrade",
+    "country": "Serbia",
+    "country_code": "SRB",
+    "description": "A vibrant capital city at the confluence of the Sava and Danube rivers, famous for its fortress and lively nightlife.",
+    "category": [
+      "Capital",
+      "Nightlife",
+      "Cultural",
+      "Historical"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 3
+  },
+  {
+    "name": "Praslin",
+    "country": "Seychelles",
+    "country_code": "SYC",
+    "description": "Discover pristine beaches framed by granite boulders and walk through the prehistoric Coco de Mer palm forest.",
+    "category": [
+      "Beach",
+      "Nature",
+      "Relax",
+      "Romantic"
+    ],
+    "best_months": [
+      4,
+      5,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 18000,
+    "flight_hours": 12
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "country_code": "SGP",
+    "description": "Explore futuristic garden architecture, diverse hawker food centres, and high-end shopping districts.",
+    "category": [
+      "Capital",
+      "Shopping",
+      "Cultural",
+      "Warm Weather"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 13500,
+    "flight_hours": 13
+  },
+  {
+    "name": "High Tatras",
+    "country": "Slovakia",
+    "country_code": "SVK",
+    "description": "Experience rugged Alpine peaks, glacial alpine lakes, and winter skiing in Central Europe.",
+    "category": [
+      "Nature",
+      "Ski",
+      "Quiet"
+    ],
+    "best_months": [
+      1,
+      2,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 6000,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "country_code": "ZAF",
+    "description": "Scale Table Mountain for ocean views, explore vibrant harbors, and visit nearby winelands and penguin colonies.",
+    "category": [
+      "Nature",
+      "Cultural",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 12000,
+    "flight_hours": 14.5
+  },
+  {
+    "name": "Jeju Island",
+    "country": "South Korea",
+    "country_code": "KOR",
+    "description": "A volcanic island known for dramatic lava tubes, coastal waterfalls, hiking routes up Mount Hallasan, and scenic beaches.",
+    "category": [
+      "Nature",
+      "Beach",
+      "Relax"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 13500,
+    "flight_hours": 15
+  },
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "country_code": "KOR",
+    "description": "South Korea's high-tech capital features grand royal palaces, night markets, cutting-edge fashion, and famous street food.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Shopping",
+      "Nightlife"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 13000,
+    "flight_hours": 13
+  },
+  {
+    "name": "Barcelona",
+    "country": "Spain",
+    "country_code": "ESP",
+    "description": "Explore Gaudi's architectural masterpieces, vibrant markets, and lively beaches in this iconic Catalan city.",
+    "category": [
+      "Cultural",
+      "Shopping",
+      "Nightlife",
+      "Beach"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Granada",
+    "country": "Spain",
+    "country_code": "ESP",
+    "description": "Home to the magnificent Alhambra palace, Granada blends Moorish history with a vibrant tapas culture and mountain views.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Nature",
+      "Shopping"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7800,
+    "flight_hours": 5
+  },
+  {
+    "name": "Mallorca",
+    "country": "Spain",
+    "country_code": "ESP",
+    "description": "A diverse Balearic island offering beautiful beaches, dramatic mountains, and charming villages.",
+    "category": [
+      "Beach",
+      "Nature",
+      "Warm Weather",
+      "Relax"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7000,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Seville",
+    "country": "Spain",
+    "country_code": "ESP",
+    "description": "Experience passionate flamenco, stunning Moorish architecture, and vibrant orange tree-lined streets in Andalusia's capital.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Warm Weather",
+      "Romantic"
+    ],
+    "best_months": [
+      4,
+      5,
+      10
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 5
+  },
+  {
+    "name": "Valencia",
+    "country": "Spain",
+    "country_code": "ESP",
+    "description": "A vibrant city blending futuristic architecture with historic charm, famous for its paella and beautiful gardens.",
+    "category": [
+      "Cultural",
+      "Beach",
+      "Shopping",
+      "Warm Weather"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7000,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Sigiriya",
+    "country": "Sri Lanka",
+    "country_code": "LKA",
+    "description": "Climb an ancient rock fortress featuring fifth-century frescoes and panoramic views over Sri Lankan jungle.",
+    "category": [
+      "Historical",
+      "Nature",
+      "Cultural",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 13.5
+  },
+  {
+    "name": "Gothenburg",
+    "country": "Sweden",
+    "country_code": "SWE",
+    "description": "A vibrant city known for its charming canals, green spaces, Liseberg amusement park, and a burgeoning food scene.",
+    "category": [
+      "Cultural",
+      "Shopping",
+      "Nightlife",
+      "Nature"
+    ],
+    "best_months": [
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 2.5
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "country_code": "SWE",
+    "description": "Explore the charming Old Town (Gamla Stan), visit royal palaces, and enjoy the vibrant archipelago city life.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Shopping",
+      "Nightlife"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "avg_cost_dkk": 7500,
+    "flight_hours": 1.5
+  },
+  {
+    "name": "Swedish Lapland",
+    "country": "Sweden",
+    "country_code": "SWE",
+    "description": "Experience the Arctic wilderness, dog sledding, Northern Lights, and Icehotel, far from city lights.",
+    "category": [
+      "Nature",
+      "Cold Weather",
+      "Ski",
+      "Quiet"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 10500,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Interlaken",
+    "country": "Switzerland",
+    "country_code": "CHE",
+    "description": "Adventure sports capital situated between two turquoise lakes and surrounded by famed Alpine peaks.",
+    "category": [
+      "Nature",
+      "Ski",
+      "Quiet"
+    ],
+    "best_months": [
+      1,
+      2,
+      6,
+      7,
+      8,
+      12
+    ],
+    "avg_cost_dkk": 13500,
+    "flight_hours": 4
+  },
+  {
+    "name": "Zermatt",
+    "country": "Switzerland",
+    "country_code": "CHE",
+    "description": "Car-free alpine resort town offering iconic views of the Matterhorn and high-altitude skiing.",
+    "category": [
+      "Ski",
+      "Nature",
+      "Cold Weather",
+      "Romantic"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      7,
+      8,
+      12
+    ],
+    "avg_cost_dkk": 15000,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Zurich",
+    "country": "Switzerland",
+    "country_code": "CHE",
+    "description": "Set on a pristine lake, this global hub offers upscale shopping, fine dining, and alpine scenery.",
+    "category": [
+      "Shopping",
+      "Nature",
+      "Relax"
+    ],
+    "best_months": [
+      6,
+      7,
+      8,
+      9,
+      12
+    ],
+    "avg_cost_dkk": 14000,
+    "flight_hours": 2
+  },
+  {
+    "name": "Taipei",
+    "country": "Taiwan",
+    "country_code": "TWN",
+    "description": "Taiwan's vibrant capital boasts famous night markets, iconic Taipei 101, hot springs, and surrounding lush mountain trails.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Shopping",
+      "Trending"
+    ],
+    "best_months": [
+      3,
+      4,
+      10,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 12500,
+    "flight_hours": 14
+  },
+  {
+    "name": "Serengeti National Park",
+    "country": "Tanzania",
+    "country_code": "TZA",
+    "description": "Witness the Great Migration across vast savannas and track predators on world-class wildlife safaris.",
+    "category": [
+      "Nature",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      1,
+      2,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 22000,
+    "flight_hours": 12.5
+  },
+  {
+    "name": "Zanzibar Archipelago",
+    "country": "Tanzania",
+    "country_code": "TZA",
+    "description": "Relax on white-sand beaches, swim in turquoise waters, and explore the historic spice markets of Stone Town.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax",
+      "Historical"
+    ],
+    "best_months": [
+      1,
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "avg_cost_dkk": 11500,
+    "flight_hours": 11.5
+  },
+  {
+    "name": "Bangkok",
+    "country": "Thailand",
+    "country_code": "THA",
+    "description": "Experience bustling street food markets, ornate royal temples, and lively canals in Thailand's vibrant hub.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Shopping",
+      "Nightlife"
+    ],
+    "best_months": [
+      1,
+      2,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 11.5
+  },
+  {
+    "name": "Chiang Mai",
+    "country": "Thailand",
+    "country_code": "THA",
+    "description": "Discover ancient temples, mist-covered mountain trails, and ethical elephant sanctuaries in northern Thailand.",
+    "category": [
+      "Cultural",
+      "Nature",
+      "Quiet",
+      "Historical"
+    ],
+    "best_months": [
+      1,
+      2,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 9000,
+    "flight_hours": 13
+  },
+  {
+    "name": "Phuket",
+    "country": "Thailand",
+    "country_code": "THA",
+    "description": "Relax on sandy Andaman coast beaches, venture to limestone islands, and enjoy nightlife in southern Thailand.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Nightlife",
+      "Relax"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 10000,
+    "flight_hours": 13.5
+  },
+  {
+    "name": "Djerba",
+    "country": "Tunisia",
+    "country_code": "TUN",
+    "description": "Unwind on sandy Mediterranean beaches and explore whitewashed island villages with rich Jewish and Berber heritage.",
+    "category": [
+      "Beach",
+      "Relax",
+      "Warm Weather",
+      "Cultural"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 5800,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "Antalya",
+    "country": "Turkey",
+    "country_code": "TUR",
+    "description": "Relax along Mediterranean beaches framed by dramatic coastal mountains and ancient Roman ruins.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Relax"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 6500,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Cappadocia",
+    "country": "Turkey",
+    "country_code": "TUR",
+    "description": "Marvel at otherworldly fairy chimney rock formations, cave hotels, and sunrise hot air balloon flights.",
+    "category": [
+      "Nature",
+      "Romantic",
+      "Trending"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 8000,
+    "flight_hours": 5
+  },
+  {
+    "name": "Istanbul",
+    "country": "Turkey",
+    "country_code": "TUR",
+    "description": "Experience a historic metropolis straddling two continents with ancient mosques and bustling bazaars.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Shopping"
+    ],
+    "best_months": [
+      4,
+      5,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 7000,
+    "flight_hours": 3.5
+  },
+  {
+    "name": "Dubai",
+    "country": "United Arab Emirates",
+    "country_code": "ARE",
+    "description": "Experience futuristic architecture, expansive desert dunes, luxury shopping malls, and sunny Persian Gulf beaches.",
+    "category": [
+      "Shopping",
+      "Beach",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 6.5
+  },
+  {
+    "name": "Edinburgh",
+    "country": "United Kingdom",
+    "country_code": "GBR",
+    "description": "A dramatic hilltop castle overlooks cobblestone streets, ghost tours, and rich Scottish folklore.",
+    "category": [
+      "Historical",
+      "Cultural",
+      "Romantic",
+      "Capital"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 2
+  },
+  {
+    "name": "Isle of Skye",
+    "country": "United Kingdom",
+    "country_code": "GBR",
+    "description": "Dramatic sea cliffs, rugged mountains, ancient castles, and mystical landscapes in the Scottish Highlands.",
+    "category": [
+      "Nature",
+      "Quiet",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 10000,
+    "flight_hours": 4.5
+  },
+  {
+    "name": "London",
+    "country": "United Kingdom",
+    "country_code": "GBR",
+    "description": "World-class museums, iconic landmarks, vibrant theatre, and historic pubs make London an endless urban destination.",
+    "category": [
+      "Capital",
+      "Historical",
+      "Cultural",
+      "Shopping"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 11000,
+    "flight_hours": 2
+  },
+  {
+    "name": "Los Angeles",
+    "country": "United States",
+    "country_code": "USA",
+    "description": "Discover Hollywood glamour, diverse culinary scenes, beautiful beaches, and extensive cultural attractions across this sprawling metropolis.",
+    "category": [
+      "Cultural",
+      "Warm Weather",
+      "Shopping",
+      "Nightlife"
+    ],
+    "best_months": [
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 19000,
+    "flight_hours": 14
+  },
+  {
+    "name": "Miami",
+    "country": "United States",
+    "country_code": "USA",
+    "description": "Enjoy sun-drenched beaches, vibrant Art Deco architecture, and a lively Latin-infused culture and nightlife.",
+    "category": [
+      "Beach",
+      "Warm Weather",
+      "Nightlife",
+      "Shopping"
+    ],
+    "best_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "avg_cost_dkk": 17000,
+    "flight_hours": 13
+  },
+  {
+    "name": "New Orleans",
+    "country": "United States",
+    "country_code": "USA",
+    "description": "Immerse yourself in jazz music, unique Creole cuisine, historic architecture, and the lively atmosphere of the French Quarter.",
+    "category": [
+      "Cultural",
+      "Nightlife",
+      "Historical",
+      "Trending"
+    ],
+    "best_months": [
+      2,
+      3,
+      4,
+      10,
+      11
+    ],
+    "avg_cost_dkk": 16500,
+    "flight_hours": 15
+  },
+  {
+    "name": "New York City",
+    "country": "United States",
+    "country_code": "USA",
+    "description": "Explore iconic landmarks, world-class museums, Broadway shows, and diverse neighborhoods in this vibrant global hub.",
+    "category": [
+      "Capital",
+      "Cultural",
+      "Shopping",
+      "Nightlife"
+    ],
+    "best_months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "avg_cost_dkk": 18000,
+    "flight_hours": 11
+  },
+  {
+    "name": "Hoi An",
+    "country": "Vietnam",
+    "country_code": "VNM",
+    "description": "Wander through a remarkably preserved ancient trading port filled with wooden shop-houses and silk lanterns.",
+    "category": [
+      "Cultural",
+      "Historical",
+      "Warm Weather",
+      "Trending"
+    ],
+    "best_months": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "avg_cost_dkk": 9500,
+    "flight_hours": 14.5
+  },
+  {
+    "name": "Victoria Falls",
+    "country": "Zimbabwe",
+    "country_code": "ZWE",
+    "description": "Marvel at one of the world's largest waterfalls, raft the Zambezi gorge, and spot wildlife on river cruises.",
+    "category": [
+      "Nature",
+      "Warm Weather",
+      "Hidden Gem"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "avg_cost_dkk": 15000,
+    "flight_hours": 14
   }
 ]
