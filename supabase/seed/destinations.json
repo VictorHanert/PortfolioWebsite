@@ -21,7 +21,9 @@
     "image_url": "https://images.unsplash.com/photo-1738675326308-f4097c3405a7?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxBbGJhbmlhbiUyMFJpdmllcmElMjBBbGJhbmlhfGVufDF8MHx8fDE3OTQ0MjA5NDV8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Marie Volkert",
     "image_credit_url": "https://unsplash.com/@marie_worldonabudget?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-beach-with-a-mountain-in-the-background-GZgsF08zv6w?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-beach-with-a-mountain-in-the-background-GZgsF08zv6w?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 40.102,
+    "longitude": 19.745
   },
   {
     "name": "Buenos Aires",
@@ -46,7 +48,9 @@
     "image_url": "https://images.unsplash.com/photo-1711512538805-cc07d32093c2?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMHx8QnVlbm9zJTIwQWlyZXMlMjBBcmdlbnRpbmF8ZW58MXwwfHx8MTc5NDQyMDk0Nnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Soliman Cifuentes",
     "image_credit_url": "https://unsplash.com/@solimancifuentes?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-bridge-that-is-over-a-body-of-water-MhSiwHHNgFM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-bridge-that-is-over-a-body-of-water-MhSiwHHNgFM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -34.613,
+    "longitude": -58.377
   },
   {
     "name": "Yerevan",
@@ -69,7 +73,9 @@
     "image_url": "https://images.unsplash.com/photo-1536645152842-6b5fbacf1153?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw5fHxZZXJldmFuJTIwQXJtZW5pYXxlbnwxfDB8fHwxNzk0NDIwOTQ3fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Nasser Ansari",
     "image_credit_url": "https://unsplash.com/@nasseransari?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-concrete-church-zWksHz0OWU4?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-concrete-church-zWksHz0OWU4?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 40.178,
+    "longitude": 44.513
   },
   {
     "name": "Aruba",
@@ -96,7 +102,9 @@
     "image_url": "https://images.unsplash.com/photo-1711384629874-7ca8fdc58ce5?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxBcnViYSUyMEFydWJhfGVufDF8MHx8fDE3OTQ0MjA5NDh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Christopher Ott",
     "image_credit_url": "https://unsplash.com/@notso?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-woman-standing-on-top-of-a-sandy-beach-6JAbg6hkzeo?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-woman-standing-on-top-of-a-sandy-beach-6JAbg6hkzeo?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 12.524,
+    "longitude": -70.027
   },
   {
     "name": "Sydney",
@@ -122,7 +130,9 @@
     "image_url": "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxTeWRuZXklMjBBdXN0cmFsaWF8ZW58MXwwfHx8MTc5NDQyMDk0OHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Photoholgic",
     "image_credit_url": "https://unsplash.com/@photoholgic?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/sydney-opera-house-australia-jK9dT34TfuI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/sydney-opera-house-australia-jK9dT34TfuI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -33.868,
+    "longitude": 151.207
   },
   {
     "name": "Innsbruck",
@@ -148,7 +158,9 @@
     "image_url": "https://images.unsplash.com/photo-1679478562104-d1115a0a7253?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxNHx8SW5uc2JydWNrJTIwQXVzdHJpYXxlbnwxfDB8fHwxNzk0NDIwOTQ5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Michelangelo Azzariti",
     "image_credit_url": "https://unsplash.com/@michelangeloazzariti?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-CBKY_E94WAI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-CBKY_E94WAI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 47.263,
+    "longitude": 11.395
   },
   {
     "name": "Salzburg",
@@ -173,7 +185,9 @@
     "image_url": "https://images.unsplash.com/photo-1625745184488-3b6ad541e4fa?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw2fHxTYWx6YnVyZyUyMEF1c3RyaWF8ZW58MXwwfHx8MTc5NDQyMDk1MHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Free Walking Tour Salzburg",
     "image_credit_url": "https://unsplash.com/@freewalkingtoursalzburg?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/white-and-brown-concrete-building-near-green-trees-during-daytime-oZmEsJngbok?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/white-and-brown-concrete-building-near-green-trees-during-daytime-oZmEsJngbok?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 47.799,
+    "longitude": 13.044
   },
   {
     "name": "Vienna",
@@ -199,7 +213,9 @@
     "image_url": "https://images.unsplash.com/photo-1516550893923-42d28e5677af?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxWaWVubmElMjBBdXN0cmlhfGVufDF8MHx8fDE3OTQ0MjA5NTB8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jacek Dylag",
     "image_credit_url": "https://unsplash.com/@dylu?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/st-stephens-cathedral-skyline-in-vienna-5SjAaqqCCmY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/st-stephens-cathedral-skyline-in-vienna-5SjAaqqCCmY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 48.208,
+    "longitude": 16.372
   },
   {
     "name": "Baku",
@@ -222,7 +238,9 @@
     "image_url": "https://images.unsplash.com/photo-1595980542930-9eea66620834?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxCYWt1JTIwQXplcmJhaWphbnxlbnwxfDB8fHwxNzk0NDIwOTUxfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "İltun Huseynli",
     "image_credit_url": "https://unsplash.com/@iltunography?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-walking-on-the-street-near-the-glass-building-during-daytime-OH7GkUqiuZk?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-walking-on-the-street-near-the-glass-building-during-daytime-OH7GkUqiuZk?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 40.378,
+    "longitude": 49.892
   },
   {
     "name": "Bruges",
@@ -247,7 +265,9 @@
     "image_url": "https://images.unsplash.com/photo-1601961208755-3519c8a31ded?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxCcnVnZXMlMjBCZWxnaXVtfGVufDF8MHx8fDE3OTQ0MjA5NTJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Despina Galani",
     "image_credit_url": "https://unsplash.com/@despinagalani?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-concrete-building-beside-river-during-daytime-5eMuDNuM08o?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-concrete-building-beside-river-during-daytime-5eMuDNuM08o?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 51.209,
+    "longitude": 3.224
   },
   {
     "name": "Mostar",
@@ -271,7 +291,9 @@
     "image_url": "https://images.unsplash.com/photo-1544329095-a7c19df83018?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxNb3N0YXIlMjBCb3NuaWElMjBhbmQlMjBIZXJ6ZWdvdmluYXxlbnwxfDB8fHwxNzk0NDIwOTUyfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Yu Siang Teo",
     "image_credit_url": "https://unsplash.com/@cloneyusiang?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-arch-bridge-near-concrete-buildings-and-green-leafed-trees-during-daytime-GZjH4cVGgCs?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-arch-bridge-near-concrete-buildings-and-green-leafed-trees-during-daytime-GZjH4cVGgCs?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 43.343,
+    "longitude": 17.808
   },
   {
     "name": "Sarajevo",
@@ -294,7 +316,9 @@
     "image_url": "https://images.unsplash.com/photo-1513034751734-9f02f697ac3a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxTYXJhamV2byUyMEJvc25pYSUyMGFuZCUyMEhlcnplZ292aW5hfGVufDF8MHx8fDE3OTQ0MjA5NTN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Natalya Letunova",
     "image_credit_url": "https://unsplash.com/@naletu?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/photo-of-city-during-nightime-FYr3roIu51g?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/photo-of-city-during-nightime-FYr3roIu51g?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 43.849,
+    "longitude": 18.356
   },
   {
     "name": "Okavango Delta",
@@ -319,7 +343,9 @@
     "image_url": "https://images.unsplash.com/photo-1646338127518-07d025f4fe5c?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw5fHxPa2F2YW5nbyUyMERlbHRhJTIwQm90c3dhbmF8ZW58MXwwfHx8MTc5NDQyMDk1NHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Mike Koss",
     "image_credit_url": "https://unsplash.com/@mckoss?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/an-elephant-standing-in-a-field-of-tall-grass-fbHeFP-4Q0Y?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/an-elephant-standing-in-a-field-of-tall-grass-fbHeFP-4Q0Y?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -19.983,
+    "longitude": 23.417
   },
   {
     "name": "Rio de Janeiro",
@@ -345,7 +371,9 @@
     "image_url": "https://images.unsplash.com/photo-1543958871-ccfa180a0c39?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxNXx8UmlvJTIwZGUlMjBKYW5laXJvJTIwQnJhemlsfGVufDF8MHx8fDE3OTQ0MjA5NTV8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Desert Morocco Adventure",
     "image_credit_url": "https://unsplash.com/@dmadventure?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/mountains-and-buildings-on-lake-3SXOlAzjT40?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/mountains-and-buildings-on-lake-3SXOlAzjT40?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -22.906,
+    "longitude": -43.182
   },
   {
     "name": "Bansko",
@@ -368,7 +396,9 @@
     "image_url": "https://images.unsplash.com/photo-1716986463167-59d05c7eae59?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxCYW5za28lMjBCdWxnYXJpYXxlbnwxfDB8fHwxNzk0NDIwOTU1fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Vera Mezhvynskiy",
     "image_credit_url": "https://unsplash.com/@veramezh?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-cobblestone-street-lined-with-benches-and-trees-TxbpdR_x124?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-cobblestone-street-lined-with-benches-and-trees-TxbpdR_x124?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 41.836,
+    "longitude": 23.487
   },
   {
     "name": "Siem Reap",
@@ -393,7 +423,9 @@
     "image_url": "https://images.unsplash.com/photo-1599283787923-51b965a58b05?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxTaWVtJTIwUmVhcCUyMENhbWJvZGlhfGVufDF8MHx8fDE3OTQ0MjA5NTZ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "allPhoto Bangkok",
     "image_credit_url": "https://unsplash.com/@allphotobangkok?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/angkor-wat-temple-in-siem-reap-gt3gK_Wob2g?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/angkor-wat-temple-in-siem-reap-gt3gK_Wob2g?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 13.362,
+    "longitude": 103.861
   },
   {
     "name": "Banff National Park",
@@ -419,7 +451,9 @@
     "image_url": "https://images.unsplash.com/photo-1565015931955-2febbbdef4b5?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMXx8QmFuZmYlMjBOYXRpb25hbCUyMFBhcmslMjBDYW5hZGF8ZW58MXwwfHx8MTc5NDQyMDk1N3ww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Chi Liu",
     "image_credit_url": "https://unsplash.com/@chiditty?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/lake-by-the-mountains-near-pine-trees-lWMMq8Hh6Dg?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/lake-by-the-mountains-near-pine-trees-lWMMq8Hh6Dg?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 51.176,
+    "longitude": -115.57
   },
   {
     "name": "Vancouver",
@@ -443,7 +477,9 @@
     "image_url": "https://images.unsplash.com/photo-1660143158587-bddffa026e06?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxWYW5jb3V2ZXIlMjBDYW5hZGF8ZW58MXwwfHx8MTc5NDQyMDk1OHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Anthony Maw",
     "image_credit_url": "https://unsplash.com/@anthonymaw?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-city-with-snow-covered-mountains-GWRuNS8Y0KM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-city-with-snow-covered-mountains-GWRuNS8Y0KM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 49.25,
+    "longitude": -123.119
   },
   {
     "name": "Whistler",
@@ -468,7 +504,9 @@
     "image_url": "https://images.unsplash.com/photo-1569376360498-3940ba204f5f?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMnx8V2hpc3RsZXIlMjBDYW5hZGF8ZW58MXwwfHx8MTc5NDQyMDk1OHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Ronald Wong",
     "image_credit_url": "https://unsplash.com/@ronaldwong57?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/snowy-mountain-photography-QZnI3HMfdKs?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/snowy-mountain-photography-QZnI3HMfdKs?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 50.118,
+    "longitude": -122.954
   },
   {
     "name": "San Pedro de Atacama",
@@ -495,7 +533,9 @@
     "image_url": "https://images.unsplash.com/photo-1580413193140-8af6ffa819e1?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxBdGFjYW1hJTIwZGVzZXJ0JTIwVmFsbGUlMjBkZSUyMGxhJTIwTHVuYXxlbnwxfDB8fHwxNzk0NDIxMTU5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Alain Bonnardeaux",
     "image_credit_url": "https://unsplash.com/@bonnarda?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-rocky-mountain-beside-blue-sea-during-daytime-3MAqgUoStxw?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-rocky-mountain-beside-blue-sea-during-daytime-3MAqgUoStxw?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -22.911,
+    "longitude": -68.201
   },
   {
     "name": "Zhangjiajie",
@@ -517,7 +557,9 @@
     "image_url": "https://images.unsplash.com/photo-1514920735211-8c697444a248?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxaaGFuZ2ppYWppZSUyMENoaW5hfGVufDF8MHx8fDE3OTQ0MjA5NjB8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Joshua Sortino",
     "image_credit_url": "https://unsplash.com/@sortino?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-mountains-gii7lF4y0WY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-mountains-gii7lF4y0WY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 29.129,
+    "longitude": 110.478
   },
   {
     "name": "Cartagena",
@@ -542,7 +584,9 @@
     "image_url": "https://images.unsplash.com/photo-1666977461267-c0e924696510?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxM3x8Q2FydGFnZW5hJTIwQ29sb21iaWF8ZW58MXwwfHx8MTc5NDQyMDk2MHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jenny",
     "image_credit_url": "https://unsplash.com/@jennxfer?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-city-with-tall-buildings-and-a-body-of-water-in-the-background-_2HRKmVlOuQ?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-city-with-tall-buildings-and-a-body-of-water-in-the-background-_2HRKmVlOuQ?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 10.398,
+    "longitude": -75.493
   },
   {
     "name": "Rarotonga",
@@ -568,7 +612,9 @@
     "image_url": "https://images.unsplash.com/photo-1721356103308-bdc568ab98b3?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxSYXJvdG9uZ2ElMjBDb29rJTIwSXNsYW5kc3xlbnwxfDB8fHwxNzk0NDIwOTYyfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Colton Jones",
     "image_credit_url": "https://unsplash.com/@colt10jordan?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-dirt-road-surrounded-by-palm-trees-on-a-cloudy-day-ov5Qlw8WrNk?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-dirt-road-surrounded-by-palm-trees-on-a-cloudy-day-ov5Qlw8WrNk?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -21.207,
+    "longitude": -159.775
   },
   {
     "name": "Manuel Antonio",
@@ -592,7 +638,9 @@
     "image_url": "https://images.unsplash.com/photo-1611602316663-92dc58e199ed?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxNYW51ZWwlMjBBbnRvbmlvJTIwQ29zdGElMjBSaWNhfGVufDF8MHx8fDE3OTQ0MjA5NjN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Luiz Cent",
     "image_credit_url": "https://unsplash.com/@luizcent?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-green-trees-near-body-of-water-during-daytime-rodDBPqBfKA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-green-trees-near-body-of-water-during-daytime-rodDBPqBfKA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 9.431,
+    "longitude": -84.162
   },
   {
     "name": "Dubrovnik",
@@ -615,7 +663,9 @@
     "image_url": "https://images.unsplash.com/photo-1626699748984-47d6942751ca?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxEdWJyb3ZuaWslMjBDcm9hdGlhfGVufDF8MHx8fDE3OTQ0MjA5NjN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Geio Tischler",
     "image_credit_url": "https://unsplash.com/@oww?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-city-buildings-near-body-of-water-during-daytime-rjHTWXyhWcE?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-city-buildings-near-body-of-water-during-daytime-rjHTWXyhWcE?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 42.641,
+    "longitude": 18.109
   },
   {
     "name": "Hvar",
@@ -638,7 +688,9 @@
     "image_url": "https://images.unsplash.com/photo-1502542210750-7c978b400449?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxIdmFyJTIwQ3JvYXRpYXxlbnwxfDB8fHwxNzk0NDIwOTY0fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Grant Ritchie",
     "image_credit_url": "https://unsplash.com/@grantritchie?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-photo-of-body-of-water-and-buildings-at-daytime-YRF3nhuZ81s?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-photo-of-body-of-water-and-buildings-at-daytime-YRF3nhuZ81s?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 43.173,
+    "longitude": 16.443
   },
   {
     "name": "Split",
@@ -661,7 +713,9 @@
     "image_url": "https://images.unsplash.com/flagged/photo-1647771698655-cd63a53b60b4?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxEaW9jbGV0aWFuJTIwUGFsYWNlJTIwU3BsaXR8ZW58MXwwfHx8MTc5NDQyMTIxNXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Malcolm Ketteridge",
     "image_credit_url": "https://unsplash.com/@mgketteridge?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-woman-standing-next-to-a-stone-building-N6RqASFdaKc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-woman-standing-next-to-a-stone-building-N6RqASFdaKc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 43.509,
+    "longitude": 16.439
   },
   {
     "name": "Havana",
@@ -687,7 +741,9 @@
     "image_url": "https://images.unsplash.com/photo-1570299437488-d430e1e677c7?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxIYXZhbmElMjBDdWJhfGVufDF8MHx8fDE3OTQ0MjA5NjV8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Spencer Everett",
     "image_credit_url": "https://unsplash.com/@sp3v?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/two-cars-parked-outside-building-4MTSE39Oqro?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/two-cars-parked-outside-building-4MTSE39Oqro?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 23.133,
+    "longitude": -82.383
   },
   {
     "name": "Paphos",
@@ -711,7 +767,9 @@
     "image_url": "https://images.unsplash.com/photo-1622632983419-53f7c2737d23?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxQYXBob3MlMjBDeXBydXN8ZW58MXwwfHx8MTc5NDQyMDk2Nnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Secret Travel Guide secret-travel.guide",
     "image_credit_url": "https://unsplash.com/@secrettravelguide?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-green-trees-and-blue-sea-during-daytime-FrfHhHUbo9c?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-green-trees-and-blue-sea-during-daytime-FrfHhHUbo9c?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 34.777,
+    "longitude": 32.425
   },
   {
     "name": "Prague",
@@ -734,7 +792,9 @@
     "image_url": "https://images.unsplash.com/photo-1619558846792-1fc47446bbd7?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxQcmFndWUlMjBDemVjaCUyMFJlcHVibGljfGVufDF8MHx8fDE3OTQ0MjA5NjZ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Radek Kozák",
     "image_credit_url": "https://unsplash.com/@kojak78?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/red-and-white-concrete-building-near-body-of-water-during-daytime-th35Hyge32A?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/red-and-white-concrete-building-near-body-of-water-during-daytime-th35Hyge32A?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 50.088,
+    "longitude": 14.421
   },
   {
     "name": "Galapagos Islands",
@@ -760,7 +820,9 @@
     "image_url": "https://images.unsplash.com/photo-1595517930215-d2778a56ac93?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxHYWxhcGFnb3MlMjBJc2xhbmRzJTIwRWN1YWRvcnxlbnwxfDB8fHwxNzk0NDIwOTY3fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Amy Perez",
     "image_credit_url": "https://unsplash.com/@amyperez?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/sea-lion-on-white-sand-during-daytime-w55TgHidHoE?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/sea-lion-on-white-sand-during-daytime-w55TgHidHoE?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -0.74,
+    "longitude": -90.314
   },
   {
     "name": "Cairo",
@@ -785,7 +847,9 @@
     "image_url": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxDYWlybyUyMEVneXB0fGVufDF8MHx8fDE3OTQ0MjA5Njh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Omar Elsharawy",
     "image_credit_url": "https://unsplash.com/@esh3rwy?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/mosque-of-rifai-and-sultan-hassan-cairo-pwMbtwA9LRc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/mosque-of-rifai-and-sultan-hassan-cairo-pwMbtwA9LRc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 30.063,
+    "longitude": 31.25
   },
   {
     "name": "Dahab",
@@ -810,7 +874,9 @@
     "image_url": "https://images.unsplash.com/photo-1628237699934-a8d8b141fb9b?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMXx8RGFoYWIlMjBTaW5haSUyMFJlZCUyMFNlYXxlbnwxfDB8fHwxNzk0NDIxMDY5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Raimond Klavins",
     "image_credit_url": "https://unsplash.com/@raimondklavins?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-blue-sea-during-daytime-EjYrANjmb_s?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-blue-sea-during-daytime-EjYrANjmb_s?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 28.482,
+    "longitude": 34.495
   },
   {
     "name": "Saaremaa",
@@ -833,7 +899,9 @@
     "image_url": "https://images.unsplash.com/photo-1777706815532-a78cf30a4013?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxTYWFyZW1hYSUyMEt1cmVzc2FhcmV8ZW58MXwwfHx8MTc5NDQyMTA3MHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Margo Evardson",
     "image_credit_url": "https://unsplash.com/@stadinstudio?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-historic-stone-castle-with-red-tiled-roofs-under-clouds-aFRRWjuW4WY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-historic-stone-castle-with-red-tiled-roofs-under-clouds-aFRRWjuW4WY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 58.254,
+    "longitude": 22.492
   },
   {
     "name": "Tallinn",
@@ -857,7 +925,9 @@
     "image_url": "https://images.unsplash.com/photo-1724235425392-fe352694d4c8?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxUYWxsaW5uJTIwb2xkJTIwdG93bnxlbnwxfDB8fHwxNzk0NDIxMTYwfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Rasmus Andersen",
     "image_credit_url": "https://unsplash.com/@rasmusandersen?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/an-aerial-view-of-a-city-with-a-church-tower-L-uRLn4MOG0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/an-aerial-view-of-a-city-with-a-church-tower-L-uRLn4MOG0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 59.437,
+    "longitude": 24.754
   },
   {
     "name": "Faroe Islands",
@@ -880,7 +950,9 @@
     "image_url": "https://images.unsplash.com/photo-1638190654475-5d59f1f9f178?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw2fHxGYXJvZSUyMElzbGFuZHMlMjBGYXJvZSUyMElzbGFuZHN8ZW58MXwwfHx8MTc5NDQyMDk3MXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Andrew Svk",
     "image_credit_url": "https://unsplash.com/@andrew_svk?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-person-standing-on-the-edge-of-a-cliff-overlooking-the-ocean-zAgIIx_oL1A?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-person-standing-on-the-edge-of-a-cliff-overlooking-the-ocean-zAgIIx_oL1A?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 62.01,
+    "longitude": -6.772
   },
   {
     "name": "Helsinki",
@@ -903,7 +975,9 @@
     "image_url": "https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxIZWxzaW5raSUyMEZpbmxhbmR8ZW58MXwwfHx8MTc5NDQyMDk3Mnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Tapio Haaja",
     "image_credit_url": "https://unsplash.com/@tap5a?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/helsinki-cathedral-above-waterfront-in-helsinki-bpDJvls-h-0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/helsinki-cathedral-above-waterfront-in-helsinki-bpDJvls-h-0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 60.17,
+    "longitude": 24.935
   },
   {
     "name": "Rovaniemi",
@@ -927,7 +1001,9 @@
     "image_url": "https://images.unsplash.com/photo-1587500931489-992001726610?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxSb3ZhbmllbWklMjBub3J0aGVybiUyMGxpZ2h0c3xlbnwxfDB8fHwxNzk0NDIxMTk4fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Marc Wieland",
     "image_credit_url": "https://unsplash.com/@mawiswiss?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/green-and-blue-sky-with-stars-YwmlOmZxt2s?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/green-and-blue-sky-with-stars-YwmlOmZxt2s?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 66.499,
+    "longitude": 25.689
   },
   {
     "name": "Bordeaux",
@@ -950,7 +1026,9 @@
     "image_url": "https://images.unsplash.com/photo-1509636902752-929c7497f3d4?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxCb3JkZWF1eCUyMEZyYW5jZXxlbnwxfDB8fHwxNzk0NDIwOTczfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Guillaume Flandre",
     "image_credit_url": "https://unsplash.com/@gflandre?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/woman-running-Nz0vmakLQ2U?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/woman-running-Nz0vmakLQ2U?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 44.841,
+    "longitude": -0.58
   },
   {
     "name": "Chamonix",
@@ -974,7 +1052,9 @@
     "image_url": "https://images.unsplash.com/photo-1667027234805-68e364df9870?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxDaGFtb25peCUyMEZyYW5jZXxlbnwxfDB8fHwxNzk0NDIwOTc0fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Tom Podmore",
     "image_credit_url": "https://unsplash.com/@tompodmore86?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-garden-with-flowers-and-buildings-OmIMYsumWJQ?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-garden-with-flowers-and-buildings-OmIMYsumWJQ?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 45.924,
+    "longitude": 6.869
   },
   {
     "name": "Nice",
@@ -999,7 +1079,9 @@
     "image_url": "https://images.unsplash.com/photo-1491166617655-0723a0999cfc?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxOaWNlJTIwRnJhbmNlfGVufDF8MHx8fDE3OTQ0MjA5NzR8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Nick Karvounis",
     "image_credit_url": "https://unsplash.com/@nickkarvounis?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-walking-near-building-2rsK_rdiDJ8?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-walking-near-building-2rsK_rdiDJ8?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 43.703,
+    "longitude": 7.266
   },
   {
     "name": "Paris",
@@ -1024,7 +1106,9 @@
     "image_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxQYXJpcyUyMEZyYW5jZXxlbnwxfDB8fHwxNzk0NDIwOTc1fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Léonard Cotte",
     "image_credit_url": "https://unsplash.com/@ettocl?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/pont-alexandre-iii-bridge-in-paris-R5scocnOOdM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/pont-alexandre-iii-bridge-in-paris-R5scocnOOdM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 48.853,
+    "longitude": 2.349
   },
   {
     "name": "Bora Bora",
@@ -1050,7 +1134,9 @@
     "image_url": "https://images.unsplash.com/photo-1652842183703-47c2f7bb8c3c?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxCb3JhJTIwQm9yYSUyMEZyZW5jaCUyMFBvbHluZXNpYXxlbnwxfDB8fHwxNzk0NDIwOTc2fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "john ko",
     "image_credit_url": "https://unsplash.com/@jko001?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-lagoon-with-a-boat-in-it-surrounded-by-palm-trees-TOvYrc0D9y4?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-lagoon-with-a-boat-in-it-surrounded-by-palm-trees-TOvYrc0D9y4?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -16.507,
+    "longitude": -151.749
   },
   {
     "name": "Kazbegi",
@@ -1073,7 +1159,9 @@
     "image_url": "https://images.unsplash.com/photo-1563284223-333497472e88?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxLYXpiZWdpJTIwR2VvcmdpYXxlbnwxfDB8fHwxNzk0NDIwOTc2fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Iman Gozal",
     "image_credit_url": "https://unsplash.com/@imangm?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/gergeti-trinity-church-in-georgia-mountains-5iQWgow3_S0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/gergeti-trinity-church-in-georgia-mountains-5iQWgow3_S0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 42.657,
+    "longitude": 44.643
   },
   {
     "name": "Tbilisi",
@@ -1096,7 +1184,9 @@
     "image_url": "https://images.unsplash.com/photo-1505294399615-2479253a4990?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxUYmlsaXNpJTIwR2VvcmdpYXxlbnwxfDB8fHwxNzk0NDIwOTc3fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jaanus Jagomägi",
     "image_credit_url": "https://unsplash.com/@jaanus?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/houses-under-clouds-XldYOZzDNCM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/houses-under-clouds-XldYOZzDNCM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 41.691,
+    "longitude": 44.834
   },
   {
     "name": "Berlin",
@@ -1121,7 +1211,9 @@
     "image_url": "https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxCZXJsaW4lMjBHZXJtYW55fGVufDF8MHx8fDE3OTQ0MjA5Nzh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Maheshkumar Painam",
     "image_credit_url": "https://unsplash.com/@maheshkumar_painam?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/reichstag-building-and-german-flag-berlin-HF-lFqdOMF8?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/reichstag-building-and-german-flag-berlin-HF-lFqdOMF8?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 52.524,
+    "longitude": 13.411
   },
   {
     "name": "Black Forest",
@@ -1145,7 +1237,9 @@
     "image_url": "https://images.unsplash.com/photo-1673909455934-28f6025eb944?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMXx8QmxhY2slMjBGb3Jlc3QlMjBHZXJtYW55fGVufDF8MHx8fDE3OTQ0MjA5Nzh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Paweł Szymański",
     "image_credit_url": "https://unsplash.com/@jezor?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-road-in-the-middle-of-a-forest-covered-in-snow-1UUg6JcouxY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-road-in-the-middle-of-a-forest-covered-in-snow-1UUg6JcouxY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 47.996,
+    "longitude": 7.852
   },
   {
     "name": "Munich",
@@ -1171,7 +1265,9 @@
     "image_url": "https://images.unsplash.com/photo-1586009468954-7c797a08fe7d?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxM3x8TXVuaWNoJTIwR2VybWFueXxlbnwxfDB8fHwxNzk0NDIwOTc5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Andrey Omelyanchuk",
     "image_credit_url": "https://unsplash.com/@ansharimages?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-and-green-concrete-building-K8SXRiGia9M?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-and-green-concrete-building-K8SXRiGia9M?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 48.137,
+    "longitude": 11.575
   },
   {
     "name": "Corfu",
@@ -1194,7 +1290,9 @@
     "image_url": "https://images.unsplash.com/photo-1587974136744-5f52d0eb29c8?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMHx8Q29yZnUlMjBHcmVlY2V8ZW58MXwwfHx8MTc5NDQyMDk4MHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "CALIN STAN",
     "image_credit_url": "https://unsplash.com/@calinstan?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-on-beach-during-daytime-CiXkT47l6co?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-on-beach-during-daytime-CiXkT47l6co?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 39.624,
+    "longitude": 19.922
   },
   {
     "name": "Crete",
@@ -1218,7 +1316,9 @@
     "image_url": "https://images.unsplash.com/photo-1709034041512-219bc92fc333?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw4fHxDcmV0ZSUyMEdyZWVjZXxlbnwxfDB8fHwxNzk0NDIwOTgxfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Martti Salmi",
     "image_credit_url": "https://unsplash.com/@marttisalmi?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-harbor-filled-with-lots-of-boats-next-to-tall-buildings-eyDV9DrrF8I?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-harbor-filled-with-lots-of-boats-next-to-tall-buildings-eyDV9DrrF8I?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 35.328,
+    "longitude": 25.143
   },
   {
     "name": "Mykonos",
@@ -1241,7 +1341,9 @@
     "image_url": "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxNeWtvbm9zJTIwR3JlZWNlfGVufDF8MHx8fDE3OTQ0MjA5ODJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Johnny Africa",
     "image_credit_url": "https://unsplash.com/@johnnyafrica?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/tables-and-chairs-on-mykonos-patio-_ZX0S27D3fw?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/tables-and-chairs-on-mykonos-patio-_ZX0S27D3fw?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 37.445,
+    "longitude": 25.329
   },
   {
     "name": "Santorini",
@@ -1264,7 +1366,9 @@
     "image_url": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxTYW50b3JpbmklMjBHcmVlY2V8ZW58MXwwfHx8MTc5NDQyMDk4Mnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Pretty Pink",
     "image_credit_url": "https://unsplash.com/@infinitexplorer?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/santorini-greece-kYxgm42SQso?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/santorini-greece-kYxgm42SQso?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 36.406,
+    "longitude": 25.457
   },
   {
     "name": "Antigua",
@@ -1290,7 +1394,9 @@
     "image_url": "https://images.unsplash.com/photo-1637966201771-b0b251baa2ef?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxBbnRpZ3VhJTIwR3VhdGVtYWxhfGVufDF8MHx8fDE3OTQ0MjA5ODN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Rodrigo Escalante",
     "image_credit_url": "https://unsplash.com/@rodmantgt?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-city-street-with-a-clock-tower-in-the-background-uliZMHrDgzM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-city-street-with-a-clock-tower-in-the-background-uliZMHrDgzM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 14.559,
+    "longitude": -90.734
   },
   {
     "name": "Budapest",
@@ -1313,7 +1419,9 @@
     "image_url": "https://images.unsplash.com/photo-1500078974918-738828bc0422?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMHx8QnVkYXBlc3QlMjBIdW5nYXJ5fGVufDF8MHx8fDE3OTQ0MjA5ODR8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Seth Fogelman",
     "image_credit_url": "https://unsplash.com/@sethadam?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/white-and-red-concrete-building-near-body-of-water-Dzv_m1LhcHc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/white-and-red-concrete-building-near-body-of-water-Dzv_m1LhcHc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 47.498,
+    "longitude": 19.04
   },
   {
     "name": "Reykjavik",
@@ -1337,7 +1445,9 @@
     "image_url": "https://images.unsplash.com/photo-1601650904409-0ba17f32926a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw2fHxSZXlramF2aWslMjBJY2VsYW5kfGVufDF8MHx8fDE3OTQ0MjA5ODR8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Yanshu Lee",
     "image_credit_url": "https://unsplash.com/@yanshulee?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/white-wooden-boat-on-sea-during-daytime-N7C8NlKZxAI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/white-wooden-boat-on-sea-during-daytime-N7C8NlKZxAI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 64.135,
+    "longitude": -21.895
   },
   {
     "name": "Kerala",
@@ -1364,7 +1474,9 @@
     "image_url": "https://images.unsplash.com/photo-1723155781081-a9a6f34e3fe0?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxLZXJhbGElMjBJbmRpYXxlbnwxfDB8fHwxNzk0NDIwOTg1fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Colin White",
     "image_credit_url": "https://unsplash.com/@ctw71?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-group-of-women-walking-across-a-river-Ic3DqWiv970?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-group-of-women-walking-across-a-river-Ic3DqWiv970?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 9.94,
+    "longitude": 76.26
   },
   {
     "name": "Varanasi",
@@ -1389,7 +1501,9 @@
     "image_url": "https://images.unsplash.com/photo-1564509027875-ba1c00cf09c1?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMnx8VmFyYW5hc2klMjBJbmRpYXxlbnwxfDB8fHwxNzk0NDIwOTg2fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Aimanness Harun",
     "image_credit_url": "https://unsplash.com/@aimanness?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-body-of-water-with-boats-floating-on-top-of-it-_rxWnmOZ4YA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-body-of-water-with-boats-floating-on-top-of-it-_rxWnmOZ4YA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 25.317,
+    "longitude": 83.01
   },
   {
     "name": "Bali",
@@ -1416,7 +1530,9 @@
     "image_url": "https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxCYWxpJTIwSW5kb25lc2lhfGVufDF8MHx8fDE3OTQ0MjA5ODZ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jeremy Bishop",
     "image_credit_url": "https://unsplash.com/@jeremybishop?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/split-gate-of-balinese-temple-QUwLZNchflk?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/split-gate-of-balinese-temple-QUwLZNchflk?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -8.65,
+    "longitude": 115.217
   },
   {
     "name": "Komodo National Park",
@@ -1444,7 +1560,9 @@
     "image_url": "https://images.unsplash.com/photo-1715499937980-cc628f2cd45e?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw2fHxLb21vZG8lMjBOYXRpb25hbCUyMFBhcmslMjBJbmRvbmVzaWF8ZW58MXwwfHx8MTc5NDQyMDk4N3ww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Johnny Africa",
     "image_credit_url": "https://unsplash.com/@johnnyafrica?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-0r6FZ0JIklU?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-0r6FZ0JIklU?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -8.496,
+    "longitude": 119.888
   },
   {
     "name": "Dublin",
@@ -1469,7 +1587,9 @@
     "image_url": "https://images.unsplash.com/photo-1518005068251-37900150dfca?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxEdWJsaW4lMjBJcmVsYW5kfGVufDF8MHx8fDE3OTQ0MjA5ODh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Diogo Palhais",
     "image_credit_url": "https://unsplash.com/@diogopalhais?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-and-white-concrete-houses-tnzzr8HpLhs?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-and-white-concrete-houses-tnzzr8HpLhs?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 53.333,
+    "longitude": -6.249
   },
   {
     "name": "Galway",
@@ -1493,7 +1613,9 @@
     "image_url": "https://images.unsplash.com/photo-1585334644725-e0b49aa6cdce?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxHYWx3YXklMjBJcmVsYW5kfGVufDF8MHx8fDE3OTQ0MjA5ODl8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Chan Hyuk Moon",
     "image_credit_url": "https://unsplash.com/@mch1565?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/white-and-brown-concrete-building-beside-body-of-water-during-daytime-B0eewq7EbVY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/white-and-brown-concrete-building-beside-body-of-water-during-daytime-B0eewq7EbVY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 53.272,
+    "longitude": -9.051
   },
   {
     "name": "Amalfi Coast",
@@ -1516,7 +1638,9 @@
     "image_url": "https://images.unsplash.com/photo-1729763077607-63597d3201be?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMnx8QW1hbGZpJTIwQ29hc3QlMjBJdGFseXxlbnwxfDB8fHwxNzk0NDIwOTg5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Alexander Voronov",
     "image_credit_url": "https://unsplash.com/@radiomouse?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-small-village-on-a-cliff-overlooking-the-ocean-jnwHRs7eVtw?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-small-village-on-a-cliff-overlooking-the-ocean-jnwHRs7eVtw?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 40.635,
+    "longitude": 14.602
   },
   {
     "name": "Florence",
@@ -1540,7 +1664,9 @@
     "image_url": "https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxGbG9yZW5jZSUyMEl0YWx5fGVufDF8MHx8fDE3OTQ0MjA5OTB8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Ali Nuredini",
     "image_credit_url": "https://unsplash.com/@alinuredini?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/cathedral-of-santa-maria-del-fiore-florence-X35Ivset6-Y?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/cathedral-of-santa-maria-del-fiore-florence-X35Ivset6-Y?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 43.779,
+    "longitude": 11.246
   },
   {
     "name": "Rome",
@@ -1564,7 +1690,9 @@
     "image_url": "https://images.unsplash.com/photo-1531572753322-ad063cecc140?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxSb21lJTIwSXRhbHl8ZW58MXwwfHx8MTc5NDQyMDk5MXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Caleb Miller",
     "image_credit_url": "https://unsplash.com/@milljestic?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/saint-peters-square-in-rome-0Bs3et8FYyg?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/saint-peters-square-in-rome-0Bs3et8FYyg?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 41.892,
+    "longitude": 12.511
   },
   {
     "name": "Sicily",
@@ -1588,7 +1716,9 @@
     "image_url": "https://images.unsplash.com/photo-1506186773396-2a6370e52c1f?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxTaWNpbHklMjBJdGFseXxlbnwxfDB8fHwxNzk0NDIwOTkxfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Ruth Troughton",
     "image_credit_url": "https://unsplash.com/@ruth_ellen?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/bunch-of-people-swimming-beach-NWsqAW54bGc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/bunch-of-people-swimming-beach-NWsqAW54bGc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 38.117,
+    "longitude": 13.364
   },
   {
     "name": "Venice",
@@ -1612,7 +1742,9 @@
     "image_url": "https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxWZW5pY2UlMjBJdGFseXxlbnwxfDB8fHwxNzk0NDIwOTkyfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Dan Novac",
     "image_credit_url": "https://unsplash.com/@dnovac?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/venice-grand-canal-italy-1naE8177_bI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/venice-grand-canal-italy-1naE8177_bI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 45.437,
+    "longitude": 12.333
   },
   {
     "name": "Kyoto",
@@ -1635,7 +1767,9 @@
     "image_url": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxLeW90byUyMEphcGFufGVufDF8MHx8fDE3OTQ0MjA5OTN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jase Bloor",
     "image_credit_url": "https://unsplash.com/@jasebloor?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/japanese-lantern-over-city-bike-at-nighttime-oCZHIa1D4EU?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/japanese-lantern-over-city-bike-at-nighttime-oCZHIa1D4EU?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 35.021,
+    "longitude": 135.754
   },
   {
     "name": "Niseko",
@@ -1658,7 +1792,9 @@
     "image_url": "https://images.unsplash.com/photo-1576829021152-3121bfb1efcb?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxOaXNla28lMjBKYXBhbnxlbnwxfDB8fHwxNzk0NDIwOTkzfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Marek Okon",
     "image_credit_url": "https://unsplash.com/@marekokon?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/snow-covered-mountain-wabN84HFDjU?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/snow-covered-mountain-wabN84HFDjU?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 42.901,
+    "longitude": 140.741
   },
   {
     "name": "Okinawa",
@@ -1683,7 +1819,9 @@
     "image_url": "https://images.unsplash.com/photo-1645610115316-dc38e31a1e9b?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxPa2luYXdhJTIwSmFwYW58ZW58MXwwfHx8MTc5NDQyMDk5NHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Roméo A.",
     "image_credit_url": "https://unsplash.com/@gronemo?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-group-of-boats-that-are-sitting-in-the-water-uvNQOFjqjns?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-group-of-boats-that-are-sitting-in-the-water-uvNQOFjqjns?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 26.213,
+    "longitude": 127.679
   },
   {
     "name": "Tokyo",
@@ -1708,7 +1846,9 @@
     "image_url": "https://images.unsplash.com/photo-1606044466411-207a9a49711f?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxM3x8VG9reW8lMjBKYXBhbnxlbnwxfDB8fHwxNzk0NDIwOTk1fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Marek Okon",
     "image_credit_url": "https://unsplash.com/@marekokon?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/tokyo-tower-at-night-in-tokyo-3-esk8zPwPY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/tokyo-tower-at-night-in-tokyo-3-esk8zPwPY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 35.69,
+    "longitude": 139.692
   },
   {
     "name": "Wadi Rum",
@@ -1732,7 +1872,9 @@
     "image_url": "https://images.unsplash.com/photo-1709599349283-9e207d6b2d99?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxXYWRpJTIwUnVtJTIwSm9yZGFufGVufDF8MHx8fDE3OTQ0MjA5OTV8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Hongbin",
     "image_credit_url": "https://unsplash.com/@hbsun2013?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-desert-landscape-with-mountains-in-the-background-IeRsaacrcpY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-desert-landscape-with-mountains-in-the-background-IeRsaacrcpY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 29.576,
+    "longitude": 35.42
   },
   {
     "name": "Pristina",
@@ -1755,7 +1897,9 @@
     "image_url": "https://images.unsplash.com/photo-1638874202640-8f5ff48d5acc?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxQcmlzdGluYSUyMEtvc292b3xlbnwxfDB8fHwxNzk0NDIwOTk2fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Mario Heller",
     "image_credit_url": "https://unsplash.com/@heller_mario?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-view-of-a-city-from-the-top-of-a-hill-PyQA8Ep-xHU?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-view-of-a-city-from-the-top-of-a-hill-PyQA8Ep-xHU?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 42.663,
+    "longitude": 21.165
   },
   {
     "name": "Luang Prabang",
@@ -1780,7 +1924,9 @@
     "image_url": "https://images.unsplash.com/photo-1737037344843-7f6d4867d648?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw5fHxMdWFuZyUyMFByYWJhbmclMjBMYW9zfGVufDF8MHx8fDE3OTQ0MjA5OTd8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "chatnarin pramnapan",
     "image_credit_url": "https://unsplash.com/@chatnarin?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-night-time-view-of-a-building-with-many-tables-and-chairs-IPK8WhB3uu0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-night-time-view-of-a-building-with-many-tables-and-chairs-IPK8WhB3uu0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 19.893,
+    "longitude": 102.153
   },
   {
     "name": "Riga",
@@ -1804,7 +1950,9 @@
     "image_url": "https://images.unsplash.com/photo-1683730796330-06e60e3438d8?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxSaWdhJTIwTGF0dmlhfGVufDF8MHx8fDE3OTQ0MjA5OTh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Martti Salmi",
     "image_credit_url": "https://unsplash.com/@marttisalmi?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/an-aerial-view-of-a-city-with-a-river-in-the-background-F68ny2ZSgEs?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/an-aerial-view-of-a-city-with-a-river-in-the-background-F68ny2ZSgEs?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 56.946,
+    "longitude": 24.106
   },
   {
     "name": "Vilnius",
@@ -1828,7 +1976,9 @@
     "image_url": "https://images.unsplash.com/photo-1699203263637-b43510fd31dd?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxM3x8Vmlsbml1cyUyMExpdGh1YW5pYXxlbnwxfDB8fHwxNzk0NDIwOTk4fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Daria Lyalyulina",
     "image_credit_url": "https://unsplash.com/@darialiu?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-building-with-three-flags-flying-in-front-of-it-BDHtZxKeXOA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-building-with-three-flags-flying-in-front-of-it-BDHtZxKeXOA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 54.689,
+    "longitude": 25.28
   },
   {
     "name": "Luxembourg City",
@@ -1852,7 +2002,9 @@
     "image_url": "https://images.unsplash.com/photo-1593131540915-5f04482fc6de?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw3fHxMdXhlbWJvdXJnJTIwQ2l0eSUyMEx1eGVtYm91cmd8ZW58MXwwfHx8MTc5NDQyMDk5OXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Yuri Li",
     "image_credit_url": "https://unsplash.com/@itshoobastank?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-umsmLWESOrk?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-umsmLWESOrk?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 49.611,
+    "longitude": 6.132
   },
   {
     "name": "Nosy Be",
@@ -1878,7 +2030,9 @@
     "image_url": "https://images.unsplash.com/photo-1732004012111-3aa0a62e0ab9?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxOb3N5JTIwQmUlMjBNYWRhZ2FzY2FyJTIwYmVhY2h8ZW58MXwwfHx8MTc5NDQyMTE2MXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "David Bruyndonckx",
     "image_credit_url": "https://unsplash.com/@david_bxl?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-sandy-beach-with-a-small-island-in-the-distance-ui8PdeLrqOw?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-sandy-beach-with-a-small-island-in-the-distance-ui8PdeLrqOw?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -13.397,
+    "longitude": 48.267
   },
   {
     "name": "Kuala Lumpur",
@@ -1903,7 +2057,9 @@
     "image_url": "https://images.unsplash.com/photo-1577931683033-1059552104e0?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxLdWFsYSUyMEx1bXB1ciUyME1hbGF5c2lhfGVufDF8MHx8fDE3OTQ0MjEwMDF8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Mohd Jon Ramlan",
     "image_credit_url": "https://unsplash.com/@mjon_63?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/architectural-photography-of-lighted-city-buildings-N2SKNqLcgr0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/architectural-photography-of-lighted-city-buildings-N2SKNqLcgr0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 3.141,
+    "longitude": 101.687
   },
   {
     "name": "Penang",
@@ -1927,7 +2083,9 @@
     "image_url": "https://images.unsplash.com/photo-1654201935898-a096c66db700?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw3fHxQZW5hbmclMjBNYWxheXNpYXxlbnwxfDB8fHwxNzk0NDIxMDAxfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Job Savelsberg",
     "image_credit_url": "https://unsplash.com/@jobsavelsberg?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-body-of-water-with-a-bunch-of-houses-on-it-npWWZQaziJY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-body-of-water-with-a-bunch-of-houses-on-it-npWWZQaziJY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 5.373,
+    "longitude": 100.25
   },
   {
     "name": "Maldives Atolls",
@@ -1953,7 +2111,9 @@
     "image_url": "https://images.unsplash.com/photo-1611043711784-93f8313526f2?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxNYWxkaXZlcyUyMEF0b2xscyUyME1hbGRpdmVzfGVufDF8MHx8fDE3OTQ0MjEwMDJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Datingscout",
     "image_credit_url": "https://unsplash.com/@datingscout?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/green-palm-tree-on-white-sand-beach-during-daytime-hNA4vDFGVz4?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/green-palm-tree-on-white-sand-beach-during-daytime-hNA4vDFGVz4?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 4.175,
+    "longitude": 73.509
   },
   {
     "name": "Valletta",
@@ -1977,7 +2137,9 @@
     "image_url": "https://images.unsplash.com/photo-1669294841689-0ceb34ad40c1?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxWYWxsZXR0YSUyME1hbHRhfGVufDF8MHx8fDE3OTQ0MjEwMDN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Michail Tsapas",
     "image_credit_url": "https://unsplash.com/@mtsap?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/valletta-street-with-traditional-wooden-balconies-KQyXCoy_8p0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/valletta-street-with-traditional-wooden-balconies-KQyXCoy_8p0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 35.9,
+    "longitude": 14.515
   },
   {
     "name": "Le Morne",
@@ -2004,7 +2166,9 @@
     "image_url": "https://images.unsplash.com/photo-1540966531224-dfb02d2f5967?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxM3x8TGUlMjBNb3JuZSUyME1hdXJpdGl1c3xlbnwxfDB8fHwxNzk0NDIxMDA0fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Colours of Mauritius",
     "image_credit_url": "https://unsplash.com/@coloursofmauritius?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/green-trees-near-beach-overlooking-horizon-at-daytime--5UEyBFp-fE?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/green-trees-near-beach-overlooking-horizon-at-daytime--5UEyBFp-fE?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -20.453,
+    "longitude": 57.324
   },
   {
     "name": "Cancun",
@@ -2030,7 +2194,9 @@
     "image_url": "https://images.unsplash.com/photo-1570737543098-0983d88f796d?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxDYW5jdW4lMjBNZXhpY298ZW58MXwwfHx8MTc5NDQyMTAwNHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Andreas M",
     "image_credit_url": "https://unsplash.com/@nextvoyage_pl?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/dock-during-daytime-88intec2Q5Q?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/dock-during-daytime-88intec2Q5Q?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 21.174,
+    "longitude": -86.847
   },
   {
     "name": "Mexico City",
@@ -2056,7 +2222,9 @@
     "image_url": "https://images.unsplash.com/photo-1580934738416-ad531f2920f7?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxNZXhpY28lMjBDaXR5JTIwTWV4aWNvfGVufDF8MHx8fDE3OTQ0MjEwMDV8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Pyro Jenka",
     "image_credit_url": "https://unsplash.com/@pyrojenka?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/umbrellas-and-lanterns-in-mexico-city-N2hiyUWvuNs?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/umbrellas-and-lanterns-in-mexico-city-N2hiyUWvuNs?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 19.428,
+    "longitude": -99.128
   },
   {
     "name": "Kotor",
@@ -2079,7 +2247,9 @@
     "image_url": "https://images.unsplash.com/photo-1586515779592-d94f096e4c41?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxLb3RvciUyME1vbnRlbmVncm98ZW58MXwwfHx8MTc5NDQyMTAwNnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Dragisa Braunovic",
     "image_credit_url": "https://unsplash.com/@bato8?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/green-trees-and-mountains-during-daytime-vAiCza4PuGk?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/green-trees-and-mountains-during-daytime-vAiCza4PuGk?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 42.421,
+    "longitude": 18.768
   },
   {
     "name": "Chefchaouen",
@@ -2104,7 +2274,9 @@
     "image_url": "https://images.unsplash.com/photo-1564507004663-b6dfb3c824d5?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxDaGVmY2hhb3VlbiUyME1vcm9jY298ZW58MXwwfHx8MTc5NDQyMTAwNnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Kyriacos Georgiou",
     "image_credit_url": "https://unsplash.com/@koullislp?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/blue-courtyard-in-chefchaouen-morocco-CMmgfHQiYsc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/blue-courtyard-in-chefchaouen-morocco-CMmgfHQiYsc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 35.169,
+    "longitude": -5.264
   },
   {
     "name": "Marrakesh",
@@ -2129,7 +2301,9 @@
     "image_url": "https://images.unsplash.com/photo-1597212618440-806262de4f6b?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxNYXJyYWtlc2glMjBNb3JvY2NvfGVufDF8MHx8fDE3OTQ0MjEwMDd8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Paul Macallan",
     "image_credit_url": "https://unsplash.com/@pemacallan?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/koutoubia-mosque-minaret-in-marrakesh-CFKksjYRSQ8?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/koutoubia-mosque-minaret-in-marrakesh-CFKksjYRSQ8?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 31.634,
+    "longitude": -8
   },
   {
     "name": "Kathmandu",
@@ -2154,7 +2328,9 @@
     "image_url": "https://images.unsplash.com/photo-1706188370039-e0cf9bd6ea16?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxLYXRobWFuZHUlMjBOZXBhbHxlbnwxfDB8fHwxNzk0NDIxMDA4fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Martijn Vonk",
     "image_credit_url": "https://unsplash.com/@vonkm737?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-group-of-people-standing-in-front-of-a-building-FTxTyNog7BY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-group-of-people-standing-in-front-of-a-building-FTxTyNog7BY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 27.702,
+    "longitude": 85.321
   },
   {
     "name": "Amsterdam",
@@ -2180,7 +2356,9 @@
     "image_url": "https://images.unsplash.com/photo-1536880756060-98a6a140f0a7?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw4fHxBbXN0ZXJkYW0lMjBOZXRoZXJsYW5kc3xlbnwxfDB8fHwxNzk0NDIxMDA5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Eirik Skarstein",
     "image_credit_url": "https://unsplash.com/@eskarstein?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/amsterdam-netherlands-canal-during-daytime-Vgr-_65__lw?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/amsterdam-netherlands-canal-during-daytime-Vgr-_65__lw?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 52.374,
+    "longitude": 4.89
   },
   {
     "name": "Rotterdam",
@@ -2204,7 +2382,9 @@
     "image_url": "https://images.unsplash.com/photo-1572202378710-71d8b1cce96c?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxSb3R0ZXJkYW0lMjBOZXRoZXJsYW5kc3xlbnwxfDB8fHwxNzk0NDIxMDEwfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Daniel Agudelo",
     "image_credit_url": "https://unsplash.com/@dafeagro?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/white-ship-near-bridge-jVpvSDAjvOA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/white-ship-near-bridge-jVpvSDAjvOA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 51.923,
+    "longitude": 4.479
   },
   {
     "name": "Queenstown",
@@ -2228,7 +2408,9 @@
     "image_url": "https://images.unsplash.com/photo-1537617173434-be35dd906e61?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw3fHxRdWVlbnN0b3duJTIwTmV3JTIwWmVhbGFuZHxlbnwxfDB8fHwxNzk0NDIxMDEwfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Joel Staveley",
     "image_credit_url": "https://unsplash.com/@nzsjoel?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/orange-leaf-trees-beside-river-aAO4Kw-RD1c?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/orange-leaf-trees-beside-river-aAO4Kw-RD1c?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -45.03,
+    "longitude": 168.663
   },
   {
     "name": "Ohrid",
@@ -2252,7 +2434,9 @@
     "image_url": "https://images.unsplash.com/photo-1619371620133-1c4b489a0569?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxPaHJpZCUyME5vcnRoJTIwTWFjZWRvbmlhfGVufDF8MHx8fDE3OTQ0MjEwMTF8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Kristijan Arsov",
     "image_credit_url": "https://unsplash.com/@aarsoph?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-concrete-building-near-body-of-water-during-daytime-cglvZ6SMKTY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-concrete-building-near-body-of-water-during-daytime-cglvZ6SMKTY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 41.117,
+    "longitude": 20.802
   },
   {
     "name": "Bergen",
@@ -2275,7 +2459,9 @@
     "image_url": "https://images.unsplash.com/photo-1548555851-4eff635e1107?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxCZXJnZW4lMjBOb3J3YXl8ZW58MXwwfHx8MTc5NDQyMTAxMnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Conservation Commons",
     "image_credit_url": "https://unsplash.com/@conservationcommons?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/buildings-in-town-facing-body-of-water-and-mountains-under-cloudy-sky-mS2QlkTEirI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/buildings-in-town-facing-body-of-water-and-mountains-under-cloudy-sky-mS2QlkTEirI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 60.393,
+    "longitude": 5.324
   },
   {
     "name": "Oslo",
@@ -2298,7 +2484,9 @@
     "image_url": "https://images.unsplash.com/photo-1591082774583-88ac4b70c075?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMHx8T3NsbyUyME5vcndheXxlbnwxfDB8fHwxNzk0NDIxMDEyfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Marleen Mulder-Wieske",
     "image_credit_url": "https://unsplash.com/@greenbeandesign?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-walking-on-sidewalk-near-brown-concrete-building-during-daytime-8oc7EtRZEL8?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-walking-on-sidewalk-near-brown-concrete-building-during-daytime-8oc7EtRZEL8?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 59.913,
+    "longitude": 10.746
   },
   {
     "name": "Tromsø",
@@ -2323,7 +2511,9 @@
     "image_url": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxUcm9tcyVDMyVCOCUyME5vcndheXxlbnwxfDB8fHwxNzk0NDIxMDEzfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Lightscape",
     "image_credit_url": "https://unsplash.com/@lightscape?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/northern-lights-over-snow-capped-mountian-LtnPejWDSAY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/northern-lights-over-snow-capped-mountian-LtnPejWDSAY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 69.649,
+    "longitude": 18.955
   },
   {
     "name": "Muscat",
@@ -2348,7 +2538,9 @@
     "image_url": "https://images.unsplash.com/photo-1596445145149-f0906e6b3dd6?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw5fHxNdXNjYXQlMjBPbWFufGVufDF8MHx8fDE3OTQ0MjEwMTR8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "journaway Rundreisen",
     "image_credit_url": "https://unsplash.com/@journaway?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-walking-near-beige-concrete-building-during-daytime-GEdSpqfYZTE?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-walking-near-beige-concrete-building-during-daytime-GEdSpqfYZTE?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 23.584,
+    "longitude": 58.408
   },
   {
     "name": "Salalah",
@@ -2371,7 +2563,9 @@
     "image_url": "https://images.unsplash.com/photo-1693561596793-8a06b850dc68?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxTYWxhbGFoJTIwT21hbnxlbnwxfDB8fHwxNzk0NDIxMDE0fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Marwan Alfarsi",
     "image_credit_url": "https://unsplash.com/@marwan_?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-waterfall-in-the-middle-of-a-lush-green-forest-ci3C0TxhP24?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-waterfall-in-the-middle-of-a-lush-green-forest-ci3C0TxhP24?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 17.015,
+    "longitude": 54.092
   },
   {
     "name": "Cusco",
@@ -2396,7 +2590,9 @@
     "image_url": "https://images.unsplash.com/photo-1578594903885-51d6d8bcdbb7?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw5fHxDdXNjbyUyMFBlcnV8ZW58MXwwfHx8MTc5NDQyMTAxNXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Raul Varela",
     "image_credit_url": "https://unsplash.com/@raulvarela?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-walking-near-cusco-cathedral-in-peru-under-white-and-blue-sky-dgVZBjk2lwc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-walking-near-cusco-cathedral-in-peru-under-white-and-blue-sky-dgVZBjk2lwc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -13.532,
+    "longitude": -71.967
   },
   {
     "name": "Boracay",
@@ -2422,7 +2618,9 @@
     "image_url": "https://images.unsplash.com/photo-1621820479111-a41f8e070dec?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw3fHxCb3JhY2F5JTIwUGhpbGlwcGluZXN8ZW58MXwwfHx8MTc5NDQyMTAxNnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Doug Villalos",
     "image_credit_url": "https://unsplash.com/@dougvillalos?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/white-boat-on-sea-near-green-mountain-under-white-clouds-and-blue-sky-during-daytime-57zM3Ghh-Mg?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/white-boat-on-sea-near-green-mountain-under-white-clouds-and-blue-sky-during-daytime-57zM3Ghh-Mg?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 11.9,
+    "longitude": 121.909
   },
   {
     "name": "El Nido",
@@ -2447,7 +2645,9 @@
     "image_url": "https://images.unsplash.com/photo-1531761535209-180857e963b9?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxFbCUyME5pZG8lMjBQaGlsaXBwaW5lc3xlbnwxfDB8fHwxNzk0NDIxMDE2fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Eibner Saliba",
     "image_credit_url": "https://unsplash.com/@zilch?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/el-nido-coastal-town-aerial-view-3T9dDY0WqDI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/el-nido-coastal-town-aerial-view-3T9dDY0WqDI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 11.186,
+    "longitude": 119.396
   },
   {
     "name": "Gdansk",
@@ -2470,7 +2670,9 @@
     "image_url": "https://images.unsplash.com/photo-1602013104122-6cf742c5d220?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxNXx8R2RhbnNrJTIwUG9sYW5kfGVufDF8MHx8fDE3OTQ0MjEwMTd8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Lidia Stawinska",
     "image_credit_url": "https://unsplash.com/@liliess?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-walking-on-sidewalk-near-body-of-water-during-daytime-TbFIPDP6q48?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-walking-on-sidewalk-near-body-of-water-during-daytime-TbFIPDP6q48?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 54.352,
+    "longitude": 18.649
   },
   {
     "name": "Krakow",
@@ -2493,7 +2695,9 @@
     "image_url": "https://images.unsplash.com/photo-1670166819528-aadfddc48070?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxLcmFrb3clMjBQb2xhbmR8ZW58MXwwfHx8MTc5NDQyMTAxOHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Kevin Perez Camacho",
     "image_credit_url": "https://unsplash.com/@kevviiiiinnn?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-large-city-with-a-clock-tower-t-SSPRyqo7c?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-large-city-with-a-clock-tower-t-SSPRyqo7c?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 50.061,
+    "longitude": 19.937
   },
   {
     "name": "Algarve",
@@ -2517,7 +2721,9 @@
     "image_url": "https://images.unsplash.com/photo-1566988148642-343730e135bf?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxBbGdhcnZlJTIwUG9ydHVnYWx8ZW58MXwwfHx8MTc5NDQyMTAxOHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Diego Gennaro",
     "image_credit_url": "https://unsplash.com/@_nnaro_?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/photography-of-seashore-during-daytime-cmYjQ30PbWk?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/photography-of-seashore-during-daytime-cmYjQ30PbWk?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 37.019,
+    "longitude": -7.927
   },
   {
     "name": "Lisbon",
@@ -2541,7 +2747,9 @@
     "image_url": "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxMaXNib24lMjBQb3J0dWdhbHxlbnwxfDB8fHwxNzk0NDIxMDE5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Aayush Gupta",
     "image_credit_url": "https://unsplash.com/@aayush_gupta?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/yellow-tram-in-historic-lisbon-street-ljhCEaHYWJ8?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/yellow-tram-in-historic-lisbon-street-ljhCEaHYWJ8?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 38.725,
+    "longitude": -9.15
   },
   {
     "name": "Madeira",
@@ -2566,7 +2774,9 @@
     "image_url": "https://images.unsplash.com/photo-1721241843813-c54b77496005?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxNYWRlaXJhJTIwUG9ydHVnYWx8ZW58MXwwfHx8MTc5NDQyMTAyMHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Hikerwise.com",
     "image_credit_url": "https://unsplash.com/@hikerwise?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-winding-road-with-a-mountain-in-the-background-9q2AeH8Kmw0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-winding-road-with-a-mountain-in-the-background-9q2AeH8Kmw0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 32.666,
+    "longitude": -16.925
   },
   {
     "name": "Porto",
@@ -2590,7 +2800,9 @@
     "image_url": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxQb3J0byUyMFBvcnR1Z2FsfGVufDF8MHx8fDE3OTQ0MjEwMjB8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Nick Karvounis",
     "image_credit_url": "https://unsplash.com/@nickkarvounis?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/boats-on-douro-river-in-porto-Prb-sjOUBFs?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/boats-on-douro-river-in-porto-Prb-sjOUBFs?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 41.149,
+    "longitude": -8.611
   },
   {
     "name": "San Juan",
@@ -2616,7 +2828,9 @@
     "image_url": "https://images.unsplash.com/photo-1783039139354-56e2a260cdad?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxTYW4lMjBKdWFuJTIwUHVlcnRvJTIwUmljbyUyMGNvbG9yZnVsJTIwaG91c2VzfGVufDF8MHx8fDE3OTQ0MjExOTh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jameson Berrios",
     "image_credit_url": "https://unsplash.com/@simpoge?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/colorful-buildings-with-balconies-and-windows-in-a-vibrant-street-sp7TAk9gmBA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/colorful-buildings-with-balconies-and-windows-in-a-vibrant-street-sp7TAk9gmBA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 18.466,
+    "longitude": -66.106
   },
   {
     "name": "Saint-Gilles",
@@ -2643,7 +2857,9 @@
     "image_url": "https://images.unsplash.com/photo-1779129625804-7162e415c7b0?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw4fHxSZXVuaW9uJTIwaXNsYW5kJTIwYmVhY2h8ZW58MXwwfHx8MTc5NDQyMTE3Mnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Tropic Alizé",
     "image_credit_url": "https://unsplash.com/@tropicalize?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/coastal-road-alongside-a-dark-beach-and-ocean-at-sunset-oRrXSusJeGI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/coastal-road-alongside-a-dark-beach-and-ocean-at-sunset-oRrXSusJeGI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -21.052,
+    "longitude": 55.226
   },
   {
     "name": "Transylvania",
@@ -2666,7 +2882,9 @@
     "image_url": "https://images.unsplash.com/photo-1700156968085-164d37155f10?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxNHx8VHJhbnN5bHZhbmlhJTIwUm9tYW5pYXxlbnwxfDB8fHwxNzk0NDIxMDIzfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "The Now Time",
     "image_credit_url": "https://unsplash.com/@thenowtime?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-small-village-surrounded-by-lush-green-hills-EZB5et-Fpt0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-small-village-surrounded-by-lush-green-hills-EZB5et-Fpt0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 45.649,
+    "longitude": 25.606
   },
   {
     "name": "Kigali",
@@ -2691,7 +2909,9 @@
     "image_url": "https://images.unsplash.com/photo-1687986261123-b17f08f2796c?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxLaWdhbGklMjBSd2FuZGF8ZW58MXwwfHx8MTc5NDQyMTAyM3ww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jean Claude Akarikumutima",
     "image_credit_url": "https://unsplash.com/@akariclaude?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/the-sun-is-setting-over-a-city-with-tall-buildings-b-HnOOPRfTI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/the-sun-is-setting-over-a-city-with-tall-buildings-b-HnOOPRfTI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -1.95,
+    "longitude": 30.059
   },
   {
     "name": "AlUla",
@@ -2716,7 +2936,9 @@
     "image_url": "https://images.unsplash.com/photo-1733896502817-a321e44be9c1?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxBbFVsYSUyMEhlZ3JhfGVufDF8MHx8fDE3OTQ0MjEwNzJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Zhifei Zhou",
     "image_credit_url": "https://unsplash.com/@phoebezzf?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-couple-of-palm-trees-sitting-in-the-middle-of-a-desert-xL7kf_FZ1OY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-couple-of-palm-trees-sitting-in-the-middle-of-a-desert-xL7kf_FZ1OY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 26.608,
+    "longitude": 37.923
   },
   {
     "name": "Belgrade",
@@ -2740,7 +2962,9 @@
     "image_url": "https://images.unsplash.com/photo-1630610857799-36b59ff3412e?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw2fHxCZWxncmFkZSUyMFNlcmJpYXxlbnwxfDB8fHwxNzk0NDIxMDI1fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Ben Asyö",
     "image_credit_url": "https://unsplash.com/@benasyo?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-walking-near-white-concrete-building-during-daytime-_kKf1W-IGo0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-walking-near-white-concrete-building-during-daytime-_kKf1W-IGo0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 44.804,
+    "longitude": 20.465
   },
   {
     "name": "Praslin",
@@ -2764,7 +2988,9 @@
     "image_url": "https://images.unsplash.com/photo-1607198387595-d47e8346a86f?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMnx8UHJhc2xpbiUyMFNleWNoZWxsZXN8ZW58MXwwfHx8MTc5NDQyMTAyNXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Ron Barabash",
     "image_credit_url": "https://unsplash.com/@ronbarab?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/green-trees-near-blue-sea-under-blue-sky-during-daytime-qdoTFBJyBq0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/green-trees-near-blue-sea-under-blue-sky-during-daytime-qdoTFBJyBq0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -4.32,
+    "longitude": 55.753
   },
   {
     "name": "Singapore",
@@ -2791,7 +3017,9 @@
     "image_url": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxTaW5nYXBvcmUlMjBTaW5nYXBvcmV8ZW58MXwwfHx8MTc5NDQyMTAyNnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Hu Chen",
     "image_credit_url": "https://unsplash.com/@huchenme?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/marina-bay-sands-singapore-__cBlRzLSTg?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/marina-bay-sands-singapore-__cBlRzLSTg?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 1.29,
+    "longitude": 103.85
   },
   {
     "name": "High Tatras",
@@ -2814,7 +3042,9 @@
     "image_url": "https://images.unsplash.com/photo-1629267481369-28fb3ac3828b?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxIaWdoJTIwVGF0cmFzJTIwU2xvdmFraWF8ZW58MXwwfHx8MTc5NDQyMTAyN3ww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Eelco Böhtlingk",
     "image_credit_url": "https://unsplash.com/@eelco_bohtlingk?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/rocky-mountain-under-white-clouds-during-daytime-9osibFzFIfI?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/rocky-mountain-under-white-clouds-during-daytime-9osibFzFIfI?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 49.061,
+    "longitude": 20.298
   },
   {
     "name": "Cape Town",
@@ -2840,7 +3070,9 @@
     "image_url": "https://images.unsplash.com/photo-1519941459598-a1588781b56e?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxNHx8Q2FwZSUyMFRvd24lMjBTb3V0aCUyMEFmcmljYXxlbnwxfDB8fHwxNzk0NDIxMDI3fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Finding Dan | Dan Grinwis",
     "image_credit_url": "https://unsplash.com/@finding_dan?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/rock-formations-with-body-of-water-d6QlQivhZWA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/rock-formations-with-body-of-water-d6QlQivhZWA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -33.926,
+    "longitude": 18.423
   },
   {
     "name": "Jeju Island",
@@ -2863,7 +3095,9 @@
     "image_url": "https://images.unsplash.com/photo-1558548283-49230ba2930a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxM3x8SmVqdSUyMElzbGFuZCUyMFNvdXRoJTIwS29yZWF8ZW58MXwwfHx8MTc5NDQyMTAyOHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "N Riazi",
     "image_credit_url": "https://unsplash.com/@electriclime?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/rippling-water-during-daytime-RJ3tAsaYhlU?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/rippling-water-during-daytime-RJ3tAsaYhlU?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 33.51,
+    "longitude": 126.522
   },
   {
     "name": "Seoul",
@@ -2887,7 +3121,9 @@
     "image_url": "https://images.unsplash.com/photo-1583833008338-31a6657917ab?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxTZW91bCUyMFNvdXRoJTIwS29yZWF8ZW58MXwwfHx8MTc5NDQyMTAyOXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Louie Nicolo Nimor",
     "image_credit_url": "https://unsplash.com/@nicolonimor?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/brown-bare-trees-under-blue-sky-during-daytime-1Tf8X648BfA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/brown-bare-trees-under-blue-sky-during-daytime-1Tf8X648BfA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 37.566,
+    "longitude": 126.978
   },
   {
     "name": "Barcelona",
@@ -2911,7 +3147,9 @@
     "image_url": "https://images.unsplash.com/photo-1593368858664-a7fe556ab936?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxCYXJjZWxvbmElMjBTcGFpbnxlbnwxfDB8fHwxNzk0NDIxMDI5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "D Jonez",
     "image_credit_url": "https://unsplash.com/@cooljonez?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/mosaic-bench-at-park-guell-barcelona-qiH16d5SRxg?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/mosaic-bench-at-park-guell-barcelona-qiH16d5SRxg?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 41.389,
+    "longitude": 2.159
   },
   {
     "name": "Granada",
@@ -2935,7 +3173,9 @@
     "image_url": "https://images.unsplash.com/photo-1564740603199-5f56138c6679?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxHcmFuYWRhJTIwU3BhaW58ZW58MXwwfHx8MTc5NDQyMTAzMHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Dimitry B",
     "image_credit_url": "https://unsplash.com/@dimitry_b?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-photography-of-brown-castle-uDl5opHop7E?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-photography-of-brown-castle-uDl5opHop7E?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 37.188,
+    "longitude": -3.607
   },
   {
     "name": "Mallorca",
@@ -2959,7 +3199,9 @@
     "image_url": "https://images.unsplash.com/photo-1631150924300-f6144161ac21?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxNYWxsb3JjYSUyMFNwYWlufGVufDF8MHx8fDE3OTQ0MjEwMzF8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Austin Farrington",
     "image_credit_url": "https://unsplash.com/@austinfarrington?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-swimming-on-beach-during-daytime-x2AkPT2ithY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-swimming-on-beach-during-daytime-x2AkPT2ithY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 39.569,
+    "longitude": 2.65
   },
   {
     "name": "Seville",
@@ -2982,7 +3224,9 @@
     "image_url": "https://images.unsplash.com/photo-1509840841025-9088ba78a826?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxTZXZpbGxlJTIwU3BhaW58ZW58MXwwfHx8MTc5NDQyMTAzMXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Henrique Ferreira",
     "image_credit_url": "https://unsplash.com/@rickpsd?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/seville-cathedral-and-giralda-in-seville-62QRdDoe44M?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/seville-cathedral-and-giralda-in-seville-62QRdDoe44M?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 37.383,
+    "longitude": -5.973
   },
   {
     "name": "Valencia",
@@ -3006,7 +3250,9 @@
     "image_url": "https://images.unsplash.com/photo-1725208179317-c5e56702816a?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxWYWxlbmNpYSUyMFNwYWlufGVufDF8MHx8fDE3OTQ0MjEwMzJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Tom Podmore",
     "image_credit_url": "https://unsplash.com/@tompodmore86?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-group-of-people-standing-around-a-fountain-in-a-city-K358aM-cPRA?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-group-of-people-standing-around-a-fountain-in-a-city-K358aM-cPRA?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 39.474,
+    "longitude": -0.38
   },
   {
     "name": "Sigiriya",
@@ -3030,7 +3276,9 @@
     "image_url": "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxTaWdpcml5YSUyMFNyaSUyMExhbmthfGVufDF8MHx8fDE3OTQ0MjEwMzJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Shashank Hudkar",
     "image_credit_url": "https://unsplash.com/@shashankm19?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/sigiriya-rock-fortress-in-sri-lanka-KYBc1eq0dJo?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/sigiriya-rock-fortress-in-sri-lanka-KYBc1eq0dJo?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 7.86,
+    "longitude": 80.652
   },
   {
     "name": "Gothenburg",
@@ -3053,7 +3301,9 @@
     "image_url": "https://images.unsplash.com/photo-1581372415215-2379b52cf5ad?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxHb3RoZW5idXJnJTIwU3dlZGVufGVufDF8MHx8fDE3OTQ0MjEwMzN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Jonas Jacobsson",
     "image_credit_url": "https://unsplash.com/@jonasjacobsson?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-KnXuzzv1lAE?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-KnXuzzv1lAE?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 57.707,
+    "longitude": 11.967
   },
   {
     "name": "Stockholm",
@@ -3077,7 +3327,9 @@
     "image_url": "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxTdG9ja2hvbG0lMjBTd2VkZW58ZW58MXwwfHx8MTc5NDQyMTAzNHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Raphael Andres",
     "image_credit_url": "https://unsplash.com/@raphaeldas?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/riddarholmen-church-spire-in-stockholm-3cwvFD-YPtk?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/riddarholmen-church-spire-in-stockholm-3cwvFD-YPtk?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 59.329,
+    "longitude": 18.069
   },
   {
     "name": "Swedish Lapland",
@@ -3102,7 +3354,9 @@
     "image_url": "https://images.unsplash.com/photo-1652454279441-a2ed92e56bf5?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxBYmlza28lMjBMYXBsYW5kJTIwU3dlZGVufGVufDF8MHx8fDE3OTQ0MjEwNzN8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Colin Le roy",
     "image_credit_url": "https://unsplash.com/@colin_leroy?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-snowy-landscape-with-trees-and-mountains-0pweJQWhWfM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-snowy-landscape-with-trees-and-mountains-0pweJQWhWfM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 67.856,
+    "longitude": 20.225
   },
   {
     "name": "Interlaken",
@@ -3127,7 +3381,9 @@
     "image_url": "https://images.unsplash.com/photo-1605825856823-cabe105ab0af?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxJbnRlcmxha2VuJTIwU3dpdHplcmxhbmR8ZW58MXwwfHx8MTc5NDQyMTAzNXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Tucker Monticelli",
     "image_credit_url": "https://unsplash.com/@indigoandblack?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/green-and-white-house-near-green-trees-and-body-of-water-during-daytime-BNJBGYouUGs?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/green-and-white-house-near-green-trees-and-body-of-water-during-daytime-BNJBGYouUGs?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 46.684,
+    "longitude": 7.866
   },
   {
     "name": "Zermatt",
@@ -3153,7 +3409,9 @@
     "image_url": "https://images.unsplash.com/photo-1586752488885-6ce47fdfd874?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw4fHxaZXJtYXR0JTIwU3dpdHplcmxhbmR8ZW58MXwwfHx8MTc5NDQyMTAzNnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Victor He",
     "image_credit_url": "https://unsplash.com/@victorhwn725?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/snow-covered-mountain-under-blue-sky-during-daytime-uAcg4PZ_f-o?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/snow-covered-mountain-under-blue-sky-during-daytime-uAcg4PZ_f-o?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 46.02,
+    "longitude": 7.749
   },
   {
     "name": "Zurich",
@@ -3177,7 +3435,9 @@
     "image_url": "https://images.unsplash.com/photo-1608479877344-9292ad9861ba?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxM3x8WnVyaWNoJTIwU3dpdHplcmxhbmR8ZW58MXwwfHx8MTc5NDQyMTAzNnww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Patrick Federi",
     "image_credit_url": "https://unsplash.com/@federi?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/high-rise-buildings-during-daytime-qpkikEv5bh8?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/high-rise-buildings-during-daytime-qpkikEv5bh8?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 47.367,
+    "longitude": 8.55
   },
   {
     "name": "Taipei",
@@ -3202,7 +3462,9 @@
     "image_url": "https://images.unsplash.com/photo-1572715381359-002b1eabd56b?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxUYWlwZWklMjBUYWl3YW58ZW58MXwwfHx8MTc5NDQyMTAzN3ww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Lisanto 李奕良",
     "image_credit_url": "https://unsplash.com/@lisanto_?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-view-of-buildings-during-daytime-deCvIgBnPwo?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-view-of-buildings-during-daytime-deCvIgBnPwo?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 25.053,
+    "longitude": 121.526
   },
   {
     "name": "Serengeti National Park",
@@ -3227,7 +3489,9 @@
     "image_url": "https://images.unsplash.com/photo-1597877774402-d04cad0b7596?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw4fHxTZXJlbmdldGklMjBOYXRpb25hbCUyMFBhcmslMjBUYW56YW5pYXxlbnwxfDB8fHwxNzk0NDIxMDM4fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Partha Narasimhan",
     "image_credit_url": "https://unsplash.com/@notsphinx?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/cheetah-on-brown-wooden-log-under-blue-sky-during-daytime-PJBXdSyPmgc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/cheetah-on-brown-wooden-log-under-blue-sky-during-daytime-PJBXdSyPmgc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -2.436,
+    "longitude": 34.82
   },
   {
     "name": "Zanzibar Archipelago",
@@ -3255,7 +3519,9 @@
     "image_url": "https://images.unsplash.com/photo-1502452302126-a987e1f3fea4?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxaYW56aWJhciUyMEFyY2hpcGVsYWdvJTIwVGFuemFuaWF8ZW58MXwwfHx8MTc5NDQyMTAzOXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Javi Lorbada",
     "image_credit_url": "https://unsplash.com/@javilorbada?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-photography-of-village-near-body-of-water-nkLfKiCf3EQ?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-photography-of-village-near-body-of-water-nkLfKiCf3EQ?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -6.164,
+    "longitude": 39.198
   },
   {
     "name": "Bangkok",
@@ -3279,7 +3545,9 @@
     "image_url": "https://images.unsplash.com/photo-1513568720563-6a5b8c6caab3?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxCYW5na29rJTIwVGhhaWxhbmR8ZW58MXwwfHx8MTc5NDQyMTAzOXww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Geoff Greenwood",
     "image_credit_url": "https://unsplash.com/@geoffgreenwood?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/vehicles-on-street-between-buildings-with-kanji-script-signage-during-golden-hour-rH1aA4TqGms?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/vehicles-on-street-between-buildings-with-kanji-script-signage-during-golden-hour-rH1aA4TqGms?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 13.754,
+    "longitude": 100.501
   },
   {
     "name": "Chiang Mai",
@@ -3303,7 +3571,9 @@
     "image_url": "https://images.unsplash.com/photo-1721038469711-085a723931b4?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw5fHxDaGlhbmclMjBNYWklMjBUaGFpbGFuZHxlbnwxfDB8fHwxNzk0NDIxMDQwfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Maurice Gerhardt",
     "image_credit_url": "https://unsplash.com/@mauricesnaps?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/an-elephant-spraying-water-on-a-crowd-of-people-R-Wgzn8EWD0?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/an-elephant-spraying-water-on-a-crowd-of-people-R-Wgzn8EWD0?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 18.79,
+    "longitude": 98.985
   },
   {
     "name": "Phuket",
@@ -3329,7 +3599,9 @@
     "image_url": "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwzfHxQaHVrZXQlMjBUaGFpbGFuZHxlbnwxfDB8fHwxNzk0NDIxMDQwfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Mike Swigunski",
     "image_credit_url": "https://unsplash.com/@mike_swigunski?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/boats-on-sea-near-mountain-during-daytime-Of_u2aPwugw?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/boats-on-sea-near-mountain-during-daytime-Of_u2aPwugw?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 7.891,
+    "longitude": 98.398
   },
   {
     "name": "Djerba",
@@ -3355,7 +3627,9 @@
     "image_url": "https://images.unsplash.com/photo-1627298628183-ab85392ea27b?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw3fHxEamVyYmElMjBUdW5pc2lhfGVufDF8MHx8fDE3OTQ0MjEwNDF8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Khalil Yamoun",
     "image_credit_url": "https://unsplash.com/@khalilyamoun?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/people-on-beach-during-daytime-nEkkyuW8zas?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/people-on-beach-during-daytime-nEkkyuW8zas?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 33.8,
+    "longitude": 10.9
   },
   {
     "name": "Antalya",
@@ -3378,7 +3652,9 @@
     "image_url": "https://images.unsplash.com/photo-1654162201760-2c4383cbde3c?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxBbnRhbHlhJTIwVHVya2V5fGVufDF8MHx8fDE3OTQ0MjEwNDJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Igor Sporynin",
     "image_credit_url": "https://unsplash.com/@igorharrier?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/a-view-of-a-city-with-lots-of-houses-Ozxf-ApKNU4?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/a-view-of-a-city-with-lots-of-houses-Ozxf-ApKNU4?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 36.908,
+    "longitude": 30.696
   },
   {
     "name": "Cappadocia",
@@ -3401,7 +3677,9 @@
     "image_url": "https://images.unsplash.com/photo-1505783638529-f3fdc62e1bb1?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw0fHxDYXBwYWRvY2lhJTIwVHVya2V5fGVufDF8MHx8fDE3OTQ0MjEwNDJ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Darren Lee",
     "image_credit_url": "https://unsplash.com/@darrenleejw?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/thirteen-air-balloons-0kEvX-9hJyQ?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/thirteen-air-balloons-0kEvX-9hJyQ?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 38.643,
+    "longitude": 34.829
   },
   {
     "name": "Istanbul",
@@ -3424,7 +3702,9 @@
     "image_url": "https://images.unsplash.com/photo-1623621534850-d325a1980c7e?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw2fHxJc3RhbmJ1bCUyMFR1cmtleXxlbnwxfDB8fHwxNzk0NDIxMDQzfDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Lewis J Goetz",
     "image_credit_url": "https://unsplash.com/@lgoetz?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/hagia-sophia-in-istanbul-JbWg7W953LY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/hagia-sophia-in-istanbul-JbWg7W953LY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 41.014,
+    "longitude": 28.95
   },
   {
     "name": "Dubai",
@@ -3449,7 +3729,9 @@
     "image_url": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxEdWJhaSUyMFVuaXRlZCUyMEFyYWIlMjBFbWlyYXRlc3xlbnwxfDB8fHwxNzk0NDIxMDQ0fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "David Rodrigo",
     "image_credit_url": "https://unsplash.com/@david__r?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/burj-khalifa-and-highway-in-dubai-Fr6zexbmjmc?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/burj-khalifa-and-highway-in-dubai-Fr6zexbmjmc?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 25.077,
+    "longitude": 55.309
   },
   {
     "name": "Edinburgh",
@@ -3474,7 +3756,9 @@
     "image_url": "https://images.unsplash.com/photo-1506377585622-bedcbb027afc?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxFZGluYnVyZ2glMjBVbml0ZWQlMjBLaW5nZG9tfGVufDF8MHx8fDE3OTQ0MjEwNDR8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Adam Wilson",
     "image_credit_url": "https://unsplash.com/@fourcolourblack?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/balmoral-hotel-and-scott-monument-edinburgh-ktDODr-3tvY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/balmoral-hotel-and-scott-monument-edinburgh-ktDODr-3tvY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 55.952,
+    "longitude": -3.196
   },
   {
     "name": "Isle of Skye",
@@ -3498,7 +3782,9 @@
     "image_url": "https://images.unsplash.com/photo-1519293978507-9c6bb9f82eda?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxJc2xlJTIwb2YlMjBTa3llJTIwVW5pdGVkJTIwS2luZ2RvbXxlbnwxfDB8fHwxNzk0NDIxMDQ1fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Joshua Earle",
     "image_credit_url": "https://unsplash.com/@joshuaearle?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/man-standing-wearing-grey-shirt-and-brown-pants-facing-rocky-mountain-wFWQmOyfkkM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/man-standing-wearing-grey-shirt-and-brown-pants-facing-rocky-mountain-wFWQmOyfkkM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 57.413,
+    "longitude": -6.194
   },
   {
     "name": "London",
@@ -3523,7 +3809,9 @@
     "image_url": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxMb25kb24lMjBVbml0ZWQlMjBLaW5nZG9tfGVufDF8MHx8fDE3OTQ0MjEwNDZ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Benjamin Davies",
     "image_credit_url": "https://unsplash.com/@bendavisual?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-photography-of-london-skyline-during-daytime-Oja2ty_9ZLM?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-photography-of-london-skyline-during-daytime-Oja2ty_9ZLM?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 51.509,
+    "longitude": -0.126
   },
   {
     "name": "Los Angeles",
@@ -3548,7 +3836,9 @@
     "image_url": "https://images.unsplash.com/photo-1570658379397-89d15db1b0de?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxMb3MlMjBBbmdlbGVzJTIwVW5pdGVkJTIwU3RhdGVzfGVufDF8MHx8fDE3OTQ0MjEwNDZ8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Andy Feliciotti",
     "image_credit_url": "https://unsplash.com/@someguy?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/birds-eye-view-photography-of-coconut-trees-under-blue-sky-z2fkN9iVg5Y?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/birds-eye-view-photography-of-coconut-trees-under-blue-sky-z2fkN9iVg5Y?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 34.052,
+    "longitude": -118.244
   },
   {
     "name": "Miami",
@@ -3574,7 +3864,9 @@
     "image_url": "https://images.unsplash.com/photo-1574167701654-856d6406583e?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxNaWFtaSUyMFVuaXRlZCUyMFN0YXRlc3xlbnwxfDB8fHwxNzk0NDIxMDQ3fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Kian Lem",
     "image_credit_url": "https://unsplash.com/@kianlem?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/aerial-photo-of-buildings-beside-beach-V8YLE7LEjOY?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/aerial-photo-of-buildings-beside-beach-V8YLE7LEjOY?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 25.774,
+    "longitude": -80.194
   },
   {
     "name": "New Orleans",
@@ -3599,7 +3891,9 @@
     "image_url": "https://images.unsplash.com/photo-1748272038133-0be29fa2e8e8?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHw1fHxOZXclMjBPcmxlYW5zJTIwVW5pdGVkJTIwU3RhdGVzfGVufDF8MHx8fDE3OTQ0MjEwNDh8MA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Alain Pierre-Lys",
     "image_credit_url": "https://unsplash.com/@alainplys?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/cannon-sits-in-front-of-a-large-building-MSMHUZDdyEo?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/cannon-sits-in-front-of-a-large-building-MSMHUZDdyEo?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 29.955,
+    "longitude": -90.075
   },
   {
     "name": "New York City",
@@ -3623,7 +3917,9 @@
     "image_url": "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwyfHxOZXclMjBZb3JrJTIwQ2l0eSUyMFVuaXRlZCUyMFN0YXRlc3xlbnwxfDB8fHwxNzk0NDIxMDQ5fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Matteo Catanese",
     "image_credit_url": "https://unsplash.com/@matteocatanese?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/williamsburg-bridge-and-new-york-skyline-dVCGpKZB_E8?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/williamsburg-bridge-and-new-york-skyline-dVCGpKZB_E8?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 40.714,
+    "longitude": -74.006
   },
   {
     "name": "Hoi An",
@@ -3649,7 +3945,9 @@
     "image_url": "https://images.unsplash.com/photo-1662139031115-9f8dfe2da641?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxMHx8SG9pJTIwQW4lMjBsYW50ZXJuc3xlbnwxfDB8fHwxNzk0NDIxMDc0fDA&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Khoi Tran",
     "image_credit_url": "https://unsplash.com/@dananghoianphotographer?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/background-pattern-S4Mzuhyovks?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/background-pattern-S4Mzuhyovks?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": 15.879,
+    "longitude": 108.335
   },
   {
     "name": "Victoria Falls",
@@ -3673,6 +3971,8 @@
     "image_url": "https://images.unsplash.com/photo-1627347456206-d3df7d8484b0?ixid=M3w4MjkyNjh8MHwxfHNlYXJjaHwxfHxWaWN0b3JpYSUyMEZhbGxzJTIwWmltYmFid2V8ZW58MXwwfHx8MTc5NDQyMTA1MHww&ixlib=rb-4.1.0&w=800&h=450&fit=crop&q=70&auto=format",
     "image_credit": "Tanner Marquis",
     "image_credit_url": "https://unsplash.com/@tanleemarquis?utm_source=victorhanert_portfolio&utm_medium=referral",
-    "image_page_url": "https://unsplash.com/photos/water-falls-on-brown-rocky-mountain-during-daytime-xsypL99HP3Q?utm_source=victorhanert_portfolio&utm_medium=referral"
+    "image_page_url": "https://unsplash.com/photos/water-falls-on-brown-rocky-mountain-during-daytime-xsypL99HP3Q?utm_source=victorhanert_portfolio&utm_medium=referral",
+    "latitude": -17.933,
+    "longitude": 25.831
   }
 ]

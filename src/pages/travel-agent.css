@@ -1,0 +1,95 @@
+/* Travel agent theme: printed travel journal. Paper, ink, one terracotta accent, serif display type
+   and monospace labels. Scoped to .ta so no other page is affected. Portalled content (popover, sheet)
+   needs the .ta class on its own root to pick the theme up. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+.ta {
+  --background: 40 33% 95%;
+  --foreground: 200 28% 12%;
+  --card: 42 42% 98%;
+  --card-foreground: 200 28% 12%;
+  --popover: 42 42% 98%;
+  --popover-foreground: 200 28% 12%;
+  --primary: 200 28% 12%;
+  --primary-foreground: 40 33% 95%;
+  --secondary: 38 24% 89%;
+  --secondary-foreground: 200 28% 12%;
+  --muted: 38 24% 90%;
+  --muted-foreground: 200 9% 38%;
+  --accent: 38 24% 89%;
+  --accent-foreground: 200 28% 12%;
+  --border: 36 16% 78%;
+  --input: 36 16% 78%;
+  --ring: 14 60% 45%;
+  --radius: 0.25rem;
+  --ta-accent: 14 60% 45%;
+
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.ta-display {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
+
+.ta-mono {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.ta-label {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+.ta-accent {
+  color: hsl(var(--ta-accent));
+}
+
+/* Hard offset shadow, like a print slightly out of register */
+.ta-lift {
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.ta-lift:hover,
+.ta-lift:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 hsl(var(--foreground));
+}
+
+/* Trip plan written by the agent (Markdown) */
+.ta-prose {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.ta-prose h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 1.1rem 0 0.35rem;
+}
+
+.ta-prose p {
+  margin: 0.4rem 0;
+}
+
+.ta-prose ul {
+  margin: 0.25rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ta-prose li {
+  padding-left: 0.9rem;
+  border-left: 1px solid hsl(var(--border));
+  margin: 0.3rem 0;
+}
+
+.ta-prose strong {
+  font-weight: 600;
+}

@@ -1,4 +1,5 @@
 // Pure travel agent logic shared by api/travel-agent.ts and the UI. Keep imports relative: the API bundle has no "@" alias.
+import { DEFAULT_ORIGIN_CODE, originCountries, type OriginCountry } from '../data/originCountries';
 import { visitedCountries } from '../data/visitedCountries';
 import { BUDGET_MAX, SEASON_MONTHS } from '../types/travel';
 import type { DestinationCardData, DestinationRow, DistanceCategory, SearchFilters, SearchInput, TravelDuration, TravelPreferences } from '../types/travel';
@@ -22,8 +23,21 @@ export interface AgentMessage {
     parts: AgentMessagePart[];
 }
 
+export function findOrigin(code: string): OriginCountry {
+    return originCountries.find((c) => c.code === code) ?? originCountries.find((c) => c.code === DEFAULT_ORIGIN_CODE)!;
+}
+
 // Arguments for the search_destinations RPC
-export function buildSearchArgs(input: SearchInput, preferences: TravelPreferences, queryEmbedding: number[] | null) {
+export function buildSearchArgs(
+    input: SearchInput,
+    preferences: TravelPreferences,
+    queryEmbedding: number[] | null,
+    excludeId: string | null = null
+) {
+    // From Denmark the curated travel times are used; other origins get an estimate from coordinates
+    const origin = findOrigin(preferences.originCode);
+    const estimateFromOrigin = origin.code !== DEFAULT_ORIGIN_CODE;
+
     return {
         query_embedding: queryEmbedding ? JSON.stringify(queryEmbedding) : null,
         use_profile: preferences.useVictorHistory,
@@ -34,6 +48,9 @@ export function buildSearchArgs(input: SearchInput, preferences: TravelPreferenc
         months: input.months?.length ? input.months : null,
         categories: input.categories?.length ? input.categories : null,
         exclude_country_codes: preferences.includeVisited ? null : VISITED_COUNTRY_CODES,
+        origin_lat: estimateFromOrigin ? origin.lat : null,
+        origin_lng: estimateFromOrigin ? origin.lng : null,
+        exclude_id: excludeId,
         match_count: 12,
     };
 }
@@ -58,7 +75,11 @@ const DISTANCE_HOURS: Record<DistanceCategory, { min: number; max: number | null
 };
 
 export function preferencesFromFilters(filters: SearchFilters): TravelPreferences {
-    return { useVictorHistory: filters.useVisitedCountriesData, includeVisited: filters.includeVisitedCountries };
+    return {
+        useVictorHistory: filters.useVisitedCountriesData,
+        includeVisited: filters.includeVisitedCountries,
+        originCode: filters.originCode,
+    };
 }
 
 // Turns the panel state into a search request. Returns null when trip length and distance rule each other out.
@@ -85,6 +106,21 @@ export function filtersToSearchInput(filters: SearchFilters, semanticText: strin
         ...(filters.season ? { months: SEASON_MONTHS[filters.season] } : {}),
         ...(filters.categories.length > 0 ? { categories: filters.categories } : {}),
     };
+}
+
+// Short labels describing a search, for the search history and the agent's "filters applied" row
+export function searchLabels(input: SearchInput | null): string[] {
+    if (!input) return [];
+    const query = input.query?.trim();
+    return [
+        query ? `"${query.length > 32 ? `${query.slice(0, 32)}...` : query}"` : '',
+        input.minCostDkk ? `Min ${input.minCostDkk.toLocaleString('da-DK')} kr.` : '',
+        input.maxCostDkk ? `Max ${input.maxCostDkk.toLocaleString('da-DK')} kr.` : '',
+        input.minFlightHours ? `Over ${input.minFlightHours.toLocaleString('da-DK')} h travel` : '',
+        input.maxFlightHours ? `Max ${input.maxFlightHours.toLocaleString('da-DK')} h travel` : '',
+        input.months?.length ? formatMonths(input.months) : '',
+        ...(input.categories ?? []),
+    ].filter(Boolean);
 }
 
 // Reason shown on a card for a panel search, where no model writes one

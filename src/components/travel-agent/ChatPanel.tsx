@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { Loader2, Plane } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import { ArrowRight, Loader2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
+import OriginPicker from '@/components/travel-agent/OriginPicker';
 import type { SearchFilters } from '@/types/travel';
 import { SEARCH_TOOL, type AgentMessage } from '@/services/travelSearch';
 
 const STARTER_PROMPTS = [
-    'Warm beach in March for under 8.000 kr.',
+    'Warm beach in March for under 12.000 kr.',
     'Weekend city trip with great food',
     'Nature and hiking somewhere quiet',
     'Ski trip in February',
@@ -50,29 +49,33 @@ export default function ChatPanel({ messages, isBusy, error, filters, onFiltersC
     return (
         <aside className="flex h-auto flex-col border-b border-border bg-card lg:h-full lg:border-b-0 lg:border-r">
             {/* Header */}
-            <div className="border-b border-border px-4 pb-4 pt-6 sm:px-6 lg:pt-8">
-                <h1 className="text-lg font-semibold tracking-tight text-foreground">Ask the agent</h1>
-                <p className="text-xs text-muted-foreground">
-                    Describe the trip you have in mind, and refine it as you go. The agent sets the filters for you.
+            <div className="border-b border-dashed border-border px-4 py-5 sm:px-6">
+                <h1 className="ta-display text-2xl font-medium leading-tight text-foreground">Talk it through</h1>
+                <p className="mt-1 text-xs text-muted-foreground">
+                    Describe the trip, then refine it. The agent sets the filters for you.
                 </p>
 
                 <div className="mt-4 space-y-2.5">
+                    <div className="ta-label flex flex-wrap items-center gap-1.5">
+                        <span>Travelling from</span>
+                        <OriginPicker code={filters.originCode} onChange={(originCode) => onFiltersChange({ ...filters, originCode })} />
+                    </div>
                     <div className="flex items-center justify-between gap-3">
-                        <Label htmlFor="use-history" className="text-xs text-foreground">
+                        <label htmlFor="chat-use-history" className="text-xs text-foreground">
                             Tune results to Victor's travel taste
-                        </Label>
+                        </label>
                         <Switch
-                            id="use-history"
+                            id="chat-use-history"
                             checked={filters.useVisitedCountriesData}
                             onCheckedChange={(checked) => onFiltersChange({ ...filters, useVisitedCountriesData: checked })}
                         />
                     </div>
                     <div className="flex items-center justify-between gap-3">
-                        <Label htmlFor="include-visited" className="text-xs text-foreground">
+                        <label htmlFor="chat-include-visited" className="text-xs text-foreground">
                             Include countries Victor has visited
-                        </Label>
+                        </label>
                         <Switch
-                            id="include-visited"
+                            id="chat-include-visited"
                             checked={filters.includeVisitedCountries}
                             onCheckedChange={(checked) => onFiltersChange({ ...filters, includeVisitedCountries: checked })}
                         />
@@ -81,20 +84,23 @@ export default function ChatPanel({ messages, isBusy, error, filters, onFiltersC
             </div>
 
             {/* Conversation */}
-            <div className="max-h-[40vh] space-y-3 overflow-y-auto px-4 py-4 sm:px-6 lg:max-h-none lg:flex-1">
+            <div className="max-h-[40vh] space-y-4 overflow-y-auto px-4 py-4 sm:px-6 lg:max-h-none lg:flex-1">
                 {messages.length === 0 && (
-                    <div className="space-y-2">
-                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Try one of these</p>
-                        {STARTER_PROMPTS.map((prompt) => (
-                            <button
-                                key={prompt}
-                                type="button"
-                                onClick={() => submit(prompt)}
-                                className="block w-full rounded-lg border border-border bg-card px-3 py-2 text-left text-xs text-foreground transition-colors hover:bg-muted"
-                            >
-                                {prompt}
-                            </button>
-                        ))}
+                    <div>
+                        <p className="ta-label mb-2">Try one of these</p>
+                        <div className="divide-y divide-dashed divide-border border-y border-dashed border-border">
+                            {STARTER_PROMPTS.map((prompt) => (
+                                <button
+                                    key={prompt}
+                                    type="button"
+                                    onClick={() => submit(prompt)}
+                                    className="flex w-full items-center justify-between gap-3 py-2.5 text-left text-xs text-foreground transition-colors hover:bg-muted/60"
+                                >
+                                    {prompt}
+                                    <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 )}
 
@@ -103,11 +109,12 @@ export default function ChatPanel({ messages, isBusy, error, filters, onFiltersC
                     if (!text) return null;
                     const isUser = message.role === 'user';
                     return (
-                        <div key={message.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
+                        <div key={message.id}>
+                            <p className="ta-label mb-1">{isUser ? 'You' : 'Agent'}</p>
                             <p
-                                className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${isUser
-                                        ? 'bg-primary text-primary-foreground'
-                                        : 'bg-muted text-foreground'
+                                className={`whitespace-pre-wrap text-sm leading-relaxed text-foreground ${isUser
+                                        ? 'ta-display text-base italic'
+                                        : 'border-l-2 border-[hsl(var(--ta-accent))] pl-3'
                                     }`}
                             >
                                 {text}
@@ -117,20 +124,20 @@ export default function ChatPanel({ messages, isBusy, error, filters, onFiltersC
                 })}
 
                 {isBusy && (
-                    <p className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <p className="ta-label flex items-center gap-2">
                         <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                        {isSearching ? 'Searching the destination database...' : 'Thinking...'}
+                        {isSearching ? 'Searching the destination database' : 'Thinking'}
                     </p>
                 )}
 
-                {error && <p className="rounded-lg bg-destructive/10 px-3 py-2 text-xs text-destructive">{error}</p>}
+                {error && <p className="border-l-2 border-destructive pl-3 text-xs text-destructive">{error}</p>}
 
                 <div ref={bottomRef} />
             </div>
 
             {/* Input */}
             <form
-                className="border-t border-border p-4 sm:p-6"
+                className="border-t border-border p-4 sm:px-6"
                 onSubmit={(e) => {
                     e.preventDefault();
                     submit(input);
@@ -147,12 +154,16 @@ export default function ChatPanel({ messages, isBusy, error, filters, onFiltersC
                         }
                     }}
                     placeholder={messages.length === 0 ? 'Where do you want to go, when, and for how much?' : 'Refine it: cheaper, warmer, shorter flight...'}
-                    className="min-h-[72px] resize-none bg-muted/40 text-sm"
+                    className="min-h-[64px] resize-none bg-background text-sm"
                 />
-                <Button type="submit" disabled={isBusy || !input.trim()} className="mt-3 h-11 w-full text-sm font-semibold">
+                <button
+                    type="submit"
+                    disabled={isBusy || !input.trim()}
+                    className="ta-mono mt-3 flex h-11 w-full items-center justify-center gap-2 rounded-sm bg-foreground text-xs uppercase tracking-[0.14em] text-background transition-opacity hover:opacity-90 disabled:opacity-50"
+                >
                     {isBusy ? 'Working...' : messages.length === 0 ? 'Find my destination' : 'Send'}
-                    <Plane className="ml-2 h-4 w-4" />
-                </Button>
+                    <ArrowRight className="h-4 w-4" />
+                </button>
             </form>
         </aside>
     );

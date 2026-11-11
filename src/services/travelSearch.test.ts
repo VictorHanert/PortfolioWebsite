@@ -4,8 +4,10 @@ import {
     cardsFromMessages,
     filterReason,
     filtersToSearchInput,
+    findOrigin,
     formatMonths,
     latestSearchInput,
+    searchLabels,
     SEARCH_TOOL,
     SHOW_TOOL,
 } from './travelSearch';
@@ -44,11 +46,11 @@ const assistant = (...parts: AgentMessage['parts']): AgentMessage => ({ role: 'a
 
 describe('buildSearchArgs', () => {
     it('excludes visited countries unless they are included', () => {
-        const excluded = buildSearchArgs({}, { useVictorHistory: true, includeVisited: false }, null);
+        const excluded = buildSearchArgs({}, { useVictorHistory: true, includeVisited: false, originCode: 'DNK' }, null);
         expect(excluded.exclude_country_codes).toContain('ITA');
         expect(excluded.use_profile).toBe(true);
 
-        const included = buildSearchArgs({}, { useVictorHistory: false, includeVisited: true }, null);
+        const included = buildSearchArgs({}, { useVictorHistory: false, includeVisited: true, originCode: 'DNK' }, null);
         expect(included.exclude_country_codes).toBeNull();
         expect(included.use_profile).toBe(false);
     });
@@ -56,7 +58,7 @@ describe('buildSearchArgs', () => {
     it('maps tool input to RPC arguments and treats empty lists as no filter', () => {
         const args = buildSearchArgs(
             { maxCostDkk: 8000, maxFlightHours: 4, months: [3], categories: [] },
-            { useVictorHistory: false, includeVisited: true },
+            { useVictorHistory: false, includeVisited: true, originCode: 'DNK' },
             [0.1, 0.2]
         );
         expect(args).toMatchObject({
@@ -66,6 +68,36 @@ describe('buildSearchArgs', () => {
             months: [3],
             categories: null,
         });
+    });
+});
+
+describe('origin country', () => {
+    it('uses the curated travel times from Denmark and coordinates from elsewhere', () => {
+        const fromDenmark = buildSearchArgs({}, { useVictorHistory: false, includeVisited: true, originCode: 'DNK' }, null);
+        expect(fromDenmark).toMatchObject({ origin_lat: null, origin_lng: null, exclude_id: null });
+
+        const fromJapan = buildSearchArgs({}, { useVictorHistory: false, includeVisited: true, originCode: 'JPN' }, null, 'some-id');
+        expect(fromJapan.origin_lat).toBeCloseTo(35.7, 0);
+        expect(fromJapan.origin_lng).toBeCloseTo(139.7, 0);
+        expect(fromJapan.exclude_id).toBe('some-id');
+    });
+
+    it('falls back to Denmark for an unknown country code', () => {
+        expect(findOrigin('???').code).toBe('DNK');
+        expect(findOrigin('ITA').name).toBe('Italy');
+    });
+});
+
+describe('searchLabels', () => {
+    it('describes a search in short labels', () => {
+        expect(searchLabels({ query: 'great seafood', maxCostDkk: 12000, months: [6, 7, 8], categories: ['Beach'] })).toEqual([
+            '"great seafood"',
+            'Max 12.000 kr.',
+            'Jun-Aug',
+            'Beach',
+        ]);
+        expect(searchLabels({})).toEqual([]);
+        expect(searchLabels(null)).toEqual([]);
     });
 });
 
@@ -99,8 +131,8 @@ describe('filtersToSearchInput', () => {
 });
 
 describe('filterReason', () => {
-    const history = { useVictorHistory: true, includeVisited: false };
-    const noHistory = { useVictorHistory: false, includeVisited: false };
+    const history = { useVictorHistory: true, includeVisited: false, originCode: 'DNK' };
+    const noHistory = { useVictorHistory: false, includeVisited: false, originCode: 'DNK' };
 
     it('prefers the description, then categories, then taste', () => {
         const rome = { ...row('a', 'Rome'), category: ['Cultural', 'Historical'] };

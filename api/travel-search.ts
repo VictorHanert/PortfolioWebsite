@@ -1,6 +1,6 @@
 // Edge Function: destination search for the filter panel. No language model involved.
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
-import { parsePreferences, runSearch, searchInputSchema } from "./_lib/search.js";
+import { isUuid, parsePreferences, runSearch, searchInputSchema } from "./_lib/search.js";
 
 export const config = { runtime: "edge" };
 
@@ -13,7 +13,7 @@ export default async function handler(req: Request) {
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
   if (!checkRateLimit(clientIp(req), RATE_LIMIT_MAX_REQUESTS)) return json({ error: "Rate limit exceeded" }, 429);
 
-  let body: { input?: unknown; preferences?: object };
+  let body: { input?: unknown; preferences?: object; excludeId?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -24,7 +24,9 @@ export default async function handler(req: Request) {
   if (!input.success) return json({ error: "Invalid search input" }, 400);
 
   try {
-    const destinations = await runSearch(input.data, parsePreferences(body.preferences), process.env.GEMINI_API_KEY);
+    // excludeId is set when looking for places similar to one destination
+    const excludeId = isUuid(body.excludeId) ? body.excludeId : null;
+    const destinations = await runSearch(input.data, parsePreferences(body.preferences), process.env.GEMINI_API_KEY, excludeId);
     return json({ destinations });
   } catch (error) {
     console.error("Travel search error:", error);

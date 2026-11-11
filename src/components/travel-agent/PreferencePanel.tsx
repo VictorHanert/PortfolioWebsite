@@ -1,17 +1,10 @@
+import { ArrowRight } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
+import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { Plane, MapPin, Palmtree, Landmark, Dribbble, Leaf, Sun, CloudRain, Snowflake, Flower2, Clock3, ChartBarIncreasing, ShoppingBag, Waves, MapPinPlus, Heart, Beer, MountainSnow, FlameKindling, EarOff, Gem } from 'lucide-react';
+import OriginPicker from '@/components/travel-agent/OriginPicker';
 import type { SearchFilters, TravelDuration } from '@/types/travel';
-import {
-    BUDGET_MAX,
-    DISTANCE_OPTIONS,
-    CATEGORY_OPTIONS,
-    SEASON_OPTIONS,
-    TRAVEL_DURATION_OPTIONS,
-} from '@/types/travel';
+import { BUDGET_MAX, CATEGORY_OPTIONS, DISTANCE_OPTIONS, SEASON_OPTIONS, TRAVEL_DURATION_OPTIONS } from '@/types/travel';
 
 interface PreferencePanelProps {
     filters: SearchFilters;
@@ -22,38 +15,28 @@ interface PreferencePanelProps {
     isSearching: boolean;
 }
 
-const CATEGORY_ICONS: Record<string, React.ReactNode> = {
-    Beach: <Waves className="h-3.5 w-3.5" />,
-    'Warm Weather': <Sun className="h-3.5 w-3.5" />,
-    Relax: <Palmtree className="h-3.5 w-3.5" />,
-    Quiet: <EarOff className="h-3.5 w-3.5" />,
-    Nature: <Leaf className="h-3.5 w-3.5" />,
-    Cultural: <Landmark className="h-3.5 w-3.5" />,
-    Historical: <FlameKindling className="h-3.5 w-3.5" />,
-    Shopping: <ShoppingBag className="h-3.5 w-3.5" />,
-    Capital: <Landmark className="h-3.5 w-3.5" />,
-    Football: <Dribbble className="h-3.5 w-3.5" />,
-    'Nightlife': <Beer className="h-3.5 w-3.5" />,
-    Ski: <MountainSnow className="h-3.5 w-3.5" />,
-    'Cold Weather': <Snowflake className="h-3.5 w-3.5" />,
-    'Romantic': <Heart className="h-3.5 w-3.5" />,
-    Trending: <ChartBarIncreasing className="h-3.5 w-3.5" />,
-    'Hidden Gem': <Gem className="h-3.5 w-3.5" />,
-};
+const DURATION_LABELS: Partial<Record<TravelDuration, string>> = { 'No Preference': 'Any' };
 
-const SEASON_ICONS: Record<string, React.ReactNode> = {
-    'January - March': <Snowflake className="h-3.5 w-3.5" />,
-    'March - April': <Flower2 className="h-3.5 w-3.5" />,
-    'May - June': <Leaf className="h-3.5 w-3.5" />,
-    'June - August': <Sun className="h-3.5 w-3.5" />,
-    'September - November': <CloudRain className="h-3.5 w-3.5" />,
-    December: <Snowflake className="h-3.5 w-3.5" />,
+// Short display names for the season values in SEASON_MONTHS
+const SEASON_LABELS: Record<string, string> = {
+    'January - March': 'Jan-Mar',
+    'March - April': 'Mar-Apr',
+    'May - June': 'May-Jun',
+    'June - August': 'Jun-Aug',
+    'September - November': 'Sep-Nov',
+    December: 'Dec',
 };
 
 function formatBudget(v: number) {
     if (v >= BUDGET_MAX) return `${BUDGET_MAX.toLocaleString('da-DK')}+ kr.`;
     return v.toLocaleString('da-DK') + ' kr.';
 }
+
+const chipClass = (active: boolean) =>
+    `h-8 rounded-sm border px-2 text-[11px] font-medium transition-colors ${active
+        ? 'border-foreground bg-foreground text-background'
+        : 'border-border bg-card text-foreground hover:border-foreground'
+    }`;
 
 export default function PreferencePanel({
     filters,
@@ -64,25 +47,21 @@ export default function PreferencePanel({
     isSearching,
 }: PreferencePanelProps) {
     const update = (patch: Partial<SearchFilters>) => onChange({ ...filters, ...patch });
-    const yesNoClassName =
-        'h-10 justify-center rounded-lg border border-border px-3 text-xs data-[state=on]:bg-primary data-[state=on]:text-primary-foreground';
 
     return (
         <aside className="flex h-auto flex-col border-b border-border bg-card lg:h-full lg:border-b-0 lg:border-r">
-            {/* Header */}
-            <div className="border-b border-border px-4 pb-4 pt-6 sm:px-6 lg:pt-8">
-                <h1 className="text-lg font-semibold tracking-tight text-foreground">Next Destination</h1>
-                <p className="text-xs text-muted-foreground">Find your next travel destination based on your preferences.</p>
-            </div>
-
             {/* Scrollable filters */}
-            <div className="space-y-7 px-4 py-5 sm:px-6 lg:flex-1 lg:overflow-y-auto lg:py-6">
+            <div className="space-y-5 px-4 py-5 sm:px-6 lg:flex-1 lg:overflow-y-auto">
+                <h1 className="ta-display text-2xl font-medium leading-tight text-foreground">Set the brief</h1>
 
                 {/* Budget */}
                 <section>
-                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3 block">
-                        Budget per person, one week (DKK)
-                    </label>
+                    <div className="mb-2.5 flex items-baseline justify-between gap-3">
+                        <label className="ta-label" title="Estimate per person for one week, including flights">01 Budget, one week</label>
+                        <span className="ta-mono shrink-0 text-[11px] text-foreground">
+                            {formatBudget(filters.budgetRange[0])} - {formatBudget(filters.budgetRange[1])}
+                        </span>
+                    </div>
                     <div className="px-1">
                         <Slider
                             min={0}
@@ -92,70 +71,61 @@ export default function PreferencePanel({
                             onValueChange={(value) => update({ budgetRange: [value[0], value[1]] })}
                         />
                     </div>
-                    <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                        <span>{formatBudget(filters.budgetRange[0])}</span>
-                        <span className="font-medium text-foreground">{formatBudget(filters.budgetRange[1])}</span>
-                    </div>
                 </section>
 
                 {/* Duration */}
                 <section>
-                    <label className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                        Trip Length
-                    </label>
-                    <ToggleGroup
-                        type="single"
-                        value={filters.tripDuration ?? ''}
-                        onValueChange={(v) => update({ tripDuration: (v || null) as TravelDuration | null })}
-                        className="grid grid-cols-2 gap-2"
-                    >
-                        {TRAVEL_DURATION_OPTIONS.map((duration) => (
-                            <ToggleGroupItem
-                                key={duration}
-                                value={duration}
-                                className="h-10 justify-start gap-2 rounded-lg border border-border px-3 text-xs data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                            >
-                                <Clock3 className="h-3.5 w-3.5" />
-                                {duration}
-                            </ToggleGroupItem>
-                        ))}
-                    </ToggleGroup>
+                    <label className="ta-label mb-2 block">02 Trip length</label>
+                    <div className="grid grid-cols-4 gap-1.5">
+                        {TRAVEL_DURATION_OPTIONS.map((duration) => {
+                            const active = filters.tripDuration === duration;
+                            return (
+                                <button
+                                    type="button"
+                                    key={duration}
+                                    onClick={() => update({ tripDuration: active ? null : duration })}
+                                    className={chipClass(active)}
+                                >
+                                    {DURATION_LABELS[duration] ?? duration}
+                                </button>
+                            );
+                        })}
+                    </div>
                 </section>
 
                 {/* Distance */}
                 <section>
-                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3 block">
-                        Distance from Denmark
-                    </label>
-                    <ToggleGroup
-                        type="single"
-                        value={filters.distanceCategory ?? ''}
-                        onValueChange={(v) => update({ distanceCategory: (v || null) as 'Short' | 'Mid' | 'Long' | null })}
-                        className="flex flex-col gap-1.5 w-full"
-                    >
-                        {DISTANCE_OPTIONS.map((opt) => (
-                            <ToggleGroupItem
-                                key={opt.value}
-                                value={opt.value}
-                                className="w-full justify-start gap-2 px-3 py-2 text-xs rounded-lg border border-border data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                            >
-                                <MapPin className="h-3.5 w-3.5" />
-                                {opt.label}
-                            </ToggleGroupItem>
-                        ))}
-                    </ToggleGroup>
+                    <div className="ta-label mb-2 flex flex-wrap items-center gap-1.5">
+                        <span>03 Distance from</span>
+                        <OriginPicker code={filters.originCode} onChange={(originCode) => update({ originCode })} />
+                    </div>
+                    <div className="grid grid-cols-3 gap-1.5">
+                        {DISTANCE_OPTIONS.map((opt) => {
+                            const active = filters.distanceCategory === opt.value;
+                            return (
+                                <button
+                                    type="button"
+                                    key={opt.value}
+                                    title={opt.hint}
+                                    onClick={() => update({ distanceCategory: active ? null : opt.value })}
+                                    className={chipClass(active)}
+                                >
+                                    {opt.label}
+                                </button>
+                            );
+                        })}
+                    </div>
                 </section>
 
                 {/* Category */}
                 <section>
-                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3 block">
-                        Travel Category
-                    </label>
-                    <div className="flex flex-wrap gap-2">
+                    <label className="ta-label mb-2 block">04 Kind of trip</label>
+                    <div className="flex flex-wrap gap-1.5">
                         {CATEGORY_OPTIONS.map((cat) => {
                             const active = filters.categories.includes(cat);
                             return (
                                 <button
+                                    type="button"
                                     key={cat}
                                     onClick={() =>
                                         update({
@@ -164,12 +134,8 @@ export default function PreferencePanel({
                                                 : [...filters.categories, cat],
                                         })
                                     }
-                                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${active
-                                            ? 'bg-primary text-primary-foreground border-primary'
-                                            : 'bg-card text-foreground border-border hover:bg-muted'
-                                        }`}
+                                    className={chipClass(active)}
                                 >
-                                    {CATEGORY_ICONS[cat]}
                                     {cat}
                                 </button>
                             );
@@ -179,10 +145,8 @@ export default function PreferencePanel({
 
                 {/* Season */}
                 <section>
-                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-3 block">
-                        Season
-                    </label>
-                    <div className="grid grid-cols-2 gap-1.5">
+                    <label className="ta-label mb-2 block">05 Season</label>
+                    <div className="grid grid-cols-6 gap-1.5">
                         {SEASON_OPTIONS.map((s) => {
                             const active = filters.season === s;
                             return (
@@ -190,13 +154,10 @@ export default function PreferencePanel({
                                     type="button"
                                     key={s}
                                     onClick={() => update({ season: active ? null : s })}
-                                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${active
-                                            ? 'bg-primary text-primary-foreground border-primary'
-                                            : 'bg-card text-foreground border-border hover:bg-muted'
-                                        }`}
+                                    title={s}
+                                    className={`${chipClass(active)} whitespace-nowrap px-0 text-[10px] tracking-tight`}
                                 >
-                                    {SEASON_ICONS[s]}
-                                    {s}
+                                    {SEASON_LABELS[s] ?? s}
                                 </button>
                             );
                         })}
@@ -205,84 +166,55 @@ export default function PreferencePanel({
 
                 {/* Extra prompt */}
                 <section>
+                    <label className="ta-label mb-2 block">06 Anything else</label>
                     <Textarea
                         value={semanticText}
                         onChange={(e) => onSemanticTextChange(e.target.value)}
-                        placeholder="Add extra instructions for making the recommendations perfect for you."
-                        className="min-h-[80px] resize-none bg-muted/40 text-sm"
+                        placeholder="Great seafood, old towns, somewhere walkable..."
+                        className="min-h-[56px] resize-none bg-background text-xs"
                     />
                 </section>
 
-                {/* Use visitedCountries data */}
-                <section>
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <div className="flex items-center gap-2 mb-3 cursor-help">
-                                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                                        Use Victor's travel history?
-                                    </label>
-                                    <MapPinPlus className="h-3.5 w-3.5 cursor-help text-muted-foreground" />
-                                </div>
-                            </TooltipTrigger>
-                            <TooltipContent className="text-xs bg-gray-200">
-                                    If yes, results are tuned to Victor's own travel taste, based on the trips on this site. <br />
-                                    If no, destinations are recommended solely based on your preferences.
-                            </TooltipContent>
-                        </Tooltip>
-                    <ToggleGroup
-                        type="single"
-                        value={filters.useVisitedCountriesData ? 'yes' : 'no'}
-                        onValueChange={(v) => {
-                            if (v === 'yes' || v === 'no') {
-                                update({ useVisitedCountriesData: v === 'yes' });
-                            }
-                        }}
-                        className="grid grid-cols-2 gap-2"
-                    >
-                        <ToggleGroupItem value="yes" className={yesNoClassName}>
-                            Yes
-                        </ToggleGroupItem>
-                        <ToggleGroupItem value="no" className={yesNoClassName}>
-                            No
-                        </ToggleGroupItem>
-                    </ToggleGroup>
-                </section>
-
-                {/* Include already visited destinations */}
-                <section>
-                    <label className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                        Include countries Victor has already visited?
-                    </label>
-                    <ToggleGroup
-                        type="single"
-                        value={filters.includeVisitedCountries ? 'yes' : 'no'}
-                        onValueChange={(v) => {
-                            if (v === 'yes' || v === 'no') {
-                                update({ includeVisitedCountries: v === 'yes' });
-                            }
-                        }}
-                        className="grid grid-cols-2 gap-2"
-                    >
-                        <ToggleGroupItem value="yes" className={yesNoClassName}>
-                            Yes
-                        </ToggleGroupItem>
-                        <ToggleGroupItem value="no" className={yesNoClassName}>
-                            No
-                        </ToggleGroupItem>
-                    </ToggleGroup>
+                {/* Victor's travel history */}
+                <section className="space-y-2.5 border-t border-dashed border-border pt-4">
+                    <div className="flex items-center justify-between gap-3">
+                        <label
+                            htmlFor="panel-use-history"
+                            className="text-xs text-foreground"
+                            title="Results are tuned to Victor's own travel taste, based on the trips on this site."
+                        >
+                            Tune results to Victor's travel taste
+                        </label>
+                        <Switch
+                            id="panel-use-history"
+                            checked={filters.useVisitedCountriesData}
+                            onCheckedChange={(checked) => update({ useVisitedCountriesData: checked })}
+                        />
+                    </div>
+                    <div className="flex items-center justify-between gap-3">
+                        <label htmlFor="panel-include-visited" className="text-xs text-foreground">
+                            Include countries Victor has visited
+                        </label>
+                        <Switch
+                            id="panel-include-visited"
+                            checked={filters.includeVisitedCountries}
+                            onCheckedChange={(checked) => update({ includeVisitedCountries: checked })}
+                        />
+                    </div>
                 </section>
             </div>
 
             {/* Action */}
-            <div className="border-t border-border p-4 sm:p-6">
-                <Button
+            <div className="border-t border-border p-4 sm:px-6">
+                <button
+                    type="button"
                     onClick={onSearch}
                     disabled={isSearching}
-                    className="w-full h-11 text-sm font-semibold"
+                    className="ta-mono flex h-11 w-full items-center justify-center gap-2 rounded-sm bg-foreground text-xs uppercase tracking-[0.14em] text-background transition-opacity hover:opacity-90 disabled:opacity-60"
                 >
                     {isSearching ? 'Searching...' : 'Find my destination'}
-                    <Plane className="ml-2 h-4 w-4" />
-                </Button>
+                    <ArrowRight className="h-4 w-4" />
+                </button>
             </div>
         </aside>
     );

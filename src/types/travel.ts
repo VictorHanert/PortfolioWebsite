@@ -52,6 +52,7 @@ export interface SearchInput {
 export interface TravelPreferences {
     useVictorHistory: boolean;
     includeVisited: boolean;
+    originCode: string; // ISO alpha-3 of the country the trip starts in
 }
 
 export interface DestinationCardData {
@@ -80,15 +81,17 @@ export interface SearchFilters {
     includeVisitedCountries: boolean;
     categories: string[];
     season: string | null;
+    originCode: string;
 }
 
 // The top of the budget slider means "no upper limit"
 export const BUDGET_MAX = 40000;
 
+// The hour ranges live in DISTANCE_HOURS in src/services/travelSearch.ts
 export const DISTANCE_OPTIONS = [
-    { value: 'Short', label: 'Short Trip' },
-    { value: 'Mid', label: 'Semi-long Destination' },
-    { value: 'Long', label: 'Long Flight' },
+    { value: 'Short', label: 'Short', hint: 'Up to 3,5 hours of travel' },
+    { value: 'Mid', label: 'Medium', hint: '3,5 to 7 hours of travel' },
+    { value: 'Long', label: 'Long haul', hint: 'More than 7 hours of travel' },
 ] as const;
 
 export const SEASON_MONTHS: Record<string, number[]> = {
@@ -121,4 +124,5 @@ export const DEFAULT_FILTERS: SearchFilters = {
     includeVisitedCountries: false,
     categories: [],
     season: null,
+    originCode: 'DNK',
 };

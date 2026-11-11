@@ -1,49 +1,21 @@
 // Edge Function: the travel agent. Gemini decides the filters, searches Supabase and streams its answer.
 import { convertToModelMessages, stepCountIs, streamText, tool, type UIMessage } from "ai";
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
+import { agentModel } from "./_lib/models.js";
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
 import { parsePreferences, runSearch, searchInputSchema } from "./_lib/search.js";
 import type { TravelPreferences } from "../src/types/travel.js";
+import { findOrigin } from "../src/services/travelSearch.js";
 import { portfolioKnowledge } from "../src/data/portfolioData.js";
 
 export const config = { runtime: "edge" };
 
-// Newer Gemini models are often overloaded, so the agent falls back down this list.
-const AGENT_MODELS = ["gemini-3.6-flash", "gemini-3.5-flash", "gemini-2.5-flash"];
 const RATE_LIMIT_MAX_REQUESTS = 10;
 const MAX_MESSAGES = 16;
 const MAX_MESSAGE_LENGTH = 1000;
 
 const json = (body: unknown, status: number) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
-
-type GoogleModel = ReturnType<ReturnType<typeof createGoogleGenerativeAI>>;
-
-// One model object that tries each model in turn when a call fails before any output
-function withFallback(models: GoogleModel[]): GoogleModel {
-  const [first] = models;
-  const attempt = async <T>(run: (model: GoogleModel) => PromiseLike<T>): Promise<T> => {
-    let lastError: unknown;
-    for (const model of models) {
-      try {
-        return await run(model);
-      } catch (error) {
-        lastError = error;
-      }
-    }
-    throw lastError;
-  };
-
-  return {
-    specificationVersion: first.specificationVersion,
-    provider: first.provider,
-    modelId: first.modelId,
-    supportedUrls: first.supportedUrls,
-    doGenerate: (options) => attempt((model) => model.doGenerate(options)),
-    doStream: (options) => attempt((model) => model.doStream(options)),
-  };
-}
 
 const messageText = (message: UIMessage) =>
   message.parts.map((part) => (part.type === "text" ? part.text : "")).join("");
@@ -52,17 +24,20 @@ function buildSystemPrompt(preferences: TravelPreferences): string {
   // The month only steers phrases like "next month", so UTC is precise enough
   const month = new Date().toLocaleString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
   const { travelStyle, favoriteCity, bucketList } = portfolioKnowledge.travelStats;
+  const origin = findOrigin(preferences.originCode).name;
 
-  return `You are the travel agent on Victor Hanert's portfolio site. You recommend destinations from a curated database for trips starting in Copenhagen, Denmark. It is currently ${month}.
+  return `You are the travel agent on Victor Hanert's portfolio site. You recommend destinations from a curated database for trips starting in ${origin}. It is currently ${month}.
 
 How to work:
 1. Always call searchDestinations before recommending anything. Turn what the visitor says into filters: a budget becomes maxCostDkk, "short flight" or a weekend becomes maxFlightHours, a time of year becomes months, a trip type becomes categories. Put the mood and specifics in query.
 2. Then call showDestinations with the 3 to 6 best matches from the search result, each with one specific sentence on why it fits this request. Only use ids returned by searchDestinations. Never invent a destination.
-3. Finish with at most three short sentences of plain text. No markdown, no lists, do not repeat the cards.
+3. Finish with one or two short sentences of plain text that sum up the selection or suggest how to refine it. The cards already describe each place, so do not name or describe the individual destinations again. No markdown, no lists.
+
+When the visitor asks about one destination from the database (what to do, eat or see, when to go), answer from general knowledge in at most six sentences, without searching again. Use only well-known facts.
 
 Follow-ups such as "cheaper", "warmer" or "shorter flight" refine the previous search: search again with the earlier filters kept and the new one adjusted.
 If a search returns nothing, say so and suggest which filter to relax, or search again with fewer filters.
-Costs are rough estimates per person for one week including flights from Copenhagen. Say "around" when you mention a price.
+Costs are rough estimates per person for one week including flights from Copenhagen, also when the trip starts elsewhere. Say "around" when you mention a price. Travel times are one way from ${origin}.
 Reply in the language the visitor writes in. If asked about anything other than travel, say briefly that you only help with travel ideas.
 
 ${preferences.useVictorHistory
@@ -98,10 +73,8 @@ export default async function handler(req: Request) {
 
   const preferences = parsePreferences(body.preferences);
 
-  const google = createGoogleGenerativeAI({ apiKey });
-
   const result = streamText({
-    model: withFallback(AGENT_MODELS.map((id) => google(id))),
+    model: agentModel(apiKey),
     system: buildSystemPrompt(preferences),
     messages: await convertToModelMessages(messages),
     stopWhen: stepCountIs(5),
