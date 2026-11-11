@@ -1,6 +1,7 @@
 // Edge Function: destination search for the filter panel. No language model involved.
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
 import { isUuid, parsePreferences, runSearch, searchInputSchema } from "./_lib/search.js";
+import { recordDestinationEvents } from "./_lib/stats.js";
 
 export const config = { runtime: "edge" };
 
@@ -27,6 +28,8 @@ export default async function handler(req: Request) {
     // excludeId is set when looking for places similar to one destination
     const excludeId = isUuid(body.excludeId) ? body.excludeId : null;
     const destinations = await runSearch(input.data, parsePreferences(body.preferences), process.env.GEMINI_API_KEY, excludeId);
+    // A panel search suggests every destination it returns; a "similar places" lookup does not count
+    if (!excludeId) await recordDestinationEvents(destinations.map((d) => d.id), "suggested");
     return json({ destinations });
   } catch (error) {
     console.error("Travel search error:", error);

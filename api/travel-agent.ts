@@ -4,8 +4,9 @@ import { z } from "zod";
 import { agentModel } from "./_lib/models.js";
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
 import { parsePreferences, runSearch, searchInputSchema } from "./_lib/search.js";
-import type { TravelPreferences } from "../src/types/travel.js";
-import { findOrigin } from "../src/services/travelSearch.js";
+import { recordDestinationEvents } from "./_lib/stats.js";
+import type { TravelPreferences } from "../src/features/travel-agent/types.js";
+import { findOrigin } from "../src/features/travel-agent/lib/travelSearch.js";
 import { portfolioKnowledge } from "../src/data/portfolioData.js";
 
 export const config = { runtime: "edge" };
@@ -98,7 +99,11 @@ export default async function handler(req: Request) {
             reason: z.string().max(220).describe("One sentence on why this fits the request."),
           })).min(1).max(6),
         }),
-        execute: async ({ picks }) => ({ shown: picks.length }),
+        execute: async ({ picks }) => {
+          // The agent suggests the destinations it picks, not everything the search returned
+          await recordDestinationEvents(picks.map((pick) => pick.id), "suggested");
+          return { shown: picks.length };
+        },
       }),
     },
     onError: ({ error }) => console.error("Travel agent error:", error),

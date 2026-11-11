@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import OriginPicker from '@/components/travel-agent/OriginPicker';
-import type { SearchFilters } from '@/types/travel';
-import { SEARCH_TOOL, type AgentMessage } from '@/services/travelSearch';
+import OriginPicker from '@/features/travel-agent/components/OriginPicker';
+import type { SearchFilters } from '@/features/travel-agent/types';
+import { SEARCH_TOOL, type AgentMessage } from '@/features/travel-agent/lib/travelSearch';
 
 const STARTER_PROMPTS = [
     'Warm beach in March for under 12.000 kr.',
@@ -72,7 +72,7 @@ export default function ChatPanel({ messages, isBusy, error, filters, onFiltersC
                     </div>
                     <div className="flex items-center justify-between gap-3">
                         <label htmlFor="chat-include-visited" className="text-xs text-foreground">
-                            Include countries Victor has visited
+                            Include countries Victor has already visited
                         </label>
                         <Switch
                             id="chat-include-visited"

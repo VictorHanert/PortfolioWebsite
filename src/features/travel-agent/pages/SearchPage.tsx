@@ -2,22 +2,23 @@ import { useEffect, useMemo, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { useMutation } from '@tanstack/react-query';
 import { DefaultChatTransport } from 'ai';
-import ChatPanel from '@/components/travel-agent/ChatPanel';
-import DestinationCard from '@/components/travel-agent/DestinationCard';
-import DestinationSheet from '@/components/travel-agent/DestinationSheet';
-import PreferencePanel from '@/components/travel-agent/PreferencePanel';
+import { useLocation, useNavigate } from 'react-router-dom';
+import ChatPanel from '@/features/travel-agent/components/ChatPanel';
+import DestinationCard from '@/features/travel-agent/components/DestinationCard';
+import DestinationSheet from '@/features/travel-agent/components/DestinationSheet';
+import PreferencePanel from '@/features/travel-agent/components/PreferencePanel';
+import { searchByFilters } from '@/features/travel-agent/lib/api';
 import {
+    askAgentPrompt,
     cardsFromMessages,
-    filterReason,
     filtersToSearchInput,
     findOrigin,
     latestSearchInput,
     preferencesFromFilters,
     searchLabels,
-} from '@/services/travelSearch';
-import type { DestinationCardData, DestinationRow, SearchFilters } from '@/types/travel';
-import { DEFAULT_FILTERS } from '@/types/travel';
-import './travel-agent.css';
+} from '@/features/travel-agent/lib/travelSearch';
+import type { DestinationCardData, SearchFilters } from '@/features/travel-agent/types';
+import { DEFAULT_FILTERS } from '@/features/travel-agent/types';
 
 type Mode = 'filters' | 'chat';
 
@@ -52,24 +53,9 @@ function historyLabel(entry: HistoryEntry): string {
     return [...labels, ...origin].join(' · ') || 'Anywhere';
 }
 
-// Panel search: no language model, the filters go straight to the database
-async function searchByFilters(filters: SearchFilters, semanticText: string): Promise<DestinationCardData[]> {
-    const input = filtersToSearchInput(filters, semanticText);
-    if (!input) return [];
-
-    const preferences = preferencesFromFilters(filters);
-    const res = await fetch('/api/travel-search', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ input, preferences }),
-    });
-    if (!res.ok) throw new Error(`Search failed: ${res.status}`);
-
-    const { destinations } = (await res.json()) as { destinations: DestinationRow[] };
-    return destinations.map((destination) => ({ destination, reason: filterReason(destination, input, preferences) }));
-}
-
-export default function TravelAgent() {
+export default function SearchPage() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [mode, setMode] = useState<Mode>('filters');
     const [filters, setFilters] = useState<SearchFilters>(DEFAULT_FILTERS);
     const [semanticText, setSemanticText] = useState('');
@@ -105,6 +91,15 @@ export default function TravelAgent() {
     const preferences = preferencesFromFilters(filters);
     const askAgent = (text: string) => sendMessage({ text }, { body: { preferences } });
 
+    // "Ask the agent" on another page of the site arrives here as a question in the navigation state
+    const pendingQuestion = (location.state as { ask?: string } | null)?.ask;
+    useEffect(() => {
+        if (!pendingQuestion) return;
+        navigate('.', { replace: true, state: null });
+        setMode('chat');
+        sendMessage({ text: pendingQuestion }, { body: { preferences: preferencesFromFilters(DEFAULT_FILTERS) } });
+    }, [pendingQuestion, navigate, sendMessage]);
+
     const chatCards = useMemo(() => cardsFromMessages(messages), [messages]);
     const chatFilters = useMemo(() => searchLabels(latestSearchInput(messages)).filter((label) => !label.startsWith('"')), [messages]);
     const chatBusy = status === 'submitted' || status === 'streaming';
@@ -122,8 +117,8 @@ export default function TravelAgent() {
     else if (!isChat && panelSearch.isSuccess) emptyHint = 'Nothing matched this brief. Loosen a filter and try again.';
 
     return (
-        <div className="ta pt-16">
-            <div className="flex min-h-[calc(100vh-4rem)] w-full flex-col lg:h-[calc(100vh-4rem)] lg:min-h-0 lg:flex-row lg:overflow-hidden">
+        <div>
+            <div className="flex min-h-[calc(100vh-3.5rem)] w-full flex-col lg:h-[calc(100vh-3.5rem)] lg:min-h-0 lg:flex-row lg:overflow-hidden">
                 {/* Controls: stacked on mobile, sidebar on desktop */}
                 <div className="flex w-full flex-col lg:h-full lg:w-[400px] lg:min-w-[400px] xl:w-[460px] xl:min-w-[460px]">
                     <div className="flex border-b border-border bg-card px-4 sm:px-6 lg:border-r">
@@ -166,10 +161,10 @@ export default function TravelAgent() {
                 </div>
 
                 {/* Results */}
-                <div className="flex min-w-0 flex-1 flex-col lg:min-h-0">
+                <div className="ta-grid flex min-w-0 flex-1 flex-col lg:min-h-0">
                     {/* Recent panel searches, or the filters the agent applied */}
                     {!isChat && history.length > 0 && (
-                        <div className="flex items-center gap-2 overflow-x-auto border-b border-border px-4 py-2.5 sm:px-6">
+                        <div className="flex items-center gap-2 overflow-x-auto border-b border-border bg-background px-4 py-2.5 sm:px-6">
                             <span className="ta-label shrink-0">Recent</span>
                             {history.map((entry) => (
                                 <button
@@ -188,7 +183,7 @@ export default function TravelAgent() {
                         </div>
                     )}
                     {isChat && chatFilters.length > 0 && (
-                        <div className="flex flex-wrap items-center gap-2 border-b border-border px-4 py-2.5 sm:px-6">
+                        <div className="flex flex-wrap items-center gap-2 border-b border-border bg-background px-4 py-2.5 sm:px-6">
                             <span className="ta-label">Filters applied</span>
                             {chatFilters.map((label) => (
                                 <span key={label} className="rounded-sm border border-border bg-card px-2.5 py-1 text-[11px] text-foreground">
@@ -230,7 +225,7 @@ export default function TravelAgent() {
                 onAskAgent={(destination) => {
                     setSelected(null);
                     setMode('chat');
-                    askAgent(`Tell me more about ${destination.name}, ${destination.country}: what to do, eat and see, and when to go.`);
+                    askAgent(askAgentPrompt(destination));
                 }}
             />
         </div>

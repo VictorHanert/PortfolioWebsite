@@ -5,15 +5,17 @@ import {
     filterReason,
     filtersToSearchInput,
     findOrigin,
+    formatCoordinates,
     formatMonths,
     latestSearchInput,
     searchLabels,
     SEARCH_TOOL,
     SHOW_TOOL,
 } from './travelSearch';
+import { toggleFavorite } from './favorites';
 import type { AgentMessage } from './travelSearch';
-import { DEFAULT_FILTERS } from '@/types/travel';
-import type { DestinationRow, SearchFilters } from '@/types/travel';
+import { DEFAULT_FILTERS } from '@/features/travel-agent/types';
+import type { DestinationRow, SearchFilters } from '@/features/travel-agent/types';
 
 const row = (id: string, name: string): DestinationRow => ({
     id,
@@ -25,6 +27,8 @@ const row = (id: string, name: string): DestinationRow => ({
     best_months: null,
     avg_cost_dkk: null,
     flight_hours: null,
+    latitude: null,
+    longitude: null,
     image_url: null,
     image_credit: null,
     image_credit_url: null,
@@ -184,5 +188,22 @@ describe('formatMonths', () => {
         expect(formatMonths([4, 5, 9])).toBe('Apr-May, Sep');
         expect(formatMonths([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])).toBe('All year');
         expect(formatMonths([])).toBe('');
+    });
+});
+
+describe('formatCoordinates', () => {
+    it('formats both hemispheres and tolerates missing values', () => {
+        expect(formatCoordinates(42.641, 18.109)).toBe('42.64°N 18.11°E');
+        expect(formatCoordinates(-33.868, -70.5)).toBe('33.87°S 70.50°W');
+        expect(formatCoordinates(null, 18.1)).toBe('');
+    });
+});
+
+describe('toggleFavorite', () => {
+    it('adds a new destination first and removes a saved one', () => {
+        const rome = row('a', 'Rome');
+        const bari = row('b', 'Bari');
+        expect(toggleFavorite([rome], bari).map((d) => d.name)).toEqual(['Bari', 'Rome']);
+        expect(toggleFavorite([rome, bari], rome).map((d) => d.name)).toEqual(['Bari']);
     });
 });

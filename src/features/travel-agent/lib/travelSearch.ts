@@ -1,8 +1,8 @@
 // Pure travel agent logic shared by api/travel-agent.ts and the UI. Keep imports relative: the API bundle has no "@" alias.
 import { DEFAULT_ORIGIN_CODE, originCountries, type OriginCountry } from '../data/originCountries';
-import { visitedCountries } from '../data/visitedCountries';
-import { BUDGET_MAX, SEASON_MONTHS } from '../types/travel';
-import type { DestinationCardData, DestinationRow, DistanceCategory, SearchFilters, SearchInput, TravelDuration, TravelPreferences } from '../types/travel';
+import { visitedCountries } from '../../../data/visitedCountries';
+import { BUDGET_MAX, SEASON_MONTHS } from '../types';
+import type { DestinationCardData, DestinationRow, DistanceCategory, SearchFilters, SearchInput, TravelDuration, TravelPreferences } from '../types';
 
 const VISITED_COUNTRY_CODES = visitedCountries.map((country) => country.id);
 const MAX_FALLBACK_CARDS = 6;
@@ -169,6 +169,19 @@ export function cardsFromMessages(messages: AgentMessage[]): DestinationCardData
     }
 
     return lastSearch.slice(0, MAX_FALLBACK_CARDS).map((destination) => ({ destination, reason: '' }));
+}
+
+// "42.64°N 18.11°E"
+export function formatCoordinates(latitude: number | null, longitude: number | null): string {
+    if (latitude === null || longitude === null) return '';
+    const part = (value: number, positive: string, negative: string) =>
+        `${Math.abs(value).toFixed(2)}°${value >= 0 ? positive : negative}`;
+    return `${part(latitude, 'N', 'S')} ${part(longitude, 'E', 'W')}`;
+}
+
+// The question sent to the agent from a destination's "Ask the agent" button
+export function askAgentPrompt(destination: Pick<DestinationRow, 'name' | 'country'>): string {
+    return `Tell me more about ${destination.name}, ${destination.country}: what to do, eat and see, and when to go.`;
 }
 
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

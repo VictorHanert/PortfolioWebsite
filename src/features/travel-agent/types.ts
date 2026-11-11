@@ -28,7 +28,9 @@ export interface DestinationRow {
     category: string[];
     best_months: number[] | null;
     avg_cost_dkk: number | null; // per person, one week, including flights from Copenhagen
-    flight_hours: number | null;
+    flight_hours: number | null; // one way, from the chosen origin country
+    latitude: number | null;
+    longitude: number | null;
     image_url: string | null;
     image_credit: string | null;
     image_credit_url: string | null;
@@ -60,6 +62,13 @@ export interface DestinationCardData {
     reason: string;
 }
 
+// One entry on the "Top destinations" page
+export interface TopDestination {
+    destination: DestinationRow;
+    suggestedCount: number;
+    openedCount: number;
+}
+
 // ── Filter panel state ─────────────────────────────────────────────────
 export type DistanceCategory = 'Short' | 'Mid' | 'Long';
 
@@ -87,7 +96,7 @@ export interface SearchFilters {
 // The top of the budget slider means "no upper limit"
 export const BUDGET_MAX = 40000;
 
-// The hour ranges live in DISTANCE_HOURS in src/services/travelSearch.ts
+// The hour ranges live in DISTANCE_HOURS in src/features/travel-agent/lib/travelSearch.ts
 export const DISTANCE_OPTIONS = [
     { value: 'Short', label: 'Short', hint: 'Up to 3,5 hours of travel' },
     { value: 'Mid', label: 'Medium', hint: '3,5 to 7 hours of travel' },

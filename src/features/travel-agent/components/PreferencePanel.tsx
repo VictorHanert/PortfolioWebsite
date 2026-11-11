@@ -2,9 +2,9 @@ import { ArrowRight } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import OriginPicker from '@/components/travel-agent/OriginPicker';
-import type { SearchFilters, TravelDuration } from '@/types/travel';
-import { BUDGET_MAX, CATEGORY_OPTIONS, DISTANCE_OPTIONS, SEASON_OPTIONS, TRAVEL_DURATION_OPTIONS } from '@/types/travel';
+import OriginPicker from '@/features/travel-agent/components/OriginPicker';
+import type { SearchFilters, TravelDuration } from '@/features/travel-agent/types';
+import { BUDGET_MAX, CATEGORY_OPTIONS, DISTANCE_OPTIONS, SEASON_OPTIONS, TRAVEL_DURATION_OPTIONS } from '@/features/travel-agent/types';
 
 interface PreferencePanelProps {
     filters: SearchFilters;
@@ -33,8 +33,8 @@ function formatBudget(v: number) {
 }
 
 const chipClass = (active: boolean) =>
-    `h-8 rounded-sm border px-2 text-[11px] font-medium transition-colors ${active
-        ? 'border-foreground bg-foreground text-background'
+    `h-8 rounded-sm border px-2.5 text-[11px] font-medium transition-colors ${active
+        ? 'border-[hsl(var(--ta-accent))] bg-[hsl(var(--ta-accent))] text-background'
         : 'border-border bg-card text-foreground hover:border-foreground'
     }`;
 
@@ -57,7 +57,7 @@ export default function PreferencePanel({
                 {/* Budget */}
                 <section>
                     <div className="mb-2.5 flex items-baseline justify-between gap-3">
-                        <label className="ta-label" title="Estimate per person for one week, including flights">01 Budget, one week</label>
+                        <label className="ta-label" title="Estimate per person for one week, including flights">Budget, one week</label>
                         <span className="ta-mono shrink-0 text-[11px] text-foreground">
                             {formatBudget(filters.budgetRange[0])} - {formatBudget(filters.budgetRange[1])}
                         </span>
@@ -75,7 +75,7 @@ export default function PreferencePanel({
 
                 {/* Duration */}
                 <section>
-                    <label className="ta-label mb-2 block">02 Trip length</label>
+                    <label className="ta-label mb-2 block">Trip length</label>
                     <div className="grid grid-cols-4 gap-1.5">
                         {TRAVEL_DURATION_OPTIONS.map((duration) => {
                             const active = filters.tripDuration === duration;
@@ -96,7 +96,7 @@ export default function PreferencePanel({
                 {/* Distance */}
                 <section>
                     <div className="ta-label mb-2 flex flex-wrap items-center gap-1.5">
-                        <span>03 Distance from</span>
+                        <span>Distance from</span>
                         <OriginPicker code={filters.originCode} onChange={(originCode) => update({ originCode })} />
                     </div>
                     <div className="grid grid-cols-3 gap-1.5">
@@ -119,7 +119,7 @@ export default function PreferencePanel({
 
                 {/* Category */}
                 <section>
-                    <label className="ta-label mb-2 block">04 Kind of trip</label>
+                    <label className="ta-label mb-2 block">Kind of trip</label>
                     <div className="flex flex-wrap gap-1.5">
                         {CATEGORY_OPTIONS.map((cat) => {
                             const active = filters.categories.includes(cat);
@@ -145,8 +145,8 @@ export default function PreferencePanel({
 
                 {/* Season */}
                 <section>
-                    <label className="ta-label mb-2 block">05 Season</label>
-                    <div className="grid grid-cols-6 gap-1.5">
+                    <label className="ta-label mb-2 block">Season</label>
+                    <div className="flex flex-wrap gap-1.5">
                         {SEASON_OPTIONS.map((s) => {
                             const active = filters.season === s;
                             return (
@@ -155,7 +155,7 @@ export default function PreferencePanel({
                                     key={s}
                                     onClick={() => update({ season: active ? null : s })}
                                     title={s}
-                                    className={`${chipClass(active)} whitespace-nowrap px-0 text-[10px] tracking-tight`}
+                                    className={chipClass(active)}
                                 >
                                     {SEASON_LABELS[s] ?? s}
                                 </button>
@@ -166,7 +166,7 @@ export default function PreferencePanel({
 
                 {/* Extra prompt */}
                 <section>
-                    <label className="ta-label mb-2 block">06 Anything else</label>
+                    <label className="ta-label mb-2 block">Anything else</label>
                     <Textarea
                         value={semanticText}
                         onChange={(e) => onSemanticTextChange(e.target.value)}
@@ -193,7 +193,7 @@ export default function PreferencePanel({
                     </div>
                     <div className="flex items-center justify-between gap-3">
                         <label htmlFor="panel-include-visited" className="text-xs text-foreground">
-                            Include countries Victor has visited
+                            Include countries Victor has already visited
                         </label>
                         <Switch
                             id="panel-include-visited"

@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCompletion } from '@ai-sdk/react';
 import { useQuery } from '@tanstack/react-query';
 import ReactMarkdown from 'react-markdown';
-import { ArrowRight, ArrowUpRight, Loader2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Bookmark, Loader2 } from 'lucide-react';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
-import { findOrigin, formatMonths } from '@/services/travelSearch';
-import type { DestinationCardData, DestinationRow, TravelPreferences } from '@/types/travel';
+import { fetchSimilar, reportOpened } from '@/features/travel-agent/lib/api';
+import { useFavorites } from '@/features/travel-agent/lib/favorites';
+import { findOrigin, formatCoordinates, formatMonths } from '@/features/travel-agent/lib/travelSearch';
+import type { DestinationCardData, DestinationRow, TravelPreferences } from '@/features/travel-agent/types';
 
 const DAY_OPTIONS = [3, 5, 7, 10];
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -20,28 +22,20 @@ interface DestinationSheetProps {
 
 const chipClass = (active: boolean) =>
     `ta-mono h-7 rounded-sm border px-2.5 text-[11px] transition-colors ${active
-        ? 'border-foreground bg-foreground text-background'
+        ? 'border-[hsl(var(--ta-accent))] bg-[hsl(var(--ta-accent))] text-background'
         : 'border-border bg-card text-foreground hover:border-foreground'
     }`;
-
-async function fetchSimilar(destination: DestinationRow, preferences: TravelPreferences): Promise<DestinationRow[]> {
-    const res = await fetch('/api/travel-search', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            input: { query: `${destination.name}, ${destination.country}. ${destination.description ?? ''}`.slice(0, 480) },
-            preferences,
-            excludeId: destination.id,
-        }),
-    });
-    if (!res.ok) throw new Error(`Search failed: ${res.status}`);
-    return ((await res.json()) as { destinations: DestinationRow[] }).destinations.slice(0, 3);
-}
 
 function SheetBody({ card, preferences, onSelect, onAskAgent }: Omit<DestinationSheetProps, 'card' | 'onClose'> & { card: DestinationCardData }) {
     const { destination, reason } = card;
     const origin = findOrigin(preferences.originCode);
     const months = destination.best_months ?? [];
+
+    const { isFavorite, toggle } = useFavorites();
+    const saved = isFavorite(destination.id);
+
+    // Counted once per opened destination, for the "Top destinations" page
+    useEffect(() => reportOpened(destination.id), [destination.id]);
 
     const [days, setDays] = useState(5);
     const [month, setMonth] = useState<number | null>(months[0] ?? null);
@@ -64,9 +58,12 @@ function SheetBody({ card, preferences, onSelect, onAskAgent }: Omit<Destination
             <div className="space-y-6 px-5 py-5 sm:px-7">
                 {/* Route, like the header of a boarding pass */}
                 <div>
-                    <p className="ta-label">
-                        {origin.name} <span className="ta-accent">to</span> {destination.country}
-                    </p>
+                    <div className="flex items-baseline justify-between gap-3">
+                        <p className="ta-label">
+                            {origin.name} <span className="ta-accent">to</span> {destination.country}
+                        </p>
+                        <p className="ta-label">{formatCoordinates(destination.latitude, destination.longitude)}</p>
+                    </div>
                     <SheetTitle className="ta-display mt-1 text-3xl font-medium leading-tight text-foreground">
                         {destination.name}
                     </SheetTitle>
@@ -104,6 +101,16 @@ function SheetBody({ card, preferences, onSelect, onAskAgent }: Omit<Destination
                         {reason}
                     </p>
                 )}
+
+                <button
+                    type="button"
+                    onClick={() => toggle(destination)}
+                    aria-pressed={saved}
+                    className="ta-mono flex h-9 w-full items-center justify-center gap-2 rounded-sm border border-foreground/80 bg-card text-[11px] uppercase tracking-[0.14em] text-foreground transition-colors hover:bg-muted"
+                >
+                    <Bookmark className="h-3.5 w-3.5" fill={saved ? 'hsl(var(--ta-accent))' : 'none'} stroke={saved ? 'hsl(var(--ta-accent))' : 'currentColor'} />
+                    {saved ? 'Saved to my favorites' : 'Save to my favorites'}
+                </button>
 
                 {/* Trip plan */}
                 <section>
@@ -213,10 +220,9 @@ function SheetBody({ card, preferences, onSelect, onAskAgent }: Omit<Destination
 export default function DestinationSheet({ card, onClose, ...rest }: DestinationSheetProps) {
     return (
         <Sheet open={card !== null} onOpenChange={(open) => !open && onClose()}>
-            {/* Starts below the fixed navbar, which sits above the sheet */}
             <SheetContent
                 side="right"
-                className="ta top-16 h-auto w-full overflow-y-auto border-l border-foreground/80 p-0 sm:max-w-xl [&>button]:rounded-sm [&>button]:bg-card [&>button]:p-1 [&>button]:opacity-100"
+                className="ta w-full overflow-y-auto border-l border-foreground/80 p-0 sm:max-w-xl [&>button]:rounded-sm [&>button]:bg-card [&>button]:p-1 [&>button]:opacity-100"
             >
                 {/* Keyed so the plan and the pickers reset when another destination opens */}
                 {card && <SheetBody key={card.destination.id} card={card} {...rest} />}

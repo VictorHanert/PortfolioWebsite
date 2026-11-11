@@ -1,4 +1,4 @@
-// Adds coordinates to supabase/seed/destinations.json and writes src/data/originCountries.ts
+// Adds coordinates to supabase/seed/destinations.json and writes src/features/travel-agent/data/originCountries.ts
 // (UN member countries with the coordinates of their capital, used as "travelling from").
 // Run locally: node scripts/fetch-geodata.mjs
 // Sources: mledoze/countries (country list) and the Open-Meteo geocoding API (no key needed).
@@ -6,7 +6,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { setTimeout as sleep } from 'node:timers/promises';
 
 const SEED_FILE = new URL('../supabase/seed/destinations.json', import.meta.url);
-const ORIGINS_FILE = new URL('../src/data/originCountries.ts', import.meta.url);
+const ORIGINS_FILE = new URL('../src/features/travel-agent/data/originCountries.ts', import.meta.url);
 const COUNTRIES_URL = 'https://raw.githubusercontent.com/mledoze/countries/master/dist/countries.json';
 
 // Search terms for regions and places the geocoder does not know by their seed name

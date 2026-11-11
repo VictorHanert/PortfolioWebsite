@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { embedQuery } from "./embedding.js";
-import { buildSearchArgs, findOrigin } from "../../src/services/travelSearch.js";
-import { CATEGORY_OPTIONS, type DestinationRow, type TravelPreferences } from "../../src/types/travel.js";
+import { buildSearchArgs, findOrigin } from "../../src/features/travel-agent/lib/travelSearch.js";
+import { CATEGORY_OPTIONS, type DestinationRow, type TravelPreferences } from "../../src/features/travel-agent/types.js";
 
 // One search request. Used as the agent's tool input and as the body of /api/travel-search.
 export const searchInputSchema = z.object({

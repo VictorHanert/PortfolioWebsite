@@ -8,7 +8,7 @@ import { setTimeout as sleep } from 'node:timers/promises';
 const MODELS = ['gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-2.5-flash'];
 const SEED_FILE = new URL('../supabase/seed/destinations.json', import.meta.url);
 
-// Must match CATEGORY_OPTIONS in src/types/travel.ts
+// Must match CATEGORY_OPTIONS in src/features/travel-agent/types.ts
 const CATEGORIES = [
     'Beach', 'Warm Weather', 'Relax', 'Quiet', 'Nature', 'Cultural', 'Historical', 'Shopping', 'Capital',
     'Football', 'Nightlife', 'Ski', 'Cold Weather', 'Romantic', 'Trending', 'Hidden Gem',

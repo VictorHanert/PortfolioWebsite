@@ -3,7 +3,7 @@ import { streamText } from "ai";
 import { agentModel } from "./_lib/models.js";
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
 import { isUuid, parsePreferences, supabaseConfig } from "./_lib/search.js";
-import { findOrigin } from "../src/services/travelSearch.js";
+import { findOrigin } from "../src/features/travel-agent/lib/travelSearch.js";
 import { portfolioKnowledge } from "../src/data/portfolioData.js";
 
 export const config = { runtime: "edge" };

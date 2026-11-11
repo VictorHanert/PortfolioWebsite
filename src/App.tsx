@@ -13,7 +13,12 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 // Travel pages are loaded on demand to keep the landing page bundle small
 const GlobePage = lazy(() => import("./pages/Globe"));
 const TravelStatsPage = lazy(() => import("./pages/TravelStats"));
-const TravelAgentPage = lazy(() => import("./pages/TravelAgent"));
+
+// The travel agent is its own site under /travel-agent (see src/features/travel-agent)
+const TravelLayout = lazy(() => import("./features/travel-agent/TravelLayout"));
+const TravelSearchPage = lazy(() => import("./features/travel-agent/pages/SearchPage"));
+const TravelTopPage = lazy(() => import("./features/travel-agent/pages/TopDestinationsPage"));
+const TravelFavoritesPage = lazy(() => import("./features/travel-agent/pages/FavoritesPage"));
 
 const queryClient = new QueryClient();
 
@@ -35,10 +40,21 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route
+              path="/travel-agent"
+              element={
+                <Suspense fallback={null}>
+                  <TravelLayout />
+                </Suspense>
+              }
+            >
+              <Route index element={<TravelSearchPage />} />
+              <Route path="top" element={<TravelTopPage />} />
+              <Route path="favorites" element={<TravelFavoritesPage />} />
+            </Route>
             <Route element={<SharedPagesLayout />}>
               <Route path="/globe" element={<GlobePage />} />
               <Route path="/stats" element={<TravelStatsPage />} />
-              <Route path="/travel-agent" element={<TravelAgentPage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

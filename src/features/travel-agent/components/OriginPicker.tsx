@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { originCountries } from '@/data/originCountries';
-import { findOrigin } from '@/services/travelSearch';
+import { originCountries } from '@/features/travel-agent/data/originCountries';
+import { findOrigin } from '@/features/travel-agent/lib/travelSearch';
 
 interface OriginPickerProps {
     code: string;

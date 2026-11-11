@@ -1,28 +1,28 @@
-/* Travel agent theme: printed travel journal. Paper, ink, one terracotta accent, serif display type
+/* Travel agent theme: printed atlas. Paper, ink, one deep blue accent, serif display type
    and monospace labels. Scoped to .ta so no other page is affected. Portalled content (popover, sheet)
    needs the .ta class on its own root to pick the theme up. */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 .ta {
   --background: 40 33% 95%;
-  --foreground: 200 28% 12%;
+  --foreground: 224 32% 12%;
   --card: 42 42% 98%;
-  --card-foreground: 200 28% 12%;
+  --card-foreground: 224 32% 12%;
   --popover: 42 42% 98%;
-  --popover-foreground: 200 28% 12%;
-  --primary: 200 28% 12%;
+  --popover-foreground: 224 32% 12%;
+  --primary: 224 32% 12%;
   --primary-foreground: 40 33% 95%;
   --secondary: 38 24% 89%;
-  --secondary-foreground: 200 28% 12%;
+  --secondary-foreground: 224 32% 12%;
   --muted: 38 24% 90%;
-  --muted-foreground: 200 9% 38%;
+  --muted-foreground: 224 10% 38%;
   --accent: 38 24% 89%;
-  --accent-foreground: 200 28% 12%;
+  --accent-foreground: 224 32% 12%;
   --border: 36 16% 78%;
   --input: 36 16% 78%;
-  --ring: 14 60% 45%;
+  --ring: 226 68% 34%;
   --radius: 0.25rem;
-  --ta-accent: 14 60% 45%;
+  --ta-accent: 226 68% 34%; /* deep atlas blue, #1c3491 */
 
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
@@ -48,6 +48,14 @@
 
 .ta-accent {
   color: hsl(var(--ta-accent));
+}
+
+/* Faint survey grid behind the results, like the graticule of a map sheet */
+.ta-grid {
+  background-image:
+    linear-gradient(hsl(var(--foreground) / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 /* Hard offset shadow, like a print slightly out of register */
