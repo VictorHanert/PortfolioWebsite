@@ -13,7 +13,7 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 
 ## Stack
 
-- React 18.3 (not 19), TypeScript, Vite 7, `react-router-dom` v6
+- React 18.3 (not 19), TypeScript, Vite 7, `react-router-dom` v7
 - Tailwind CSS + shadcn/ui (`src/components/ui/*`, generated, avoid hand-editing)
 - `styled-components` only in `StyledText.tsx` and `Switch.tsx` (legacy, do not spread it)
 - framer-motion, Recharts, tsparticles, MapTiler SDK
