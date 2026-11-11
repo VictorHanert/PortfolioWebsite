@@ -33,8 +33,9 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 - `api/` - Vercel edge functions:
   - `chat.ts` - portfolio chatbot (Gemini), rate limited
   - `send.ts` - contact form mail (nodemailer/Gmail), rate limited
-  - `travel-agent.ts` - the travel agent (see below), rate limited
-  - `_lib/` - shared helpers (`rateLimit.ts`, `embedding.ts`). Underscore folders are not routes. Import with `.js` extensions and relative paths: the API bundle has no `@` alias
+  - `travel-search.ts` - destination search for the filter panel (no language model), rate limited
+  - `travel-agent.ts` - the conversational travel agent (see below), rate limited
+  - `_lib/` - shared helpers (`rateLimit.ts`, `embedding.ts`, `search.ts`). Underscore folders are not routes. Import with `.js` extensions and relative paths: the API bundle has no `@` alias
 
 ## Globe (`/globe`)
 
@@ -47,16 +48,18 @@ Personal portfolio for Victor Hanert (victorhanert.com). Vite + React SPA deploy
 
 ## Travel agent (`/travel-agent`)
 
-- Flow: `useChat` (`src/pages/TravelAgent.tsx`) posts the conversation and the two visitor toggles to `api/travel-agent.ts`. Gemini calls the `searchDestinations` tool (embeds the query, calls the `search_destinations` RPC with the anon key), then `showDestinations` with 3-6 picks and a reason each, then streams a short text reply. Follow-ups re-run the search with adjusted filters
-- The toggles ("Victor's travel taste", "include visited countries") are applied by the server in `buildSearchArgs`; the model cannot change them
-- Models: `AGENT_MODELS` in `api/travel-agent.ts` is a fallback chain, because newer Gemini models often return 503/429 or hang. Check availability before changing it
-- UI: `src/components/travel-agent/ChatPanel.tsx` (conversation, toggles, input) and `DestinationCard.tsx`. Cards and the "filters applied" chips are derived from the tool parts of the messages by `cardsFromMessages` and `latestSearchInput`
+- Two modes on one page (`src/pages/TravelAgent.tsx`), sharing the result cards:
+  - **Filters (primary, default)**: `PreferencePanel.tsx` (budget range, trip length, distance, categories, season, free text, two Victor toggles). `filtersToSearchInput` turns the panel state into a `SearchInput`, posted to `api/travel-search.ts`. No language model: only the optional free text is embedded, and a failed embedding falls back to filter-only ranking. Card reasons come from `filterReason`
+  - **Ask the agent (alternative)**: `ChatPanel.tsx` with `useChat`, posting to `api/travel-agent.ts`. Gemini calls the `searchDestinations` tool, then `showDestinations` with 3-6 picks and a reason each, then streams a short reply. Follow-ups re-run the search. Cards and the "filters applied" chips are derived from the tool parts by `cardsFromMessages` and `latestSearchInput`
+- Both endpoints go through `runSearch` in `api/_lib/search.ts` (zod schema `searchInputSchema`, query embedding, `search_destinations` RPC with the anon key)
+- The Victor toggles ("travel history", "include visited countries") live in the panel state and are applied by the server in `buildSearchArgs`; the model cannot change them
+- Models: `AGENT_MODELS` in `api/travel-agent.ts` is a fallback chain, because the free Gemini tier often returns 503/429 and some newer models hang. Check availability before changing it. This is why the filter panel must never depend on a language model
 - Shared pure logic: `src/services/travelSearch.ts` (used by both the API and the UI, so it only uses relative imports)
-- DB (Supabase project `supabase-travel-agent`): schema lives in `supabase/migrations/`. `search_destinations` is `SECURITY INVOKER` with `search_path = ''`; hard filters (max cost, max flight hours, months, categories, excluded countries), ranked by cosine similarity (blended 75/25 with the `travel_profiles` row `victor` when the taste toggle is on), category overlap as tie-break. `pgvector` lives in the `extensions` schema, so use `extensions.vector` and `operator(extensions.<=>)`. anon/authenticated can only SELECT
+- DB (Supabase project `supabase-travel-agent`): schema lives in `supabase/migrations/`. `search_destinations` is `SECURITY INVOKER` with `search_path = ''`; hard filters (cost range, flight hour range, months, categories, excluded countries), ranked by cosine similarity (blended 75/25 with the `travel_profiles` row `victor` when the taste toggle is on), category overlap as tie-break. `pgvector` lives in the `extensions` schema, so use `extensions.vector` and `operator(extensions.<=>)`. anon/authenticated can only SELECT
 - Data: `supabase/seed/destinations.json` is the source of truth (keyed on `name` + `country_code`). `avg_cost_dkk` is an estimate per person for one week including flights from Copenhagen; `flight_hours` is one-way travel time. `supabase/seed/taste-profile.txt` is embedded as Victor's profile
 - Scripts (local, `node --env-file=.env scripts/<name>.mjs`):
   - `generate-destinations.mjs` - regenerates the JSON with Gemini, region by region (AI-written estimates: review the diff)
-  - `fetch-destination-images.mjs` - adds one Unsplash photo per destination (`UNSPLASH_ACCESS_KEY`). Images are hotlinked and credited on the card, as the Unsplash API guidelines require
+  - `fetch-destination-images.mjs` - adds one Unsplash photo per destination (`UNSPLASH_ACCESS_KEY`). It scores 15 candidates by whether their own description names the place and lists weak matches; fix those with `QUERY_OVERRIDES` and `--only=Name`, then check them by eye. Images are hotlinked and credited on the card, as the Unsplash API guidelines require
   - `seed-destinations.mjs` - embeds and upserts the JSON and the taste profile (`GEMINI_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Removes rows that are no longer in the JSON
 - Embedding model and dimensions must stay identical in `seed-destinations.mjs` and `api/_lib/embedding.ts`
 - `budget_level` and `distance_category` are legacy columns, still filled by the seed script

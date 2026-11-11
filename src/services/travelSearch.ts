@@ -1,6 +1,7 @@
 // Pure travel agent logic shared by api/travel-agent.ts and the UI. Keep imports relative: the API bundle has no "@" alias.
 import { visitedCountries } from '../data/visitedCountries';
-import type { DestinationCardData, DestinationRow, SearchInput, TravelPreferences } from '../types/travel';
+import { BUDGET_MAX, SEASON_MONTHS } from '../types/travel';
+import type { DestinationCardData, DestinationRow, DistanceCategory, SearchFilters, SearchInput, TravelDuration, TravelPreferences } from '../types/travel';
 
 const VISITED_COUNTRY_CODES = visitedCountries.map((country) => country.id);
 const MAX_FALLBACK_CARDS = 6;
@@ -26,7 +27,9 @@ export function buildSearchArgs(input: SearchInput, preferences: TravelPreferenc
     return {
         query_embedding: queryEmbedding ? JSON.stringify(queryEmbedding) : null,
         use_profile: preferences.useVictorHistory,
+        min_cost_dkk: input.minCostDkk ?? null,
         max_cost_dkk: input.maxCostDkk ?? null,
+        min_flight_hours: input.minFlightHours ?? null,
         max_flight_hours: input.maxFlightHours ?? null,
         months: input.months?.length ? input.months : null,
         categories: input.categories?.length ? input.categories : null,
@@ -35,6 +38,66 @@ export function buildSearchArgs(input: SearchInput, preferences: TravelPreferenc
     };
 }
 
+// ── Filter panel ───────────────────────────────────────────────────────
+const DURATION_DISTANCES: Record<TravelDuration, DistanceCategory[]> = {
+    'Day Trip': ['Short'],
+    'Weekend': ['Short', 'Mid'],
+    '1-3 Days': ['Short', 'Mid'],
+    '3-6 Days': ['Short', 'Mid'],
+    '1 Week': ['Short', 'Mid', 'Long'],
+    '2 Weeks': ['Mid', 'Long'],
+    '15+ Days': ['Long'],
+    'No Preference': ['Short', 'Mid', 'Long'],
+};
+
+// One-way travel time from Copenhagen in hours: above min, up to max
+const DISTANCE_HOURS: Record<DistanceCategory, { min: number; max: number | null }> = {
+    Short: { min: 0, max: 3.5 },
+    Mid: { min: 3.5, max: 7 },
+    Long: { min: 7, max: null },
+};
+
+export function preferencesFromFilters(filters: SearchFilters): TravelPreferences {
+    return { useVictorHistory: filters.useVisitedCountriesData, includeVisited: filters.includeVisitedCountries };
+}
+
+// Turns the panel state into a search request. Returns null when trip length and distance rule each other out.
+export function filtersToSearchInput(filters: SearchFilters, semanticText: string): SearchInput | null {
+    let distances: DistanceCategory[] = filters.tripDuration ? DURATION_DISTANCES[filters.tripDuration] : ['Short', 'Mid', 'Long'];
+    if (filters.distanceCategory) distances = distances.filter((d) => d === filters.distanceCategory);
+    if (distances.length === 0) return null;
+
+    // The allowed distances are always neighbours, so they form one range of hours
+    const minHours = Math.min(...distances.map((d) => DISTANCE_HOURS[d].min));
+    const maxHours = distances.some((d) => DISTANCE_HOURS[d].max === null)
+        ? null
+        : Math.max(...distances.map((d) => DISTANCE_HOURS[d].max as number));
+
+    const [minBudget, maxBudget] = filters.budgetRange;
+    const query = semanticText.trim();
+
+    return {
+        ...(query ? { query } : {}),
+        ...(minBudget > 0 ? { minCostDkk: minBudget } : {}),
+        ...(maxBudget < BUDGET_MAX ? { maxCostDkk: maxBudget } : {}),
+        ...(minHours > 0 ? { minFlightHours: minHours } : {}),
+        ...(maxHours !== null ? { maxFlightHours: maxHours } : {}),
+        ...(filters.season ? { months: SEASON_MONTHS[filters.season] } : {}),
+        ...(filters.categories.length > 0 ? { categories: filters.categories } : {}),
+    };
+}
+
+// Reason shown on a card for a panel search, where no model writes one
+export function filterReason(row: DestinationRow, input: SearchInput, preferences: TravelPreferences): string {
+    if (input.query && preferences.useVictorHistory) return "Close match to your description and Victor's travel taste.";
+    if (input.query) return 'Close match to your description.';
+
+    const matched = row.category.filter((c) => input.categories?.includes(c));
+    if (matched.length > 0) return `Matches your categories: ${matched.join(', ')}.`;
+    return preferences.useVictorHistory ? "Fits Victor's travel taste based on his travel history." : 'Matches your filters.';
+}
+
+// ── Agent conversation ─────────────────────────────────────────────────
 const hasInput = (part: AgentMessagePart) => part.state === 'input-available' || part.state === 'output-available';
 
 // The filters of the most recent search, for showing what the agent applied

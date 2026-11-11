@@ -3,9 +3,8 @@ import { convertToModelMessages, stepCountIs, streamText, tool, type UIMessage }
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
 import { checkRateLimit, clientIp } from "./_lib/rateLimit.js";
-import { embedQuery } from "./_lib/embedding.js";
-import { buildSearchArgs } from "../src/services/travelSearch.js";
-import { CATEGORY_OPTIONS, type DestinationRow, type TravelPreferences } from "../src/types/travel.js";
+import { parsePreferences, runSearch, searchInputSchema } from "./_lib/search.js";
+import type { TravelPreferences } from "../src/types/travel.js";
 import { portfolioKnowledge } from "../src/data/portfolioData.js";
 
 export const config = { runtime: "edge" };
@@ -74,21 +73,6 @@ ${preferences.includeVisited
     : "Countries Victor has already visited are excluded from every search. If the visitor asks for such a country, explain that the toggle 'Include visited countries' turns them on."}`;
 }
 
-async function searchDatabase(args: ReturnType<typeof buildSearchArgs>): Promise<DestinationRow[]> {
-  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-  const anonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
-  if (!url || !anonKey) throw new Error("Supabase is not configured");
-
-  const res = await fetch(`${url}/rest/v1/rpc/search_destinations`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", apikey: anonKey, Authorization: `Bearer ${anonKey}` },
-    body: JSON.stringify(args),
-  });
-  if (!res.ok) throw new Error(`Supabase search failed: ${res.status}`);
-
-  return res.json();
-}
-
 export default async function handler(req: Request) {
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
   if (!checkRateLimit(clientIp(req), RATE_LIMIT_MAX_REQUESTS)) return json({ error: "Rate limit exceeded" }, 429);
@@ -112,10 +96,7 @@ export default async function handler(req: Request) {
     return json({ error: "Message too long" }, 400);
   }
 
-  const preferences: TravelPreferences = {
-    useVictorHistory: body.preferences?.useVictorHistory !== false,
-    includeVisited: body.preferences?.includeVisited === true,
-  };
+  const preferences = parsePreferences(body.preferences);
 
   const google = createGoogleGenerativeAI({ apiKey });
 
@@ -130,16 +111,9 @@ export default async function handler(req: Request) {
     tools: {
       searchDestinations: tool({
         description: "Search the destination database. Returns up to 12 destinations, best match first.",
-        inputSchema: z.object({
-          query: z.string().max(300).optional().describe("What the visitor is looking for, in English: mood, activities, food, scenery."),
-          maxCostDkk: z.number().int().positive().optional().describe("Upper limit in DKK per person for one week including flights."),
-          maxFlightHours: z.number().positive().optional().describe("Upper limit for one-way travel time from Copenhagen in hours."),
-          months: z.array(z.number().int().min(1).max(12)).max(12).optional().describe("Travel months as numbers 1-12."),
-          categories: z.array(z.enum(CATEGORY_OPTIONS)).max(4).optional().describe("Destinations must match at least one of these."),
-        }),
+        inputSchema: searchInputSchema,
         execute: async (input) => {
-          const embedding = input.query?.trim() ? await embedQuery(input.query, apiKey) : null;
-          const destinations = await searchDatabase(buildSearchArgs(input, preferences, embedding));
+          const destinations = await runSearch(input, preferences, apiKey);
           return { count: destinations.length, destinations };
         },
       }),

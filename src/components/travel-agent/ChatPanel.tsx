@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import type { TravelPreferences } from '@/types/travel';
+import type { SearchFilters } from '@/types/travel';
 import { SEARCH_TOOL, type AgentMessage } from '@/services/travelSearch';
 
 const STARTER_PROMPTS = [
@@ -20,15 +20,15 @@ interface ChatPanelProps {
     messages: (AgentMessage & { id: string })[];
     isBusy: boolean;
     error: string | null;
-    preferences: TravelPreferences;
-    onPreferencesChange: (preferences: TravelPreferences) => void;
+    filters: SearchFilters;
+    onFiltersChange: (filters: SearchFilters) => void;
     onSend: (text: string) => void;
 }
 
 const textOf = (message: AgentMessage) =>
     message.parts.map((part) => (part.type === 'text' ? (part as { text?: string }).text ?? '' : '')).join('');
 
-export default function ChatPanel({ messages, isBusy, error, preferences, onPreferencesChange, onSend }: ChatPanelProps) {
+export default function ChatPanel({ messages, isBusy, error, filters, onFiltersChange, onSend }: ChatPanelProps) {
     const [input, setInput] = useState('');
     const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -51,9 +51,9 @@ export default function ChatPanel({ messages, isBusy, error, preferences, onPref
         <aside className="flex h-auto flex-col border-b border-border bg-card lg:h-full lg:border-b-0 lg:border-r">
             {/* Header */}
             <div className="border-b border-border px-4 pb-4 pt-6 sm:px-6 lg:pt-8">
-                <h1 className="text-lg font-semibold tracking-tight text-foreground">Next Destination</h1>
+                <h1 className="text-lg font-semibold tracking-tight text-foreground">Ask the agent</h1>
                 <p className="text-xs text-muted-foreground">
-                    Describe the trip you have in mind. The agent searches a curated set of destinations from Copenhagen.
+                    Describe the trip you have in mind, and refine it as you go. The agent sets the filters for you.
                 </p>
 
                 <div className="mt-4 space-y-2.5">
@@ -63,8 +63,8 @@ export default function ChatPanel({ messages, isBusy, error, preferences, onPref
                         </Label>
                         <Switch
                             id="use-history"
-                            checked={preferences.useVictorHistory}
-                            onCheckedChange={(checked) => onPreferencesChange({ ...preferences, useVictorHistory: checked })}
+                            checked={filters.useVisitedCountriesData}
+                            onCheckedChange={(checked) => onFiltersChange({ ...filters, useVisitedCountriesData: checked })}
                         />
                     </div>
                     <div className="flex items-center justify-between gap-3">
@@ -73,8 +73,8 @@ export default function ChatPanel({ messages, isBusy, error, preferences, onPref
                         </Label>
                         <Switch
                             id="include-visited"
-                            checked={preferences.includeVisited}
-                            onCheckedChange={(checked) => onPreferencesChange({ ...preferences, includeVisited: checked })}
+                            checked={filters.includeVisitedCountries}
+                            onCheckedChange={(checked) => onFiltersChange({ ...filters, includeVisitedCountries: checked })}
                         />
                     </div>
                 </div>
